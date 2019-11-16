@@ -86,7 +86,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon2"><i class="ti-email"></i></span>
                                     </div>
-                                    <input type="email" class="form-control form-control-lg" id="val_01" name="val_01" aria-label="val_01" aria-describedby="basic-addon1" placeholder="Email" required>
+                                    <input type="text" class="form-control form-control-lg" id="val_01" name="val_01" aria-label="val_01" aria-describedby="basic-addon1" placeholder="Email" required>
                                 </div>
 
                                 <div class="input-group mb-3">

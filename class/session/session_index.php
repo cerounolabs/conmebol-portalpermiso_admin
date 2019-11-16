@@ -34,9 +34,9 @@
                 'usuario_var06'	=> $_SERVER['HTTP_REFERER']
             ));
         
-        $resultJSON         = post_curl('100', $dataJSON);
+        $resultJSON         = post_curl('login', $dataJSON);
         $resultJSON         = json_decode($resultJSON, true);
-
+        echo json_encode($resultJSON);
         if ($resultJSON['code'] === 200) {
             $_SESSION['log_01'] = $val_01;
             $_SESSION['log_02'] = $val_02;
@@ -49,13 +49,13 @@
     
             $_SESSION['expire'] = time() + 600;
             
-            header('Location: ../../public/home.php');
+//            header('Location: ../../public/home.php');
         } else {
             $val_01             = NULL;
             $val_02             = NULL;
             $val_03             = NULL;
     
-            header('Location: ../../index.php?code='.$resultJSON['code'].'&msg='.$resultJSON['message']);
+//            header('Location: ../../index.php?code='.$resultJSON['code'].'&msg='.$resultJSON['message']);
         }
     }
 ?>
