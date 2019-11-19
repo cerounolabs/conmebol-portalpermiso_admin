@@ -194,6 +194,13 @@
                                 </li>
 
                                 <li class="sidebar-item">
+                               	    <a href="../public/solicitud.php" class="sidebar-link">
+                               		    <i class="mdi mdi-parm"></i>
+                               		    <span class="hide-menu"> Solicitudes</span>
+                               	    </a>
+                                </li>
+
+                                <li class="sidebar-item">
                                	    <a href="../public/licencia.php" class="sidebar-link">
                                		    <i class="mdi mdi-parm"></i>
                                		    <span class="hide-menu"> Licencias</span>
