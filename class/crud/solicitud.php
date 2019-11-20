@@ -16,7 +16,7 @@
     $work01         = $_POST['workCodigo'];
     $work02         = $_POST['workModo'];
 
-	$usu_02         = strtoupper($_SESSION['usu_02']);
+	$usu_03         = strtoupper($_SESSION['usu_03']);
 
 	$log_03         = $_SESSION['log_03'];
 
@@ -28,7 +28,7 @@
 				'tipo_dia_cantidad'     => $val03,
                 'tipo_dia_corrido'		=> $val04,
                 'tipo_observacion'      => $val05,
-				'auditoria_usuario'     => $usu_02,
+				'auditoria_usuario'     => $usu_03,
                 'auditoria_fecha_hora'  => date('Y-m-d H:i:s'),
                 'auditoria_ip'          => $log_03
 			));
