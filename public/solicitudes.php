@@ -190,7 +190,7 @@
 <?php
     if ($solictudJSON['code'] === 200) {
         foreach ($solictudJSON['data'] as $solictudKEY => $solictudVALUE) {
-            if ($solictudVALUE['tipo_estado_codigo'] === 'A' && $solictudVALUE['tipo_solicitud_codigo'] != 'I'){
+            if ($solictudVALUE['tipo_estado_codigo'] === 'A'){
 ?>
             '                               <option value="<?php echo $solictudVALUE['tipo_permiso_codigo']; ?>"><?php echo $solictudVALUE['tipo_solicitud_nombre'].' - '.$solictudVALUE['tipo_permiso_nombre']; ?></option>'+
 <?php
