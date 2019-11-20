@@ -152,7 +152,7 @@
     </script>
 
 <?php  
-    if ($codeRest == 401 || $codeRest == 204) {
+    if ($codeRest == 401 || $codeRest == 204 || $codeRest == 201) {
 ?>
     <script>
         $(function() {
