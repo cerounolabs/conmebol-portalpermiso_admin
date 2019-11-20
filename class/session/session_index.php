@@ -22,7 +22,7 @@
     
     $resultJSON     = post_curl('login', $dataJSON);
     $resultJSON     = json_decode($resultJSON, true);
-    echo json_encode($resultJSON);
+
     if ($resultJSON['code'] === 200) {
         $_SESSION['log_01'] = trim(strtoupper($val_01));
         $_SESSION['log_02'] = $val_02;
@@ -36,7 +36,7 @@
 
         $_SESSION['expire'] = time() + 1800;
         
-//        header('Location: ../../public/home.php');
+        header('Location: ../../public/home.php');
     } else {
         $val_01             = NULL;
         $val_02             = NULL;
