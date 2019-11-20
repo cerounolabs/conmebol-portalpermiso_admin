@@ -207,25 +207,25 @@
             '               <div class="col-sm-12 col-md-3">'+
             '                   <div class="form-group">'+
             '                       <label for="var02">FECHA DESDE</label>'+
-            '                       <input id="var02" name="var02" class="form-control" type="date" style="text-transform:uppercase; height:40px;" placeholder="FECHA DESDE">'+
+            '                       <input id="var02" name="var02" class="form-control" type="date" value="<?php echo date('Y-m-d'); ?>" style="text-transform:uppercase; height:40px;" placeholder="FECHA DESDE">'+
             '                   </div>'+
             '               </div>'+
             '               <div class="col-sm-12 col-md-3">'+
             '                   <div class="form-group">'+
             '                       <label for="var03">FECHA HASTA</label>'+
-            '                       <input id="var03" name="var03" class="form-control" type="date" style="text-transform:uppercase; height:40px;" placeholder="FECHA HASTA">'+
+            '                       <input id="var03" name="var03" class="form-control" type="date" value="<?php echo date('Y-m-d'); ?>" style="text-transform:uppercase; height:40px;" placeholder="FECHA HASTA">'+
             '                   </div>'+
             '               </div>'+
             '               <div class="col-sm-12 col-md-3">'+
             '                   <div class="form-group">'+
             '                       <label for="var04">HORA DESDE</label>'+
-            '                       <input id="var04" name="var04" class="form-control" type="time" style="text-transform:uppercase; height:40px;" placeholder="FECHA HASTA">'+
+            '                       <input id="var04" name="var04" class="form-control" type="time" value="08:00" style="text-transform:uppercase; height:40px;" placeholder="FECHA HASTA">'+
             '                   </div>'+
             '               </div>'+
             '               <div class="col-sm-12 col-md-3">'+
             '                   <div class="form-group">'+
             '                       <label for="var05">HORA HASTA</label>'+
-            '                       <input id="var05" name="var05" class="form-control" type="time" style="text-transform:uppercase; height:40px;" placeholder="FECHA HASTA">'+
+            '                       <input id="var05" name="var05" class="form-control" type="time" value="18:00" style="text-transform:uppercase; height:40px;" placeholder="FECHA HASTA">'+
             '                   </div>'+
             '               </div>'+
             '           </div>'+
