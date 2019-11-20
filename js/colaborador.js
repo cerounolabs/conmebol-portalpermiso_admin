@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	var codigo		= document.getElementById('tableCodigo').className;	
-	var urlDominio	= 'http://api.conmebol.com/portalpermiso/public/v1/200/'+codigo;
+	var urlDominio	= 'http://api.conmebol.com/portalpermiso/public/v1/200/colaborador/'+codigo;
 
 	$('#tableLoad').DataTable({
 		processing	: true,
