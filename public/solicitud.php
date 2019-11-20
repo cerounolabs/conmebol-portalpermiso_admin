@@ -289,7 +289,7 @@
             var xHTTP	= new XMLHttpRequest();
             var xURL	= 'http://api.conmebol.com/portalpermiso/public/v1/100/procesar';
             var xPARS   = JSON.stringify({
-                "auditoria_usuario": "<?php echo trim(strtoupper($usu_01)); ?>",
+                "auditoria_usuario": "<?php echo trim(strtoupper($usu_02)); ?>",
                 "auditoria_fecha_hora": "<?php echo date('Y-m-d H:i:s'); ?>",
                 "auditoria_ip": "<?php echo $log_03; ?>"
             });

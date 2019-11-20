@@ -11,6 +11,7 @@
     unset($_SESSION['usu_02']);
     unset($_SESSION['usu_03']);
     unset($_SESSION['usu_04']);
+    unset($_SESSION['usu_05']);
 
     unset($_SESSION['expire']);
 

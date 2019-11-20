@@ -28,10 +28,11 @@
         $_SESSION['log_02'] = $val_02;
         $_SESSION['log_03'] = $val_03;
 
-        $_SESSION['usu_01'] = $val_01;
-        $_SESSION['usu_02'] = $val_02;
-        $_SESSION['usu_03'] = $val_03;
-        $_SESSION['usu_04'] = 39393;
+        $_SESSION['usu_01'] = $resultJSON['data'][0]['user_var01'];
+        $_SESSION['usu_02'] = $resultJSON['data'][0]['user_var02'];
+        $_SESSION['usu_03'] = $resultJSON['data'][0]['user_var03'];
+        $_SESSION['usu_04'] = $resultJSON['data'][0]['user_var04'];
+        $_SESSION['usu_05'] = $resultJSON['data'][0]['user_var05'];
 
         $_SESSION['expire'] = time() + 1800;
         

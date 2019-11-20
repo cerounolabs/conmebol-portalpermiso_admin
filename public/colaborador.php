@@ -57,7 +57,7 @@
                                     <li class="breadcrumb-item">
                                         <a href="../public/home.php">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Colaboradores</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Colaborador</li>
                                 </ol>
                             </nav>
                         </div>
@@ -76,9 +76,37 @@
                 <!-- ============================================================== -->
                 <!-- basic table -->
                 <div class="row">
-                    
-
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <h4 class="col-10 card-title">Colaboradores</h4>
+								</div>
+                                <div class="table-responsive">
+                                    <table id="tableLoad" class="table v-middle" style="width: 100%;">
+                                        <thead id="tableCodigo" class="">
+                                            <tr class="bg-light">
+                                                <th class="border-top-0">NRO. DOCUMENTO</th>
+                                                <th class="border-top-0">COLABORADOR</th>
+                                                <th class="border-top-0">EMAIL</th>
+                                                <th class="border-top-0">CARGO</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Modal Procesar -->
+                <div id="modalprocesar" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" id="prodesc">
+                    </div>
+                </div>
+                <!-- Modal Procesar -->
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
@@ -109,7 +137,17 @@
 <?php
     include '../include/footer.php';
    
-    if ($codeRest == 401) {
+    if ($codeRest === 200) {
+?>
+    <script>
+        $(function() {
+            toastr.success('<?php echo $msgRest; ?>', 'Correcto!');
+        });
+    </script>
+<?php
+    }
+            
+    if (($codeRest === 204) || ($codeRest === 401)) {
 ?>
     <script>
         $(function() {
@@ -119,5 +157,7 @@
 <?php
     }
 ?>
+
+    <script src="../js/colaborador.js"></script>
 </body>
 </html>
