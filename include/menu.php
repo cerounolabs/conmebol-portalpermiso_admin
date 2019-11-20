@@ -148,6 +148,13 @@
                                			<span class="hide-menu"> Colaboradores </span>
                                     </a>
                                	</li>
+
+                                <li class="sidebar-item">
+                               		<a href="../public/solicitudes.php" class="sidebar-link">
+                               			<i class="mdi mdi-colaborador"></i>
+                               			<span class="hide-menu"> Solicitudes </span>
+                                    </a>
+                               	</li>
                             </ul>
                         </li>
 
