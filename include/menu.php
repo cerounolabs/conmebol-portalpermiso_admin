@@ -90,8 +90,8 @@
                                         <img src="../assets/images/users/default.png" alt="user" class="img-circle" width="60">
                                     </div>
                                     <div class="m-l-10">
-                                        <h4 class="m-b-0"><?php echo $usu_01; ?></h4>
-										<p class=" m-b-0"><?php echo $usu_02; ?></p>
+                                        <h4 class="m-b-0"><?php echo $usu_01.' '.$usu_04; ?></h4>
+										<p class=" m-b-0"><?php echo $usu_03; ?></p>
 										<p class=" m-b-0"><?php echo $log_03; ?></p>
                                     </div>
                                 </div>
@@ -143,7 +143,7 @@
                            	</a>
 							<ul aria-expanded="false" class="collapse first-level">
                                 <li class="sidebar-item">
-                               		<a href="../public/funcionario.php" class="sidebar-link">
+                               		<a href="../public/colaborador.php" class="sidebar-link">
                                			<i class="mdi mdi-colaborador"></i>
                                			<span class="hide-menu"> Colaboradores </span>
                                     </a>
