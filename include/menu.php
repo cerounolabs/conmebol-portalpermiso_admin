@@ -91,7 +91,7 @@
                                     </div>
                                     <div class="m-l-10">
                                         <h4 class="m-b-0"><?php echo $usu_01.' '.$usu_04; ?></h4>
-										<p class=" m-b-0"><?php echo $usu_03; ?></p>
+										<p class=" m-b-0"><?php echo $usu_03.' '.$usu_05; ?></p>
 										<p class=" m-b-0"><?php echo $log_03; ?></p>
                                     </div>
                                 </div>
