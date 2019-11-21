@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	var codigo		= document.getElementById('tableCodigo').className;	
-	var urlDominio	= 'http://api.conmebol.com/portalpermiso/public/v1/200/colaborador/';
+	var urlDominio	= 'http://api.conmebol.com/portalpermiso/public/v1/200/solicitud/'+codigo;
 
 	$('#tableLoad').DataTable({
 		processing	: true,
@@ -45,12 +45,12 @@ $(document).ready(function() {
 			{ targets			: [5],	visible : true,	searchable : true,	orderData : [5, 0] }
 		],
 		columns		: [
-			{ data				: 'documento', name : 'documento'},
-			{ data				: 'nombre_completo', name : 'nombre_completo'},
-			{ data				: 'email', name : 'email'},
-			{ data				: 'cargo_nombre', name : 'cargo_nombre'},
-			{ data				: 'cargo_nombre', name : 'cargo_nombre'},
-			{ data				: 'cargo_nombre', name : 'cargo_nombre'},
+			{ data				: 'solicitud_estado_nombre', name : 'solicitud_estado_nombre'},
+			{ data				: 'solicitud_documento', name : 'solicitud_documento'},
+			{ data				: 'solicitud_fecha_cantidad', name : 'solicitud_fecha_cantidad'},
+			{ data				: 'solicitud_hora_cantidad', name : 'solicitud_hora_cantidad'},
+			{ data				: 'solicitud_usuario_aprobador', name : 'solicitud_usuario_aprobador'},
+			{ data				: 'solicitud_observacion_colaborador', name : 'solicitud_observacion_colaborador'},
 		]
 	});
 });
