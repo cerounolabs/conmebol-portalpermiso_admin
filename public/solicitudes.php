@@ -185,7 +185,7 @@
             '               <div class="col-sm-12">'+
             '                   <div class="form-group">'+
             '                       <label for="var01">SOLICITUD DE</label>'+
-            '                       <select id="var01" name="var01" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
+            '                       <select id="var01" name="var01" class="select2 form-control custom-select" style="width:100%; height:40px;" onblur="valSolicitud();">'+
             '                           <optgroup label="Solicitud">'+
 <?php
     if ($solictudJSON['code'] === 200) {
@@ -246,8 +246,16 @@
             '           <div class="row pt-3">'+
             '                <div class="col-sm-12">'+
             '                    <div class="form-group">'+
-            '                        <label for="var08">COMENTARIO</label>'+
-            '                        <textarea id="var08" name="var08" class="form-control" rows="3" style="text-transform:uppercase;"></textarea>'+
+            '                       <label for="var08">ADJUNTAR</label>'+
+            '                       <input id="var08" name="var08" class="form-control-file" type="file" style="text-transform:uppercase; height:40px;">'+
+            '                    </div>'+
+            '                </div>'+
+            '           </div>'+
+            '           <div class="row pt-3">'+
+            '                <div class="col-sm-12">'+
+            '                    <div class="form-group">'+
+            '                        <label for="var09">COMENTARIO</label>'+
+            '                        <textarea id="var09" name="var09" class="form-control" rows="3" style="text-transform:uppercase;"></textarea>'+
             '                    </div>'+
             '                </div>'+
             '           </div>'+
@@ -293,6 +301,41 @@
                 var diff        = (fec2.getTime() - fec1.getTime()) / 1000;
                 horCant.value   = diff / 3600;
             }
+        }
+
+        function valSolicitud(){
+            var xDATA   = '<?php echo json_encode($solictudJSON['data']); ?>';
+            var xJSON   = JSON.parse(xDATA);
+            var inpSol  = document.getElementById('var01');
+            var inpFDe  = document.getElementById('var02');
+            var inpFHa  = document.getElementById('var03');
+            var inpHDe  = document.getElementById('var05');
+            var inpHHa  = document.getElementById('var06');
+            var inpAdj  = document.getElementById('var08');
+
+            xJSON.forEach(element => {
+                if (inpSol.value == element.tipo_permiso_codigo){
+                    if (element.tipo_dia_unidad == 'D') {
+                        inpFDe.readOnly = false;
+                        inpFHa.readOnly = false;
+
+                        inpHDe.readOnly = true;
+                        inpHHa.readOnly = true;
+                    } else {
+                        inpFDe.readOnly = false;
+                        inpFHa.readOnly = true;
+
+                        inpHDe.readOnly = false;
+                        inpHHa.readOnly = false;
+                    }
+
+                    if (element.tipo_archivo_adjunto == 'S') {
+                        inpAdj.enabled = true;
+                    } else {
+                        inpAdj.enabled = false;
+                    }
+                }
+            });
         }
     </script>
 </body>
