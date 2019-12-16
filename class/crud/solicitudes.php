@@ -15,7 +15,7 @@
 	$val06          = $_POST['var06'];
 	$val07          = $_POST['var07'];
 	$val08          = strtolower($_POST['var08']);
-	$val08          = strtoupper($_POST['var09']);
+	$val09          = strtoupper($_POST['var09']);
 
     $work01         = $_POST['workCodigo'];
     $work02         = $_POST['workModo'];
