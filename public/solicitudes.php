@@ -95,7 +95,7 @@
                                                 <th class="border-top-0">SOLICITUD</th>
                                                 <th class="border-top-0">CANTIDAD DE DÍAS</th>
                                                 <th class="border-top-0">CANTIDAD DE HORAS</th>
-                                                <th class="border-top-0">APROBADOR POR</th>
+                                                <th class="border-top-0">AUTORIZADO / ANULADO POR</th>
                                                 <th class="border-top-0"></th>
                                             </tr>
                                         </thead>
@@ -168,6 +168,74 @@
     <script src="../js/solicitudes.js"></script>
 
     <script>
+        function cantFecha(){
+            var fecDesde    = document.getElementById('var02');
+            var fecHasta    = document.getElementById('var03');
+            var fecCant     = document.getElementById('var04');
+
+            var fec1        = new Date(fecDesde.value);
+            var fec2        = new Date(fecHasta.value);
+
+            if (fec1 <= fec2) {
+                var diff        = (fec2.getTime() - fec1.getTime()) / (1000 * 3600 * 24);
+                fecCant.value   = diff + 1;
+            } else {
+                alert('La FECHA HASTA no puede ser menor que ' + fecDesde.value);
+                fecHasta.value = fecDesde.value;
+            } 
+        }
+
+        function cantHora(){
+            var fecDesde    = document.getElementById('var02');
+            var fecHasta    = document.getElementById('var03');
+            var horDesde    = document.getElementById('var05');
+            var horHasta    = document.getElementById('var06');
+            var horCant     = document.getElementById('var07');
+
+            var fec1        = new Date(fecDesde.value + ' ' + horDesde.value);
+            var fec2        = new Date(fecHasta.value + ' ' + horHasta.value);
+
+            if (fec1 <= fec2) {
+                var diff        = (fec2.getTime() - fec1.getTime()) / 1000;
+                horCant.value   = diff / 3600;
+            }
+        }
+
+        function valSolicitud(){
+            var xDATA   = '<?php echo json_encode($solictudJSON['data']); ?>';
+            var xJSON   = JSON.parse(xDATA);
+            var inpSol  = document.getElementById('var01');
+            var inpFDe  = document.getElementById('var02');
+            var inpFHa  = document.getElementById('var03');
+            var inpHDe  = document.getElementById('var05');
+            var inpHHa  = document.getElementById('var06');
+            var inpAdj  = document.getElementById('var08');
+
+            xJSON.forEach(element => {
+                if (inpSol.value == element.tipo_permiso_codigo){
+                    if (element.tipo_dia_unidad == 'D') {
+                        inpFDe.readOnly = false;
+                        inpFHa.readOnly = false;
+
+                        inpHDe.readOnly = true;
+                        inpHHa.readOnly = true;
+                    } else {
+                        inpFDe.readOnly = false;
+                        inpFHa.readOnly = true;
+
+                        inpHDe.readOnly = false;
+                        inpHHa.readOnly = false;
+                    }
+
+                    if (element.tipo_archivo_adjunto == 'S') {
+                        inpAdj.enabled = true;
+                    } else {
+                        inpAdj.enabled = false;
+                    }
+                }
+            });
+        }
+
         function setSolicitud(){
             var html    =
             '<div class="modal-content">'+
@@ -270,72 +338,72 @@
             $("#modalcontent").append(html);
         }
 
-        function cantFecha(){
-            var fecDesde    = document.getElementById('var02');
-            var fecHasta    = document.getElementById('var03');
-            var fecCant     = document.getElementById('var04');
+        function setAutRec(rowSel){
+            var codRow  = document.getElementById(rowSel);
+            var html    = '';
 
-            var fec1        = new Date(fecDesde.value);
-            var fec2        = new Date(fecHasta.value);
-
-            if (fec1 <= fec2) {
-                var diff        = (fec2.getTime() - fec1.getTime()) / (1000 * 3600 * 24);
-                fecCant.value   = diff + 1;
+            if (codRow.getAttribute('value') == 'I'){
+                html    =
+                '<div class="modal-content">'+
+                '   <form id="form" data-parsley-validate method="post" action="../class/crud/solicitudes_estado.php">'+
+                '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
+                '		    <h4 class="modal-title" id="vcenter"> Autorizar o Rechazar Solicitud </h4>'+
+                '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+                '	    </div>'+
+                '	    <div class="modal-body" >'+
+                '           <div class="form-group">'+
+                '               <input id="workCodigo" name="workCodigo" value="'+codRow.id+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                '           </div>'+
+                '           <div class="row pt-3">'+
+                '               <div class="col-sm-12">'+
+                '                   <div class="form-group">'+
+                '                       <label for="var01">AUTORIZAR / RECHAZAR</label>'+
+                '                       <select id="var01" name="var01" class="select2 form-control custom-select" style="width:100%; height:40px;" required>'+
+                '                           <optgroup label="Solicitud">'+
+                '                               <option value="A">AUTORIZAR</option>'+
+                '                               <option value="C">RECHAZAR</option>'+
+                '                           </optgroup>'+
+                '                       </select>'+
+                '                   </div>'+
+                '               </div>'+
+                '           </div>'+
+                '           <div class="row pt-3">'+
+                '                <div class="col-sm-12">'+
+                '                    <div class="form-group">'+
+                '                        <label for="var02">COMENTARIO</label>'+
+                '                        <textarea id="var02" name="var02" class="form-control" rows="3" style="text-transform:uppercase;" required></textarea>'+
+                '                    </div>'+
+                '                </div>'+
+                '           </div>'+
+                '	    </div>'+
+                '	    <div class="modal-footer">'+
+                '           <button type="submit" class="btn btn-info">Actualizar</button>'+
+                '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+                '	    </div>'+
+                '   </form>'+
+                '</div>';
             } else {
-                alert('La FECHA HASTA no puede ser menor que ' + fecDesde.value);
-                fecHasta.value = fecDesde.value;
-            } 
-        }
-
-        function cantHora(){
-            var fecDesde    = document.getElementById('var02');
-            var fecHasta    = document.getElementById('var03');
-            var horDesde    = document.getElementById('var05');
-            var horHasta    = document.getElementById('var06');
-            var horCant     = document.getElementById('var07');
-
-            var fec1        = new Date(fecDesde.value + ' ' + horDesde.value);
-            var fec2        = new Date(fecHasta.value + ' ' + horHasta.value);
-
-            if (fec1 <= fec2) {
-                var diff        = (fec2.getTime() - fec1.getTime()) / 1000;
-                horCant.value   = diff / 3600;
+                html    =
+                '<div class="modal-content">'+
+                '   <form id="form" data-parsley-validate method="post" action="#">'+
+                '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
+                '		    <h4 class="modal-title" id="vcenter"> Autorizar o Rechazar Solicitud </h4>'+
+                '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+                '	    </div>'+
+                '	    <div class="modal-body" >'+
+                '           <div class="form-group">'+
+                '               <h4 style="text-align:center;">EL ESTADO DE LA SOLICITUD YA NO PERMITE MODIFICACIÓN. VERIFIQUE!</h4>'
+                '           </div>'+
+                '	    </div>'+
+                '	    <div class="modal-footer">'+
+                '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+                '	    </div>'+
+                '   </form>'+
+                '</div>';
             }
-        }
 
-        function valSolicitud(){
-            var xDATA   = '<?php echo json_encode($solictudJSON['data']); ?>';
-            var xJSON   = JSON.parse(xDATA);
-            var inpSol  = document.getElementById('var01');
-            var inpFDe  = document.getElementById('var02');
-            var inpFHa  = document.getElementById('var03');
-            var inpHDe  = document.getElementById('var05');
-            var inpHHa  = document.getElementById('var06');
-            var inpAdj  = document.getElementById('var08');
-
-            xJSON.forEach(element => {
-                if (inpSol.value == element.tipo_permiso_codigo){
-                    if (element.tipo_dia_unidad == 'D') {
-                        inpFDe.readOnly = false;
-                        inpFHa.readOnly = false;
-
-                        inpHDe.readOnly = true;
-                        inpHHa.readOnly = true;
-                    } else {
-                        inpFDe.readOnly = false;
-                        inpFHa.readOnly = true;
-
-                        inpHDe.readOnly = false;
-                        inpHHa.readOnly = false;
-                    }
-
-                    if (element.tipo_archivo_adjunto == 'S') {
-                        inpAdj.enabled = true;
-                    } else {
-                        inpAdj.enabled = false;
-                    }
-                }
-            });
+            $("#modalcontent").empty();
+            $("#modalcontent").append(html);
         }
     </script>
 </body>
