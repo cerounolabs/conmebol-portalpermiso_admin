@@ -411,7 +411,7 @@
                 '<div class="modal-content">'+
                 '   <form id="form" data-parsley-validate method="post" action="#">'+
                 '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
-                '		    <h4 class="modal-title" id="vcenter"> Autorizar o Rechazar Solicitud </h4>'+
+                '		    <h4 class="modal-title" id="vcenter"> Autorizar o Anular Solicitud </h4>'+
                 '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
                 '	    </div>'+
                 '	    <div class="modal-body" >'+
