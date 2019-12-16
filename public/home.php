@@ -10,6 +10,8 @@
         $codeRest       = 0;
         $msgRest        = '';
     }
+
+    $solictudesJSON = get_curl('200/solicitudes/1');
 ?>
 
 <!DOCTYPE html>
@@ -76,8 +78,141 @@
                 <!-- ============================================================== -->
                 <!-- basic table -->
                 <div class="row">
-                    
+                    <div class="col-sm-12 col-md-6 col-lg-3">
+                        <div class="card bg-light-info">
+                            <div class="card-body">
+                                <h4 class="card-title">SOLICITUDES INGRESADAS</h4>
+                            </div>
+                            <div class="comment-widgets scrollable" style="height:400px;">
+<?php
+    if ($solictudesJSON['code'] === 200){
+        foreach ($solictudesJSON['data'] as $solictudesKEY => $solictudesVALUE) {
+            if ($solictudesVALUE['solicitud_estado_codigo'] === 'I'){       
+?>
+                                <!-- Comment Row -->
+                                <div class="d-flex flex-row comment-row">
+                                    <div class="p-2">
+                                        <img src="../assets/images/users/photo.png" alt="user" width="50" class="rounded-circle">
+                                    </div>
+                                    <div class="comment-text active w-100">
+                                        <h6 class="font-medium"><?php echo trim(strtoupper($solictudesVALUE['solicitud_persona'])); ?></h6>
+                                        <span class="m-b-15 d-block"><?php echo trim(strtoupper($solictudesVALUE['tipo_permiso_nombre'])); ?> </span>
+                                        <div class="comment-footer">
+                                            <span class="text-muted float-right"><?php echo trim(strtoupper($solictudesVALUE['solicitud_fecha_hora_colaborador'])); ?></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Comment Row -->
+<?php
+            }
+        }
+    }
+?>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="col-sm-12 col-md-6 col-lg-3">
+                        <div class="card bg-light-success">
+                            <div class="card-body">
+                                <h4 class="card-title">SOLICITUDES AUTORIZADAS</h4>
+                            </div>
+                            <div class="comment-widgets scrollable" style="height:400px;">
+<?php
+    if ($solictudesJSON['code'] === 200){
+        foreach ($solictudesJSON['data'] as $solictudesKEY => $solictudesVALUE) {
+            if ($solictudesVALUE['solicitud_estado_codigo'] === 'A'){       
+?>
+                                <!-- Comment Row -->
+                                <div class="d-flex flex-row comment-row">
+                                    <div class="p-2">
+                                        <img src="../assets/images/users/photo.png" alt="user" width="50" class="rounded-circle">
+                                    </div>
+                                    <div class="comment-text active w-100">
+                                        <h6 class="font-medium"><?php echo trim(strtoupper($solictudesVALUE['solicitud_persona'])); ?></h6>
+                                        <span class="m-b-15 d-block"><?php echo trim(strtoupper($solictudesVALUE['tipo_permiso_nombre'])); ?> </span>
+                                        <div class="comment-footer">
+                                            <span class="text-muted float-right"><?php echo trim(strtoupper($solictudesVALUE['solicitud_fecha_hora_aprobador'])); ?></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Comment Row -->
+<?php
+            }
+        }
+    }
+?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-3">
+                        <div class="card bg-light-warning">
+                            <div class="card-body">
+                                <h4 class="card-title">SOLICITUDES APROBADAS</h4>
+                            </div>
+                            <div class="comment-widgets scrollable" style="height:400px;">
+<?php
+    if ($solictudesJSON['code'] === 200){
+        foreach ($solictudesJSON['data'] as $solictudesKEY => $solictudesVALUE) {
+            if ($solictudesVALUE['solicitud_estado_codigo'] === 'P'){       
+?>
+                                <!-- Comment Row -->
+                                <div class="d-flex flex-row comment-row">
+                                    <div class="p-2">
+                                        <img src="../assets/images/users/photo.png" alt="user" width="50" class="rounded-circle">
+                                    </div>
+                                    <div class="comment-text active w-100">
+                                        <h6 class="font-medium"><?php echo trim(strtoupper($solictudesVALUE['solicitud_persona'])); ?></h6>
+                                        <span class="m-b-15 d-block"><?php echo trim(strtoupper($solictudesVALUE['tipo_permiso_nombre'])); ?> </span>
+                                        <div class="comment-footer">
+                                            <span class="text-muted float-right"><?php echo trim(strtoupper($solictudesVALUE['solicitud_fecha_hora_talento'])); ?></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Comment Row -->
+<?php
+            }
+        }
+    }
+?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-3">
+                        <div class="card bg-light-danger">
+                            <div class="card-body">
+                                <h4 class="card-title">SOLICITUDES ANULADAS</h4>
+                            </div>
+                            <div class="comment-widgets scrollable" style="height:400px;">
+<?php
+    if ($solictudesJSON['code'] === 200){
+        foreach ($solictudesJSON['data'] as $solictudesKEY => $solictudesVALUE) {
+            if ($solictudesVALUE['solicitud_estado_codigo'] === 'C'){       
+?>
+                                <!-- Comment Row -->
+                                <div class="d-flex flex-row comment-row">
+                                    <div class="p-2">
+                                        <img src="../assets/images/users/photo.png" alt="user" width="50" class="rounded-circle">
+                                    </div>
+                                    <div class="comment-text active w-100">
+                                        <h6 class="font-medium"><?php echo trim(strtoupper($solictudesVALUE['solicitud_persona'])); ?></h6>
+                                        <span class="m-b-15 d-block"><?php echo trim(strtoupper($solictudesVALUE['tipo_permiso_nombre'])); ?> </span>
+                                        <div class="comment-footer">
+                                            <span class="text-muted float-right"><?php echo trim(strtoupper($solictudesVALUE['solicitud_fecha_hora_talento'])); ?></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Comment Row -->
+<?php
+            }
+        }
+    }
+?>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
