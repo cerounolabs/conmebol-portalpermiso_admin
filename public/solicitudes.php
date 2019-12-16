@@ -210,31 +210,60 @@
             var xJSON   = JSON.parse(xDATA);
             var inpSol  = document.getElementById('var01');
             var inpFDe  = document.getElementById('var02');
+            var titFDe  = document.getElementById('tit02');
             var inpFHa  = document.getElementById('var03');
+            var titFHa  = document.getElementById('tit03');
+            var inpFCa  = document.getElementById('var04');
+            var titFCa  = document.getElementById('tit04');
             var inpHDe  = document.getElementById('var05');
+            var titHDe  = document.getElementById('tit05');
             var inpHHa  = document.getElementById('var06');
+            var titHHa  = document.getElementById('tit06');
+            var inpHCa  = document.getElementById('var07');
+            var titHCa  = document.getElementById('tit07');
             var inpAdj  = document.getElementById('var08');
+            var titAdj  = document.getElementById('tit08');
 
             xJSON.forEach(element => {
                 if (inpSol.value == element.tipo_permiso_codigo){
                     if (element.tipo_dia_unidad == 'D') {
-                        inpFDe.readOnly = false;
-                        inpFHa.readOnly = false;
+                        inpFDe.readOnly     = false;
+                        inpFHa.readOnly     = false;
 
-                        inpHDe.readOnly = true;
-                        inpHHa.readOnly = true;
+                        titFDe.style.display= '';
+                        titFHa.style.display= '';
+                        titFCa.style.display= '';
+
+                        inpHDe.readOnly     = true;
+                        inpHHa.readOnly     = true;
+                        inpHCa.readOnly     = true;
+
+                        titHDe.style.display= 'none';
+                        titHHa.style.display= 'none';
+                        titHCa.style.display= 'none';
                     } else {
-                        inpFDe.readOnly = false;
-                        inpFHa.readOnly = true;
+                        inpFDe.readOnly     = false;
+                        inpFHa.readOnly     = true;
 
-                        inpHDe.readOnly = false;
-                        inpHHa.readOnly = false;
+                        titFDe.style.display= '';
+                        titFHa.style.display= 'none';
+                        titFCa.style.display= 'none';
+
+                        inpHDe.readOnly     = false;
+                        inpHHa.readOnly     = false;
+                        inpHCa.readOnly     = false;
+
+                        titHDe.style.display= '';
+                        titHHa.style.display= '';
+                        titHCa.style.display= '';
                     }
 
                     if (element.tipo_archivo_adjunto == 'S') {
-                        inpAdj.enabled = true;
+                        inpAdj.enabled      = true;
+                        titAdj.style.display= '';
                     } else {
-                        inpAdj.enabled = false;
+                        inpAdj.enabled      = false;
+                        titAdj.style.display= 'none';
                     }
                 }
             });
@@ -276,19 +305,19 @@
             '               </div>'+
             '           </div>'+
             '           <div class="row pt-3">'+
-            '               <div class="col-sm-12 col-md-4">'+
+            '               <div id="tit02" class="col-sm-12 col-md-4">'+
             '                   <div class="form-group">'+
             '                       <label for="var02">FECHA DESDE</label>'+
             '                       <input id="var02" name="var02" class="form-control" type="date" value="<?php echo date('Y-m-d'); ?>" onblur="cantFecha();" style="text-transform:uppercase; height:40px;" placeholder="FECHA DESDE">'+
             '                   </div>'+
             '               </div>'+
-            '               <div class="col-sm-12 col-md-4">'+
+            '               <div id="tit03" class="col-sm-12 col-md-4">'+
             '                   <div class="form-group">'+
             '                       <label for="var03">FECHA HASTA</label>'+
             '                       <input id="var03" name="var03" class="form-control" type="date" value="<?php echo date('Y-m-d'); ?>" onblur="cantFecha();" style="text-transform:uppercase; height:40px;" placeholder="FECHA HASTA">'+
             '                   </div>'+
             '               </div>'+
-            '               <div class="col-sm-12 col-md-4">'+
+            '               <div id="tit04" class="col-sm-12 col-md-4">'+
             '                   <div class="form-group">'+
             '                       <label for="var04">CANTIDAD DE DIAS</label>'+
             '                       <input id="var04" name="var04" class="form-control" type="numer" value="1" style="text-transform:uppercase; height:40px;" placeholder="CANTIDAD DE DIAS" readonly>'+
@@ -296,19 +325,19 @@
             '               </div>'+
             '           </div>'+
             '           <div class="row pt-3">'+
-            '               <div class="col-sm-12 col-md-4">'+
+            '               <div id="tit05" class="col-sm-12 col-md-4">'+
             '                   <div class="form-group">'+
             '                       <label for="var05">HORA DESDE</label>'+
             '                       <input id="var05" name="var05" class="form-control" type="time" value="08:00" onblur="cantHora();" style="text-transform:uppercase; height:40px;" placeholder="HORA DESDE">'+
             '                   </div>'+
             '               </div>'+
-            '               <div class="col-sm-12 col-md-4">'+
+            '               <div id="tit06" class="col-sm-12 col-md-4">'+
             '                   <div class="form-group">'+
             '                       <label for="var06">HORA HASTA</label>'+
             '                       <input id="var06" name="var06" class="form-control" type="time" value="18:00" onblur="cantHora();" style="text-transform:uppercase; height:40px;" placeholder="HORA HASTA">'+
             '                   </div>'+
             '               </div>'+
-            '               <div class="col-sm-12 col-md-4">'+
+            '               <div id="tit07" class="col-sm-12 col-md-4">'+
             '                   <div class="form-group">'+
             '                       <label for="var07">CANTIDAD DE HORAS</label>'+
             '                       <input id="var07" name="var07" class="form-control" type="numer" value="0" style="text-transform:uppercase; height:40px;" placeholder="CANTIDAD DE HORAS" readonly>'+
@@ -316,7 +345,7 @@
             '               </div>'+
             '           </div>'+
             '           <div class="row pt-3">'+
-            '                <div class="col-sm-12">'+
+            '                <div id="tit08" class="col-sm-12">'+
             '                    <div class="form-group">'+
             '                       <label for="var08">ADJUNTAR</label>'+
             '                       <input id="var08" name="var08" class="form-control-file" type="file" style="text-transform:uppercase; height:40px;">'+

@@ -83,7 +83,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">SOLICITUDES INGRESADAS</h4>
                             </div>
-                            <div class="comment-widgets scrollable" style="height:400px;">
+                            <div class="comment-widgets scrollable" style="height:350px;">
 <?php
     if ($solictudesJSON['code'] === 200){
         foreach ($solictudesJSON['data'] as $solictudesKEY => $solictudesVALUE) {
@@ -117,7 +117,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">SOLICITUDES AUTORIZADAS</h4>
                             </div>
-                            <div class="comment-widgets scrollable" style="height:400px;">
+                            <div class="comment-widgets scrollable" style="height:350px;">
 <?php
     if ($solictudesJSON['code'] === 200){
         foreach ($solictudesJSON['data'] as $solictudesKEY => $solictudesVALUE) {
@@ -151,7 +151,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">SOLICITUDES APROBADAS</h4>
                             </div>
-                            <div class="comment-widgets scrollable" style="height:400px;">
+                            <div class="comment-widgets scrollable" style="height:350px;">
 <?php
     if ($solictudesJSON['code'] === 200){
         foreach ($solictudesJSON['data'] as $solictudesKEY => $solictudesVALUE) {
@@ -185,7 +185,7 @@
                             <div class="card-body">
                                 <h4 class="card-title">SOLICITUDES ANULADAS</h4>
                             </div>
-                            <div class="comment-widgets scrollable" style="height:400px;">
+                            <div class="comment-widgets scrollable" style="height:350px;">
 <?php
     if ($solictudesJSON['code'] === 200){
         foreach ($solictudesJSON['data'] as $solictudesKEY => $solictudesVALUE) {
