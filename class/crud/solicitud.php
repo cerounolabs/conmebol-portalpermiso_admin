@@ -11,7 +11,9 @@
     $val02          = $_POST['var02'];
     $val03          = $_POST['var03'];
     $val04          = strtoupper($_POST['var04']);
-    $val05          = strtoupper($_POST['var05']);
+	$val05          = strtoupper($_POST['var05']);
+	$val06          = strtoupper($_POST['var06']);
+	$val07          = strtoupper($_POST['var07']);
 
     $work01         = $_POST['workCodigo'];
     $work02         = $_POST['workModo'];
@@ -26,8 +28,10 @@
                 'tipo_estado_codigo'    => $val01,
 				'tipo_orden_numero'     => $val02,
 				'tipo_dia_cantidad'     => $val03,
-                'tipo_dia_corrido'		=> $val04,
-                'tipo_observacion'      => $val05,
+				'tipo_dia_corrido'		=> $val04,
+				'tipo_dia_unidad'		=> $val05,
+				'tipo_archivo_adjunto'	=> $val06,
+                'tipo_observacion'      => $val07,
 				'auditoria_usuario'     => $usu_03,
                 'auditoria_fecha_hora'  => date('Y-m-d H:i:s'),
                 'auditoria_ip'          => $log_03
