@@ -14,7 +14,8 @@
 	$val05          = $_POST['var05'];
 	$val06          = $_POST['var06'];
 	$val07          = $_POST['var07'];
-	$val08          = strtoupper($_POST['var08']);
+	$val08          = strtolower($_POST['var08']);
+	$val08          = strtoupper($_POST['var09']);
 
     $work01         = $_POST['workCodigo'];
     $work02         = $_POST['workModo'];
@@ -36,7 +37,8 @@
 				'solicitud_hora_desde'				=> $val05,
 				'solicitud_hora_hasta'				=> $val06,
 				'solicitud_hora_cantidad'			=> $val07,
-				'solicitud_observacion_colaborador'	=> $val08,
+				'solicitud_adjunto'					=> $val08,
+				'solicitud_observacion_colaborador'	=> $val09,
 				'auditoria_usuario'     			=> $usu_03,
                 'auditoria_fecha_hora'  			=> date('Y-m-d H:i:s'),
                 'auditoria_ip'          			=> $log_03
