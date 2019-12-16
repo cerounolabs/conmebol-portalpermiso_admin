@@ -92,10 +92,13 @@
                                         <thead id="tableCodigo" class="<?php echo $usu_05; ?>">
                                             <tr class="bg-light">
                                                 <th class="border-top-0">ESTADO</th>
+                                                <th class="border-top-0">DOCUMENTO</th>
+                                                <th class="border-top-0">COLABORADOR</th>
                                                 <th class="border-top-0">SOLICITUD</th>
                                                 <th class="border-top-0">CANTIDAD DE DÍAS</th>
                                                 <th class="border-top-0">CANTIDAD DE HORAS</th>
                                                 <th class="border-top-0">AUTORIZADO / ANULADO POR</th>
+                                                <th class="border-top-0">APROBADOR / ANULADO POR</th>
                                                 <th class="border-top-0"></th>
                                             </tr>
                                         </thead>
@@ -338,7 +341,7 @@
             $("#modalcontent").append(html);
         }
 
-        function setAutRec(rowSel){
+        function setEstado(rowSel){
             var codRow  = document.getElementById(rowSel);
             var codFun  = '<?php echo trim($usu_05); ?>';
             var html    = '';
@@ -349,7 +352,7 @@
                     '<div class="modal-content">'+
                     '   <form id="form" data-parsley-validate method="post" action="../class/crud/solicitudes_estado.php">'+
                     '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
-                    '		    <h4 class="modal-title" id="vcenter"> Autorizar o Rechazar Solicitud </h4>'+
+                    '		    <h4 class="modal-title" id="vcenter"> Autorizar o Anular Solicitud </h4>'+
                     '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
                     '	    </div>'+
                     '	    <div class="modal-body" >'+
@@ -363,7 +366,7 @@
                     '                       <select id="var01" name="var01" class="select2 form-control custom-select" style="width:100%; height:40px;" required>'+
                     '                           <optgroup label="Solicitud">'+
                     '                               <option value="A">AUTORIZAR</option>'+
-                    '                               <option value="C">RECHAZAR</option>'+
+                    '                               <option value="C">ANULAR</option>'+
                     '                           </optgroup>'+
                     '                       </select>'+
                     '                   </div>'+
@@ -389,7 +392,7 @@
                     '<div class="modal-content">'+
                     '   <form id="form" data-parsley-validate method="post" action="#">'+
                     '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
-                    '		    <h4 class="modal-title" id="vcenter"> Autorizar o Rechazar Solicitud </h4>'+
+                    '		    <h4 class="modal-title" id="vcenter"> Autorizar o Anular Solicitud </h4>'+
                     '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
                     '	    </div>'+
                     '	    <div class="modal-body" >'+
