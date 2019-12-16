@@ -243,6 +243,8 @@
                         titHHa.style.display= 'none';
                         titHCa.style.display= 'none';
                     } else {
+                        inpFHa.value        = inpFDe.value;
+
                         inpFDe.readOnly     = false;
                         inpFHa.readOnly     = true;
                         inpFCa.readOnly     = true;
