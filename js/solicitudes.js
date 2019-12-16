@@ -50,7 +50,7 @@ $(document).ready(function() {
 			{ data				: 'solicitud_fecha_cantidad', name : 'solicitud_fecha_cantidad'},
 			{ data				: 'solicitud_hora_cantidad', name : 'solicitud_hora_cantidad'},
 			{ data				: 'solicitud_usuario_aprobador', name : 'solicitud_usuario_aprobador'},
-			{ render			: function (data, type, full, meta) {return '<a href="javascript:void(0)" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" role="button" class="btn btn-success" title="Aprobar/Rechazar" data-toggle="modal" data-target="#modaldiv" onclick="setAutRec(this.id);"><i class="ti-settings"></i>&nbsp;</a>&nbsp;';}},
+			{ render			: function (data, type, full, meta) {return '<a href="javascript:void(0)" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" role="button" class="btn btn-success" title="Aprobar/Rechazar" data-toggle="modal" data-target="#modaldiv" onclick="setAutRec(this.id);"><i class="ti-settings"></i>&nbsp;</a>&nbsp;';}},
 		]
 	});
 });
