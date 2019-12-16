@@ -44,11 +44,13 @@ $(document).ready(function() {
 			{ targets			: [4],	visible : true,	searchable : true,	orderData : [4, 0] },
 			{ targets			: [5],	visible : true,	searchable : true,	orderData : [5, 0] },
 			{ targets			: [6],	visible : true,	searchable : true,	orderData : [6, 0] },
-			{ targets			: [7],	visible : false,searchable : false,	orderData : [7, 0] },
-			{ targets			: [8],	visible : false,searchable : false,	orderData : [8, 0] },
+			{ targets			: [7],	visible : true,	searchable : true,	orderData : [7, 0] },
+			{ targets			: [8],	visible : true,	searchable : true,	orderData : [8, 0] },
 			{ targets			: [9],	visible : false,searchable : false,	orderData : [9, 0] },
 			{ targets			: [10],	visible : false,searchable : false,	orderData : [10, 0] },
-			{ targets			: [11],	visible : true,	searchable : true,	orderData : [11, 0] }
+			{ targets			: [11],	visible : false,searchable : false,	orderData : [11, 0] },
+			{ targets			: [12],	visible : false,searchable : false,	orderData : [12, 0] },
+			{ targets			: [13],	visible : true,	searchable : true,	orderData : [13, 0] }
 		],
 		columns		: [
 			{ data				: 'tipo_permiso_codigo', name : 'tipo_permiso_codigo'},
@@ -58,6 +60,8 @@ $(document).ready(function() {
 			{ data				: 'tipo_permiso_nombre', name : 'tipo_permiso_nombre'},
 			{ data				: 'tipo_dia_cantidad', name : 'tipo_dia_cantidad'},
 			{ data				: 'tipo_dia_corrido', name : 'tipo_dia_corrido'},
+			{ data				: 'tipo_dia_unidad', name : 'tipo_dia_unidad'},
+			{ data				: 'tipo_archivo_adjunto', name : 'tipo_archivo_adjunto'},
 			{ data				: 'tipo_observacion', name : 'tipo_observacion'},
 			{ data				: 'auditoria_usuario', name : 'auditoria_usuario'},
 			{ data				: 'auditoria_fecha_hora', name : 'auditoria_fecha_hora'},

@@ -96,6 +96,8 @@
                                                 <th class="border-top-0">SOLICITUD</th>
                                                 <th class="border-top-0">DÍA LIMITE</th>
                                                 <th class="border-top-0">DÍA CORRIDO</th>
+                                                <th class="border-top-0">DÍA UNIDAD</th>
+                                                <th class="border-top-0">ARCHIVO ADJUNTO</th>
                                                 <th class="border-top-0">OBSERVACI&Oacute;N</th>
                                                 <th class="border-top-0">USUARIO</th>
                                                 <th class="border-top-0">FECHA HORA</th>
@@ -182,21 +184,41 @@
                     var estado  = '';
 
                     if (xJSON['data'][0]['tipo_estado_codigo'] == 'A'){
-                        estado =                     
+                        estado  =                     
                         '                               <option value="A" selected>ACTIVO</option>'+
                         '                               <option value="I">INACTIVO</option>';
                     } else {
-                        estado =                     
+                        estado  =                     
                         '                               <option value="A">ACTIVO</option>'+
                         '                               <option value="I" selected>INACTIVO</option>';
                     }
 
                     if (xJSON['data'][0]['tipo_dia_corrido'] == 'S'){
-                        diaCorrido =                     
+                        diaCorrido  =                     
                         '                               <option value="S" selected>SI</option>'+
                         '                               <option value="N">NO</option>';
                     } else {
-                        diaCorrido =                     
+                        diaCorrido  =                     
+                        '                               <option value="S">SI</option>'+
+                        '                               <option value="N" selected>NO</option>';
+                    }
+
+                    if (xJSON['data'][0]['tipo_dia_unidad'] == 'D'){
+                        tipoUnidad  =                     
+                        '                               <option value="D" selected>DÍA</option>'+
+                        '                               <option value="H">HORA</option>';
+                    } else {
+                        tipoUnidad   =                     
+                        '                               <option value="D">DÍA</option>'+
+                        '                               <option value="H" selected>HORA</option>';
+                    }
+
+                    if (xJSON['data'][0]['tipo_archivo_adjunto'] == 'S'){
+                        tipoAdjunto =                     
+                        '                               <option value="S" selected>SI</option>'+
+                        '                               <option value="N">NO</option>';
+                    } else {
+                        tipoAdjunto =                     
                         '                               <option value="S">SI</option>'+
                         '                               <option value="N" selected>NO</option>';
                     }
@@ -244,12 +266,30 @@
                     '                       </select>'+
                     '                   </div>'+
                     '               </div>'+
+                    '               <div class="col-sm-12 col-md-3">'+
+                    '                   <div class="form-group">'+
+                    '                       <label for="var05">DÍA UNIDAD</label>'+
+                    '                       <select id="var05" name="var05" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
+                    '                           <optgroup label="Corrido">'+tipoUnidad+
+                    '                           </optgroup>'+
+                    '                       </select>'+
+                    '                   </div>'+
+                    '               </div>'+
+                    '               <div class="col-sm-12 col-md-3">'+
+                    '                   <div class="form-group">'+
+                    '                       <label for="var06">ARCHIVO ADJUNTO</label>'+
+                    '                       <select id="var06" name="var06" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
+                    '                           <optgroup label="Corrido">'+tipoAdjunto+
+                    '                           </optgroup>'+
+                    '                       </select>'+
+                    '                   </div>'+
+                    '               </div>'+
                     '           </div>'+
                     '           <div class="row pt-3">'+
                     '                <div class="col-sm-12">'+
                     '                    <div class="form-group">'+
-                    '                        <label for="var05">OBSERVACI&Oacute;N</label>'+
-                    '                        <textarea id="var05" name="var05" class="form-control" rows="3" style="text-transform:uppercase;">'+xJSON['data'][0]['tipo_observacion']+'</textarea>'+
+                    '                        <label for="var07">OBSERVACI&Oacute;N</label>'+
+                    '                        <textarea id="var07" name="var07" class="form-control" rows="3" style="text-transform:uppercase;">'+xJSON['data'][0]['tipo_observacion']+'</textarea>'+
                     '                    </div>'+
                     '                </div>'+
                     '           </div>'+
