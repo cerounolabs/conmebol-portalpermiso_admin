@@ -229,6 +229,7 @@
                     if (element.tipo_dia_unidad == 'D') {
                         inpFDe.readOnly     = false;
                         inpFHa.readOnly     = false;
+                        inpFCa.readOnly     = true;
 
                         titFDe.style.display= '';
                         titFHa.style.display= '';
@@ -244,6 +245,7 @@
                     } else {
                         inpFDe.readOnly     = false;
                         inpFHa.readOnly     = true;
+                        inpFCa.readOnly     = true;
 
                         titFDe.style.display= '';
                         titFHa.style.display= 'none';
@@ -251,7 +253,7 @@
 
                         inpHDe.readOnly     = false;
                         inpHHa.readOnly     = false;
-                        inpHCa.readOnly     = false;
+                        inpHCa.readOnly     = true;
 
                         titHDe.style.display= '';
                         titHHa.style.display= '';
@@ -259,10 +261,10 @@
                     }
 
                     if (element.tipo_archivo_adjunto == 'S') {
-                        inpAdj.enabled      = true;
+                        inpAdj.readOnly     = true;
                         titAdj.style.display= '';
                     } else {
-                        inpAdj.enabled      = false;
+                        inpAdj.readOnly     = false;
                         titAdj.style.display= 'none';
                     }
                 }
