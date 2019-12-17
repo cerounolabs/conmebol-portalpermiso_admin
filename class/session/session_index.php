@@ -33,7 +33,7 @@
         $_SESSION['usu_03'] = $resultJSON['data'][0]['user_var03'];
         $_SESSION['usu_04'] = $resultJSON['data'][0]['user_var04'];
         $_SESSION['usu_05'] = $resultJSON['data'][0]['user_var05'];
-
+        $_SESSION['usu_05'] = '4483864';
         $_SESSION['expire'] = time() + 1800;
         
         header('Location: ../../public/home.php');

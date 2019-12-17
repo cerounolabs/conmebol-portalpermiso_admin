@@ -103,8 +103,9 @@
                                                 <th class="border-top-0">DOCUMENTO</th>
                                                 <th class="border-top-0">COLABORADOR</th>
                                                 <th class="border-top-0">SOLICITUD</th>
-                                                <th class="border-top-0">CANTIDAD DE DÍAS</th>
-                                                <th class="border-top-0">CANTIDAD DE HORAS</th>
+                                                <th class="border-top-0">FECHA</th>
+                                                <th class="border-top-0">CANT. DÍAS</th>
+                                                <th class="border-top-0">CANT. HORAS</th>
                                                 <th class="border-top-0">AUTORIZADO / ANULADO POR</th>
                                                 <th class="border-top-0">APROBADOR / ANULADO POR</th>
                                                 <th class="border-top-0"></th>
@@ -211,18 +212,20 @@
                     { targets			: [5],	visible : true,	searchable : true,	orderData : [5, 0] },
                     { targets			: [6],	visible : true,	searchable : true,	orderData : [6, 0] },
                     { targets			: [7],	visible : true,	searchable : true,	orderData : [7, 0] },
-                    { targets			: [8],	visible : true,	searchable : true,	orderData : [8, 0] }
+                    { targets			: [8],	visible : true,	searchable : true,	orderData : [8, 0] },
+                    { targets			: [9],	visible : true,	searchable : true,	orderData : [9, 0] }
                 ],
                 columns		: [
                     { data				: 'solicitud_estado_nombre', name : 'solicitud_estado_nombre'},
                     { data				: 'solicitud_documento', name : 'solicitud_documento'},
                     { data				: 'solicitud_persona', name : 'solicitud_persona'},
                     { data				: 'tipo_permiso_nombre', name : 'tipo_permiso_nombre'},
+                    { data				: 'solicitud_fecha_desde', name : 'solicitud_fecha_desde'},
                     { data				: 'solicitud_fecha_cantidad', name : 'solicitud_fecha_cantidad'},
                     { data				: 'solicitud_hora_cantidad', name : 'solicitud_hora_cantidad'},
                     { data				: 'solicitud_usuario_aprobador', name : 'solicitud_usuario_aprobador'},
                     { data				: 'solicitud_usuario_talento', name : 'solicitud_usuario_talento'},
-                    { render			: function (data, type, full, meta) {return '<a href="javascript:void(0)" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" role="button" class="btn btn-success" title="Autorizar/Anular" data-toggle="modal" data-target="#modaldiv" onclick="setEstado1(this.id);"><i class="ti-settings"></i>&nbsp;</a>&nbsp;<a href="javascript:void(0)" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" role="button" class="btn btn-warning" title="Aprobar/Anular" data-toggle="modal" data-target="#modaldiv" onclick="setEstado2(this.id);"><i class="ti-medall-alt"></i>&nbsp;</a>&nbsp;';}},
+                    { render			: function (data, type, full, meta) {return '<button type="button" class="btn btn-success btn-circle" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Autorizar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 2, 1);"><i class="fa fa-check"></i></button>&nbsp;<button type="button" class="btn btn-danger btn-circle" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Anular Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 4, 1);"><i class="fa fa-times"></i></button>';}},
                 ]
             });
         });
@@ -430,129 +433,67 @@
             $("#modalcontent").append(html);
         }
 
-        function setEstado1(rowSel){
+        function setEstado(rowSel, rowEst, rowAcc){
             var codRow  = document.getElementById(rowSel);
             var codFun  = '<?php echo trim($usu_05); ?>';
             var html    = '';
+            var titEst  = '';
 
-            if (codRow.getAttribute('value2') != codFun) {
-                if (codRow.getAttribute('value') == 'I'){
-                    html    =
-                    '<div class="modal-content">'+
-                    '   <form id="form" data-parsley-validate method="post" action="../class/crud/solicitudes_estado.php">'+
-                    '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
-                    '		    <h4 class="modal-title" id="vcenter"> Autorizar o Anular Solicitud </h4>'+
-                    '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
-                    '	    </div>'+
-                    '	    <div class="modal-body" >'+
-                    '           <div class="form-group">'+
-                    '               <input id="workCodigo" name="workCodigo" value="'+codRow.id+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-                    '               <input id="workAccion" name="workAccion" value="J" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-                    '               <input id="workPage" name="workPage" value="solicitudes" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-                    '           </div>'+
-                    '           <div class="row pt-3">'+
-                    '               <div class="col-sm-12">'+
-                    '                   <div class="form-group">'+
-                    '                       <label for="var01">AUTORIZAR / ANULAR</label>'+
-                    '                       <select id="var01" name="var01" class="select2 form-control custom-select" style="width:100%; height:40px;" required>'+
-                    '                           <optgroup label="Solicitud">'+
-                    '                               <option value="A">AUTORIZAR</option>'+
-                    '                               <option value="C">ANULAR</option>'+
-                    '                           </optgroup>'+
-                    '                       </select>'+
-                    '                   </div>'+
-                    '               </div>'+
-                    '           </div>'+
-                    '           <div class="row pt-3">'+
-                    '                <div class="col-sm-12">'+
-                    '                    <div class="form-group">'+
-                    '                        <label for="var02">COMENTARIO</label>'+
-                    '                        <textarea id="var02" name="var02" class="form-control" rows="3" style="text-transform:uppercase;" required></textarea>'+
-                    '                    </div>'+
-                    '                </div>'+
-                    '           </div>'+
-                    '	    </div>'+
-                    '	    <div class="modal-footer">'+
-                    '           <button type="submit" class="btn btn-info">Actualizar</button>'+
-                    '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
-                    '	    </div>'+
-                    '   </form>'+
-                    '</div>';
-                } else {
-                    html    =
-                    '<div class="modal-content">'+
-                    '   <form id="form" data-parsley-validate method="post" action="#">'+
-                    '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
-                    '		    <h4 class="modal-title" id="vcenter"> Autorizar o Anular Solicitud </h4>'+
-                    '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
-                    '	    </div>'+
-                    '	    <div class="modal-body" >'+
-                    '           <div class="form-group">'+
-                    '               <h4 style="text-align:center;">EL ESTADO DE LA SOLICITUD YA NO PERMITE MODIFICACIÓN. VERIFIQUE!</h4>'
-                    '           </div>'+
-                    '	    </div>'+
-                    '	    <div class="modal-footer">'+
-                    '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
-                    '	    </div>'+
-                    '   </form>'+
-                    '</div>';
-                }
-            } else {
-                html    =
-                '<div class="modal-content">'+
-                '   <form id="form" data-parsley-validate method="post" action="#">'+
-                '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
-                '		    <h4 class="modal-title" id="vcenter"> Autorizar o Anular Solicitud </h4>'+
-                '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
-                '	    </div>'+
-                '	    <div class="modal-body" >'+
-                '           <div class="form-group">'+
-                '               <h4 style="text-align:center;">FAVOR SOLICITAR A SU JEFATURA DICHA AUTORIZACION. VERIFIQUE!</h4>'
-                '           </div>'+
-                '	    </div>'+
-                '	    <div class="modal-footer">'+
-                '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
-                '	    </div>'+
-                '   </form>'+
-                '</div>';
+            switch (rowEst) {
+                case 1:
+                    titEst  = 'Re-Ingresar Solicitud';
+                    colEst  = '#2585e4;';
+                    rowEst  = 'I';
+                    antEst  = 'P';
+                    break;
+
+                case 2:
+                    titEst  = 'Autorizar Solicitud';
+                    colEst  = '#22c6ab;';
+                    rowEst  = 'A';
+                    antEst  = 'I';
+                    break;
+
+                case 3:
+                    titEst  = 'Aprobar Solicitud';
+                    colEst  = '#ffaf0e;';
+                    rowEst  = 'P';
+                    antEst  = 'A';
+                    break;
+            
+                case 4:
+                    titEst  = 'Anular Solicitud';
+                    colEst  = '#eb4c4c;';
+                    rowEst  = 'C';
+                    antEst  = 'I';
+                    break;
             }
 
-            $("#modalcontent").empty();
-            $("#modalcontent").append(html);
-        }
+            switch (rowAcc) {
+                case 1:
+                    rowAcc = 'J';
+                    break;
 
-        function setEstado2(rowSel){
-            var codRow  = document.getElementById(rowSel);
-            var codFun  = '<?php echo trim($usu_05); ?>';
-            var html    = '';
+                case 2:
+                    rowAcc = 'T';
+                    break;
+            }
 
             if (codRow.getAttribute('value2') != codFun) {
-                if (codRow.getAttribute('value') == 'A'){
+                if (codRow.getAttribute('value') == antEst){
                     html    =
                     '<div class="modal-content">'+
                     '   <form id="form" data-parsley-validate method="post" action="../class/crud/solicitudes_estado.php">'+
-                    '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
-                    '		    <h4 class="modal-title" id="vcenter"> Aprobar o Anular Solicitud </h4>'+
+                    '	    <div class="modal-header" style="color:#fff; background:'+colEst+'">'+
+                    '		    <h4 class="modal-title" id="vcenter"> '+titEst+' </h4>'+
                     '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
                     '	    </div>'+
                     '	    <div class="modal-body" >'+
                     '           <div class="form-group">'+
                     '               <input id="workCodigo" name="workCodigo" value="'+codRow.id+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-                    '               <input id="workAccion" name="workAccion" value="T" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-                    '               <input id="workPage" name="workPage" value="solicitudes" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-                    '           </div>'+
-                    '           <div class="row pt-3">'+
-                    '               <div class="col-sm-12">'+
-                    '                   <div class="form-group">'+
-                    '                       <label for="var01">APROBAR / ANULAR</label>'+
-                    '                       <select id="var01" name="var01" class="select2 form-control custom-select" style="width:100%; height:40px;" required>'+
-                    '                           <optgroup label="Solicitud">'+
-                    '                               <option value="P">APROBAR</option>'+
-                    '                               <option value="C">ANULAR</option>'+
-                    '                           </optgroup>'+
-                    '                       </select>'+
-                    '                   </div>'+
-                    '               </div>'+
+                    '               <input id="workAccion" name="workAccion" value="'+rowAcc+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                    '               <input id="workPage" name="workPage" value="solicitudes.php?tipo=<?php echo $work01; ?>&" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                    '               <input id="var01" name="var01" value="'+rowEst+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
                     '           </div>'+
                     '           <div class="row pt-3">'+
                     '                <div class="col-sm-12">'+
@@ -573,8 +514,8 @@
                     html    =
                     '<div class="modal-content">'+
                     '   <form id="form" data-parsley-validate method="post" action="#">'+
-                    '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
-                    '		    <h4 class="modal-title" id="vcenter"> Autorizar o Anular Solicitud </h4>'+
+                    '	    <div class="modal-header" style="color:#fff; background:'+colEst+'">'+
+                    '		    <h4 class="modal-title" id="vcenter"> '+titEst+' </h4>'+
                     '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
                     '	    </div>'+
                     '	    <div class="modal-body" >'+
@@ -589,23 +530,55 @@
                     '</div>';
                 }
             } else {
-                html    =
-                '<div class="modal-content">'+
-                '   <form id="form" data-parsley-validate method="post" action="#">'+
-                '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
-                '		    <h4 class="modal-title" id="vcenter"> Autorizar o Anular Solicitud </h4>'+
-                '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
-                '	    </div>'+
-                '	    <div class="modal-body" >'+
-                '           <div class="form-group">'+
-                '               <h4 style="text-align:center;">FAVOR SOLICITAR A TALENTO HUMANO DICHA APROBACION. VERIFIQUE!</h4>'
-                '           </div>'+
-                '	    </div>'+
-                '	    <div class="modal-footer">'+
-                '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
-                '	    </div>'+
-                '   </form>'+
-                '</div>';
+                if (codRow.getAttribute('value') == 'I' && rowEst == 'C'){
+                    html    =
+                    '<div class="modal-content">'+
+                    '   <form id="form" data-parsley-validate method="post" action="../class/crud/solicitudes_estado.php">'+
+                    '	    <div class="modal-header" style="color:#fff; background:'+colEst+'">'+
+                    '		    <h4 class="modal-title" id="vcenter"> '+titEst+' </h4>'+
+                    '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+                    '	    </div>'+
+                    '	    <div class="modal-body" >'+
+                    '           <div class="form-group">'+
+                    '               <input id="workCodigo" name="workCodigo" value="'+codRow.id+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                    '               <input id="workAccion" name="workAccion" value="'+rowAcc+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                    '               <input id="workPage" name="workPage" value="solicitudes" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                    '               <input id="var01" name="var01" value="'+rowEst+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                    '           </div>'+
+                    '           <div class="row pt-3">'+
+                    '                <div class="col-sm-12">'+
+                    '                    <div class="form-group">'+
+                    '                        <label for="var02">COMENTARIO</label>'+
+                    '                        <textarea id="var02" name="var02" class="form-control" rows="3" style="text-transform:uppercase;" required></textarea>'+
+                    '                    </div>'+
+                    '                </div>'+
+                    '           </div>'+
+                    '	    </div>'+
+                    '	    <div class="modal-footer">'+
+                    '           <button type="submit" class="btn btn-info">Actualizar</button>'+
+                    '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+                    '	    </div>'+
+                    '   </form>'+
+                    '</div>';
+                } else {
+                    html    =
+                    '<div class="modal-content">'+
+                    '   <form id="form" data-parsley-validate method="post" action="#">'+
+                    '	    <div class="modal-header" style="color:#fff; background:'+colEst+'">'+
+                    '		    <h4 class="modal-title" id="vcenter"> '+titEst+' </h4>'+
+                    '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+                    '	    </div>'+
+                    '	    <div class="modal-body" >'+
+                    '           <div class="form-group">'+
+                    '               <h4 style="text-align:center;">FAVOR SOLICITAR A SU JEFATURA DICHA ACCIÓN. VERIFIQUE!</h4>'
+                    '           </div>'+
+                    '	    </div>'+
+                    '	    <div class="modal-footer">'+
+                    '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+                    '	    </div>'+
+                    '   </form>'+
+                    '</div>';
+                }
             }
 
             $("#modalcontent").empty();
