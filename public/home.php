@@ -11,7 +11,8 @@
         $msgRest        = '';
     }
 
-    $solictudesJSON = get_curl('200/solicitudes/1');
+//    $solictudesJSON = get_curl('200/solicitudes/1');
+    $solictudesJSON = get_curl('200/solicitud/2/'.$usu_05);
 ?>
 
 <!DOCTYPE html>
