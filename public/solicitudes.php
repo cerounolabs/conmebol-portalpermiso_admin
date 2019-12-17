@@ -442,6 +442,7 @@
                     '           <div class="form-group">'+
                     '               <input id="workCodigo" name="workCodigo" value="'+codRow.id+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
                     '               <input id="workAccion" name="workAccion" value="J" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                    '               <input id="workPage" name="workPage" value="solicitudes" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
                     '           </div>'+
                     '           <div class="row pt-3">'+
                     '               <div class="col-sm-12">'+
@@ -532,6 +533,7 @@
                     '           <div class="form-group">'+
                     '               <input id="workCodigo" name="workCodigo" value="'+codRow.id+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
                     '               <input id="workAccion" name="workAccion" value="T" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                    '               <input id="workPage" name="workPage" value="solicitudes" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
                     '           </div>'+
                     '           <div class="row pt-3">'+
                     '               <div class="col-sm-12">'+
