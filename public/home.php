@@ -260,7 +260,17 @@
 <?php
     include '../include/footer.php';
    
-    if ($codeRest == 401) {
+    if ($codeRest == 200) {
+?>
+    <script>
+        $(function() {
+            toastr.success('<?php echo $msgRest; ?>', 'Correcto!');
+        });
+    </script>
+<?php
+    }
+            
+    if (($codeRest == 204) || ($codeRest == 401)) {
 ?>
     <script>
         $(function() {
@@ -311,7 +321,7 @@
                 '           <div class="form-group">'+
                 '               <input id="workCodigo" name="workCodigo" value="'+codRow.id+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
                 '               <input id="workAccion" name="workAccion" value="'+rowAcc+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-                '               <input id="workPage" name="workPage" value="home" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                '               <input id="workPage" name="workPage" value="home.php?" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
                 '               <input id="var01" name="var01" value="'+rowEst+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
                 '           </div>'+
                 '           <div class="row pt-3">'+
