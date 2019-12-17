@@ -11,8 +11,14 @@
         $msgRest        = '';
     }
 
+    if(isset($_GET['tipo'])){
+        $work01         = $_GET['tipo'];
+    } else {
+        $work01         = 1;
+    }
+
     $solictudJSON   = get_curl('100');
-    $solictudesJSON = get_curl('200/solicitud/'.$usu_05);
+    $solictudesJSON = get_curl('200/solicitud/'.$work01.'/'.$usu_05);
 ?>
 
 <!DOCTYPE html>
