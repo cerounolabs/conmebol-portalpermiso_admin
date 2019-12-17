@@ -139,20 +139,20 @@
                         <li class="sidebar-item">
                         	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                            		<i class="icon-Business-ManWoman"></i>
-                           		<span class="hide-menu"> Colaboradores </span>
+                           		<span class="hide-menu"> Solicitudes </span>
                            	</a>
 							<ul aria-expanded="false" class="collapse first-level">
                                 <li class="sidebar-item">
-                               		<a href="../public/colaborador.php" class="sidebar-link">
+                               		<a href="../public/solicitudes.php?tipo=1" class="sidebar-link">
                                			<i class="mdi mdi-colaborador"></i>
-                               			<span class="hide-menu"> Colaboradores </span>
+                               			<span class="hide-menu"> Mis Solicitudes </span>
                                     </a>
                                	</li>
 
                                 <li class="sidebar-item">
-                               		<a href="../public/solicitudes.php" class="sidebar-link">
+                               		<a href="../public/solicitudes.php?tipo=2" class="sidebar-link">
                                			<i class="mdi mdi-colaborador"></i>
-                               			<span class="hide-menu"> Solicitudes </span>
+                               			<span class="hide-menu"> De mis Colaboradores </span>
                                     </a>
                                	</li>
                             </ul>
