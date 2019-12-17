@@ -86,8 +86,11 @@
                             <div class="comment-widgets scrollable" style="height:350px;">
 <?php
     if ($solictudesJSON['code'] === 200){
+        $index = 0;
+        
         foreach ($solictudesJSON['data'] as $solictudesKEY => $solictudesVALUE) {
-            if ($solictudesVALUE['solicitud_estado_codigo'] === 'I'){       
+            if ($solictudesVALUE['solicitud_estado_codigo'] === 'I'){
+                $index = $index + 1;
 ?>
                                 <!-- Comment Row -->
                                 <div class="d-flex flex-row comment-row">
@@ -99,6 +102,12 @@
                                         <span class="m-b-15 d-block"><?php echo trim(strtoupper($solictudesVALUE['tipo_permiso_nombre'])); ?> </span>
                                         <div class="comment-footer">
                                             <span class="text-muted float-right"><?php echo trim(strtoupper($solictudesVALUE['solicitud_fecha_hora_colaborador'])); ?></span>
+                                            <a href="javascript:void(0)" id="<?php echo $solictudesVALUE['solicitud_codigo']; ?>" value="<?php echo $solictudesVALUE['solicitud_estado_codigo']; ?>" value2="<?php echo $solictudesVALUE['solicitud_documento']; ?>" title="Autorizar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 'A', 'J');">
+                                                <span class="label label-rounded label-success">AUTORIZAR</span>
+                                            </a>
+                                            <a href="javascript:void(0)" id="<?php echo $solictudesVALUE['solicitud_codigo']; ?>" value="<?php echo $solictudesVALUE['solicitud_estado_codigo']; ?>" value2="<?php echo $solictudesVALUE['solicitud_documento']; ?>" title="Autorizar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 'C', 'J');">
+                                                <span class="label label-rounded label-danger">ANULAR</span>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -133,6 +142,15 @@
                                         <span class="m-b-15 d-block"><?php echo trim(strtoupper($solictudesVALUE['tipo_permiso_nombre'])); ?> </span>
                                         <div class="comment-footer">
                                             <span class="text-muted float-right"><?php echo trim(strtoupper($solictudesVALUE['solicitud_fecha_hora_aprobador'])); ?></span>
+                                            <a href="javascript:void(0)" id="<?php echo $solictudesVALUE['solicitud_codigo']; ?>" value="<?php echo $solictudesVALUE['solicitud_estado_codigo']; ?>" value2="<?php echo $solictudesVALUE['solicitud_documento']; ?>" title="Autorizar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 'I', 'T');">
+                                                <span class="label label-rounded label-info">RE-INGRESAR</span>
+                                            </a>
+                                            <a href="javascript:void(0)" id="<?php echo $solictudesVALUE['solicitud_codigo']; ?>" value="<?php echo $solictudesVALUE['solicitud_estado_codigo']; ?>" value2="<?php echo $solictudesVALUE['solicitud_documento']; ?>" title="Autorizar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 'P', 'T');">
+                                                <span class="label label-rounded label-warning">APROBAR</span>
+                                            </a>
+                                            <a href="javascript:void(0)" id="<?php echo $solictudesVALUE['solicitud_codigo']; ?>" value="<?php echo $solictudesVALUE['solicitud_estado_codigo']; ?>" value2="<?php echo $solictudesVALUE['solicitud_documento']; ?>" title="Autorizar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 'C', 'T');">
+                                                <span class="label label-rounded label-danger">ANULAR</span>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -201,6 +219,9 @@
                                         <span class="m-b-15 d-block"><?php echo trim(strtoupper($solictudesVALUE['tipo_permiso_nombre'])); ?> </span>
                                         <div class="comment-footer">
                                             <span class="text-muted float-right"><?php echo trim(strtoupper($solictudesVALUE['solicitud_fecha_hora_talento'])); ?></span>
+                                            <a href="javascript:void(0)" id="<?php echo $solictudesVALUE['solicitud_codigo']; ?>" value="<?php echo $solictudesVALUE['solicitud_estado_codigo']; ?>" value2="<?php echo $solictudesVALUE['solicitud_documento']; ?>" title="Autorizar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 'I', 'T');">
+                                                <span class="label label-rounded label-info">RE-INGRESAR</span>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -214,6 +235,13 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Modal Procesar -->
+                <div id="modaldiv" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" id="modalcontent">
+                    </div>
+                </div>
+                <!-- Modal Procesar -->
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
@@ -254,5 +282,88 @@
 <?php
     }
 ?>
+    <script>
+        function setEstado(rowSel, rowEst, rowAcc){
+            var codRow  = document.getElementById(rowSel);
+            var codFun  = '<?php echo trim($usu_05); ?>';
+            var html    = '';
+            var titEst  = '';
+
+            switch (rowEst) {
+                case 'I':
+                    titEst  = 'Re-Ingresar Solicitud';
+                    colEst  = '#2585e4;';
+                    break;
+
+                case 'A':
+                    titEst  = 'Autorizar Solicitud';
+                    colEst  = '#22c6ab;';
+                    break;
+
+                case 'P':
+                    titEst  = 'Aprobar Solicitud';
+                    colEst  = '#ffaf0e;';
+                    break;
+            
+                case 'C':
+                    titEst  = 'Anular Solicitud';
+                    colEst  = '#eb4c4c;';
+                    break;
+            }
+
+            if (codRow.getAttribute('value2') != codFun) {
+                html    =
+                '<div class="modal-content">'+
+                '   <form id="form" data-parsley-validate method="post" action="../class/crud/solicitudes_estado.php">'+
+                '	    <div class="modal-header" style="color:#fff; background:'+colEst+';">'+
+                '		    <h4 class="modal-title" id="vcenter"> '+titEst+' </h4>'+
+                '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+                '	    </div>'+
+                '	    <div class="modal-body" >'+
+                '           <div class="form-group">'+
+                '               <input id="workCodigo" name="workCodigo" value="'+codRow.id+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                '               <input id="workAccion" name="workAccion" value="'+rowAcc+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                '               <input id="workPage" name="workPage" value="home" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                '               <input id="var01" name="var01" value="'+rowEst+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                '           </div>'+
+                '           <div class="row pt-3">'+
+                '                <div class="col-sm-12">'+
+                '                    <div class="form-group">'+
+                '                        <label for="var02">COMENTARIO</label>'+
+                '                        <textarea id="var02" name="var02" class="form-control" rows="3" style="text-transform:uppercase;" required></textarea>'+
+                '                    </div>'+
+                '                </div>'+
+                '           </div>'+
+                '	    </div>'+
+                '	    <div class="modal-footer">'+
+                '           <button type="submit" class="btn btn-info">Actualizar</button>'+
+                '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+                '	    </div>'+
+                '   </form>'+
+                '</div>';
+            } else {
+                html    =
+                '<div class="modal-content">'+
+                '   <form id="form" data-parsley-validate method="post" action="#">'+
+                '	    <div class="modal-header" style="color:#fff; background:'+colEst+'">'+
+                '		    <h4 class="modal-title" id="vcenter"> '+titEst+' </h4>'+
+                '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+                '	    </div>'+
+                '	    <div class="modal-body" >'+
+                '           <div class="form-group">'+
+                '               <h4 style="text-align:center;">FAVOR SOLICITAR A SU JEFATURA DICHA AUTORIZACION. VERIFIQUE!</h4>'
+                '           </div>'+
+                '	    </div>'+
+                '	    <div class="modal-footer">'+
+                '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+                '	    </div>'+
+                '   </form>'+
+                '</div>';
+            }
+
+            $("#modalcontent").empty();
+            $("#modalcontent").append(html);
+        }
+    </script>
 </body>
 </html>

@@ -12,6 +12,7 @@
 
 	$work01         = $_POST['workCodigo'];
 	$work02         = $_POST['workAccion'];
+	$work03         = $_POST['workPage'];
 
 	$usu_03         = strtoupper($_SESSION['usu_03']);
 	$usu_05         = strtoupper($_SESSION['usu_05']);
@@ -38,7 +39,7 @@
 
 	$result		= json_decode($result, true);
 
-	header('Location: ../../public/solicitudes.php?code='.$result['code'].'&msg='.$result['message']);
+	header('Location: ../../public/'.$work03.'.php?code='.$result['code'].'&msg='.$result['message']);
 
 	ob_end_flush();
 ?>
