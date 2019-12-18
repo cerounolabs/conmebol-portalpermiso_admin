@@ -3,6 +3,10 @@
     require '../class/function/function.php';
     require '../class/session/session_system.php';
 
+    if ($_GET['tipo'] == 3 && $usu_13 != 21 && $usu_13 != 85 && $usu_13 != 107){
+        header('Location: ../public/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
+    }
+
     if(isset($_GET['code'])){
         $codeRest       = $_GET['code'];
         $msgRest        = $_GET['msg'];
@@ -17,6 +21,7 @@
         $work01         = 1;
     }
 
+    $workPage       = 'solicitudes.php?tipo='. $work01.'&';
     $solictudJSON   = get_curl('100');
     $solictudesJSON = get_curl('200/solicitud/'.$work01.'/'.$usu_05);
 ?>
@@ -232,19 +237,23 @@
 ?>
                     { render			: function (data, type, full, meta) {return '<button type="button" class="btn btn-danger btn-circle-2" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Anular Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 4, 1);"><i class="fa fa-times"></i></button>';}},
 <?php
-    } else {
+    } elseif ($work01 == 2) {
 ?>
                     { render			: function (data, type, full, meta) {return '<button type="button" class="btn btn-success btn-circle-2" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Autorizar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 2, 1);"><i class="fa fa-check"></i></button>&nbsp;<button type="button" class="btn btn-danger btn-circle-2" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Anular Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 4, 1);"><i class="fa fa-times"></i></button>';}},
+<?php
+    } elseif ($work01 == 3) {
+?>
+                    { render			: function (data, type, full, meta) {return '<button type="button" class="btn btn-info btn-circle-2" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Re-Ingresar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 1, 1);"><i class="fa fa-check"></i></button>&nbsp;<button type="button" class="btn btn-success btn-circle-2" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Autorizar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 2, 1);"><i class="fa fa-check"></i></button>&nbsp;<button type="button" class="btn btn-danger btn-circle-2" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Anular Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 4, 1);"><i class="fa fa-times"></i></button>';}},
 <?php
     }
 ?>
                 ]
             });
         });
-
+/*
         function setEstado(rowSel, rowEst, rowAcc){
             var codRow  = document.getElementById(rowSel);
-            var codFun  = '<?php echo trim($usu_05); ?>';
+            var codFun  = '<?php //echo trim($usu_05); ?>';
             var html    = '';
             var titEst  = '';
 
@@ -301,7 +310,7 @@
                     '           <div class="form-group">'+
                     '               <input id="workCodigo" name="workCodigo" value="'+codRow.id+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
                     '               <input id="workAccion" name="workAccion" value="'+rowAcc+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-                    '               <input id="workPage" name="workPage" value="solicitudes.php?tipo=<?php echo $work01; ?>&" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                    '               <input id="workPage" name="workPage" value="solicitudes.php?tipo=<?php //echo $work01; ?>&" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
                     '               <input id="var01" name="var01" value="'+rowEst+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
                     '           </div>'+
                     '           <div class="row pt-3">'+
@@ -393,6 +402,7 @@
             $("#modalcontent").empty();
             $("#modalcontent").append(html);
         }
+        */
     </script>
 </body>
 </html>
