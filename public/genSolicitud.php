@@ -102,17 +102,8 @@
 			});
 		}
 
-		function setSolicitud(codPage){
-            var sitPag = '';
-            switch (codPage) {
-                case 1:
-                    sitioPag = 'home';
-                    break;
-            
-                case 2:
-                    sitioPag = 'solicitudes';
-                    break;
-            }
+		function setSolicitud(){
+            var sitioPag = '<?php echo $workPage; ?>';
             
             var html    =
             '<div class="modal-content">'+

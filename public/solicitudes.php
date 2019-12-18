@@ -97,7 +97,7 @@
                                 <div class="row">
                                     <h4 class="col-10 card-title">Solicitudes</h4>
                                     <h4 class="col-2 card-title" style="text-align: right;">
-                                        <a class="btn btn-info" style="background-color:#163562; border-color:#163562;"  href="javascript:void(0)" role="button" title="Nueva Solicitud" onclick="setSolicitud(2);"><i class="ti-plus"></i></a>
+                                        <a class="btn btn-info" style="background-color:#163562; border-color:#163562;"  href="javascript:void(0)" role="button" data-toggle="modal" data-target="#modaldiv" title="Nueva Solicitud" onclick="setSolicitud();"><i class="ti-plus"></i></a>
                                 	</h4>
 								</div>
                                 <div class="table-responsive">
