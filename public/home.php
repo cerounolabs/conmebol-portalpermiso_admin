@@ -11,6 +11,7 @@
         $msgRest        = '';
     }
 
+    $solictudJSON   = get_curl('100');
     $solictudesJSON = get_curl('200/solicitud/2/'.$usu_05);
 ?>
 
@@ -298,11 +299,17 @@
                 <!-- End Right sidebar -->
                 <!-- ============================================================== -->
             </div>
+
+            <a href="javascript:void(0)" class="float" style="background-color:#163562 !important; color:#ffffff !important;" data-toggle="modal" data-target="#modaldiv" title="Nueva Solicitud" onclick="setSolicitud(1);">
+                <i class="fa fa-plus custom-float"></i>
+            </a>
+
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
 <?php
     include '../include/development.php';
+    include '../public/genSolicitud.php';
 ?>
         </div>
         <!-- ============================================================== -->

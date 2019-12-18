@@ -36,7 +36,6 @@
         $_SESSION['usu_03'] = $resultJSON['data'][0]['user_var03'];
         $_SESSION['usu_04'] = $resultJSON['data'][0]['user_var04'];
         $_SESSION['usu_05'] = $resultJSON['data'][0]['user_var05'];
-//        $_SESSION['usu_05'] = '4483864';
         $_SESSION['usu_06'] = $personJSON['data'][0]['gerencia_codigo'];
         $_SESSION['usu_07'] = $personJSON['data'][0]['gerencia_nombre'];
         $_SESSION['usu_08'] = $personJSON['data'][0]['departamento_codigo'];
