@@ -108,7 +108,13 @@
                                                 <th class="border-top-0">CANT. HORAS</th>
                                                 <th class="border-top-0">AUTORIZADO / ANULADO POR</th>
                                                 <th class="border-top-0">APROBADOR / ANULADO POR</th>
+<?php
+    if ($work01 == 2) {
+?>
                                                 <th class="border-top-0"></th>
+<?php
+    }
+?>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -213,7 +219,13 @@
                     { targets			: [6],	visible : true,	searchable : true,	orderData : [6, 0] },
                     { targets			: [7],	visible : true,	searchable : true,	orderData : [7, 0] },
                     { targets			: [8],	visible : true,	searchable : true,	orderData : [8, 0] },
+<?php
+    if ($work01 == 2) {
+?>
                     { targets			: [9],	visible : true,	searchable : true,	orderData : [9, 0] }
+<?php
+    }
+?>
                 ],
                 columns		: [
                     { data				: 'solicitud_estado_nombre', name : 'solicitud_estado_nombre'},
@@ -225,7 +237,13 @@
                     { data				: 'solicitud_hora_cantidad', name : 'solicitud_hora_cantidad'},
                     { data				: 'solicitud_usuario_aprobador', name : 'solicitud_usuario_aprobador'},
                     { data				: 'solicitud_usuario_talento', name : 'solicitud_usuario_talento'},
+<?php
+    if ($work01 == 2) {
+?>
                     { render			: function (data, type, full, meta) {return '<button type="button" class="btn btn-success btn-circle-2" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Autorizar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 2, 1);"><i class="fa fa-check"></i></button>&nbsp;<button type="button" class="btn btn-danger btn-circle-2" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Anular Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 4, 1);"><i class="fa fa-times"></i></button>';}},
+<?php
+    }
+?>
                 ]
             });
         });
