@@ -307,7 +307,7 @@
                 <!-- ============================================================== -->
             </div>
 
-            <a href="javascript:void(0)" class="float" style="background-color:#163562 !important; color:#ffffff !important;" data-toggle="modal" data-target="#modaldiv" title="Nueva Solicitud" onclick="setSolicitud(1);">
+            <a href="javascript:void(0)" class="float" style="background-color:#163562 !important; color:#ffffff !important;" data-toggle="modal" data-target="#modaldiv" title="Nueva Solicitud" onclick="setSolicitud();">
                 <i class="fa fa-plus custom-float"></i>
             </a>
 
