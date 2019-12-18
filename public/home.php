@@ -11,7 +11,6 @@
         $msgRest        = '';
     }
 
-//    $solictudesJSON = get_curl('200/solicitudes/1');
     $solictudesJSON = get_curl('200/solicitud/2/'.$usu_05);
 ?>
 
@@ -86,12 +85,12 @@
                             </div>
                             <div class="comment-widgets scrollable" style="height:350px;">
 <?php
+    $indIng = 0;
+
     if ($solictudesJSON['code'] === 200){
-        $index = 0;
-        
         foreach ($solictudesJSON['data'] as $solictudesKEY => $solictudesVALUE) {
             if ($solictudesVALUE['solicitud_estado_codigo'] === 'I'){
-                $index = $index + 1;
+                $indIng = $indIng + 1;
 ?>
                                 <!-- Comment Row -->
                                 <div class="d-flex flex-row comment-row">
@@ -113,6 +112,18 @@
             }
         }
     }
+
+    if ($indIng === 0){
+?>
+                                <!-- Comment Row -->
+                                <div class="d-flex flex-row comment-row">
+                                    <div class="comment-text active w-100">
+                                        <h6 class="font-medium">NO HAY SOLICITUDES.</h6>
+                                    </div>
+                                </div>
+                                <!-- Comment Row -->
+<?php
+    }
 ?>
                             </div>
                         </div>
@@ -125,9 +136,12 @@
                             </div>
                             <div class="comment-widgets scrollable" style="height:350px;">
 <?php
+    $indAut = 0;
+
     if ($solictudesJSON['code'] === 200){
         foreach ($solictudesJSON['data'] as $solictudesKEY => $solictudesVALUE) {
-            if ($solictudesVALUE['solicitud_estado_codigo'] === 'A'){       
+            if ($solictudesVALUE['solicitud_estado_codigo'] === 'A'){
+                $indAut = $indAut + 1;     
 ?>
                                 <!-- Comment Row -->
                                 <div class="d-flex flex-row comment-row">
@@ -150,6 +164,18 @@
             }
         }
     }
+
+    if ($indAut === 0){
+?>
+                                <!-- Comment Row -->
+                                <div class="d-flex flex-row comment-row">
+                                    <div class="comment-text active w-100">
+                                        <h6 class="font-medium">NO HAY SOLICITUDES.</h6>
+                                    </div>
+                                </div>
+                                <!-- Comment Row -->
+<?php
+    }
 ?>
                             </div>
                         </div>
@@ -162,9 +188,12 @@
                             </div>
                             <div class="comment-widgets scrollable" style="height:350px;">
 <?php
+    $indApr = 0;
+
     if ($solictudesJSON['code'] === 200){
         foreach ($solictudesJSON['data'] as $solictudesKEY => $solictudesVALUE) {
-            if ($solictudesVALUE['solicitud_estado_codigo'] === 'P'){       
+            if ($solictudesVALUE['solicitud_estado_codigo'] === 'P'){
+                $indApr = $indApr + 1;  
 ?>
                                 <!-- Comment Row -->
                                 <div class="d-flex flex-row comment-row">
@@ -184,6 +213,18 @@
             }
         }
     }
+
+    if ($indApr === 0){
+?>
+                                <!-- Comment Row -->
+                                <div class="d-flex flex-row comment-row">
+                                    <div class="comment-text active w-100">
+                                        <h6 class="font-medium">NO HAY SOLICITUDES.</h6>
+                                    </div>
+                                </div>
+                                <!-- Comment Row -->
+<?php
+    }
 ?>
                             </div>
                         </div>
@@ -196,9 +237,12 @@
                             </div>
                             <div class="comment-widgets scrollable" style="height:350px;">
 <?php
+    $indAnu = 0;
+
     if ($solictudesJSON['code'] === 200){
         foreach ($solictudesJSON['data'] as $solictudesKEY => $solictudesVALUE) {
-            if ($solictudesVALUE['solicitud_estado_codigo'] === 'C'){       
+            if ($solictudesVALUE['solicitud_estado_codigo'] === 'C'){
+                $indAnu = $indAnu + 1;
 ?>
                                 <!-- Comment Row -->
                                 <div class="d-flex flex-row comment-row">
@@ -218,6 +262,18 @@
 <?php
             }
         }
+    }
+
+    if ($indAnu === 0){
+?>
+                                <!-- Comment Row -->
+                                <div class="d-flex flex-row comment-row">
+                                    <div class="comment-text active w-100">
+                                        <h6 class="font-medium">NO HAY SOLICITUDES.</h6>
+                                    </div>
+                                </div>
+                                <!-- Comment Row -->
+<?php
     }
 ?>
                             </div>
@@ -285,6 +341,7 @@
         function setEstado(rowSel, rowEst, rowAcc){
             var codRow  = document.getElementById(rowSel);
             var codFun  = '<?php echo trim($usu_05); ?>';
+            var codCar  = '<?php echo trim($usu_12); ?>';
             var html    = '';
             var titEst  = '';
 
@@ -292,72 +349,160 @@
                 case 'I':
                     titEst  = 'Re-Ingresar Solicitud';
                     colEst  = '#2585e4;';
+                    titMen  = 'FAVOR SOLICITAR A SU TALENTO HUMANO DICHO RE-INGRESO. VERIFIQUE!';
                     break;
 
                 case 'A':
                     titEst  = 'Autorizar Solicitud';
                     colEst  = '#22c6ab;';
+                    titMen  = 'FAVOR SOLICITAR A SU JEFATURA DICHA AUTORIZACION. VERIFIQUE!';
                     break;
 
                 case 'P':
                     titEst  = 'Aprobar Solicitud';
                     colEst  = '#ffaf0e;';
+                    titMen  = 'FAVOR SOLICITAR A SU TALENTO HUMANO DICHA APROBACION. VERIFIQUE!';
                     break;
-            
+
                 case 'C':
                     titEst  = 'Anular Solicitud';
                     colEst  = '#eb4c4c;';
+                    titMen  = 'FAVOR SOLICITAR A SU TALENTO HUMANO DICHA ANULACION. VERIFIQUE!';
                     break;
             }
 
             if (codRow.getAttribute('value2') != codFun) {
-                html    =
-                '<div class="modal-content">'+
-                '   <form id="form" data-parsley-validate method="post" action="../class/crud/solicitudes_estado.php">'+
-                '	    <div class="modal-header" style="color:#fff; background:'+colEst+';">'+
-                '		    <h4 class="modal-title" id="vcenter"> '+titEst+' </h4>'+
-                '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
-                '	    </div>'+
-                '	    <div class="modal-body" >'+
-                '           <div class="form-group">'+
-                '               <input id="workCodigo" name="workCodigo" value="'+codRow.id+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-                '               <input id="workAccion" name="workAccion" value="'+rowAcc+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-                '               <input id="workPage" name="workPage" value="home.php?" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-                '               <input id="var01" name="var01" value="'+rowEst+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-                '           </div>'+
-                '           <div class="row pt-3">'+
-                '                <div class="col-sm-12">'+
-                '                    <div class="form-group">'+
-                '                        <label for="var02">COMENTARIO</label>'+
-                '                        <textarea id="var02" name="var02" class="form-control" rows="3" style="text-transform:uppercase;" required></textarea>'+
-                '                    </div>'+
-                '                </div>'+
-                '           </div>'+
-                '	    </div>'+
-                '	    <div class="modal-footer">'+
-                '           <button type="submit" class="btn btn-info">Actualizar</button>'+
-                '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
-                '	    </div>'+
-                '   </form>'+
-                '</div>';
+                if ((codRow.getAttribute('value') == 'A' || codRow.getAttribute('value') == 'C') && (rowEst == 'I' || rowEst == 'P' || rowEst == 'C') && (codCar == 21 || codCar == 85 || codCar == 107)) {
+                    html    =
+                    '<div class="modal-content">'+
+                    '   <form id="form" data-parsley-validate method="post" action="../class/crud/solicitudes_estado.php">'+
+                    '	    <div class="modal-header" style="color:#fff; background:'+colEst+';">'+
+                    '		    <h4 class="modal-title" id="vcenter"> '+titEst+' </h4>'+
+                    '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+                    '	    </div>'+
+                    '	    <div class="modal-body" >'+
+                    '           <div class="form-group">'+
+                    '               <input id="workCodigo" name="workCodigo" value="'+codRow.id+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                    '               <input id="workAccion" name="workAccion" value="'+rowAcc+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                    '               <input id="workPage" name="workPage" value="home.php?" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                    '               <input id="var01" name="var01" value="'+rowEst+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                    '           </div>'+
+                    '           <div class="row pt-3">'+
+                    '                <div class="col-sm-12">'+
+                    '                    <div class="form-group">'+
+                    '                        <label for="var02">COMENTARIO</label>'+
+                    '                        <textarea id="var02" name="var02" class="form-control" rows="3" style="text-transform:uppercase;" required></textarea>'+
+                    '                    </div>'+
+                    '                </div>'+
+                    '           </div>'+
+                    '	    </div>'+
+                    '	    <div class="modal-footer">'+
+                    '           <button type="submit" class="btn btn-info">Actualizar</button>'+
+                    '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+                    '	    </div>'+
+                    '   </form>'+
+                    '</div>';
+                } else {
+                    if (codRow.getAttribute('value') == 'I') {
+                        html    =
+                        '<div class="modal-content">'+
+                        '   <form id="form" data-parsley-validate method="post" action="../class/crud/solicitudes_estado.php">'+
+                        '	    <div class="modal-header" style="color:#fff; background:'+colEst+';">'+
+                        '		    <h4 class="modal-title" id="vcenter"> '+titEst+' </h4>'+
+                        '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+                        '	    </div>'+
+                        '	    <div class="modal-body" >'+
+                        '           <div class="form-group">'+
+                        '               <input id="workCodigo" name="workCodigo" value="'+codRow.id+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                        '               <input id="workAccion" name="workAccion" value="'+rowAcc+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                        '               <input id="workPage" name="workPage" value="home.php?" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                        '               <input id="var01" name="var01" value="'+rowEst+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                        '           </div>'+
+                        '           <div class="row pt-3">'+
+                        '                <div class="col-sm-12">'+
+                        '                    <div class="form-group">'+
+                        '                        <label for="var02">COMENTARIO</label>'+
+                        '                        <textarea id="var02" name="var02" class="form-control" rows="3" style="text-transform:uppercase;" required></textarea>'+
+                        '                    </div>'+
+                        '                </div>'+
+                        '           </div>'+
+                        '	    </div>'+
+                        '	    <div class="modal-footer">'+
+                        '           <button type="submit" class="btn btn-info">Actualizar</button>'+
+                        '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+                        '	    </div>'+
+                        '   </form>'+
+                        '</div>';
+                    } else {
+                        html    =
+                        '<div class="modal-content">'+
+                        '   <form id="form" data-parsley-validate method="post" action="#">'+
+                        '	    <div class="modal-header" style="color:#fff; background:'+colEst+'">'+
+                        '		    <h4 class="modal-title" id="vcenter"> '+titEst+' </h4>'+
+                        '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+                        '	    </div>'+
+                        '	    <div class="modal-body" >'+
+                        '           <div class="form-group">'+
+                        '               <h4 style="text-align:center;">'+titMen+'</h4>'
+                        '           </div>'+
+                        '	    </div>'+
+                        '	    <div class="modal-footer">'+
+                        '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+                        '	    </div>'+
+                        '   </form>'+
+                        '</div>';
+                    }
+                }
             } else {
-                html    =
-                '<div class="modal-content">'+
-                '   <form id="form" data-parsley-validate method="post" action="#">'+
-                '	    <div class="modal-header" style="color:#fff; background:'+colEst+'">'+
-                '		    <h4 class="modal-title" id="vcenter"> '+titEst+' </h4>'+
-                '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
-                '	    </div>'+
-                '	    <div class="modal-body" >'+
-                '           <div class="form-group">'+
-                '               <h4 style="text-align:center;">FAVOR SOLICITAR A SU JEFATURA DICHA AUTORIZACION. VERIFIQUE!</h4>'
-                '           </div>'+
-                '	    </div>'+
-                '	    <div class="modal-footer">'+
-                '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
-                '	    </div>'+
-                '   </form>'+
-                '</div>';
+                if (codRow.getAttribute('value') == 'I' && rowEst == 'C') {
+                    html    =
+                    '<div class="modal-content">'+
+                    '   <form id="form" data-parsley-validate method="post" action="../class/crud/solicitudes_estado.php">'+
+                    '	    <div class="modal-header" style="color:#fff; background:'+colEst+';">'+
+                    '		    <h4 class="modal-title" id="vcenter"> '+titEst+' </h4>'+
+                    '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+                    '	    </div>'+
+                    '	    <div class="modal-body" >'+
+                    '           <div class="form-group">'+
+                    '               <input id="workCodigo" name="workCodigo" value="'+codRow.id+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                    '               <input id="workAccion" name="workAccion" value="'+rowAcc+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                    '               <input id="workPage" name="workPage" value="home.php?" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                    '               <input id="var01" name="var01" value="'+rowEst+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                    '           </div>'+
+                    '           <div class="row pt-3">'+
+                    '                <div class="col-sm-12">'+
+                    '                    <div class="form-group">'+
+                    '                        <label for="var02">COMENTARIO</label>'+
+                    '                        <textarea id="var02" name="var02" class="form-control" rows="3" style="text-transform:uppercase;" required></textarea>'+
+                    '                    </div>'+
+                    '                </div>'+
+                    '           </div>'+
+                    '	    </div>'+
+                    '	    <div class="modal-footer">'+
+                    '           <button type="submit" class="btn btn-info">Actualizar</button>'+
+                    '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+                    '	    </div>'+
+                    '   </form>'+
+                    '</div>';
+                } else {
+                    html    =
+                    '<div class="modal-content">'+
+                    '   <form id="form" data-parsley-validate method="post" action="#">'+
+                    '	    <div class="modal-header" style="color:#fff; background:'+colEst+'">'+
+                    '		    <h4 class="modal-title" id="vcenter"> '+titEst+' </h4>'+
+                    '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+                    '	    </div>'+
+                    '	    <div class="modal-body" >'+
+                    '           <div class="form-group">'+
+                    '               <h4 style="text-align:center;">'+titMen+'</h4>'
+                    '           </div>'+
+                    '	    </div>'+
+                    '	    <div class="modal-footer">'+
+                    '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+                    '	    </div>'+
+                    '   </form>'+
+                    '</div>';
+                }
             }
 
             $("#modalcontent").empty();

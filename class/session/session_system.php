@@ -12,6 +12,14 @@
     $usu_03 = $_SESSION['usu_03'];
     $usu_04 = $_SESSION['usu_04'];
     $usu_05 = $_SESSION['usu_05'];
+    $usu_06 = $_SESSION['usu_06'];
+    $usu_07 = $_SESSION['usu_07'];
+    $usu_08 = $_SESSION['usu_08'];
+    $usu_09 = $_SESSION['usu_09'];
+    $usu_10 = $_SESSION['usu_10'];
+    $usu_11 = $_SESSION['usu_11'];
+    $usu_12 = $_SESSION['usu_12'];
+    $usu_13 = $_SESSION['usu_13'];
 
 //    $seg_01 = $_SESSION['seg_01'];
 
