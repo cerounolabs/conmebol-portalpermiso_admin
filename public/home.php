@@ -14,7 +14,7 @@
     if ($usu_13 == 21 || $usu_13 == 85 || $usu_13 == 107){
         $codCar = 3;
     } else {
-        $codCar = 2;
+        $codCar = 4;
     }
 
     $workPage       = 'home.php?';
