@@ -24,8 +24,7 @@
     $resultJSON     = json_decode($resultJSON, true);
 
     if ($resultJSON['code'] === 200) {
-        $personJSON         = get_curl('200/'.$resultJSON['data'][0]['user_var05'], $dataJSON);
-        $personJSON         = json_decode($personJSON, true);
+        $personJSON         = get_curl('200/colaborador/'.$resultJSON['data'][0]['user_var05']);
 
         $_SESSION['log_01'] = trim(strtoupper($val_01));
         $_SESSION['log_02'] = $val_02;
@@ -36,15 +35,16 @@
         $_SESSION['usu_03'] = $resultJSON['data'][0]['user_var03'];
         $_SESSION['usu_04'] = $resultJSON['data'][0]['user_var04'];
         $_SESSION['usu_05'] = $resultJSON['data'][0]['user_var05'];
-        $_SESSION['usu_06'] = $personJSON['data'][0]['gerencia_codigo'];
-        $_SESSION['usu_07'] = $personJSON['data'][0]['gerencia_nombre'];
-        $_SESSION['usu_08'] = $personJSON['data'][0]['departamento_codigo'];
-        $_SESSION['usu_09'] = $personJSON['data'][0]['departamento_nombre'];
-        $_SESSION['usu_10'] = $personJSON['data'][0]['superior_cargo_codigo'];
-        $_SESSION['usu_11'] = $personJSON['data'][0]['superior_cargo_nombre'];
-        $_SESSION['usu_12'] = $personJSON['data'][0]['cargo_codigo'];
-        $_SESSION['usu_13'] = $personJSON['data'][0]['cargo_nombre'];
-
+        $_SESSION['usu_06'] = $resultJSON['data'][0]['user_var06'];
+        $_SESSION['usu_07'] = $personJSON['data'][0]['gerencia_codigo'];
+        $_SESSION['usu_08'] = $personJSON['data'][0]['gerencia_nombre'];
+        $_SESSION['usu_09'] = $personJSON['data'][0]['departamento_codigo'];
+        $_SESSION['usu_10'] = $personJSON['data'][0]['departamento_nombre'];
+        $_SESSION['usu_11'] = $personJSON['data'][0]['superior_cargo_codigo'];
+        $_SESSION['usu_12'] = $personJSON['data'][0]['superior_cargo_nombre'];
+        $_SESSION['usu_13'] = $personJSON['data'][0]['cargo_codigo'];
+        $_SESSION['usu_14'] = $personJSON['data'][0]['cargo_nombre'];
+        
         $_SESSION['expire'] = time() + 1800;
         
         header('Location: ../../public/home.php');

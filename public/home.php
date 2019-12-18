@@ -11,8 +11,15 @@
         $msgRest        = '';
     }
 
+    if ($usu_13 == 21 || $usu_13 == 85 || $usu_13 == 107){
+        $codCar = 3;
+    } else {
+        $codCar = 2;
+    }
+
+    $workPage       = 'home.php?';
     $solictudJSON   = get_curl('100');
-    $solictudesJSON = get_curl('200/solicitud/2/'.$usu_05);
+    $solictudesJSON = get_curl('200/solicitud/'.$codCar.'/'.$usu_05);
 ?>
 
 <!DOCTYPE html>
@@ -103,8 +110,8 @@
                                         <span class="m-b-15 d-block"><?php echo trim(strtoupper($solictudesVALUE['tipo_permiso_nombre'])); ?> </span>
                                         <div class="comment-footer">
                                             <span class="text-muted float-right"><?php echo trim(strtoupper($solictudesVALUE['solicitud_fecha_hora_colaborador'])); ?></span>                                            
-                                            <button type="button" class="btn btn-success btn-circle" id="<?php echo $solictudesVALUE['solicitud_codigo']; ?>" value="<?php echo $solictudesVALUE['solicitud_estado_codigo']; ?>" value2="<?php echo $solictudesVALUE['solicitud_documento']; ?>" title="Autorizar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 'A', 'J');"><i class="fa fa-check"></i> </button>
-                                            <button type="button" class="btn btn-danger btn-circle" id="<?php echo $solictudesVALUE['solicitud_codigo']; ?>" value="<?php echo $solictudesVALUE['solicitud_estado_codigo']; ?>" value2="<?php echo $solictudesVALUE['solicitud_documento']; ?>" title="Anular Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 'C', 'J');"><i class="fa fa-times"></i> </button>
+                                            <button type="button" class="btn btn-success btn-circle" id="<?php echo $solictudesVALUE['solicitud_codigo']; ?>" value="<?php echo $solictudesVALUE['solicitud_estado_codigo']; ?>" value2="<?php echo $solictudesVALUE['solicitud_documento']; ?>" title="Autorizar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 2, 1);"><i class="fa fa-check"></i> </button>
+                                            <button type="button" class="btn btn-danger btn-circle" id="<?php echo $solictudesVALUE['solicitud_codigo']; ?>" value="<?php echo $solictudesVALUE['solicitud_estado_codigo']; ?>" value2="<?php echo $solictudesVALUE['solicitud_documento']; ?>" title="Anular Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 4, 1);"><i class="fa fa-times"></i> </button>
                                         </div>
                                     </div>
                                 </div>
@@ -154,9 +161,9 @@
                                         <span class="m-b-15 d-block"><?php echo trim(strtoupper($solictudesVALUE['tipo_permiso_nombre'])); ?> </span>
                                         <div class="comment-footer">
                                             <span class="text-muted float-right"><?php echo trim(strtoupper($solictudesVALUE['solicitud_fecha_hora_aprobador'])); ?></span>
-                                            <button type="button" class="btn btn-info btn-circle" id="<?php echo $solictudesVALUE['solicitud_codigo']; ?>" value="<?php echo $solictudesVALUE['solicitud_estado_codigo']; ?>" value2="<?php echo $solictudesVALUE['solicitud_documento']; ?>" title="ReIngresar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 'I', 'T');"><i class="ti-reload"></i> </button>
-                                            <button type="button" class="btn btn-warning btn-circle" id="<?php echo $solictudesVALUE['solicitud_codigo']; ?>" value="<?php echo $solictudesVALUE['solicitud_estado_codigo']; ?>" value2="<?php echo $solictudesVALUE['solicitud_documento']; ?>" title="Autorizar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 'P', 'T');"><i class="fa fa-check"></i> </button>
-                                            <button type="button" class="btn btn-danger btn-circle" id="<?php echo $solictudesVALUE['solicitud_codigo']; ?>" value="<?php echo $solictudesVALUE['solicitud_estado_codigo']; ?>" value2="<?php echo $solictudesVALUE['solicitud_documento']; ?>" title="Anular Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 'C', 'T');"><i class="fa fa-times"></i> </button>
+                                            <button type="button" class="btn btn-info btn-circle" id="<?php echo $solictudesVALUE['solicitud_codigo']; ?>" value="<?php echo $solictudesVALUE['solicitud_estado_codigo']; ?>" value2="<?php echo $solictudesVALUE['solicitud_documento']; ?>" title="ReIngresar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 1, 2);"><i class="ti-reload"></i> </button>
+                                            <button type="button" class="btn btn-warning btn-circle" id="<?php echo $solictudesVALUE['solicitud_codigo']; ?>" value="<?php echo $solictudesVALUE['solicitud_estado_codigo']; ?>" value2="<?php echo $solictudesVALUE['solicitud_documento']; ?>" title="Autorizar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 3, 2);"><i class="fa fa-check"></i> </button>
+                                            <button type="button" class="btn btn-danger btn-circle" id="<?php echo $solictudesVALUE['solicitud_codigo']; ?>" value="<?php echo $solictudesVALUE['solicitud_estado_codigo']; ?>" value2="<?php echo $solictudesVALUE['solicitud_documento']; ?>" title="Anular Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 4, 2);"><i class="fa fa-times"></i> </button>
                                         </div>
                                     </div>
                                 </div>
@@ -255,7 +262,7 @@
                                         <span class="m-b-15 d-block"><?php echo trim(strtoupper($solictudesVALUE['tipo_permiso_nombre'])); ?> </span>
                                         <div class="comment-footer">
                                             <span class="text-muted float-right"><?php echo trim(strtoupper($solictudesVALUE['solicitud_fecha_hora_talento'])); ?></span>
-                                            <button type="button" class="btn btn-info btn-circle" id="<?php echo $solictudesVALUE['solicitud_codigo']; ?>" value="<?php echo $solictudesVALUE['solicitud_estado_codigo']; ?>" value2="<?php echo $solictudesVALUE['solicitud_documento']; ?>" title="ReIngresar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 'I', 'T');"><i class="ti-reload"></i> </button>
+                                            <button type="button" class="btn btn-info btn-circle" id="<?php echo $solictudesVALUE['solicitud_codigo']; ?>" value="<?php echo $solictudesVALUE['solicitud_estado_codigo']; ?>" value2="<?php echo $solictudesVALUE['solicitud_documento']; ?>" title="ReIngresar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 1, 4);"><i class="ti-reload"></i> </button>
                                         </div>
                                     </div>
                                 </div>
@@ -345,10 +352,11 @@
     }
 ?>
     <script>
+        /*
         function setEstado(rowSel, rowEst, rowAcc){
             var codRow  = document.getElementById(rowSel);
-            var codFun  = '<?php echo trim($usu_05); ?>';
-            var codCar  = '<?php echo trim($usu_12); ?>';
+            var codFun  = '<?php //echo trim($usu_05); ?>';
+            var codCar  = '<?php //echo trim($usu_13); ?>';
             var html    = '';
             var titEst  = '';
 
@@ -515,6 +523,7 @@
             $("#modalcontent").empty();
             $("#modalcontent").append(html);
         }
+        */
     </script>
 </body>
 </html>

@@ -20,6 +20,7 @@
     $usu_11 = $_SESSION['usu_11'];
     $usu_12 = $_SESSION['usu_12'];
     $usu_13 = $_SESSION['usu_13'];
+    $usu_14 = $_SESSION['usu_14'];
 
 //    $seg_01 = $_SESSION['seg_01'];
 
