@@ -79,7 +79,7 @@
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="../assets/images/users/default.png" alt="user" class="rounded-circle" width="31">
+                                <img src="<?php echo $usu_06; ?>" alt="<?php echo $usu_01.' '.$usu_04; ?>" class="rounded-circle" width="31">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
                                 <span class="with-arrow">
@@ -87,7 +87,7 @@
                                 </span>
                                 <div class="d-flex no-block align-items-center p-15 bg-primary text-white m-b-10" style="background-color:#163562 !important;">
                                     <div class="">
-                                        <img src="../assets/images/users/default.png" alt="user" class="img-circle" width="60">
+                                        <img src="<?php echo $usu_06; ?>" alt="<?php echo $usu_01.' '.$usu_04; ?>" class="img-circle" width="60">
                                     </div>
                                     <div class="m-l-10">
                                         <h4 class="m-b-0"><?php echo $usu_01.' '.$usu_04; ?></h4>
