@@ -3,6 +3,10 @@
     require '../class/function/function.php';
     require '../class/session/session_system.php';
 
+    if ($_GET['tipo'] != 69 && $usu_13 != 70 && $usu_13 != 71){
+        header('Location: ../public/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
+    }
+
     if(isset($_GET['code'])){
         $codeRest       = $_GET['code'];
         $msgRest        = $_GET['msg'];
