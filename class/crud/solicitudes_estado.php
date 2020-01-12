@@ -33,11 +33,23 @@
                 'auditoria_fecha_hora'  			=> date('Y-m-d H:i:s'),
                 'auditoria_ip'          			=> $log_03
 			));
-		
+
 		$result	= put_curl('200/'.$work01, $dataJSON);
 	}
 
 	$result		= json_decode($result, true);
+
+	if ($val01 === 'P') {
+		$dataJSON = json_encode(
+			array(
+				'solicitud_codigo'					=> $work01,
+				'auditoria_usuario'     			=> $usu_03,
+				'auditoria_fecha_hora'  			=> date('Y-m-d H:i:s'),
+				'auditoria_ip'          			=> $log_03
+			));
+	
+		$result1	= post_curl('200/detalle', $dataJSON);
+	}
 
 	header('Location: ../../public/'.$work03.'code='.$result['code'].'&msg='.$result['message']);
 

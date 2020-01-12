@@ -35,7 +35,13 @@
         $_SESSION['usu_03'] = $resultJSON['data'][0]['user_var03'];
         $_SESSION['usu_04'] = $resultJSON['data'][0]['user_var04'];
         $_SESSION['usu_05'] = $resultJSON['data'][0]['user_var05'];
-        $_SESSION['usu_06'] = $resultJSON['data'][0]['user_var06'];
+
+        if (isset($resultJSON['data'][0]['user_var06'])) {
+            $_SESSION['usu_06'] = 'data:image/jpeg;base64,'.base64_encode($resultJSON['data'][0]['user_var06']);
+        } else {
+            $_SESSION['usu_06'] = '../assets/images/users/photo.png';
+        }
+        
         $_SESSION['usu_07'] = $personJSON['data'][0]['gerencia_codigo'];
         $_SESSION['usu_08'] = $personJSON['data'][0]['gerencia_nombre'];
         $_SESSION['usu_09'] = $personJSON['data'][0]['departamento_codigo'];
