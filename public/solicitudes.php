@@ -3,7 +3,7 @@
     require '../class/function/function.php';
     require '../class/session/session_system.php';
 
-    if ($_GET['tipo'] == 3 && $usu_13 != 21 && $usu_13 != 85 && $usu_13 != 107){
+    if ($_GET['tipo'] == 3 && $usu_13 != 21 && $usu_13 != 87 && $usu_13 != 109){
         header('Location: ../public/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
     }
 
