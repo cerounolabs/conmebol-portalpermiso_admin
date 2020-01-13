@@ -11,7 +11,7 @@
         $msgRest        = '';
     }
 
-    if ($usu_13 == 21 || $usu_13 == 85 || $usu_13 == 107){
+    if ($usu_13 == 21 || $usu_13 == 87 || $usu_13 == 109){
         $codCar = 3;
     } else {
         $codCar = 4;
