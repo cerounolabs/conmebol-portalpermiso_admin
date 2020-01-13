@@ -259,7 +259,7 @@
             }
 
             if (codRow.getAttribute('value2') != codFun) {
-                if ((codRow.getAttribute('value') == 'A' || codRow.getAttribute('value') == 'C') && (rowEst == 'I' || rowEst == 'P' || rowEst == 'C') && (codCar == 21 || codCar == 85 || codCar == 107)) {
+                if ((codRow.getAttribute('value') == 'A' || codRow.getAttribute('value') == 'C') && (rowEst == 'I' || rowEst == 'P' || rowEst == 'C') && (codCar == 21 || codCar == 87 || codCar == 109)) {
                     html    =
                     '<div class="modal-content">'+
                     '   <form id="form" data-parsley-validate method="post" action="../class/crud/solicitudes_estado.php">'+
