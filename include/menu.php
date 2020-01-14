@@ -171,9 +171,9 @@
                                     </a>
                                	</li>
                                 <li class="sidebar-item">
-                               		<a href="javascript:void(0)" class="sidebar-link">
+                               		<a href="../public/exporta_axis.php" class="sidebar-link">
                                			<i class="mdi mdi-reporte"></i>
-                               			<span class="hide-menu"> Exportar Solicitudes </span>
+                               			<span class="hide-menu"> Exportar Solicitudes AXIS</span>
                                     </a>
                                	</li>
                             </ul>
