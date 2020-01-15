@@ -1,47 +1,34 @@
 <?php
+    if(!isset($_SESSION)){ 
+        session_start(); 
+    }
+    
+    ob_start();
+    
+
     require '../class/function/curl_api.php';
     require '../class/function/function.php';
     require '../class/session/session_system.php';
 
-    $fileType = $_GET['filetype'];
-
-    switch ($fileType) {
-        case 'P':
-            $fileName = 'permiso.xls';
-            break;
-        
-        case 'L':
-            $fileName = 'licencia.xls';
-            break;
-
-        case 'V':
-            $fileName = 'vacaciones.xls';
-            break;
-
-        case 'I':
-            $fileName = 'inasistencia.xls';
-            break;
-    }
-
-    header("Content-Type: application/vnd.ms-excel");
-    header("Content-Disposition: attachment; filename=\"$fileName\"");
-    header("Pragma: no-cache"); 
-    header("Expires: 0");
-
+    $fileType       = $_GET['filetype'];
     $solDetalleJSON = get_curl('200/detalle/solicitud/'.$fileType);
 
     switch ($fileType) {
         case 'P':
+            $fileName = "planilla_permiso_".date('YmdHis').".xls";
             echo '<table border="1">';
-            echo '<tr><th>Company Name</th><th>CONFEDERACION SUDAMERICANA DE FUTBOL</th></tr>';
-            echo '<tr><th>Table Name</th><th>A1A_PERM</th></tr>';
-            echo '<tr><th>Table Description</th><th>Permisos</th></tr>';
+            echo '<thead>';
+            echo '<tr><th>Company Name</th><th>CONFEDERACION SUDAMERICANA DE FUTBOL</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>';
+            echo '<tr><th>Table Name</th><th>A1A_PERM</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>';
+            echo '<tr><th>Table Description</th><th>Permisos</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>';
             echo '<tr><th>Fields Titles</th><th>Codigo de empleado</th><th>Fecha desde</th><th>Fecha hasta</th><th>Fecha desde aplicacion</th><th>Fecha hasta aplicacion</th><th>Cantidad de dias</th><th>Tipo de permiso</th><th>Cantidad diaria</th><th>Unidad</th><th>Clase</th><th>Comentario</th><th>Ingreso desde PeopleGate</th><th>Cantidad convertida</th></tr>';
             echo '<tr><th>Fields Types</th><th>Alpha-20</th><th>Date-8</th><th>Date-8</th><th>Date-8</th><th>Date-8</th><th>Num-11</th><th>Alpha-8</th><th>Float-20</th><th>Alpha-1</th><th>Alpha-1</th><th>Memo-64000</th><th>Alpha-1</th><th>Alpha-20</th></tr>';
             echo '<tr><th>Fields Valid Values</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>';
             echo '<tr><th>Default Value</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>';
             echo '<tr><th>Tablas relacionadas</th><th></th><th></th><th></th><th></th><th></th><th></th><th>@A1A_TIPE</th><th></th><th></th><th></th><th></th><th></th><th></th></tr>';
             echo '<tr><th>Fields Names</th><th>U_codemp</th><th>U_fecdes</th><th>U_fechas</th><th>U_fedesapl</th><th>U_fehasapl</th><th>U_canddia</th><th>U_tipper</th><th>U_cantdia</th><th>U_idunidad</th><th>U_clase</th><th>U_coment</th><th>U_PG</th><th>U_hhmm</th></tr>';
+            echo '</thead>';
+            echo '<tbody>';
 
             if ($solDetalleJSON['code'] === 200) {
                 foreach ($solDetalleJSON['data'] as $key => $value) {
@@ -63,12 +50,15 @@
                     echo "</tr>";
                 }
             }
-        
+
+            echo '</tbody>';
             echo '</table>';
             break;
         
         case 'L':
+            $fileName = "planilla_licencia_".date('YmdHis').".xls";
             echo '<table border="1">';
+            echo '<thead>';
             echo '<tr><th>Company Name</th><th>CONFEDERACION SUDAMERICANA DE FUTBOL</th></tr>';
             echo '<tr><th>Table Name</th><th>A1A_LICE</th></tr>';
             echo '<tr><th>Table Description</th><th>Licencias</th></tr>';
@@ -78,7 +68,9 @@
             echo '<tr><th>Default Value</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>';
             echo '<tr><th>Tablas relacionadas</th><th></th><th></th><th></th><th></th><th></th><th></th><th>@A1A_TILC</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>';
             echo '<tr><th>Fields Names</th><th>U_codemp</th><th>U_fecdes</th><th>U_fechas</th><th>U_fedesapl</th><th>U_fehasapl</th><th>U_canddia</th><th>U_tiplic</th><th>U_cantdia</th><th>U_idunidad</th><th>U_clase</th><th>U_codlic</th><th>U_coment</th><th>U_PG</th><th>U_hhmm</th></tr>';
-            
+            echo '</thead>';
+            echo '<tbody>';
+
             if ($solDetalleJSON['code'] === 200) {
                 foreach ($solDetalleJSON['data'] as $key => $value) {
                     echo "<tr>";
@@ -101,11 +93,14 @@
                 }
             }
         
+            echo '</tbody>';
             echo '</table>';
             break;
 
         case 'V':
+            $fileName = "planilla_vacaciones_".date('YmdHis').".xls";
             echo '<table border="1">';
+            echo '<thead>';
             echo '<tr><th>Company Name</th><th>CONFEDERACION SUDAMERICANA DE FUTBOL</th></tr>';
             echo '<tr><th>Table Name</th><th>A1A_VAC</th></tr>';
             echo '<tr><th>Table Description</th><th>Vacaciones</th></tr>';
@@ -115,7 +110,9 @@
             echo '<tr><th>Default Value</th><th></th><th>UV</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>';
             echo '<tr><th>Tablas relacionadas</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>';
             echo '<tr><th>Fields Names</th><th>U_codemp</th><th>U_tipMov</th><th>U_fecdes</th><th>U_fechas</th><th>U_fedesapl</th><th>U_fehasapl</th><th>U_cantidad</th><th>U_tipvac</th><th>U_cantdia</th><th>U_idunidad</th><th>U_coment</th><th>U_PG</th><th>U_hhmm</th></tr>';
-            
+            echo '</thead>';
+            echo '<tbody>';
+
             if ($solDetalleJSON['code'] === 200) {
                 foreach ($solDetalleJSON['data'] as $key => $value) {
                     echo "<tr>";
@@ -137,11 +134,14 @@
                 }
             }
         
+            echo '</tbody>';
             echo '</table>';
             break;
 
         case 'I':
+            $fileName = "planilla_inasistencia_".date('YmdHis').".xls";
             echo '<table border="1">';
+            echo '<thead>';
             echo '<tr><th>Company Name</th><th>CONFEDERACION SUDAMERICANA DE FUTBOL</th></tr>';
             echo '<tr><th>Table Name</th><th>A1A_INAS</th></tr>';
             echo '<tr><th>Table Description</th><th>Inasistencias</th></tr>';
@@ -151,7 +151,9 @@
             echo '<tr><th>Default Value</th><th>I</th><th>UV</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>';
             echo '<tr><th>Tablas relacionadas</th><th></th><th></th><th></th><th></th><th>@A1A_TIIN</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>';
             echo '<tr><th>Fields Names</th><th>U_evento</th><th>U_codemp</th><th>U_fecina</th><th>U_fecapl</th><th>U_tipina</th><th>U_cantdia</th><th>U_idunidad</th><th>U_idorigen</th><th>U_grupo</th><th>U_coment</th><th>U_codlic</th><th>U_PG</th><th>U_hhmm</th></tr>';
-            
+            echo '</thead>';
+            echo '<tbody>';
+
             if ($solDetalleJSON['code'] === 200) {
                 foreach ($solDetalleJSON['data'] as $key => $value) {
                     echo "<tr>";
@@ -172,8 +174,20 @@
                     echo "</tr>";
                 }
             }
-        
+
+            echo '</tbody>';
             echo '</table>';
             break;
     }
+
+    header("Content-Type: application/vnd.ms-excel; charset=utf8");
+    header("Content-Disposition: attachment; filename=$fileName");
+    header("Cache-Control: max-age=0");
+    header("Cache-Control: max-age=1");
+    header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+    header("Last-Modified: ".gmdate('D, d M Y H:i:s')." GMT");
+    header("Cache-Control: cache, must-revalidate");
+    header("Pragma: public");
+
+    ob_end_flush();
 ?>
