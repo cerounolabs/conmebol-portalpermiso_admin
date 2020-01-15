@@ -89,7 +89,7 @@
                                         <div class="card">
                                             <img class="card-img-top img-responsive" src="../assets/images/icon/file_excel_v1_512.png" alt="Card image cap">
                                             <div class="card-body">
-                                                <a href="../public/exporta_axis_detalle.php?tipo=P" class="btn btn-primary" style="background-color:#163562 !important;">Exportar Permisos</a>
+                                                <a href="../public/exporta_axis_detalle.php?filetype=P" class="btn btn-primary" style="background-color:#163562 !important;">Exportar Permisos</a>
                                             </div>
                                         </div>
                                     </div>
@@ -98,7 +98,7 @@
                                         <div class="card">
                                             <img class="card-img-top img-responsive" src="../assets/images/icon/file_excel_v1_512.png" alt="Card image cap">
                                             <div class="card-body">
-                                                <a href="../public/exporta_axis_detalle.php?tipo=L" class="btn btn-primary" style="background-color:#163562 !important;">Exportar Licencias</a>
+                                                <a href="../public/exporta_axis_detalle.php?filetype=L" class="btn btn-primary" style="background-color:#163562 !important;">Exportar Licencias</a>
                                             </div>
                                         </div>
                                     </div>
@@ -107,7 +107,7 @@
                                         <div class="card">
                                             <img class="card-img-top img-responsive" src="../assets/images/icon/file_excel_v1_512.png" alt="Card image cap">
                                             <div class="card-body">
-                                                <a href="../public/exporta_axis_detalle.php?tipo=V" class="btn btn-primary" style="background-color:#163562 !important;">Exportar Vacaciones</a>
+                                                <a href="../public/exporta_axis_detalle.php?filetype=V" class="btn btn-primary" style="background-color:#163562 !important;">Exportar Vacaciones</a>
                                             </div>
                                         </div>
                                     </div>
@@ -116,7 +116,7 @@
                                         <div class="card">
                                             <img class="card-img-top img-responsive" src="../assets/images/icon/file_excel_v1_512.png" alt="Card image cap">
                                             <div class="card-body">
-                                                <a href="../public/exporta_axis_detalle.php?tipo=I" class="btn btn-primary" style="background-color:#163562 !important;">Exportar Inasistencias</a>
+                                                <a href="../public/exporta_axis_detalle.php?filetype=I" class="btn btn-primary" style="background-color:#163562 !important;">Exportar Inasistencias</a>
                                             </div>
                                         </div>
                                     </div>
