@@ -46,8 +46,8 @@
             if ($solDetalleJSON['code'] === 200) {
                 foreach ($solDetalleJSON['data'] as $key => $value) {
                     echo "<tr>";
-                    echo "<td>'".str_pad($value['solicitud_detalle_codigo'], 8, '0', STR_PAD_LEFT)."</td>";
-                    echo "<td>'".$value['solicitud_detalle_empleado']."</td>";
+                    echo "<td></td>";
+                    echo "<td>".$value['solicitud_detalle_empleado']."</td>";
                     echo "<td>".$value['solicitud_detalle_fecha_desde']."</td>";
                     echo "<td>".$value['solicitud_detalle_fecha_hasta']."</td>";
                     echo "<td>".$value['solicitud_detalle_aplicacion_desde']."</td>";
@@ -82,8 +82,8 @@
             if ($solDetalleJSON['code'] === 200) {
                 foreach ($solDetalleJSON['data'] as $key => $value) {
                     echo "<tr>";
-                    echo "<td>'".str_pad($value['solicitud_detalle_codigo'], 8, '0', STR_PAD_LEFT)."</td>";
-                    echo "<td>'".$value['solicitud_detalle_empleado']."</td>";
+                    echo "<td></td>";
+                    echo "<td>".$value['solicitud_detalle_empleado']."</td>";
                     echo "<td>".$value['solicitud_detalle_fecha_desde']."</td>";
                     echo "<td>".$value['solicitud_detalle_fecha_hasta']."</td>";
                     echo "<td>".$value['solicitud_detalle_aplicacion_desde']."</td>";
@@ -119,8 +119,8 @@
             if ($solDetalleJSON['code'] === 200) {
                 foreach ($solDetalleJSON['data'] as $key => $value) {
                     echo "<tr>";
-                    echo "<td>'".str_pad($value['solicitud_detalle_codigo'], 8, '0', STR_PAD_LEFT)."</td>";
-                    echo "<td>'".$value['solicitud_detalle_empleado']."</td>";
+                    echo "<td></td>";
+                    echo "<td>".$value['solicitud_detalle_empleado']."</td>";
                     echo "<td>".$value['solicitud_detalle_evento']."</td>";
                     echo "<td>".$value['solicitud_detalle_fecha_desde']."</td>";
                     echo "<td>".$value['solicitud_detalle_fecha_hasta']."</td>";
@@ -155,7 +155,7 @@
             if ($solDetalleJSON['code'] === 200) {
                 foreach ($solDetalleJSON['data'] as $key => $value) {
                     echo "<tr>";
-                    echo "<td>'".str_pad($value['solicitud_detalle_codigo'], 8, '0', STR_PAD_LEFT)."</td>";
+                    echo "<td></td>";
                     echo "<td>".$value['solicitud_detalle_solicitud']."</td>";
                     echo "<td>'".$value['solicitud_detalle_empleado']."</td>";
                     echo "<td>".$value['solicitud_detalle_fecha_desde']."</td>";
@@ -164,7 +164,7 @@
                     echo "<td>".$value['solicitud_detalle_cantidad_dia']."</td>";
                     echo "<td>".$value['solicitud_detalle_unidad']."</td>"; 
                     echo "<td>".$value['solicitud_detalle_origen']."</td>";
-                    echo "<td>'".str_pad(intval($value['solicitud_detalle_grupo']), 8, '0', STR_PAD_LEFT)."</td>";
+                    echo "<td>".str_pad(intval($value['solicitud_detalle_grupo']), 8, '0', STR_PAD_LEFT)."</td>";
                     echo "<td>".$value['solicitud_detalle_comentario']."</td>";
                     echo "<td>".$value['solicitud_detalle_evento']."</td>";
                     echo "<td>".$value['solicitud_detalle_people_gate']."</td>";
@@ -176,6 +176,4 @@
             echo '</table>';
             break;
     }
-
-
 ?>
