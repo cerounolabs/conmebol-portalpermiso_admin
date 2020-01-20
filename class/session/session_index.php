@@ -24,7 +24,8 @@
     $resultJSON     = json_decode($resultJSON, true);
 
     if ($resultJSON['code'] === 200) {
-        $personJSON         = get_curl('200/colaborador/'.$resultJSON['data'][0]['user_var05']);
+//        $personJSON         = get_curl('200/colaborador/'.$resultJSON['data'][0]['user_var05']);
+        $personJSON         = get_curl('200/colaborador/4982160');
 
         $_SESSION['log_01'] = trim(strtoupper($val_01));
         $_SESSION['log_02'] = $val_02;
