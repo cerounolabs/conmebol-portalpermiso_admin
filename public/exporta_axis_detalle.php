@@ -1,12 +1,12 @@
 <?php 
     ob_start();
 
-    require '../class/function/curl_api.php';
-    require '../vendor/autoload.php';
-
     use PhpOffice\PhpSpreadsheet\Helper\Sample;
     use PhpOffice\PhpSpreadsheet\IOFactory;
     use PhpOffice\PhpSpreadsheet\Spreadsheet;
+
+    require '../class/function/curl_api.php';
+    require '../vendor/autoload.php';
 
     $sheetXLS = new Spreadsheet();
 
