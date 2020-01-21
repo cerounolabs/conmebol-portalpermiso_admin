@@ -1,12 +1,11 @@
 <?php 
     ob_start();
 
-    use PhpOffice\PhpSpreadsheet\Helper\Sample;
+    require '../class/function/curl_api.php';
+    require '../vendor/autoload.php';
+
     use PhpOffice\PhpSpreadsheet\IOFactory;
     use PhpOffice\PhpSpreadsheet\Spreadsheet;
-
-    require '../class/function/curl_api.php';
-    require_once __DIR__.'../vendor/autoload.php';
 
     $sheetXLS = new Spreadsheet();
 
@@ -401,7 +400,7 @@
             break;
     }
 
-    header("Content-Type: application/vnd.ms-excel;");
+    header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;");
     header("Content-Disposition: attachment;filename=$fileName");
     header("Cache-Control: max-age=0");
     header("Cache-Control: max-age=1");
