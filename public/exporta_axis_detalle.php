@@ -1,7 +1,7 @@
 <?php 
     ob_start();
 
-    use PhpOffice\PhpSpreadsheet\Helper\Sample;
+//    use PhpOffice\PhpSpreadsheet\Helper\Sample;
     use PhpOffice\PhpSpreadsheet\IOFactory;
     use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
