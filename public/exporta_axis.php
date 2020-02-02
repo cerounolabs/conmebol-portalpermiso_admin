@@ -4,7 +4,7 @@
     require '../class/session/session_system.php';
 
     if ($usu_13 != 21 && $usu_13 != 87 && $usu_13 != 109){
-        header('Location: ../public/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
+//        header('Location: ../public/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
     }
 
     if(isset($_GET['code'])){
