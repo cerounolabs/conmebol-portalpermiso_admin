@@ -83,4 +83,6 @@ $RECYCLE.BIN/
 #Imagen
 imagen/*
 
+#Plugins
+vendor/*
 # End of https://www.gitignore.io/api/linux,macos,windows,visualstudiocode
