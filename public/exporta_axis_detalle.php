@@ -5,6 +5,7 @@
     require '../vendor/autoload.php';
 
     use PhpOffice\PhpSpreadsheet\Helper\Sample;
+    use PhpOffice\PhpSpreadsheet\Settings;
     use PhpOffice\PhpSpreadsheet\IOFactory;
     use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
