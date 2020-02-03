@@ -4,6 +4,8 @@
     require '../class/function/curl_api.php';
     require '../vendor/autoload.php';
 
+    setlocale(LC_ALL, 'en_us');
+
     use PhpOffice\PhpSpreadsheet\Helper\Sample;
     use PhpOffice\PhpSpreadsheet\Settings;
     use PhpOffice\PhpSpreadsheet\IOFactory;
