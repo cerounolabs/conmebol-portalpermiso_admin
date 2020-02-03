@@ -2,8 +2,8 @@
     ob_start();
 
     ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
 
     require '../class/function/curl_api.php';
     require '../vendor/autoload.php';
@@ -15,7 +15,7 @@ error_reporting(E_ALL);
     use PhpOffice\PhpSpreadsheet\IOFactory;
     use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
-    require_once __DIR__ . '../vendor/phpoffice/phpspreadsheet/src/Bootstrap.php';
+    require_once '../vendor/phpoffice/phpspreadsheet/src/Bootstrap.php';
 
     $sheetXLS = new Spreadsheet();
 
