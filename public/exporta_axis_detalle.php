@@ -1,21 +1,13 @@
 <?php 
     ob_start();
 
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
-
     require '../class/function/curl_api.php';
     require '../vendor/autoload.php';
-
-    setlocale(LC_ALL, 'en_us');
 
     use PhpOffice\PhpSpreadsheet\Helper\Sample;
     use PhpOffice\PhpSpreadsheet\Settings;
     use PhpOffice\PhpSpreadsheet\IOFactory;
     use PhpOffice\PhpSpreadsheet\Spreadsheet;
-
-    require_once '../vendor/phpoffice/phpspreadsheet/src/Bootstrap.php';
 
     $sheetXLS = new Spreadsheet();
 
