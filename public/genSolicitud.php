@@ -1,17 +1,39 @@
-
-
 	<script>
 		function cantFecha(){
+            var xDATA       = '<?php echo json_encode($solictudJSON['data']); ?>';
+			var xJSON       = JSON.parse(xDATA);
+            var inpSol      = document.getElementById('var01');
 			var fecDesde    = document.getElementById('var02');
 			var fecHasta    = document.getElementById('var03');
 			var fecCant     = document.getElementById('var04');
+            var fecCuenta   = 'N';
 
 			var fec1        = new Date(fecDesde.value);
 			var fec2        = new Date(fecHasta.value);
 
+            xJSON.forEach(element => {
+				if (inpSol.value == element.tipo_permiso_codigo){
+                    fecCuenta = element.tipo_dia_corrido;
+                }
+            });
+
 			if (fec1 <= fec2) {
-				var diff        = (fec2.getTime() - fec1.getTime()) / (1000 * 3600 * 24);
-				fecCant.value   = diff + 1;
+				var diffDays    = ((fec2.getTime() - fec1.getTime()) / (1000 * 3600 * 24)) + 1;
+                var cantDays    = 0;
+
+                for (var i=0; i < diffDays; i++) {
+                    if (fec1.getDay() != 0 && fec1.getDay() != 6) {
+                        cantDays++;
+                    }
+
+                    if ((fec1.getDay() == 0 || fec1.getDay() == 6) && fecCuenta == 'S') {
+                        cantDays++;
+                    }
+
+                    fec1.setDate(fec1.getDate() + 1);
+                }
+
+				fecCant.value   = cantDays;
 			} else {
 				alert('La FECHA HASTA no puede ser menor que ' + fecDesde.value);
 				fecHasta.value = fecDesde.value;
@@ -33,6 +55,22 @@
 				horCant.value   = diff / 3600;
 			}
 		}
+
+        function cantDia(var01, var02, var03) {
+            var timeDiff    = Math.abs(var02.getTime() - var01.getTime());
+            var diffDays    = Math.ceil(timeDiff / (1000 * 3600 * 24)) + 1;
+            var cantDia     = 0;
+
+            for (var i=0; i < diffDays; i++) {
+                if (var01.getDay() == 0 || var01.getDay() == 6) {
+                    cantDia++;
+                }
+
+                var01.setDate(var01.getDate() + 1);
+            }
+
+           return cantDia;
+        }
 
 		function valSolicitud(){
 			var xDATA   = '<?php echo json_encode($solictudJSON['data']); ?>';
@@ -162,7 +200,7 @@
             '               <div id="tit04" class="col-sm-12 col-md-4">'+
             '                   <div class="form-group">'+
             '                       <label for="var04">CANTIDAD DE DIAS</label>'+
-            '                       <input id="var04" name="var04" class="form-control" type="numer" value="1" style="text-transform:uppercase; height:40px;" placeholder="CANTIDAD DE DIAS" readonly>'+
+            '                       <input id="var04" name="var04" class="form-control" type="number" value="1" style="text-transform:uppercase; height:40px;" placeholder="CANTIDAD DE DIAS" readonly>'+
             '                   </div>'+
             '               </div>'+
             '           </div>'+
@@ -182,7 +220,7 @@
             '               <div id="tit07" class="col-sm-12 col-md-4">'+
             '                   <div class="form-group">'+
             '                       <label for="var07">CANTIDAD DE HORAS</label>'+
-            '                       <input id="var07" name="var07" class="form-control" type="numer" value="0" style="text-transform:uppercase; height:40px;" placeholder="CANTIDAD DE HORAS" readonly>'+
+            '                       <input id="var07" name="var07" class="form-control" type="number" value="0" style="text-transform:uppercase; height:40px;" placeholder="CANTIDAD DE HORAS" readonly>'+
             '                   </div>'+
             '               </div>'+
             '           </div>'+
