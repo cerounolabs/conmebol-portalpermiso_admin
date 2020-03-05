@@ -262,6 +262,7 @@
                 case 1:
                     titEst  = 'Re-Ingresar Solicitud';
                     colEst  = '#2585e4;';
+                    colBtn  = 'btn-info';
                     titMen  = 'FAVOR SOLICITAR A SU TALENTO HUMANO DICHO RE-INGRESO. VERIFIQUE!';
                     rowEst  = 'I';
                     antEst  = 'P';
@@ -270,6 +271,7 @@
                 case 2:
                     titEst  = 'Autorizar Solicitud';
                     colEst  = '#22c6ab;';
+                    colBtn  = 'btn-success';
                     titMen  = 'FAVOR SOLICITAR A SU JEFATURA DICHA AUTORIZACION. VERIFIQUE!';
                     rowEst  = 'A';
                     antEst  = 'I';
@@ -278,6 +280,7 @@
                 case 3:
                     titEst  = 'Aprobar Solicitud';
                     colEst  = '#ffaf0e;';
+                    colBtn  = 'btn-warning';
                     titMen  = 'FAVOR SOLICITAR A SU TALENTO HUMANO DICHA APROBACION. VERIFIQUE!';
                     rowEst  = 'P';
                     antEst  = 'A';
@@ -286,6 +289,7 @@
                 case 4:
                     titEst  = 'Anular Solicitud';
                     colEst  = '#eb4c4c;';
+                    colBtn  = 'btn-danger';
                     titMen  = 'FAVOR SOLICITAR A SU TALENTO HUMANO DICHA ANULACION. VERIFIQUE!';
                     rowEst  = 'C';
                     antEst  = 'I';
@@ -328,7 +332,7 @@
                     '           </div>'+
                     '	    </div>'+
                     '	    <div class="modal-footer">'+
-                    '           <button type="submit" class="btn btn-info">Actualizar</button>'+
+                    '           <button type="submit" class="btn '+colBtn+'">'+titEst+'</button>'+
                     '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
                     '	    </div>'+
                     '   </form>'+
@@ -359,7 +363,7 @@
                         '           </div>'+
                         '	    </div>'+
                         '	    <div class="modal-footer">'+
-                        '           <button type="submit" class="btn btn-info">Actualizar</button>'+
+                        '           <button type="submit" class="btn '+colBtn+'">'+titEst+'</button>'+
                         '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
                         '	    </div>'+
                         '   </form>'+
@@ -410,7 +414,7 @@
                     '           </div>'+
                     '	    </div>'+
                     '	    <div class="modal-footer">'+
-                    '           <button type="submit" class="btn btn-info">Actualizar</button>'+
+                    '           <button type="submit" class="btn '+colBtn+'">'+titEst+'</button>'+
                     '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
                     '	    </div>'+
                     '   </form>'+
