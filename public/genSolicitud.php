@@ -263,7 +263,7 @@
                     titEst  = 'Re-Ingresar Solicitud';
                     colEst  = '#2585e4;';
                     colBtn  = 'btn-info';
-                    titMen  = 'FAVOR SOLICITAR A SU TALENTO HUMANO DICHO RE-INGRESO. VERIFIQUE!';
+                    titMen  = 'FAVOR SOLICITAR A TALENTO HUMANO DICHO RE-INGRESO. VERIFIQUE!';
                     rowEst  = 'I';
                     antEst  = 'P';
                     break;
@@ -281,7 +281,7 @@
                     titEst  = 'Aprobar Solicitud';
                     colEst  = '#ffaf0e;';
                     colBtn  = 'btn-warning';
-                    titMen  = 'FAVOR SOLICITAR A SU TALENTO HUMANO DICHA APROBACION. VERIFIQUE!';
+                    titMen  = 'FAVOR SOLICITAR A TALENTO HUMANO DICHA APROBACION. VERIFIQUE!';
                     rowEst  = 'P';
                     antEst  = 'A';
                     break;
@@ -290,7 +290,7 @@
                     titEst  = 'Anular Solicitud';
                     colEst  = '#eb4c4c;';
                     colBtn  = 'btn-danger';
-                    titMen  = 'FAVOR SOLICITAR A SU TALENTO HUMANO DICHA ANULACION. VERIFIQUE!';
+                    titMen  = 'FAVOR SOLICITAR A TALENTO HUMANO DICHA ANULACION. VERIFIQUE!';
                     rowEst  = 'C';
                     antEst  = 'I';
                     break;
