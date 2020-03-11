@@ -3,16 +3,8 @@
     require '../class/function/function.php';
     require '../class/session/session_system.php';
 
-    if ($_GET['tipo'] != 69 && $usu_13 != 70 && $usu_13 != 71){
+    if ($usu_13 != 70 && $usu_13 != 71){
         header('Location: ../public/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
-    }
-
-    if(isset($_GET['code'])){
-        $codeRest       = $_GET['code'];
-        $msgRest        = $_GET['msg'];
-    } else {
-        $codeRest       = 0;
-        $msgRest        = '';
     }
 ?>
 
@@ -152,28 +144,9 @@
     <!-- ============================================================== -->
     <!-- ============================================================== -->
     <div class="chat-windows"></div>
+    
 <?php
     include '../include/footer.php';
-   
-    if ($codeRest == 200) {
-?>
-    <script>
-        $(function() {
-            toastr.success('<?php echo $msgRest; ?>', 'Correcto!');
-        });
-    </script>
-<?php
-    }
-            
-    if (($codeRest == 204) || ($codeRest == 401)) {
-?>
-    <script>
-        $(function() {
-            toastr.error('<?php echo $msgRest; ?>', 'Error!');
-        });
-    </script>
-<?php
-    }
 ?>
 
     <script src="../js/solicitud.js"></script>

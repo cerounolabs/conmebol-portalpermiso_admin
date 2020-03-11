@@ -3,14 +3,6 @@
     require '../class/function/function.php';
     require '../class/session/session_system.php';
 
-    if(isset($_GET['code'])){
-        $codeRest       = $_GET['code'];
-        $msgRest        = $_GET['msg'];
-    } else {
-        $codeRest       = 0;
-        $msgRest        = '';
-    }
-
     if ($usu_13 == 21 || $usu_13 == 87 || $usu_13 == 109){
         $codCar = 3;
     } else {
@@ -336,26 +328,6 @@
     <div class="chat-windows"></div>
 <?php
     include '../include/footer.php';
-   
-    if ($codeRest == 200) {
-?>
-    <script>
-        $(function() {
-            toastr.success('<?php echo $msgRest; ?>', 'Correcto!');
-        });
-    </script>
-<?php
-    }
-            
-    if (($codeRest == 204) || ($codeRest == 401)) {
-?>
-    <script>
-        $(function() {
-            toastr.error('<?php echo $msgRest; ?>', 'Error!');
-        });
-    </script>
-<?php
-    }
 ?>
 </body>
 </html>
