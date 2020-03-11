@@ -18,7 +18,7 @@
             });
 
 			if (fec1 <= fec2) {
-				var diffDays    = ((fec2.getTime() - fec1.getTime()) / (1000 * 3600 * 24)) + 1;
+				var diffDays    = ((fec2.getTime() - fec1.getTime()) / (1000 * 3600 * 24));
                 var cantDays    = 0;
 
                 for (var i=0; i < diffDays; i++) {
@@ -187,13 +187,13 @@
             '           <div class="row pt-3">'+
             '               <div id="tit02" class="col-sm-12 col-md-4">'+
             '                   <div class="form-group">'+
-            '                       <label for="var02">FECHA DESDE</label>'+
+            '                       <label for="var02">FECHA INICIO</label>'+
             '                       <input id="var02" name="var02" class="form-control" type="date" value="<?php echo date('Y-m-d'); ?>" onblur="cantFecha();" style="text-transform:uppercase; height:40px;" placeholder="FECHA DESDE">'+
             '                   </div>'+
             '               </div>'+
             '               <div id="tit03" class="col-sm-12 col-md-4">'+
             '                   <div class="form-group">'+
-            '                       <label for="var03">FECHA HASTA</label>'+
+            '                       <label for="var03">FECHA RETORNO</label>'+
             '                       <input id="var03" name="var03" class="form-control" type="date" value="<?php echo date('Y-m-d'); ?>" onblur="cantFecha();" style="text-transform:uppercase; height:40px;" placeholder="FECHA HASTA">'+
             '                   </div>'+
             '               </div>'+
