@@ -357,7 +357,7 @@ function setSolicitud(var01){
     
     var html     =
     '<div class="modal-content">'+
-    '   <form id="form" data-parsley-validate method="post" action="../class/crud/solicitudes.php">'+
+    '   <form id="form" data-parsley-validate method="post" enctype="multipart/form-data" action="../class/crud/solicitudes.php">'+
     '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
     '		    <h4 class="modal-title" id="vcenter"> Solicitud </h4>'+
     '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
@@ -437,7 +437,7 @@ function setSolicitud(var01){
     '           </div>'+
     '	    </div>'+
     '	    <div class="modal-footer">'+
-    '           <button type="submit" class="btn btn-info">Guardar</button>'+
+    '           <button type="submit" name="submit" class="btn btn-info">Guardar</button>'+
     '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
     '	    </div>'+
     '   </form>'+
