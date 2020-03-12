@@ -14,7 +14,6 @@
     }
 
     $workPage       = 'solicitudes.php?tipo='. $work01.'&';
-    $solictudJSON   = get_curl('100');
     $solictudesJSON = get_curl('200/solicitud/'.$work01.'/'.$usu_05);
 ?>
 
@@ -89,21 +88,23 @@
                                 <div class="row">
                                     <h4 class="col-10 card-title">Solicitudes</h4>
                                     <h4 class="col-2 card-title" style="text-align: right;">
-                                        <a class="btn btn-info" style="background-color:#163562; border-color:#163562;"  href="javascript:void(0)" role="button" data-toggle="modal" data-target="#modaldiv" title="Nueva Solicitud" onclick="setSolicitud();"><i class="ti-plus"></i></a>
+                                        <a class="btn btn-info" style="background-color:#163562; border-color:#163562;"  href="javascript:void(0)" role="button" data-toggle="modal" data-target="#modaldiv" title="Nueva Solicitud" onclick="setSolicitud('<?php echo $workPage; ?>');"><i class="ti-plus"></i></a>
                                 	</h4>
 								</div>
                                 <div class="table-responsive">
                                     <table id="tableLoad" class="table v-middle" style="width: 100%;">
                                         <thead id="tableCodigo" class="<?php echo $usu_05; ?>">
-                                            <tr class="bg-light">
+                                            <tr class="bg-conmebol" style="text-align:center;">
+                                                <th class="border-top-0" colspan="9">SOLICITUD</th>
+                                            </tr>
+                                            <tr class="bg-conmebol" style="text-align:center;">
                                                 <th class="border-top-0">ESTADO</th>
+                                                <th class="border-top-0">FECHA</th>
                                                 <th class="border-top-0">DOCUMENTO</th>
                                                 <th class="border-top-0">COLABORADOR</th>
-                                                <th class="border-top-0">SOLICITUD</th>
-                                                <th class="border-top-0">FECHA</th>
-                                                <th class="border-top-0">CANT. DÍAS</th>
-                                                <th class="border-top-0">CANT. HORAS</th>
-                                                <th class="border-top-0">AUTORIZADO / ANULADO POR</th>
+                                                <th class="border-top-0">TIPO</th>
+                                                <th class="border-top-0">SOLICITANTE / ANULADO POR</th>
+                                                <th class="border-top-0">AUTORIZADOR / ANULADO POR</th>
                                                 <th class="border-top-0">APROBADOR / ANULADO POR</th>
                                                 <th class="border-top-0"></th>
                                             </tr>
@@ -153,10 +154,21 @@
 
 <?php
     include '../include/footer.php';
-    include '../public/genSolicitud.php';
 ?>
 
+    <script src="../js/api.js"></script>
+
     <script>
+        if (localStorage.getItem('solicitudJSON') === 'null' || localStorage.getItem('solicitudJSON') === null ){
+            localStorage.removeItem('solicitudJSON');
+            localStorage.setItem('solicitudJSON', JSON.stringify(<?php echo json_encode(get_curl('100')); ?>));
+        }
+
+        if (localStorage.getItem('solicitudesJSON') === 'null' || localStorage.getItem('solicitudesJSON') === null ){
+            localStorage.removeItem('solicitudesJSON');
+            localStorage.setItem('solicitudesJSON', JSON.stringify(<?php echo json_encode($solictudesJSON); ?>));
+        }
+
         $(document).ready(function() {
             $('#tableLoad').DataTable({
                 processing	: true,
@@ -192,31 +204,47 @@
                     { targets			: [5],	visible : true,	searchable : true,	orderData : [5, 0] },
                     { targets			: [6],	visible : true,	searchable : true,	orderData : [6, 0] },
                     { targets			: [7],	visible : true,	searchable : true,	orderData : [7, 0] },
-                    { targets			: [8],	visible : true,	searchable : true,	orderData : [8, 0] },
-                    { targets			: [9],	visible : true,	searchable : true,	orderData : [9, 0] }
+                    { targets			: [8],	visible : true,	searchable : true,	orderData : [8, 0] }
                 ],
                 columns		: [
                     { data				: 'solicitud_estado_nombre', name : 'solicitud_estado_nombre'},
+                    { data				: 'solicitud_fecha_desde_2', name : 'solicitud_fecha_desde_2'},
                     { data				: 'solicitud_documento', name : 'solicitud_documento'},
                     { data				: 'solicitud_persona', name : 'solicitud_persona'},
                     { data				: 'tipo_permiso_nombre', name : 'tipo_permiso_nombre'},
-                    { data				: 'solicitud_fecha_desde', name : 'solicitud_fecha_desde'},
-                    { data				: 'solicitud_fecha_cantidad', name : 'solicitud_fecha_cantidad'},
-                    { data				: 'solicitud_hora_cantidad', name : 'solicitud_hora_cantidad'},
+                    { data				: 'solicitud_usuario_colaborador', name : 'solicitud_usuario_colaborador'},
                     { data				: 'solicitud_usuario_aprobador', name : 'solicitud_usuario_aprobador'},
                     { data				: 'solicitud_usuario_talento', name : 'solicitud_usuario_talento'},
 <?php
     if ($work01 == 1) {
 ?>
-                    { render			: function (data, type, full, meta) {return '<button type="button" class="btn btn-danger btn-circle-2" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Anular Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 4, 1);"><i class="fa fa-times"></i></button>';}},
+                    { render			: function (data, type, full, meta) {return '<button type="button" class="btn btn-primary btn-circle" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Visualizar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="getSolicitud(this.id);"><i class="fa fa-eye"></i></button>&nbsp;<button type="button" class="btn btn-danger btn-circle" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Anular Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 4, 1, <?php echo trim($usu_05); ?>, <?php echo trim($usu_13); ?>);"><i class="fa fa-times"></i></button>';}},
 <?php
     } elseif ($work01 == 2) {
 ?>
-                    { render			: function (data, type, full, meta) {return '<button type="button" class="btn btn-success btn-circle-2" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Autorizar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 2, 1);"><i class="fa fa-check"></i></button>&nbsp;<button type="button" class="btn btn-danger btn-circle-2" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Anular Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 4, 1);"><i class="fa fa-times"></i></button>';}},
+                    { render			: function (data, type, full, meta) {
+                        var btn =  '<button type="button" class="btn btn-primary btn-circle" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Visualizar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="getSolicitud(this.id);"><i class="fa fa-eye"></i></button>';
+
+                        if (full.solicitud_estado_codigo == 'I') {
+                            btn = btn + '&nbsp;<button type="button" class="btn btn-success btn-circle" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Autorizar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 2, 1, <?php echo trim($usu_05); ?>, <?php echo trim($usu_13); ?>);"><i class="fa fa-check"></i></button>&nbsp;<button type="button" class="btn btn-danger btn-circle" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Anular Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 4, 1, <?php echo trim($usu_05); ?>, <?php echo trim($usu_13); ?>);"><i class="fa fa-times"></i></button>';
+                        }
+                            
+                        return btn;
+                    }},
 <?php
     } elseif ($work01 == 3) {
 ?>
-                    { render			: function (data, type, full, meta) {return '<button type="button" class="btn btn-info btn-circle-2" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Re-Ingresar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 1, 1);"><i class="fa fa-check"></i></button>&nbsp;<button type="button" class="btn btn-warning btn-circle-2" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Aprobar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 3, 1);"><i class="fa fa-check"></i></button>&nbsp;<button type="button" class="btn btn-danger btn-circle-2" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Anular Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 4, 1);"><i class="fa fa-times"></i></button>';}},
+                    { render			: function (data, type, full, meta) {
+                        var btn =  '<button type="button" class="btn btn-primary btn-circle" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Visualizar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="getSolicitud(this.id);"><i class="fa fa-eye"></i></button>';
+
+                        if (full.solicitud_estado_codigo == 'A') {
+                            btn = btn + '&nbsp;<button type="button" class="btn btn-info btn-circle" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Re-Ingresar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 1, 1, <?php echo trim($usu_05); ?>, <?php echo trim($usu_13); ?>);"><i class="ti-reload"></i></button>&nbsp;<button type="button" class="btn btn-warning btn-circle" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Aprobar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 3, 1, <?php echo trim($usu_05); ?>, <?php echo trim($usu_13); ?>);"><i class="fa fa-check"></i></button>&nbsp;<button type="button" class="btn btn-danger btn-circle" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Anular Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 4, 1, <?php echo trim($usu_05); ?>, <?php echo trim($usu_13); ?>);"><i class="fa fa-times"></i></button>';
+                        } else if (full.solicitud_estado_codigo == 'C') {
+                            btn = btn + '&nbsp;<button type="button" class="btn btn-info btn-circle" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Re-Ingresar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 1, 1, <?php echo trim($usu_05); ?>, <?php echo trim($usu_13); ?>);"><i class="ti-reload"></i></button>';
+                        }
+                            
+                        return btn;
+                    }},
 <?php
     }
 ?>

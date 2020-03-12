@@ -78,7 +78,7 @@
                                 <div class="table-responsive">
                                     <table id="tableLoad" class="table v-middle" style="width: 100%;">
                                         <thead id="tableCodigo" class="<?php echo $usu_05; ?>">
-                                            <tr class="bg-light">
+                                            <tr class="bg-conmebol" style="text-align:center;">
                                                 <th class="border-top-0">NRO. DOCUMENTO</th>
                                                 <th class="border-top-0">COLABORADOR</th>
                                                 <th class="border-top-0">EMAIL</th>

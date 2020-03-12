@@ -85,7 +85,7 @@
                                 <div class="table-responsive">
                                     <table id="tableLoad" class="table v-middle" style="width: 100%;">
                                         <thead id="tableCodigo" class="">
-                                            <tr class="bg-light">
+                                            <tr class="bg-conmebol" style="text-align:center;">
                                                 <th class="border-top-0">C&Oacute;DIGO</th>
                                                 <th class="border-top-0">ESTADO</th>
                                                 <th class="border-top-0">CATEGOR&Iacute;A</th>
