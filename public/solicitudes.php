@@ -95,9 +95,10 @@
                                     <table id="tableLoad" class="table v-middle" style="width: 100%;">
                                         <thead id="tableCodigo" class="<?php echo $usu_05; ?>">
                                             <tr class="bg-conmebol" style="text-align:center;">
-                                                <th class="border-top-0" colspan="9">SOLICITUD</th>
+                                                <th class="border-top-0" colspan="10">SOLICITUD</th>
                                             </tr>
                                             <tr class="bg-conmebol" style="text-align:center;">
+                                                <th class="border-top-0">C&Oacute;DIGO</th>
                                                 <th class="border-top-0">ESTADO</th>
                                                 <th class="border-top-0">FECHA</th>
                                                 <th class="border-top-0">DOCUMENTO</th>
@@ -177,6 +178,7 @@
                 paging		: true,
                 lengthChange: true,
                 info		: true,
+                order: [[ 0, "desc" ]],
                 orderCellsTop: false,
                 fixedHeader	: false,
                 language	: {
@@ -204,9 +206,11 @@
                     { targets			: [5],	visible : true,	searchable : true,	orderData : [5, 0] },
                     { targets			: [6],	visible : true,	searchable : true,	orderData : [6, 0] },
                     { targets			: [7],	visible : true,	searchable : true,	orderData : [7, 0] },
-                    { targets			: [8],	visible : true,	searchable : true,	orderData : [8, 0] }
+                    { targets			: [8],	visible : true,	searchable : true,	orderData : [8, 0] },
+                    { targets			: [9],	visible : true,	searchable : true,	orderData : [9, 0] }
                 ],
                 columns		: [
+                    { data				: 'solicitud_codigo', name : 'solicitud_codigo'},
                     { data				: 'solicitud_estado_nombre', name : 'solicitud_estado_nombre'},
                     { data				: 'solicitud_fecha_desde_2', name : 'solicitud_fecha_desde_2'},
                     { data				: 'solicitud_documento', name : 'solicitud_documento'},
