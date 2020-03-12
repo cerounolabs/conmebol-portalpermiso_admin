@@ -209,7 +209,7 @@ function getSolicitud(var01){
                 '<div class="modal-content">'+
                 '   <form id="form" data-parsley-validate method="post" action="">'+
                 '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
-                '		    <h4 class="modal-title" id="vcenter"> Solicitud </h4>'+
+                '		    <h4 class="modal-title" id="vcenter"> '+element.solicitud_persona+' </h4>'+
                 '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
                 '	    </div>'+
                 '	    <div class="modal-body" >'+
@@ -219,78 +219,112 @@ function getSolicitud(var01){
                 '               <input id="workPage" name="workPage" value="'+var01+'" class="form-control" type="hidden" placeholder="Modo" required readonly>'+
                 '           </div>'+
                 '           <div class="row pt-3">'+
-                '               <div class="col-sm-12 col-md-6">'+
+                '               <div class="col-sm-12">'+
                 '                   <div class="form-group">'+
-                '                       <label for="var00">COLABORADOR</label>'+
-                '                       <input id="var00" name="var00" value="'+element.solicitud_persona+'" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>'+
-                '                   </div>'+
-                '               </div>'+
-                '               <div class="col-sm-12 col-md-6">'+
-                '                   <div class="form-group">'+
-                '                       <label for="var01">SOLICITUD DE</label>'+
-                '                       <input id="var01" name="var01" value="'+element.tipo_permiso_nombre+'" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>'+
+                '                       <label>SOLICITUD DE</label>'+
+                '                       <input value="'+element.tipo_permiso_nombre+'" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>'+
                 '                   </div>'+
                 '               </div>'+
                 '           </div>'+
                 '           <div class="row pt-3">'+
-                '               <div id="tit02" class="col-sm-12 col-md-4">'+
+                '               <div class="col-sm-12 col-md-4">'+
                 '                   <div class="form-group">'+
-                '                       <label for="var02">FECHA INICIO</label>'+
-                '                       <input id="var02" name="var02" value="'+element.solicitud_fecha_desde_1+'" class="form-control" type="date" style="text-transform:uppercase; height:40px;" readonly>'+
+                '                       <label>FECHA INICIO</label>'+
+                '                       <input value="'+element.solicitud_fecha_desde_1+'" class="form-control" type="date" style="text-transform:uppercase; height:40px;" readonly>'+
                 '                   </div>'+
                 '               </div>'+
-                '               <div id="tit03" class="col-sm-12 col-md-4">'+
+                '               <div class="col-sm-12 col-md-4">'+
                 '                   <div class="form-group">'+
-                '                       <label for="var03">FECHA RETORNO</label>'+
-                '                       <input id="var03" name="var03" value="'+element.solicitud_fecha_hasta_1+'" class="form-control" type="date" style="text-transform:uppercase; height:40px;" readonly>'+
+                '                       <label>FECHA RETORNO</label>'+
+                '                       <input value="'+element.solicitud_fecha_hasta_1+'" class="form-control" type="date" style="text-transform:uppercase; height:40px;" readonly>'+
                 '                   </div>'+
                 '               </div>'+
-                '               <div id="tit04" class="col-sm-12 col-md-4">'+
+                '               <div class="col-sm-12 col-md-4">'+
                 '                   <div class="form-group">'+
-                '                       <label for="var04">CANTIDAD DE DIAS</label>'+
-                '                       <input id="var04" name="var04" value="'+element.solicitud_fecha_cantidad+'" class="form-control" type="number" style="text-transform:uppercase; height:40px;" readonly>'+
+                '                       <label>CANTIDAD DE DIAS</label>'+
+                '                       <input value="'+element.solicitud_fecha_cantidad+'" class="form-control" type="number" style="text-transform:uppercase; height:40px;" readonly>'+
                 '                   </div>'+
                 '               </div>'+
                 '           </div>'+
                 '           <div class="row pt-3">'+
                 '               <div id="tit05" class="col-sm-12 col-md-4">'+
                 '                   <div class="form-group">'+
-                '                       <label for="var05">HORA DESDE</label>'+
-                '                       <input id="var05" name="var05" value="'+element.solicitud_hora_desde+'" class="form-control" type="time" style="text-transform:uppercase; height:40px;" readonly>'+
+                '                       <label>HORA DESDE</label>'+
+                '                       <input value="'+element.solicitud_hora_desde+'" class="form-control" type="time" style="text-transform:uppercase; height:40px;" readonly>'+
                 '                   </div>'+
                 '               </div>'+
-                '               <div id="tit06" class="col-sm-12 col-md-4">'+
+                '               <div class="col-sm-12 col-md-4">'+
                 '                   <div class="form-group">'+
-                '                       <label for="var06">HORA HASTA</label>'+
-                '                       <input id="var06" name="var06" value="'+element.solicitud_hora_hasta+'" class="form-control" type="time" style="text-transform:uppercase; height:40px;" readonly>'+
+                '                       <label>HORA HASTA</label>'+
+                '                       <input value="'+element.solicitud_hora_hasta+'" class="form-control" type="time" style="text-transform:uppercase; height:40px;" readonly>'+
                 '                   </div>'+
                 '               </div>'+
-                '               <div id="tit07" class="col-sm-12 col-md-4">'+
+                '               <div class="col-sm-12 col-md-4">'+
                 '                   <div class="form-group">'+
-                '                       <label for="var07">CANTIDAD DE HORAS</label>'+
-                '                       <input id="var07" name="var07" value="'+element.solicitud_hora_cantidad+'" class="form-control" type="number" style="text-transform:uppercase; height:40px;" readonly>'+
+                '                       <label>CANTIDAD DE HORAS</label>'+
+                '                       <input value="'+element.solicitud_hora_cantidad+'" class="form-control" type="number" style="text-transform:uppercase; height:40px;" readonly>'+
                 '                   </div>'+
                 '               </div>'+
                 '           </div>'+
                 '           <div class="row pt-3">'+
-                '                <div class="col-sm-12">'+
-                '                    <div class="form-group">'+
-                '                        <label for="var09">COMENTARIO SOLICITANTE</label>'+
-                '                        <textarea id="var09" name="var09" class="form-control" rows="3" style="text-transform:uppercase;" readonly>'+element.solicitud_observacion_colaborador+'</textarea>'+
-                '                    </div>'+
-                '                </div>'+
-                '                <div class="col-sm-12">'+
-                '                    <div class="form-group">'+
-                '                        <label for="var09">COMENTARIO JEFATURA</label>'+
-                '                        <textarea id="var09" name="var09" class="form-control" rows="3" style="text-transform:uppercase;" readonly>'+element.solicitud_observacion_aprobador+'</textarea>'+
-                '                    </div>'+
-                '                </div>'+
-                '                <div class="col-sm-12">'+
-                '                    <div class="form-group">'+
-                '                        <label for="var09">COMENTARIO TALENTO HUMANO</label>'+
-                '                        <textarea id="var09" name="var09" class="form-control" rows="3" style="text-transform:uppercase;" readonly>'+element.solicitud_observacion_talento+'</textarea>'+
-                '                    </div>'+
-                '                </div>'+
+                '               <div class="col-sm-12 col-md-4">'+
+                '                   <div class="form-group">'+
+                '                       <label>USUARIO SOLICITANTE</label>'+
+                '                       <input value="'+element.solicitud_usuario_colaborador+'" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>'+
+                '                   </div>'+
+                '               </div>'+
+                '               <div class="col-sm-12 col-md-4">'+
+                '                   <div class="form-group">'+
+                '                       <label>FECHA SOLICITANTE</label>'+
+                '                       <input value="'+element.solicitud_fecha_hora_colaborador+'" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>'+
+                '                   </div>'+
+                '               </div>'+
+                '               <div class="col-sm-12 col-md-4">'+
+                '                   <div class="form-group">'+
+                '                       <label>COMENTARIO SOLICITANTE</label>'+
+                '                       <textarea class="form-control" rows="1" style="text-transform:uppercase; height:40px;" readonly>'+element.solicitud_observacion_colaborador+'</textarea>'+
+                '                   </div>'+
+                '               </div>'+
+                '           </div>'+
+                '           <div class="row pt-3">'+
+                '               <div class="col-sm-12 col-md-4">'+
+                '                   <div class="form-group">'+
+                '                       <label>USUARIO AUTORIZADOR</label>'+
+                '                       <input value="'+element.solicitud_usuario_aprobador+'" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>'+
+                '                   </div>'+
+                '               </div>'+
+                '               <div class="col-sm-12 col-md-4">'+
+                '                   <div class="form-group">'+
+                '                       <label>FECHA AUTORIZADOR</label>'+
+                '                       <input value="'+element.solicitud_fecha_hora_aprobador+'" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>'+
+                '                   </div>'+
+                '               </div>'+
+                '               <div class="col-sm-12 col-md-4">'+
+                '                   <div class="form-group">'+
+                '                       <label>COMENTARIO AUTORIZADOR</label>'+
+                '                       <textarea class="form-control" rows="1" style="text-transform:uppercase; height:40px;" readonly>'+element.solicitud_observacion_aprobador+'</textarea>'+
+                '                   </div>'+
+                '               </div>'+
+                '           </div>'+
+                '           <div class="row pt-3">'+
+                '               <div class="col-sm-12 col-md-4">'+
+                '                   <div class="form-group">'+
+                '                       <label>USUARIO APROBADOR</label>'+
+                '                       <input value="'+element.solicitud_usuario_talento+'" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>'+
+                '                   </div>'+
+                '               </div>'+
+                '               <div class="col-sm-12 col-md-4">'+
+                '                   <div class="form-group">'+
+                '                       <label>FECHA APROBADOR</label>'+
+                '                       <input value="'+element.solicitud_fecha_hora_talento+'" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>'+
+                '                   </div>'+
+                '               </div>'+
+                '               <div class="col-sm-12 col-md-4">'+
+                '                   <div class="form-group">'+
+                '                       <label>COMENTARIO APROBADOR</label>'+
+                '                       <textarea class="form-control" rows="1" style="text-transform:uppercase; height:40px;" readonly>'+element.solicitud_observacion_talento+'</textarea>'+
+                '                   </div>'+
+                '               </div>'+
                 '           </div>'+
                 '	    </div>'+
                 '	    <div class="modal-footer">'+
