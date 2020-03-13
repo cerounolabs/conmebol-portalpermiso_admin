@@ -19,6 +19,15 @@
 	$val09          = strtoupper($_POST['var09']);
 	$target_ban     = true;
 
+	$work01         = $_POST['workCodigo'];
+	$work02         = $_POST['workModo'];
+	$work03         = $_POST['workPage'];
+
+	$usu_03         = strtoupper($_SESSION['usu_03']);
+	$usu_05         = strtoupper($_SESSION['usu_05']);
+
+	$log_03         = $_SESSION['log_03'];
+
 	if (isset($_FILES['var08'])) {
 		$target_ban     = false;
         $target_msn     = '';
@@ -70,15 +79,6 @@
 	}
 
 	if ($target_ban == true) {
-		$work01         = $_POST['workCodigo'];
-		$work02         = $_POST['workModo'];
-		$work03         = $_POST['workPage'];
-
-		$usu_03         = strtoupper($_SESSION['usu_03']);
-		$usu_05         = strtoupper($_SESSION['usu_05']);
-
-		$log_03         = $_SESSION['log_03'];
-
 		if (isset($val01) && isset($val02) && isset($val03)) {
 			$dataJSON = json_encode(
 				array(
