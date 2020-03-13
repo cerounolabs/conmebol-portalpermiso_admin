@@ -138,7 +138,6 @@
     <script src="assets/libs/toastr/build/toastr.min.js"></script>
     <script src="assets/extra-libs/toastr/toastr-init.js"></script>
 
-
     <script>
         $('[data-toggle="tooltip"]').tooltip();
         $(".preloader").fadeOut();
@@ -149,6 +148,8 @@
             $("#loginform").slideUp();
             $("#recoverform").fadeIn();
         });
+
+        localStorage.clear();
     </script>
 
 <?php  
