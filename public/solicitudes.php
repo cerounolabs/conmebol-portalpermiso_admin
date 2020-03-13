@@ -95,13 +95,13 @@
                                     <table id="tableLoad" class="table v-middle" style="width: 100%;">
                                         <thead id="tableCodigo" class="<?php echo $usu_05; ?>">
                                             <tr class="bg-conmebol" style="text-align:center;">
-                                                <th class="border-top-0" colspan="10">SOLICITUD</th>
+                                                <th class="border-top-0" colspan="11">SOLICITUD</th>
                                             </tr>
                                             <tr class="bg-conmebol" style="text-align:center;">
                                                 <th class="border-top-0">C&Oacute;DIGO</th>
-                                                <th class="border-top-0">ADJUNTO</th>
                                                 <th class="border-top-0">ESTADO</th>
                                                 <th class="border-top-0">FECHA</th>
+                                                <th class="border-top-0">ADJUNTO</th>
                                                 <th class="border-top-0">DOCUMENTO</th>
                                                 <th class="border-top-0">COLABORADOR</th>
                                                 <th class="border-top-0">TIPO</th>
@@ -199,11 +199,11 @@
                 },
                 data		: <?php echo json_encode($solictudesJSON['data']); ?>,
                 columnDefs	: [
-                    { targets			: [0],	visible : true,	searchable : true,	orderData : [0, 0] },
+                    { targets			: [0],	visible : false,searchable : false,	orderData : [0, 0] },
                     { targets			: [1],	visible : true,	searchable : true,	orderData : [1, 0] },
                     { targets			: [2],	visible : true,	searchable : true,	orderData : [2, 0] },
                     { targets			: [3],	visible : true,	searchable : true,	orderData : [3, 0] },
-                    { targets			: [4],	visible : true,	searchable : true,	orderData : [4, 0] },
+                    { targets			: [4],	visible : false,searchable : false,	orderData : [4, 0] },
                     { targets			: [5],	visible : true,	searchable : true,	orderData : [5, 0] },
                     { targets			: [6],	visible : true,	searchable : true,	orderData : [6, 0] },
                     { targets			: [7],	visible : true,	searchable : true,	orderData : [7, 0] },
@@ -213,17 +213,17 @@
                 ],
                 columns		: [
                     { data				: 'solicitud_codigo', name : 'solicitud_codigo'},
+                    { data				: 'solicitud_estado_nombre', name : 'solicitud_estado_nombre'},
+                    { data				: 'solicitud_fecha_desde_2', name : 'solicitud_fecha_desde_2'},
                     { render			: function (data, type, full, meta) {
                         var btn = '';
 
-                        if (full.solicitud_adjunto != '' || full.solicitud_adjunto != null) {
+                        if (full.solicitud_adjunto) {
                             btn = '<a href="../uploads/'+full.solicitud_adjunto+'" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';
                         }
                             
                         return btn;
                     }},
-                    { data				: 'solicitud_estado_nombre', name : 'solicitud_estado_nombre'},
-                    { data				: 'solicitud_fecha_desde_2', name : 'solicitud_fecha_desde_2'},
                     { data				: 'solicitud_documento', name : 'solicitud_documento'},
                     { data				: 'solicitud_persona', name : 'solicitud_persona'},
                     { data				: 'tipo_permiso_nombre', name : 'tipo_permiso_nombre'},
