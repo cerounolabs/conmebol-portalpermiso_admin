@@ -334,7 +334,7 @@
     include '../include/footer.php';
 ?>
 
-    
+    <script src="../js/api.js"></script>
 
     <script>
         if (localStorage.getItem('solicitudJSON') === 'null' || localStorage.getItem('solicitudJSON') === null ){
@@ -344,12 +344,8 @@
 
         if (localStorage.getItem('solicitudesJSON') === 'null' || localStorage.getItem('solicitudesJSON') === null ){
             localStorage.removeItem('solicitudesJSON');
-            localStorage.setItem('solicitudesJSON', JSON.stringify(<?php echo json_encode(get_curl('200/solicitud/'.$codCar.'/'.$usu_05)); ?>));
+            localStorage.setItem('solicitudesJSON', JSON.stringify(<?php echo json_encode($solictudesJSON); ?>));
         }
-
-        console.log(localStorage.getItem('solicitudesJSON'));
     </script>
-
-    <script src="../js/api.js"></script>
 </body>
 </html>
