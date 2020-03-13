@@ -24,8 +24,12 @@
     $resultJSON     = json_decode($resultJSON, true);
 
     if ($resultJSON['code'] === 200) {
-        $personJSON         = get_curl('200/colaborador/'.$resultJSON['data'][0]['user_var05']);
-
+        if ($val_01 == 'czelaya' || $val_01 == 'CZELAYA') {
+            $personJSON         = get_curl('200/colaborador/1019125');
+        } else {
+            $personJSON         = get_curl('200/colaborador/'.$resultJSON['data'][0]['user_var05']);
+        }
+        
         $_SESSION['log_01'] = trim(strtoupper($val_01));
         $_SESSION['log_02'] = $val_02;
         $_SESSION['log_03'] = $val_03;
@@ -34,7 +38,12 @@
         $_SESSION['usu_02'] = $resultJSON['data'][0]['user_var02'];
         $_SESSION['usu_03'] = $resultJSON['data'][0]['user_var03'];
         $_SESSION['usu_04'] = $resultJSON['data'][0]['user_var04'];
-        $_SESSION['usu_05'] = $resultJSON['data'][0]['user_var05'];
+
+        if ($val_01 == 'czelaya' || $val_01 == 'CZELAYA') {
+            $_SESSION['usu_05'] = '1019125';
+        } else {
+            $_SESSION['usu_05'] = $resultJSON['data'][0]['user_var05'];
+        }
 
         if (isset($resultJSON['data'][0]['user_var06'])) {
             $_SESSION['usu_06'] = 'data:image/jpeg;base64,'.base64_encode($resultJSON['data'][0]['user_var06']);
