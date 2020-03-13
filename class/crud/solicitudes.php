@@ -97,7 +97,7 @@
 					'auditoria_fecha_hora'  			=> date('Y-m-d H:i:s'),
 					'auditoria_ip'          			=> $log_03
 				));
-/*					
+					
 			switch($work02){
 				case 'C':
 					$result	= post_curl('200', $dataJSON);
@@ -109,12 +109,12 @@
 					$result	= delete_curl('200/'.$work01, $dataJSON);
 					break;
 			}
-*/
+
 		}
 
-//		$result = json_decode($result, true);
-//		$code	= $result['code'];
-//		$message= $result['message'];
+		$result = json_decode($result, true);
+		$code	= $result['code'];
+		$message= $result['message'];
 	}
 
 	header('Location: ../../public/'.$work03.'code='.$code.'&msg='.$message);
