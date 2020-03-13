@@ -85,4 +85,5 @@ imagen/*
 
 #Plugins
 vendor/*
+uploads/*
 # End of https://www.gitignore.io/api/linux,macos,windows,visualstudiocode
