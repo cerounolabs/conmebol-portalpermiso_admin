@@ -202,7 +202,7 @@ function valSolicitud(){
 function getSolicitud(var01){
     var xJSON   = JSON.parse(localStorage.getItem('solicitudesJSON'))['data'];
     var html    = '';
- console.log(xJSON);
+ 
     xJSON.forEach(element => {
         if (element.solicitud_codigo == var01){
             html     =

@@ -11,6 +11,7 @@
 
     $workPage       = 'home.php?';
     $solictudesJSON = get_curl('200/solicitud/'.$codCar.'/'.$usu_05);
+
 ?>
 
 <!DOCTYPE html>
@@ -343,10 +344,8 @@
 
         if (localStorage.getItem('solicitudesJSON') === 'null' || localStorage.getItem('solicitudesJSON') === null ){
             localStorage.removeItem('solicitudesJSON');
-            localStorage.setItem('solicitudesJSON', JSON.stringify(<?php echo json_encode($solictudesJSON); ?>));
+            localStorage.setItem('solicitudesJSON', JSON.stringify(<?php echo json_encode(get_curl('200/solicitud/'.$codCar.'/'.$usu_05)); ?>));
         }
-
-        console.log('solicitudesJSON => '+ localStorage.getItem('solicitudesJSON'));
     </script>
 </body>
 </html>
