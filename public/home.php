@@ -345,6 +345,8 @@
             localStorage.removeItem('solicitudesJSON');
             localStorage.setItem('solicitudesJSON', JSON.stringify(<?php echo json_encode($solictudesJSON); ?>));
         }
+
+        console.log('solicitudesJSON => '+ localStorage.getItem('solicitudesJSON'));
     </script>
 </body>
 </html>
