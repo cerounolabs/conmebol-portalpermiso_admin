@@ -15,7 +15,7 @@
         return $result;
     }
 
-    function setEmail($var01){
+    function setEmail($var01_1, $var01_2){
         require 'vendor/autoload.php';
 
         $mensaje    = '
@@ -94,7 +94,7 @@
                     <thead>
                         <tr class="header-row">
                             <th colspan="2">
-                                <img class="header-img" src="http://permisos.conmebol.com/assets/images/logo_index.png" alt="Logo CONMEBOL">
+                                <img class="header-img" src="http://permisos.conmebol.com/assets/images/logo_notificacion.png" style="height: 50px;" alt="Logo CONMEBOL">
                             </th>
                         </tr>
                         <tr class="header-row">
@@ -207,18 +207,20 @@
             </body>
         </html>';
 
+
         $mail       = new PHPMailer(true);
         
         try {
-            $mail->SMTPDebug    = SMTP::DEBUG_SERVER;
+            $mail->SMTPDebug    = 0;
             $mail->isSMTP();
-            $mail->Host         = 'smpt.office365.com';
+            $mail->Host         = '40.97.100.2';
             $mail->Port         = 587;
-            $mail->SMTPSecure   = PHPMailer::ENCRYPTION_STARTTLS;
-            $mail->SMTPAuth     = true;
+            $mail->SMTPSecure   = 'tls';
+            $mail->SMTPAuth     = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Username     = 'notificaciones@conmebol.com';
             $mail->Password     = 'P3lota.2019';
-            $mail->SMTPOptions  = array(
+            
+            $mail->SMTPOptions = array(
                 'ssl' => array(
                     'verify_peer' => false,
                     'verify_peer_name' => false,
@@ -227,7 +229,7 @@
             );
 
             $mail->setFrom('notificaciones@conmebol.com', 'Solicitud de Permiso');
-            $mail->addAddress($var01);
+            $mail->addAddress($var01_1, $var01_2);
 
             $mail->isHTML(true);
             $mail->Subject      = 'Solicitud de Permiso';
