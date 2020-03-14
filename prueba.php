@@ -3,20 +3,11 @@
     use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
 
-    function getUUID(){
-        $data    = random_bytes(16);
-        $data[6] = chr(ord($data[6]) & 0x0f | 0x40); 
-        $data[8] = chr(ord($data[8]) & 0x3f | 0x80); 
-        return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
-    }
+    require 'class/function/function.php';
+    require 'vendor/autoload.php';
 
-    function getFechaHora(){
-        $result = date("YmdHis");
-        return $result;
-    }
-
-    function setEmail($var01){
-        require 'vendor/autoload.php';
+    $var01 = 'christian@cerouno.com.py';
+    $var02 = 'dgonzalez@conmebol.com';
 
         $mensaje    = '
         <!DOCTYPE html>
@@ -210,24 +201,18 @@
         $mail       = new PHPMailer(true);
         
         try {
-            $mail->SMTPDebug    = SMTP::DEBUG_SERVER;
+            $mail->SMTPDebug    = 2;
             $mail->isSMTP();
             $mail->Host         = 'smpt.office365.com';
             $mail->Port         = 587;
-            $mail->SMTPSecure   = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->SMTPSecure   = 'tls';
             $mail->SMTPAuth     = true;
             $mail->Username     = 'notificaciones@conmebol.com';
             $mail->Password     = 'P3lota.2019';
-            $mail->SMTPOptions  = array(
-                'ssl' => array(
-                    'verify_peer' => false,
-                    'verify_peer_name' => false,
-                    'allow_self_signed' => true
-                )
-            );
+            
 
             $mail->setFrom('notificaciones@conmebol.com', 'Solicitud de Permiso');
-            $mail->addAddress($var01);
+            $mail->addAddress($var01, $var02);
 
             $mail->isHTML(true);
             $mail->Subject      = 'Solicitud de Permiso';
@@ -237,5 +222,4 @@
         } catch (Exception $e) {
             echo "Mailer Error: {$mail->ErrorInfo}";
         }
-    }
 ?>
