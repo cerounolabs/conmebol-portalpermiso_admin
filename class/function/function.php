@@ -172,7 +172,7 @@
                                 ADJUNTO
                             </td>
                             <td class="body-content">
-                                <a href="http://permisos.conmebol.com/uploads/" target="_blank" title="Ver adjunto">VISUALIZAR DOCUMENTO RESPALDATORIO</a>
+                                <a href="http://permisos.conmebol.com/uploads/no_fount.jpg" target="_blank" title="Ver adjunto">VISUALIZAR DOCUMENTO RESPALDATORIO</a>
                             </td>
                         </tr>
         
