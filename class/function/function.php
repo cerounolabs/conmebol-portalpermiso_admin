@@ -15,7 +15,7 @@
         return $result;
     }
 
-    function setEmail($var01_1, $var01_2){
+    function setEmail($var00_1, $var00_2, $var01_1, $var01_2, $var02, $var03, $var04, $var05, $var06, $var07, $var08, $var09, $var10, $var11, $var12){
         require 'vendor/autoload.php';
 
         $mensaje    = '
@@ -109,7 +109,7 @@
                                 ESTADO
                             </td>
                             <td class="body-content">
-                                INGRESADO
+                                '.$var02.'
                             </td>
                         </tr>
         
@@ -118,7 +118,7 @@
                                 SOLICITUD
                             </td>
                             <td class="body-content">
-                                JUSTIFICACIÓN DE LLEGADAS TARDIAS
+                                '.$var03.'
                             </td>
                         </tr>
 
@@ -127,7 +127,7 @@
                                 COLABORADOR
                             </td>
                             <td class="body-content">
-                                CHRISTIAN EDUARDO ZELAYA SOSA
+                                '.$var04.'
                             </td>
                         </tr>
         
@@ -136,7 +136,7 @@
                                 FECHA INICIO
                             </td>
                             <td class="body-content">
-                                11/03/2020
+                                '.$var05.'
                             </td>
                         </tr>
         
@@ -145,7 +145,7 @@
                                 FECHA RETORNO
                             </td>
                             <td class="body-content">
-                                11/03/2020
+                                '.$var06.'
                             </td>
                         </tr>
         
@@ -154,7 +154,7 @@
                                 HORA INICIO
                             </td>
                             <td class="body-content">
-                                08:00
+                                '.$var07.'
                             </td>
                         </tr>
         
@@ -163,7 +163,7 @@
                                 HORA DESDE
                             </td>
                             <td class="body-content">
-                                18:00
+                                '.$var08.'
                             </td>
                         </tr>
         
@@ -172,7 +172,7 @@
                                 ADJUNTO
                             </td>
                             <td class="body-content">
-                                <a href="http://permisos.conmebol.com/uploads/no_fount.jpg" target="_blank" title="Ver adjunto">VISUALIZAR DOCUMENTO RESPALDATORIO</a>
+                                <a href="http://permisos.conmebol.com/uploads/'.$var09.'" target="_blank" title="Ver adjunto">VISUALIZAR DOCUMENTO RESPALDATORIO</a>
                             </td>
                         </tr>
         
@@ -181,7 +181,7 @@
                                 COMENTARIO SOLICITANTE
                             </td>
                             <td class="body-content">
-                                QUIERO SALIR DE VACACIONES
+                                '.$var10.'
                             </td>
                         </tr>
         
@@ -190,7 +190,7 @@
                                 COMENTARIO JEFATURA
                             </td>
                             <td class="body-content">
-                                OK
+                                '.$var11.'
                             </td>
                         </tr>
         
@@ -199,14 +199,13 @@
                                 COMENTARIO TH
                             </td>
                             <td class="body-content">
-                                QUIERO SALIR DE VACACIONES
+                                '.$var12.'
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </body>
         </html>';
-
 
         $mail       = new PHPMailer(true);
         
@@ -229,15 +228,18 @@
             );
 
             $mail->setFrom('notificaciones@conmebol.com', 'Solicitud de Permiso');
+            $mail->addAddress($var00_1, $var00_2);
             $mail->addAddress($var01_1, $var01_2);
+
+            if ($var02 == 'AUTORIZADO') {
+                $mail->addAddress('rrhh@conmebol.com', 'Talento Humano');
+            }
 
             $mail->isHTML(true);
             $mail->Subject      = 'Solicitud de Permiso';
             $mail->Body         = $mensaje;
-        
             $mail->Send();
         } catch (Exception $e) {
-            echo "Mailer Error: {$mail->ErrorInfo}";
         }
     }
 ?>
