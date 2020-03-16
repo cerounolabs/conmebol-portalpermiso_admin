@@ -28,7 +28,7 @@
 
 	$log_03         = $_SESSION['log_03'];
 
-	if (isset($_FILES['var08']) && empty($_FILES['var08'])) {
+	if (!empty($_FILES['var08']['tmp_name'])) {
 		$target_ban     = false;
         $target_msn     = '';
 		$target_nam     = getFechaHora();
@@ -97,7 +97,7 @@
 					'auditoria_fecha_hora'  			=> date('Y-m-d H:i:s'),
 					'auditoria_ip'          			=> $log_03
 				));
-					
+
 			switch($work02){
 				case 'C':
 					$result	= post_curl('200', $dataJSON);
