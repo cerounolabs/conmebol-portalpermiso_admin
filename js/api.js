@@ -190,9 +190,11 @@ function valSolicitud(){
 
             if (element.tipo_archivo_adjunto == 'S') {
                 inpAdj.readOnly     = true;
+                inpAdj.required     = true;
                 titAdj.style.display= '';
             } else {
                 inpAdj.readOnly     = false;
+                inpAdj.required     = false;
                 titAdj.style.display= 'none';
             }
         }
