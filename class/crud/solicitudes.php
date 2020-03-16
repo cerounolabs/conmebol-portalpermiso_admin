@@ -28,7 +28,7 @@
 
 	$log_03         = $_SESSION['log_03'];
 
-	if (isset($_FILES['var08'])) {
+	if (isset($_FILES['var08']) && empty($_FILES['var08'])) {
 		$target_ban     = false;
         $target_msn     = '';
 		$target_nam     = getFechaHora();
@@ -109,7 +109,6 @@
 					$result	= delete_curl('200/'.$work01, $dataJSON);
 					break;
 			}
-
 		}
 
 		$result = json_decode($result, true);
