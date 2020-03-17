@@ -267,5 +267,18 @@
             });
         });
     </script>
+
+<?php
+    if(isset($_GET['codigo'])){
+        if ($solictudesJSON['code'] == 200) {
+            foreach ($solictudesJSON['data'] as $key => $value) {
+                if ($_GET['codigo'] == $value['solicitud_codigo']) {
+                    setEmail($usu_15, $usu_01.' '.$usu_04, $usu_17, $usu_16, $value['solicitud_estado_nombre'], $value['tipo_permiso_nombre'], $value['solicitud_persona'], $value['solicitud_fecha_desde_2'], $value['solicitud_fecha_hasta_2'], $value['solicitud_hora_desde'], $value['solicitud_hora_hasta'], $value['solicitud_adjunto'], $value['solicitud_observacion_colaborador'], $value['solicitud_observacion_aprobador'], $value['solicitud_observacion_talento']);
+                }
+            }
+        }
+    }
+?>
+
 </body>
 </html>

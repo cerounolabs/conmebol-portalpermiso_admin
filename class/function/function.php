@@ -16,8 +16,9 @@
     }
 
     function setEmail($var00_1, $var00_2, $var01_1, $var01_2, $var02, $var03, $var04, $var05, $var06, $var07, $var08, $var09, $var10, $var11, $var12){
-        require 'vendor/autoload.php';
+        require '../vendor/autoload.php';
 
+        $result     = '';
         $mensaje    = '
         <!DOCTYPE html>
         <html lang="es">
@@ -240,6 +241,7 @@
             $mail->Body         = $mensaje;
             $mail->Send();
         } catch (Exception $e) {
+            $result = $mail->ErrorInfo;
         }
     }
 ?>

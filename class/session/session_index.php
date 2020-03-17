@@ -59,6 +59,9 @@
         $_SESSION['usu_12'] = $personJSON['data'][0]['superior_cargo_nombre'];
         $_SESSION['usu_13'] = $personJSON['data'][0]['cargo_codigo'];
         $_SESSION['usu_14'] = $personJSON['data'][0]['cargo_nombre'];
+        $_SESSION['usu_15'] = $personJSON['data'][0]['email'];
+        $_SESSION['usu_16'] = $personJSON['data'][0]['superior_manager'];
+        $_SESSION['usu_17'] = $personJSON['data'][0]['email'];
         
         $_SESSION['expire'] = time() + 1800;
         
