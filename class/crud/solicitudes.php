@@ -116,7 +116,11 @@
 		$message= $result['message'];
 	}
 
-	header('Location: ../../public/'.$work03.'code='.$code.'&msg='.$message);
+	if ($work02 == 'C') {
+		header('Location: ../../public/'.$work03.'code='.$code.'&msg='.$message.'&codigo='.$result['codigo']);
+	} else {
+		header('Location: ../../public/'.$work03.'code='.$code.'&msg='.$message);
+	}
 
 	ob_end_flush();
 ?>
