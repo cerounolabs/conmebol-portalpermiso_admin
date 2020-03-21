@@ -38,7 +38,11 @@
 		$target_file	= $target_nam.'.'.$imageFileType;
 
         if(isset($_POST['submit'])) {
-			$check = getimagesize($_FILES['var08']['tmp_name']);
+			if ($_FILES['var08']['type'] == 'application/pdf') {
+				$check = $_FILES['var08']['size'];
+			} else {
+				$check = getimagesize($_FILES['var08']['tmp_name']);
+			}
 
             if($check !== false) {
 				$target_ban = true;
