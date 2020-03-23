@@ -123,4 +123,72 @@
         </script>
 <?php
     }
+
+    switch ($_GET['tipo']) {
+        case 'SOLING':
+            if ($solictudesJSON['code'] == 200) {
+                foreach ($solictudesJSON['data'] as $solictudesKEY => $solictudesVALUE) {
+                    if ($solictudesVALUE['solicitud_codigo'] == $_GET['codigo']) {
+                        if (!empty($solictudesVALUE['solicitud_adjunto'])) {
+                            $adjunto = 'http://permisos.conmebol.com/uploads/'.$solictudesVALUE['solicitud_adjunto'];
+                        } else {
+                            $adjunto = 'javascript:void(0)';
+                        }
+                        
+                        setEmail(
+                            $usu_17,
+                            $usu_16, 
+                            $solictudesVALUE['solicitud_estado_nombre'], 
+                            $solictudesVALUE['tipo_permiso_nombre'], 
+                            $solictudesVALUE['solicitud_persona'], 
+                            $solictudesVALUE['solicitud_fecha_desde_2'], 
+                            $solictudesVALUE['solicitud_fecha_hasta_2'], 
+                            $solictudesVALUE['solicitud_hora_desde'], 
+                            $solictudesVALUE['solicitud_hora_hasta'], 
+                            $adjunto, 
+                            $solictudesVALUE['solicitud_observacion_colaborador'], 
+                            $solictudesVALUE['solicitud_observacion_aprobador'], 
+                            $solictudesVALUE['solicitud_observacion_talento']
+                        );
+
+                        break;
+                    }
+                }
+            }
+            
+            break;
+        
+        case 'SOLAUT':
+            if ($solictudesJSON['code'] == 200) {
+                foreach ($solictudesJSON['data'] as $solictudesKEY => $solictudesVALUE) {
+                    if ($solictudesVALUE['solicitud_codigo'] == $_GET['codigo']) {
+                        if (!empty($solictudesVALUE['solicitud_adjunto'])) {
+                            $adjunto = 'http://permisos.conmebol.com/uploads/'.$solictudesVALUE['solicitud_adjunto'];
+                        } else {
+                            $adjunto = 'javascript:void(0)';
+                        }
+                        
+                        setEmail(
+                            'rrhh@conmebol.com',
+                            'Talento Humano', 
+                            $solictudesVALUE['solicitud_estado_nombre'], 
+                            $solictudesVALUE['tipo_permiso_nombre'], 
+                            $solictudesVALUE['solicitud_persona'], 
+                            $solictudesVALUE['solicitud_fecha_desde_2'], 
+                            $solictudesVALUE['solicitud_fecha_hasta_2'], 
+                            $solictudesVALUE['solicitud_hora_desde'], 
+                            $solictudesVALUE['solicitud_hora_hasta'], 
+                            $adjunto, 
+                            $solictudesVALUE['solicitud_observacion_colaborador'], 
+                            $solictudesVALUE['solicitud_observacion_aprobador'], 
+                            $solictudesVALUE['solicitud_observacion_talento']
+                        );
+
+                        break;
+                    }
+                }
+            }
+            
+            break;
+    }
 ?>

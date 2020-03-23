@@ -15,7 +15,7 @@
         return $result;
     }
 
-    function setEmail($var00_1, $var00_2, $var01_1, $var01_2, $var02, $var03, $var04, $var05, $var06, $var07, $var08, $var09, $var10, $var11, $var12){
+    function setEmail($var00, $var01, $var02, $var03, $var04, $var05, $var06, $var07, $var08, $var09, $var10, $var11, $var12){
         require '../vendor/autoload.php';
 
         $result     = '';
@@ -173,7 +173,7 @@
                                 ADJUNTO
                             </td>
                             <td class="body-content">
-                                <a href="http://permisos.conmebol.com/uploads/'.$var09.'" target="_blank" title="Ver adjunto">VISUALIZAR DOCUMENTO RESPALDATORIO</a>
+                                <a href="'.$var09.'" target="_blank" title="Ver adjunto">VISUALIZAR DOCUMENTO RESPALDATORIO</a>
                             </td>
                         </tr>
         
@@ -229,12 +229,7 @@
             );
 
             $mail->setFrom('notificaciones@conmebol.com', 'Solicitud de Permiso');
-            $mail->addAddress($var00_1, $var00_2);
-            $mail->addAddress($var01_1, $var01_2);
-
-            if ($var02 == 'AUTORIZADO') {
-                $mail->addAddress('rrhh@conmebol.com', 'Talento Humano');
-            }
+            $mail->addAddress($var00, $var01);
 
             $mail->isHTML(true);
             $mail->Subject      = 'Solicitud de Permiso';

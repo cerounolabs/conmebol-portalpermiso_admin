@@ -51,7 +51,11 @@
 		$result1	= post_curl('200/detalle', $dataJSON);
 	}
 
-	header('Location: ../../public/'.$work03.'code='.$result['code'].'&msg='.$result['message']);
+	if ($val01 != 'P') {
+		header('Location: ../../public/'.$work03.'code='.$result['code'].'&msg='.$result['message'].'&tipo=SOLAUT&codigo='.$work01);
+	} else {
+		header('Location: ../../public/'.$work03.'code='.$result['code'].'&msg='.$result['message']);
+	}
 
 	ob_end_flush();
 ?>
