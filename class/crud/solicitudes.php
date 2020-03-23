@@ -121,7 +121,7 @@
 	}
 
 	if ($work02 == 'C') {
-		header('Location: ../../public/'.$work03.'code='.$code.'&msg='.$message.'&codigo='.$result['codigo']);
+		header('Location: ../../public/'.$work03.'code='.$code.'&msg='.$message.'&tipo=SOLING&codigo='.$result['codigo']);
 	} else {
 		header('Location: ../../public/'.$work03.'code='.$code.'&msg='.$message);
 	}
