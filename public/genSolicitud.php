@@ -35,7 +35,7 @@ function setEstado(rowSel, rowEst, rowAcc){
             break;
 
         case 4:
-            titEst  = 'Anular Solicitud';
+            titEst  = 'Rechazar Solicitud';
             colEst  = '#eb4c4c;';
             colBtn  = 'btn-danger';
             titMen  = 'FAVOR SOLICITAR A TALENTO HUMANO DICHA ANULACION. VERIFIQUE!';

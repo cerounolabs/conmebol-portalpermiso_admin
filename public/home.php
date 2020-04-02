@@ -107,7 +107,7 @@
                 if ($usu_05 == $solictudesVALUE['solicitud_documento'] || ($usu_13 != 21 && $usu_13 != 87 && $usu_13 != 109)) {
 ?>                                    
                                             <button type="button" class="btn btn-success btn-circle" id="<?php echo $solictudesVALUE['solicitud_codigo']; ?>" value="<?php echo $solictudesVALUE['solicitud_estado_codigo']; ?>" value2="<?php echo $solictudesVALUE['solicitud_documento']; ?>" title="Autorizar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 2, 1, '<?php echo trim($usu_05); ?>', <?php echo trim($usu_13); ?>);"><i class="fa fa-check"></i> </button>
-                                            <button type="button" class="btn btn-danger btn-circle" id="<?php echo $solictudesVALUE['solicitud_codigo']; ?>" value="<?php echo $solictudesVALUE['solicitud_estado_codigo']; ?>" value2="<?php echo $solictudesVALUE['solicitud_documento']; ?>" title="Anular Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 4, 1, '<?php echo trim($usu_05); ?>', <?php echo trim($usu_13); ?>);"><i class="fa fa-times"></i> </button>
+                                            <button type="button" class="btn btn-danger btn-circle" id="<?php echo $solictudesVALUE['solicitud_codigo']; ?>" value="<?php echo $solictudesVALUE['solicitud_estado_codigo']; ?>" value2="<?php echo $solictudesVALUE['solicitud_documento']; ?>" title="Rechazar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 4, 1, '<?php echo trim($usu_05); ?>', <?php echo trim($usu_13); ?>);"><i class="fa fa-times"></i> </button>
 <?php
                 }
 ?>
@@ -163,7 +163,7 @@
                                             <button type="button" class="btn btn-primary btn-circle" id="<?php echo $solictudesVALUE['solicitud_codigo']; ?>" value="<?php echo $solictudesVALUE['solicitud_estado_codigo']; ?>" value2="<?php echo $solictudesVALUE['solicitud_documento']; ?>" title="Ver Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="getSolicitud(this.id);"><i class="fa fa-eye"></i> </button>
                                             <button type="button" class="btn btn-info btn-circle" id="<?php echo $solictudesVALUE['solicitud_codigo']; ?>" value="<?php echo $solictudesVALUE['solicitud_estado_codigo']; ?>" value2="<?php echo $solictudesVALUE['solicitud_documento']; ?>" title="ReIngresar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 1, 2, '<?php echo trim($usu_05); ?>', <?php echo trim($usu_13); ?>);"><i class="ti-reload"></i> </button>
                                             <button type="button" class="btn btn-warning btn-circle" id="<?php echo $solictudesVALUE['solicitud_codigo']; ?>" value="<?php echo $solictudesVALUE['solicitud_estado_codigo']; ?>" value2="<?php echo $solictudesVALUE['solicitud_documento']; ?>" title="Autorizar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 3, 2, '<?php echo trim($usu_05); ?>', <?php echo trim($usu_13); ?>);"><i class="fa fa-check"></i> </button>
-                                            <button type="button" class="btn btn-danger btn-circle" id="<?php echo $solictudesVALUE['solicitud_codigo']; ?>" value="<?php echo $solictudesVALUE['solicitud_estado_codigo']; ?>" value2="<?php echo $solictudesVALUE['solicitud_documento']; ?>" title="Anular Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 4, 2, '<?php echo trim($usu_05); ?>', <?php echo trim($usu_13); ?>);"><i class="fa fa-times"></i> </button>
+                                            <button type="button" class="btn btn-danger btn-circle" id="<?php echo $solictudesVALUE['solicitud_codigo']; ?>" value="<?php echo $solictudesVALUE['solicitud_estado_codigo']; ?>" value2="<?php echo $solictudesVALUE['solicitud_documento']; ?>" title="Rechazar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 4, 2, '<?php echo trim($usu_05); ?>', <?php echo trim($usu_13); ?>);"><i class="fa fa-times"></i> </button>
                                         </div>
                                     </div>
                                 </div>
@@ -242,7 +242,7 @@
                     <div class="col-sm-12 col-md-6 col-lg-3">
                         <div class="card bg-light-danger">
                             <div class="card-body">
-                                <h4 class="card-title">SOLICITUDES ANULADAS</h4>
+                                <h4 class="card-title">SOLICITUDES RECHAZADAS</h4>
                             </div>
                             <div class="comment-widgets scrollable" style="height:350px;">
 <?php
