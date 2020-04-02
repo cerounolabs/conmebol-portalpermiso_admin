@@ -10,7 +10,7 @@
     }
 
     $workPage       = 'home.php?';
-    $solictudesJSON = get_curl('200/solicitud/'.$codCar.'/'.$usu_05);
+    $solictudesJSON = get_curl('200/solicitud/'.$codCar.'/'.$usu_05.'/T');
 
 ?>
 

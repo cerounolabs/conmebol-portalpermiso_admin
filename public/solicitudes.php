@@ -13,8 +13,54 @@
         $work01         = 1;
     }
 
-    $workPage       = 'solicitudes.php?tipo='. $work01.'&';
-    $solictudesJSON = get_curl('200/solicitud/'.$work01.'/'.$usu_05);
+    if(isset($_GET['sol'])){
+        $work02         = $_GET['sol'];
+        $workPage       = 'solicitudes.php?tipo='.$work01.'&sol='.$work02;
+    } else {
+        $work02         = 'T';
+        $workPage       = 'solicitudes.php?tipo='.$work01;
+    }
+
+    switch ($work02) {
+        case 'I':
+            $col07 = 'true';
+            $col08 = 'false';
+            $col09 = 'false';
+            break;
+
+        case 'A':
+            $col07 = 'true';
+            $col08 = 'true';
+            $col09 = 'false';
+            break;
+        
+        case 'P':
+            $col07 = 'true';
+            $col08 = 'true';
+            $col09 = 'true';
+            break;
+
+
+        case 'C':
+            $col07 = 'true';
+            $col08 = 'true';
+            $col09 = 'true';
+            break;
+
+        case 'T':
+            $col07 = 'true';
+            $col08 = 'true';
+            $col09 = 'true';
+            break;
+
+        case 'PC':
+            $col07 = 'true';
+            $col08 = 'true';
+            $col09 = 'true';
+            break;
+    }
+    
+    $solictudesJSON = get_curl('200/solicitud/'.$work01.'/'.$usu_05.'/'.$work02);
 ?>
 
 <!DOCTYPE html>
@@ -106,8 +152,8 @@
                                                 <th class="border-top-0">COLABORADOR</th>
                                                 <th class="border-top-0">TIPO</th>
                                                 <th class="border-top-0">SOLICITANTE / ANULADO POR</th>
-                                                <th class="border-top-0">AUTORIZADOR / ANULADO POR</th>
-                                                <th class="border-top-0">APROBADOR / ANULADO POR</th>
+                                                <th class="border-top-0">AUTORIZADO / ANULADO POR</th>
+                                                <th class="border-top-0">APROBADO / ANULADO POR</th>
                                                 <th class="border-top-0"></th>
                                             </tr>
                                         </thead>
@@ -206,9 +252,9 @@
                     { targets			: [4],	visible : false,searchable : false,	orderData : [4, 0] },
                     { targets			: [5],	visible : true,	searchable : true,	orderData : [5, 0] },
                     { targets			: [6],	visible : true,	searchable : true,	orderData : [6, 0] },
-                    { targets			: [7],	visible : true,	searchable : true,	orderData : [7, 0] },
-                    { targets			: [8],	visible : true,	searchable : true,	orderData : [8, 0] },
-                    { targets			: [9],	visible : true,	searchable : true,	orderData : [9, 0] },
+                    { targets			: [7],	visible : <?php echo $col07; ?>,	searchable : <?php echo $col07; ?>,	orderData : [7, 0] },
+                    { targets			: [8],	visible : <?php echo $col08; ?>,	searchable : <?php echo $col08; ?>,	orderData : [8, 0] },
+                    { targets			: [9],	visible : <?php echo $col09; ?>,	searchable : <?php echo $col09; ?>,	orderData : [9, 0] },
                     { targets			: [10],	visible : true,	searchable : true,	orderData : [10, 0] }
                 ],
                 columns		: [
