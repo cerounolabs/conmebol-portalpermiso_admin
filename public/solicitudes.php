@@ -26,18 +26,21 @@
             $col07 = 'true';
             $col08 = 'false';
             $col09 = 'false';
+            $titSol= 'Solicitudes Ingresadas';
             break;
 
         case 'A':
             $col07 = 'true';
             $col08 = 'true';
             $col09 = 'false';
+            $titSol= 'Solicitudes Autorizadas';
             break;
         
         case 'P':
             $col07 = 'true';
             $col08 = 'true';
             $col09 = 'true';
+            $titSol= 'Solicitudes Aprobadas';
             break;
 
 
@@ -45,18 +48,31 @@
             $col07 = 'true';
             $col08 = 'true';
             $col09 = 'true';
+            $titSol= 'Solicitudes Rechazadas';
             break;
 
         case 'T':
             $col07 = 'true';
             $col08 = 'true';
             $col09 = 'true';
+            $titSol= 'Todas las Solicitudes';
             break;
 
         case 'PC':
             $col07 = 'true';
             $col08 = 'true';
             $col09 = 'true';
+            $titSol= 'Solicitudes Aprobadas / Rechazadas por TH';
+            break;
+    }
+
+    switch ($work01) {
+        case 1:
+            $titSol= 'Mis Solicitudes';
+            break;
+        
+        case 2:
+            $titSol= 'Solicitudes de mis Colaboradores';
             break;
     }
     
@@ -132,7 +148,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="row">
-                                    <h4 class="col-10 card-title">Solicitudes</h4>
+                                    <h4 class="col-10 card-title"><?php echo $titSol; ?></h4>
                                     <h4 class="col-2 card-title" style="text-align: right;">
                                         <a class="btn btn-info" style="background-color:#163562; border-color:#163562;"  href="javascript:void(0)" role="button" data-toggle="modal" data-target="#modaldiv" title="Nueva Solicitud" onclick="setSolicitud('<?php echo $workPage; ?>');"><i class="ti-plus"></i></a>
                                 	</h4>
@@ -279,7 +295,7 @@
 <?php
     if ($work01 == 1) {
 ?>
-                    { render			: function (data, type, full, meta) {return '<button type="button" class="btn btn-primary btn-circle" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Visualizar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="getSolicitud(this.id);"><i class="fa fa-eye"></i></button>&nbsp;<button type="button" class="btn btn-danger btn-circle" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Anular Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 4, 1, <?php echo trim($usu_05); ?>, <?php echo trim($usu_13); ?>);"><i class="fa fa-times"></i></button>';}},
+                    { render			: function (data, type, full, meta) {return '<button type="button" class="btn btn-primary btn-circle" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Visualizar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="getSolicitud(this.id);"><i class="fa fa-eye"></i></button>&nbsp;<button type="button" class="btn btn-danger btn-circle" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Rechazar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 4, 1, <?php echo trim($usu_05); ?>, <?php echo trim($usu_13); ?>);"><i class="fa fa-times"></i></button>';}},
 <?php
     } elseif ($work01 == 2) {
 ?>
@@ -287,7 +303,7 @@
                         var btn = '<button type="button" class="btn btn-primary btn-circle" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Visualizar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="getSolicitud(this.id);"><i class="fa fa-eye"></i></button>';
 
                         if (full.solicitud_estado_codigo == 'I') {
-                            btn = btn + '&nbsp;<button type="button" class="btn btn-success btn-circle" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Autorizar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 2, 1, <?php echo trim($usu_05); ?>, <?php echo trim($usu_13); ?>);"><i class="fa fa-check"></i></button>&nbsp;<button type="button" class="btn btn-danger btn-circle" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Anular Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 4, 1, <?php echo trim($usu_05); ?>, <?php echo trim($usu_13); ?>);"><i class="fa fa-times"></i></button>';
+                            btn = btn + '&nbsp;<button type="button" class="btn btn-success btn-circle" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Autorizar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 2, 1, <?php echo trim($usu_05); ?>, <?php echo trim($usu_13); ?>);"><i class="fa fa-check"></i></button>&nbsp;<button type="button" class="btn btn-danger btn-circle" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Rechazar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 4, 1, <?php echo trim($usu_05); ?>, <?php echo trim($usu_13); ?>);"><i class="fa fa-times"></i></button>';
                         }
                             
                         return btn;
@@ -299,7 +315,7 @@
                         var btn = '<button type="button" class="btn btn-primary btn-circle" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Visualizar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="getSolicitud(this.id);"><i class="fa fa-eye"></i></button>';
 
                         if (full.solicitud_estado_codigo == 'A') {
-                            btn = btn + '&nbsp;<button type="button" class="btn btn-info btn-circle" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Re-Ingresar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 1, 1, <?php echo trim($usu_05); ?>, <?php echo trim($usu_13); ?>);"><i class="ti-reload"></i></button>&nbsp;<button type="button" class="btn btn-warning btn-circle" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Aprobar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 3, 1, <?php echo trim($usu_05); ?>, <?php echo trim($usu_13); ?>);"><i class="fa fa-check"></i></button>&nbsp;<button type="button" class="btn btn-danger btn-circle" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Anular Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 4, 1, <?php echo trim($usu_05); ?>, <?php echo trim($usu_13); ?>);"><i class="fa fa-times"></i></button>';
+                            btn = btn + '&nbsp;<button type="button" class="btn btn-info btn-circle" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Re-Ingresar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 1, 1, <?php echo trim($usu_05); ?>, <?php echo trim($usu_13); ?>);"><i class="ti-reload"></i></button>&nbsp;<button type="button" class="btn btn-warning btn-circle" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Aprobar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 3, 1, <?php echo trim($usu_05); ?>, <?php echo trim($usu_13); ?>);"><i class="fa fa-check"></i></button>&nbsp;<button type="button" class="btn btn-danger btn-circle" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Rechazar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 4, 1, <?php echo trim($usu_05); ?>, <?php echo trim($usu_13); ?>);"><i class="fa fa-times"></i></button>';
                         } else if (full.solicitud_estado_codigo == 'C') {
                             btn = btn + '&nbsp;<button type="button" class="btn btn-info btn-circle" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Re-Ingresar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 1, 1, <?php echo trim($usu_05); ?>, <?php echo trim($usu_13); ?>);"><i class="ti-reload"></i></button>';
                         }
