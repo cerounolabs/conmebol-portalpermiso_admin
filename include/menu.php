@@ -165,11 +165,33 @@
                            	</a>
 							<ul aria-expanded="false" class="collapse first-level">
                             	<li class="sidebar-item">
-                               		<a href="../public/solicitudes.php?tipo=3" class="sidebar-link">
+                               		<a href="../public/solicitudes.php?tipo=3&sol=I" class="sidebar-link">
                                			<i class="mdi mdi-reporte"></i>
-                               			<span class="hide-menu"> Solicitudes </span>
+                               			<span class="hide-menu"> Solicitudes Ingresadas </span>
                                     </a>
                                	</li>
+
+                                <li class="sidebar-item">
+                               		<a href="../public/solicitudes.php?tipo=3&sol=A" class="sidebar-link">
+                               			<i class="mdi mdi-reporte"></i>
+                               			<span class="hide-menu"> Solicitudes Autorizadas </span>
+                                    </a>
+                               	</li>
+
+                                <li class="sidebar-item">
+                               		<a href="../public/solicitudes.php?tipo=3&sol=PC" class="sidebar-link">
+                               			<i class="mdi mdi-reporte"></i>
+                               			<span class="hide-menu"> Solicitudes Aprobadas<br> / Rechazadas por TH </span>
+                                    </a>
+                               	</li>
+
+                                <li class="sidebar-item">
+                               		<a href="../public/solicitudes.php?tipo=3&sol=T" class="sidebar-link">
+                               			<i class="mdi mdi-reporte"></i>
+                               			<span class="hide-menu"> Todas las solicitudes </span>
+                                    </a>
+                               	</li>
+
                                 <li class="sidebar-item">
                                		<a href="../public/exporta_axis.php" class="sidebar-link">
                                			<i class="mdi mdi-reporte"></i>

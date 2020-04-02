@@ -81,8 +81,8 @@
 								</div>
                                 <div class="table-responsive">
                                     <table id="tableLoad" class="table v-middle" style="width: 100%;">
-                                        <tr class="bg-conmebol" style="text-align:center;">
-                                            <tr class="bg-light">
+                                        <thead id="tableCodigo" class="">
+                                            <tr class="bg-conmebol" style="text-align:center;">
                                                 <th class="border-top-0">C&Oacute;DIGO 1</th>
                                                 <th class="border-top-0">C&Oacute;DIGO 2</th>
                                                 <th class="border-top-0">C&Oacute;DIGO 3</th>
