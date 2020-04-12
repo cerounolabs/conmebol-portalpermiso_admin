@@ -22,7 +22,7 @@
         ->setCategory('CONMEBOL - Sistema Permiso expor XLS');
 
     $fileType       = $_GET['filetype'];
-    $solDetalleJSON = get_curl('200/detalle/solicitud/'.$fileType);
+    $solDetalleJSON = get_curl('200/exportar/tipo/'.$fileType.'/P');
 
     switch ($fileType) {
         case 'P':

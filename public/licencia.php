@@ -137,6 +137,15 @@
     include '../include/footer.php';
 ?>
 
+    <script src="../js/api.js"></script>
+
+    <script>
+        if (localStorage.getItem('tipoLicenciaJSON') === 'null' || localStorage.getItem('tipoLicenciaJSON') === null ){
+            localStorage.removeItem('tipoLicenciaJSON');
+            localStorage.setItem('tipoLicenciaJSON', JSON.stringify(<?php echo json_encode(get_curl('000/licencia')); ?>));
+        }
+    </script>
+
     <script src="../js/licencia.js"></script>
 </body>
 </html>

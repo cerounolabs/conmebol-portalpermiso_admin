@@ -76,7 +76,7 @@
             break;
     }
     
-    $solictudesJSON = get_curl('200/solicitud/'.$work01.'/'.$usu_05.'/'.$work02);
+    $solictudesJSON = get_curl('200/solicitudes/'.$work01.'/'.$usu_05.'/'.$work02);
 ?>
 
 <!DOCTYPE html>
@@ -225,7 +225,7 @@
     <script>
         if (localStorage.getItem('solicitudJSON') === 'null' || localStorage.getItem('solicitudJSON') === null ){
             localStorage.removeItem('solicitudJSON');
-            localStorage.setItem('solicitudJSON', JSON.stringify(<?php echo json_encode(get_curl('100')); ?>));
+            localStorage.setItem('solicitudJSON', JSON.stringify(<?php echo json_encode(get_curl('100/solicitud')); ?>));
         }
 
         if (localStorage.getItem('solicitudesJSON') === 'null' || localStorage.getItem('solicitudesJSON') === null ){

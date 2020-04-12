@@ -137,6 +137,15 @@
     include '../include/footer.php';
 ?>
 
+    <script src="../js/api.js"></script>
+
+    <script>
+        if (localStorage.getItem('tipoDepartamentoJSON') === 'null' || localStorage.getItem('tipoDepartamentoJSON') === null ){
+            localStorage.removeItem('tipoDepartamentoJSON');
+            localStorage.setItem('tipoDepartamentoJSON', JSON.stringify(<?php echo json_encode(get_curl('000/departamento')); ?>));
+        }
+    </script>
+
     <script src="../js/departamento.js"></script>
 </body>
 </html>

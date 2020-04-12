@@ -104,13 +104,13 @@
 
 			switch($work02){
 				case 'C':
-					$result	= post_curl('200', $dataJSON);
+					$result	= post_curl('200/solicitudes', $dataJSON);
 					break;
 				case 'U':
-					$result	= put_curl('200/'.$work01, $dataJSON);
+					$result	= put_curl('200/solicitudes/'.$work01, $dataJSON);
 					break;
 				case 'D':
-					$result	= delete_curl('200/'.$work01, $dataJSON);
+					$result	= delete_curl('200/solicitudes/'.$work01, $dataJSON);
 					break;
 			}
 		}

@@ -34,7 +34,7 @@
                 'auditoria_ip'          			=> $log_03
 			));
 
-		$result	= put_curl('200/'.$work01, $dataJSON);
+		$result	= put_curl('200/solicitudes/'.$work01, $dataJSON);
 	}
 
 	$result		= json_decode($result, true);
@@ -48,7 +48,7 @@
 				'auditoria_ip'          			=> $log_03
 			));
 	
-		$result1	= post_curl('200/detalle', $dataJSON);
+		$result1	= post_curl('200/exportar', $dataJSON);
 	}
 
 	if ($val01 != 'P') {
