@@ -3,7 +3,7 @@
     require '../class/function/function.php';
     require '../class/session/session_system.php';
 
-    if ($usu_13 != 70 && $usu_13 != 71){
+    if ($usu_13 != 71 && $usu_13 != 72 && $usu_13 != 73){
         header('Location: ../public/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
     }
 ?>
