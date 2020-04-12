@@ -345,6 +345,234 @@ function getSolicitud(var01){
     $("#modalcontent").append(html);
 }
 
+function getTipoGerencia(){
+    var xJSON = JSON.parse(localStorage.getItem('tipoGerenciaJSON'));
+    var xDATA = [];
+       
+    if (xJSON['code'] == 200){
+        xJSON['data'].forEach(element => {
+            xDATA.push(element);
+        });
+    }
+
+    return xDATA; 
+}
+
+function getTipoDepartamento(){
+    var xJSON = JSON.parse(localStorage.getItem('tipoDepartamentoJSON'));
+    var xDATA = [];
+       
+    if (xJSON['code'] == 200){
+        xJSON['data'].forEach(element => {
+            xDATA.push(element);
+        });
+    }
+
+    return xDATA; 
+}
+
+function getTipoCargo(){
+    var xJSON = JSON.parse(localStorage.getItem('tipoCargoJSON'));
+    var xDATA = [];
+       
+    if (xJSON['code'] == 200){
+        xJSON['data'].forEach(element => {
+            xDATA.push(element);
+        });
+    }
+
+    return xDATA; 
+}
+
+function getTipoLicencia(){
+    var xJSON = JSON.parse(localStorage.getItem('tipoLicenciaJSON'));
+    var xDATA = [];
+       
+    if (xJSON['code'] == 200){
+        xJSON['data'].forEach(element => {
+            xDATA.push(element);
+        });
+    }
+
+    return xDATA; 
+}
+
+function getTipoPermiso(){
+    var xJSON = JSON.parse(localStorage.getItem('tipoPermisoJSON'));
+    var xDATA = [];
+       
+    if (xJSON['code'] == 200){
+        xJSON['data'].forEach(element => {
+            xDATA.push(element);
+        });
+    }
+
+    return xDATA; 
+}
+
+function getTipoInasistencia(){
+    var xJSON = JSON.parse(localStorage.getItem('tipoInasistenciaJSON'));
+    var xDATA = [];
+       
+    if (xJSON['code'] == 200){
+        xJSON['data'].forEach(element => {
+            xDATA.push(element);
+        });
+    }
+
+    return xDATA; 
+}
+
+function getTipoSolicitud(){
+    var xJSON = JSON.parse(localStorage.getItem('tipoSolicitudJSON'));
+    var xDATA = [];
+       
+    if (xJSON['code'] == 200){
+        xJSON['data'].forEach(element => {
+            xDATA.push(element);
+        });
+    }
+
+    return xDATA; 
+}
+
+function getTipoSolicitudId(codigo){
+    var xHTTP	= new XMLHttpRequest();
+    var xURL	= urlBASE + '/100/solicitud/' + codigo;
+    
+    xHTTP.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var xJSON   = JSON.parse(this.responseText);
+            var estado  = '';
+
+            if (xJSON['data'][0]['tipo_estado_codigo'] == 'A'){
+                estado  =                     
+                '                               <option value="A" selected>ACTIVO</option>'+
+                '                               <option value="I">INACTIVO</option>';
+            } else {
+                estado  =                     
+                '                               <option value="A">ACTIVO</option>'+
+                '                               <option value="I" selected>INACTIVO</option>';
+            }
+
+            if (xJSON['data'][0]['tipo_dia_corrido'] == 'S'){
+                diaCorrido  =                     
+                '                               <option value="S" selected>SI</option>'+
+                '                               <option value="N">NO</option>';
+            } else {
+                diaCorrido  =                     
+                '                               <option value="S">SI</option>'+
+                '                               <option value="N" selected>NO</option>';
+            }
+
+            if (xJSON['data'][0]['tipo_dia_unidad'] == 'D'){
+                tipoUnidad  =                     
+                '                               <option value="D" selected>DÍA</option>'+
+                '                               <option value="H">HORA</option>';
+            } else {
+                tipoUnidad   =                     
+                '                               <option value="D">DÍA</option>'+
+                '                               <option value="H" selected>HORA</option>';
+            }
+
+            if (xJSON['data'][0]['tipo_archivo_adjunto'] == 'S'){
+                tipoAdjunto =                     
+                '                               <option value="S" selected>SI</option>'+
+                '                               <option value="N">NO</option>';
+            } else {
+                tipoAdjunto =                     
+                '                               <option value="S">SI</option>'+
+                '                               <option value="N" selected>NO</option>';
+            }
+
+            var html    =
+            '<div class="modal-content">'+
+            '   <form id="form" data-parsley-validate method="post" action="../class/crud/solicitud.php">'+
+            '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
+            '		    <h4 class="modal-title" id="vcenter"> Solicitud </h4>'+
+            '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+            '	    </div>'+
+            '	    <div class="modal-body" >'+
+            '           <div class="form-group">'+
+            '               <input id="workCodigo" name="workCodigo" value="'+xJSON['data'][0]['tipo_permiso_codigo']+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+            '               <input id="workModo" name="workModo" value="U" class="form-control" type="hidden" placeholder="Modo" required readonly>'+
+            '           </div>'+
+            '           <div class="row pt-3">'+
+            '               <div class="col-sm-12 col-md-3">'+
+            '                   <div class="form-group">'+
+            '                       <label for="var01">ESTADO</label>'+
+            '                       <select id="var01" name="var01" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
+            '                           <optgroup label="Estado">'+estado+
+            '                           </optgroup>'+
+            '                       </select>'+
+            '                   </div>'+
+            '               </div>'+
+            '               <div class="col-sm-12 col-md-3">'+
+            '                   <div class="form-group">'+
+            '                       <label for="var02">ORDEN</label>'+
+            '                       <input id="var02" name="var02" class="form-control" value="'+xJSON['data'][0]['tipo_orden_numero']+'" type="number" style="text-transform:uppercase; height:40px;" placeholder="ORDEN">'+
+            '                   </div>'+
+            '               </div>'+
+            '               <div class="col-sm-12 col-md-3">'+
+            '                   <div class="form-group">'+
+            '                       <label for="var03">DÍA LIMITE</label>'+
+            '                       <input id="var03" name="var03" class="form-control" value="'+xJSON['data'][0]['tipo_orden_numero']+'" type="number" style="text-transform:uppercase; height:40px;" placeholder="ORDEN">'+
+            '                   </div>'+
+            '               </div>'+
+            '               <div class="col-sm-12 col-md-3">'+
+            '                   <div class="form-group">'+
+            '                       <label for="var04">DÍA CORRIDO</label>'+
+            '                       <select id="var04" name="var04" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
+            '                           <optgroup label="Corrido">'+diaCorrido+
+            '                           </optgroup>'+
+            '                       </select>'+
+            '                   </div>'+
+            '               </div>'+
+            '               <div class="col-sm-12 col-md-3">'+
+            '                   <div class="form-group">'+
+            '                       <label for="var05">DÍA UNIDAD</label>'+
+            '                       <select id="var05" name="var05" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
+            '                           <optgroup label="Corrido">'+tipoUnidad+
+            '                           </optgroup>'+
+            '                       </select>'+
+            '                   </div>'+
+            '               </div>'+
+            '               <div class="col-sm-12 col-md-3">'+
+            '                   <div class="form-group">'+
+            '                       <label for="var06">ARCHIVO ADJUNTO</label>'+
+            '                       <select id="var06" name="var06" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
+            '                           <optgroup label="Corrido">'+tipoAdjunto+
+            '                           </optgroup>'+
+            '                       </select>'+
+            '                   </div>'+
+            '               </div>'+
+            '           </div>'+
+            '           <div class="row pt-3">'+
+            '                <div class="col-sm-12">'+
+            '                    <div class="form-group">'+
+            '                        <label for="var07">OBSERVACI&Oacute;N</label>'+
+            '                        <textarea id="var07" name="var07" class="form-control" rows="3" style="text-transform:uppercase;">'+xJSON['data'][0]['tipo_observacion']+'</textarea>'+
+            '                    </div>'+
+            '                </div>'+
+            '           </div>'+
+            '	    </div>'+
+            '	    <div class="modal-footer">'+
+            '           <button type="submit" class="btn btn-info">Guardar</button>'+
+            '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+            '	    </div>'+
+            '   </form>'+
+            '</div>';
+            $("#modalcontent").empty();
+            $("#modalcontent").append(html);
+        } 
+    };
+    
+    xHTTP.open('GET', xURL);
+    xHTTP.setRequestHeader('Content-type', 'application/json;charset=UTF-8');
+    xHTTP.setRequestHeader('Authorization', 'Basic dXNlcl9zZmhvbG94Om5zM3JfNWZoMCEweA==');
+    xHTTP.send();
+}
+
 function setSolicitud(var01){
     var xJSON   = JSON.parse(localStorage.getItem('solicitudJSON'))['data'];
     var xSelect = '';
@@ -737,232 +965,4 @@ function setEstado(rowSel, rowEst, rowAcc, rowFun, rowCar){
 
     $("#modalcontent").empty();
     $("#modalcontent").append(html);
-}
-
-function getTipoGerencia(){
-    var xJSON = JSON.parse(localStorage.getItem('tipoGerenciaJSON'));
-    var xDATA = [];
-       
-    if (xJSON['code'] == 200){
-        xJSON['data'].forEach(element => {
-            xDATA.push(element);
-        });
-    }
-
-    return xDATA; 
-}
-
-function getTipoDepartamento(){
-    var xJSON = JSON.parse(localStorage.getItem('tipoDepartamentoJSON'));
-    var xDATA = [];
-       
-    if (xJSON['code'] == 200){
-        xJSON['data'].forEach(element => {
-            xDATA.push(element);
-        });
-    }
-
-    return xDATA; 
-}
-
-function getTipoCargo(){
-    var xJSON = JSON.parse(localStorage.getItem('tipoCargoJSON'));
-    var xDATA = [];
-       
-    if (xJSON['code'] == 200){
-        xJSON['data'].forEach(element => {
-            xDATA.push(element);
-        });
-    }
-
-    return xDATA; 
-}
-
-function getTipoLicencia(){
-    var xJSON = JSON.parse(localStorage.getItem('tipoLicenciaJSON'));
-    var xDATA = [];
-       
-    if (xJSON['code'] == 200){
-        xJSON['data'].forEach(element => {
-            xDATA.push(element);
-        });
-    }
-
-    return xDATA; 
-}
-
-function getTipoPermiso(){
-    var xJSON = JSON.parse(localStorage.getItem('tipoPermisoJSON'));
-    var xDATA = [];
-       
-    if (xJSON['code'] == 200){
-        xJSON['data'].forEach(element => {
-            xDATA.push(element);
-        });
-    }
-
-    return xDATA; 
-}
-
-function getTipoInasistencia(){
-    var xJSON = JSON.parse(localStorage.getItem('tipoInasistenciaJSON'));
-    var xDATA = [];
-       
-    if (xJSON['code'] == 200){
-        xJSON['data'].forEach(element => {
-            xDATA.push(element);
-        });
-    }
-
-    return xDATA; 
-}
-
-function getTipoSolicitud(){
-    var xJSON = JSON.parse(localStorage.getItem('tipoSolicitudJSON'));
-    var xDATA = [];
-       
-    if (xJSON['code'] == 200){
-        xJSON['data'].forEach(element => {
-            xDATA.push(element);
-        });
-    }
-
-    return xDATA; 
-}
-
-function getTipoSolicitudId(codigo){
-    var xHTTP	= new XMLHttpRequest();
-    var xURL	= urlBASE + '/100/solicitud/' + codigo;
-    
-    xHTTP.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var xJSON   = JSON.parse(this.responseText);
-            var estado  = '';
-
-            if (xJSON['data'][0]['tipo_estado_codigo'] == 'A'){
-                estado  =                     
-                '                               <option value="A" selected>ACTIVO</option>'+
-                '                               <option value="I">INACTIVO</option>';
-            } else {
-                estado  =                     
-                '                               <option value="A">ACTIVO</option>'+
-                '                               <option value="I" selected>INACTIVO</option>';
-            }
-
-            if (xJSON['data'][0]['tipo_dia_corrido'] == 'S'){
-                diaCorrido  =                     
-                '                               <option value="S" selected>SI</option>'+
-                '                               <option value="N">NO</option>';
-            } else {
-                diaCorrido  =                     
-                '                               <option value="S">SI</option>'+
-                '                               <option value="N" selected>NO</option>';
-            }
-
-            if (xJSON['data'][0]['tipo_dia_unidad'] == 'D'){
-                tipoUnidad  =                     
-                '                               <option value="D" selected>DÍA</option>'+
-                '                               <option value="H">HORA</option>';
-            } else {
-                tipoUnidad   =                     
-                '                               <option value="D">DÍA</option>'+
-                '                               <option value="H" selected>HORA</option>';
-            }
-
-            if (xJSON['data'][0]['tipo_archivo_adjunto'] == 'S'){
-                tipoAdjunto =                     
-                '                               <option value="S" selected>SI</option>'+
-                '                               <option value="N">NO</option>';
-            } else {
-                tipoAdjunto =                     
-                '                               <option value="S">SI</option>'+
-                '                               <option value="N" selected>NO</option>';
-            }
-
-            var html    =
-            '<div class="modal-content">'+
-            '   <form id="form" data-parsley-validate method="post" action="../class/crud/solicitud.php">'+
-            '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
-            '		    <h4 class="modal-title" id="vcenter"> Solicitud </h4>'+
-            '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
-            '	    </div>'+
-            '	    <div class="modal-body" >'+
-            '           <div class="form-group">'+
-            '               <input id="workCodigo" name="workCodigo" value="'+xJSON['data'][0]['tipo_permiso_codigo']+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-            '               <input id="workModo" name="workModo" value="U" class="form-control" type="hidden" placeholder="Modo" required readonly>'+
-            '           </div>'+
-            '           <div class="row pt-3">'+
-            '               <div class="col-sm-12 col-md-3">'+
-            '                   <div class="form-group">'+
-            '                       <label for="var01">ESTADO</label>'+
-            '                       <select id="var01" name="var01" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
-            '                           <optgroup label="Estado">'+estado+
-            '                           </optgroup>'+
-            '                       </select>'+
-            '                   </div>'+
-            '               </div>'+
-            '               <div class="col-sm-12 col-md-3">'+
-            '                   <div class="form-group">'+
-            '                       <label for="var02">ORDEN</label>'+
-            '                       <input id="var02" name="var02" class="form-control" value="'+xJSON['data'][0]['tipo_orden_numero']+'" type="number" style="text-transform:uppercase; height:40px;" placeholder="ORDEN">'+
-            '                   </div>'+
-            '               </div>'+
-            '               <div class="col-sm-12 col-md-3">'+
-            '                   <div class="form-group">'+
-            '                       <label for="var03">DÍA LIMITE</label>'+
-            '                       <input id="var03" name="var03" class="form-control" value="'+xJSON['data'][0]['tipo_orden_numero']+'" type="number" style="text-transform:uppercase; height:40px;" placeholder="ORDEN">'+
-            '                   </div>'+
-            '               </div>'+
-            '               <div class="col-sm-12 col-md-3">'+
-            '                   <div class="form-group">'+
-            '                       <label for="var04">DÍA CORRIDO</label>'+
-            '                       <select id="var04" name="var04" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
-            '                           <optgroup label="Corrido">'+diaCorrido+
-            '                           </optgroup>'+
-            '                       </select>'+
-            '                   </div>'+
-            '               </div>'+
-            '               <div class="col-sm-12 col-md-3">'+
-            '                   <div class="form-group">'+
-            '                       <label for="var05">DÍA UNIDAD</label>'+
-            '                       <select id="var05" name="var05" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
-            '                           <optgroup label="Corrido">'+tipoUnidad+
-            '                           </optgroup>'+
-            '                       </select>'+
-            '                   </div>'+
-            '               </div>'+
-            '               <div class="col-sm-12 col-md-3">'+
-            '                   <div class="form-group">'+
-            '                       <label for="var06">ARCHIVO ADJUNTO</label>'+
-            '                       <select id="var06" name="var06" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
-            '                           <optgroup label="Corrido">'+tipoAdjunto+
-            '                           </optgroup>'+
-            '                       </select>'+
-            '                   </div>'+
-            '               </div>'+
-            '           </div>'+
-            '           <div class="row pt-3">'+
-            '                <div class="col-sm-12">'+
-            '                    <div class="form-group">'+
-            '                        <label for="var07">OBSERVACI&Oacute;N</label>'+
-            '                        <textarea id="var07" name="var07" class="form-control" rows="3" style="text-transform:uppercase;">'+xJSON['data'][0]['tipo_observacion']+'</textarea>'+
-            '                    </div>'+
-            '                </div>'+
-            '           </div>'+
-            '	    </div>'+
-            '	    <div class="modal-footer">'+
-            '           <button type="submit" class="btn btn-info">Guardar</button>'+
-            '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
-            '	    </div>'+
-            '   </form>'+
-            '</div>';
-            $("#modalcontent").empty();
-            $("#modalcontent").append(html);
-        } 
-    };
-    
-    xHTTP.open('GET', xURL);
-    xHTTP.setRequestHeader('Content-type', 'application/json;charset=UTF-8');
-    xHTTP.setRequestHeader('Authorization', 'Basic dXNlcl9zZmhvbG94Om5zM3JfNWZoMCEweA==');
-    xHTTP.send();
 }
