@@ -43,7 +43,6 @@
             $titSol= 'Solicitudes Aprobadas';
             break;
 
-
         case 'C':
             $col07 = 'true';
             $col08 = 'true';
@@ -290,7 +289,7 @@
                     { data				: 'solicitud_persona', name : 'solicitud_persona'},
                     { data				: 'tipo_permiso_nombre', name : 'tipo_permiso_nombre'},
                     { data				: 'solicitud_usuario_colaborador', name : 'solicitud_usuario_colaborador'},
-                    { data				: 'solicitud_usuario_aprobador', name : 'solicitud_usuario_aprobador'},
+                    { data				: 'solicitud_usuario_superior', name : 'solicitud_usuario_superior'},
                     { data				: 'solicitud_usuario_talento', name : 'solicitud_usuario_talento'},
 <?php
     if ($work01 == 1) {
