@@ -1,6 +1,6 @@
 $(document).ready(function() {
-	var codigo		= document.getElementById('tableCodigo').className;	
-	var urlDominio	= 'http://api.conmebol.com/portalpermiso/public/v1/100';
+	var codigo	= document.getElementById('tableCodigo').className;	
+	var xJSON	= getTipoSolicitud();
 
 	$('#tableLoad').DataTable({
 		processing	: true,
@@ -26,16 +26,7 @@ $(document).ready(function() {
 				sPrevious: "Anterior"
 			},
         },
-		ajax		: {
-			type				: 'GET',
-			cache				: false,
-			crossDomain			: true,
-			crossOrigin			: true,
-			contentType			: 'application/json; charset=utf-8',
-			dataType			: 'json',
-			url				: urlDominio,
-			dataSrc				: 'data'
-		},
+		data		: xJSON,
 		columnDefs	: [
 			{ targets			: [0],	visible : false,searchable : false,	orderData : [0, 0] },
 			{ targets			: [1],	visible : true,	searchable : true,	orderData : [1, 0] },
@@ -66,7 +57,7 @@ $(document).ready(function() {
 			{ data				: 'auditoria_usuario', name : 'auditoria_usuario'},
 			{ data				: 'auditoria_fecha_hora', name : 'auditoria_fecha_hora'},
 			{ data				: 'auditoria_ip', name : 'auditoria_ip'},
-			{ render			: function (data, type, full, meta) {return '<a href="javascript:void(0)" id="'+ full.tipo_permiso_codigo +'" role="button" class="btn btn-success" data-toggle="modal" data-target="#modaldiv" onclick="setSolicitud(this.id);"><i class="ti-pencil"></i>&nbsp;</a>&nbsp;';}},
+			{ render			: function (data, type, full, meta) {return '<a href="javascript:void(0)" id="'+ full.tipo_permiso_codigo +'" role="button" class="btn btn-success" data-toggle="modal" data-target="#modaldiv" onclick="getTipoSolicitudId(this.id);"><i class="ti-pencil"></i>&nbsp;</a>&nbsp;';}},
 		]
 	});
 });

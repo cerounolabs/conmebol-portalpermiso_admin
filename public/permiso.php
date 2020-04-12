@@ -139,6 +139,15 @@
     include '../include/footer.php';
 ?>
 
+    <script src="../js/api.js"></script>
+
+    <script>
+        if (localStorage.getItem('tipoPermisoJSON') === 'null' || localStorage.getItem('tipoPermisoJSON') === null ){
+            localStorage.removeItem('tipoPermisoJSON');
+            localStorage.setItem('tipoPermisoJSON', JSON.stringify(<?php echo json_encode(get_curl('000/permiso')); ?>));
+        }
+    </script>
+
     <script src="../js/permiso.js"></script>
 </body>
 </html>

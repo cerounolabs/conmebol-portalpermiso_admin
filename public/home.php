@@ -10,8 +10,7 @@
     }
 
     $workPage       = 'home.php?';
-    $solictudesJSON = get_curl('200/solicitud/'.$codCar.'/'.$usu_05.'/T');
-
+    $solictudesJSON = get_curl('200/solicitudes/'.$codCar.'/'.$usu_05.'/T');
 ?>
 
 <!DOCTYPE html>
@@ -159,7 +158,7 @@
                                         <h6 class="font-medium"><?php echo trim(strtoupper($solictudesVALUE['solicitud_persona'])); ?></h6>
                                         <span class="m-b-15 d-block"><?php echo trim(strtoupper($solictudesVALUE['tipo_permiso_nombre'])); ?> </span>
                                         <div class="comment-footer">
-                                            <span class="text-muted float-right"><?php echo trim(strtoupper($solictudesVALUE['solicitud_fecha_hora_aprobador'])); ?></span>
+                                            <span class="text-muted float-right"><?php echo trim(strtoupper($solictudesVALUE['solicitud_fecha_hora_superior'])); ?></span>
                                             <button type="button" class="btn btn-primary btn-circle" id="<?php echo $solictudesVALUE['solicitud_codigo']; ?>" value="<?php echo $solictudesVALUE['solicitud_estado_codigo']; ?>" value2="<?php echo $solictudesVALUE['solicitud_documento']; ?>" title="Ver Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="getSolicitud(this.id);"><i class="fa fa-eye"></i> </button>
                                             <button type="button" class="btn btn-info btn-circle" id="<?php echo $solictudesVALUE['solicitud_codigo']; ?>" value="<?php echo $solictudesVALUE['solicitud_estado_codigo']; ?>" value2="<?php echo $solictudesVALUE['solicitud_documento']; ?>" title="ReIngresar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 1, 2, '<?php echo trim($usu_05); ?>', <?php echo trim($usu_13); ?>);"><i class="ti-reload"></i> </button>
                                             <button type="button" class="btn btn-warning btn-circle" id="<?php echo $solictudesVALUE['solicitud_codigo']; ?>" value="<?php echo $solictudesVALUE['solicitud_estado_codigo']; ?>" value2="<?php echo $solictudesVALUE['solicitud_documento']; ?>" title="Autorizar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 3, 2, '<?php echo trim($usu_05); ?>', <?php echo trim($usu_13); ?>);"><i class="fa fa-check"></i> </button>
@@ -339,7 +338,7 @@
     <script>
         if (localStorage.getItem('solicitudJSON') === 'null' || localStorage.getItem('solicitudJSON') === null ){
             localStorage.removeItem('solicitudJSON');
-            localStorage.setItem('solicitudJSON', JSON.stringify(<?php echo json_encode(get_curl('100')); ?>));
+            localStorage.setItem('solicitudJSON', JSON.stringify(<?php echo json_encode(get_curl('100/solicitud')); ?>));
         }
 
         if (localStorage.getItem('solicitudesJSON') === 'null' || localStorage.getItem('solicitudesJSON') === null ){

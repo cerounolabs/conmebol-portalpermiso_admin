@@ -1,6 +1,6 @@
 $(document).ready(function() {
-	var codigo		= document.getElementById('tableCodigo').className;	
-	var urlDominio	= 'http://api.conmebol.com/portalpermiso/public/v1/000/cargo';
+	var codigo	= document.getElementById('tableCodigo').className;	
+	var xJSON	= getTipoCargo();
 
 	$('#tableLoad').DataTable({
 		processing	: true,
@@ -26,20 +26,11 @@ $(document).ready(function() {
 				sPrevious: "Anterior"
 			},
         },
-		ajax		: {
-			type				: 'GET',
-			cache				: false,
-			crossDomain			: true,
-			crossOrigin			: true,
-			contentType			: 'application/json; charset=utf-8',
-			dataType			: 'json',
-			url				: urlDominio,
-			dataSrc				: 'data'
-		},
+		data		: xJSON,
 		columnDefs	: [
-			{ targets			: [0],	visible : true,searchable : false,	orderData : [0, 0] },
-			{ targets			: [1],	visible : true,searchable : false,	orderData : [1, 0] },
-			{ targets			: [2],	visible : true,searchable : false,	orderData : [2, 0] },
+			{ targets			: [0],	visible : true,	searchable : true,	orderData : [0, 0] },
+			{ targets			: [1],	visible : true,	searchable : true,	orderData : [1, 0] },
+			{ targets			: [2],	visible : true,	searchable : true,	orderData : [2, 0] },
 			{ targets			: [3],	visible : true,	searchable : true,	orderData : [3, 0] },
 			{ targets			: [4],	visible : true,	searchable : true,	orderData : [4, 0] },
 			{ targets			: [5],	visible : true,	searchable : true,	orderData : [5, 0] },

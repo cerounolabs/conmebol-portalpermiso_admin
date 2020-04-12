@@ -138,6 +138,15 @@
 <?php
     include '../include/footer.php';
 ?>
+    
+    <script src="../js/api.js"></script>
+
+    <script>
+        if (localStorage.getItem('tipoInasistenciaJSON') === 'null' || localStorage.getItem('tipoInasistenciaJSON') === null ){
+            localStorage.removeItem('tipoInasistenciaJSON');
+            localStorage.setItem('tipoInasistenciaJSON', JSON.stringify(<?php echo json_encode(get_curl('000/inasistencia')); ?>));
+        }
+    </script>
 
     <script src="../js/inasistencia.js"></script>
 </body>

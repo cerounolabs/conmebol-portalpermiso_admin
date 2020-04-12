@@ -140,6 +140,15 @@
 <?php
     include '../include/footer.php';
 ?>
+    
+    <script src="../js/api.js"></script>
+
+    <script>
+        if (localStorage.getItem('tipoCargoJSON') === 'null' || localStorage.getItem('tipoCargoJSON') === null ){
+            localStorage.removeItem('tipoCargoJSON');
+            localStorage.setItem('tipoCargoJSON', JSON.stringify(<?php echo json_encode(get_curl('000/cargo')); ?>));
+        }
+    </script>
 
     <script src="../js/cargo.js"></script>
 </body>
