@@ -89,10 +89,6 @@ function cantFecha(){
             fec1.setDate(fec1.getDate() + 1);
         }
 
-        if (fecCuenta == 'N') {
-            cantDays = cantDays + 1;
-        }
-
         if (cantDays == 0) {
             cantDays = 1;
         }
