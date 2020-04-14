@@ -63,9 +63,8 @@ function cantFecha(){
     var fecHasta    = document.getElementById('var03');
     var fecCant     = document.getElementById('var04');
     var fecCuenta   = 'N';
-
-    var fec1        = new Date(fecDesde.value);
-    var fec2        = new Date(fecHasta.value);
+    var fec1        = new Date(fecDesde.value.substring(0, 4), (fecDesde.value.substring(5, 7) - 1), fecDesde.value.substring(8, 10));
+    var fec2        = new Date(fecHasta.value.substring(0, 4), (fecHasta.value.substring(5, 7) - 1), fecHasta.value.substring(8, 10));
 
     xJSON.forEach(element => {
         if (inpSol.value == element.tipo_permiso_codigo){
