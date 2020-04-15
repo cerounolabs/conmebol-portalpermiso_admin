@@ -294,6 +294,43 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <h4 class="col-10 card-title">Horarios de Marcaciones</h4>
+								</div>
+                                <div class="table-responsive">
+                                    <table id="tableLoad" class="table v-middle" style="width: 100%;">
+                                        <thead id="tableCodigo" class="">
+                                            <tr class="bg-conmebol" style="text-align:center;">
+                                                <th class="border-top-0" rowspan="2">C&Oacute;DIGO</th>
+                                                <th class="border-top-0" colspan="2">ENTRADA OFICINA</th>
+                                                <th class="border-top-0" colspan="2">SALIDA ALMUERZO</th>
+                                                <th class="border-top-0" colspan="2">ENTRADA ALMUERZO</th>
+                                                <th class="border-top-0" colspan="2">SALIDA OFICINA</th>
+                                            </tr>
+                                            <tr class="bg-conmebol" style="text-align:center;">
+                                                <th class="border-top-0">FECHA</th>
+                                                <th class="border-top-0">HORA</th>
+                                                <th class="border-top-0">FECHA</th>
+                                                <th class="border-top-0">HORA</th>
+                                                <th class="border-top-0">FECHA</th>
+                                                <th class="border-top-0">HORA</th>
+                                                <th class="border-top-0">FECHA</th>
+                                                <th class="border-top-0">HORA</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Modal Procesar -->
                 <div id="modaldiv" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" id="modalcontent">
@@ -349,6 +386,13 @@
             localStorage.removeItem('solicitudesJSON');
             localStorage.setItem('solicitudesJSON', JSON.stringify(<?php echo json_encode($solictudesJSON); ?>));
         }
+
+        if (localStorage.getItem('marcacionJSON') === 'null' || localStorage.getItem('marcacionJSON') === null ){
+            localStorage.removeItem('marcacionJSON');
+            localStorage.setItem('marcacionJSON', JSON.stringify(<?php echo json_encode(get_curl('000/marcacion/colaborador/'.$usu_05)); ?>));
+        }
     </script>
+
+    <script src="../js/marcacion.js"></script>
 </body>
 </html>

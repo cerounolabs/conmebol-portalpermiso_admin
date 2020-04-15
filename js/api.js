@@ -435,6 +435,19 @@ function getTipoSolicitud(){
     return xDATA; 
 }
 
+function getMarcacion(){
+    var xJSON = JSON.parse(localStorage.getItem('marcacionJSON'));
+    var xDATA = [];
+       
+    if (xJSON['code'] == 200){
+        xJSON['data'].forEach(element => {
+            xDATA.push(element);
+        });
+    }
+
+    return xDATA; 
+}
+
 function getTipoSolicitudId(codigo){
     var xHTTP	= new XMLHttpRequest();
     var xURL	= urlBASE + '/100/solicitud/' + codigo;
