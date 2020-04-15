@@ -305,21 +305,13 @@
                                     <table id="tableLoad" class="table v-middle" style="width: 100%;">
                                         <thead id="tableCodigo" class="">
                                             <tr class="bg-conmebol" style="text-align:center;">
-                                                <th class="border-top-0" rowspan="2">C&Oacute;DIGO</th>
-                                                <th class="border-top-0" colspan="2">ENTRADA OFICINA</th>
-                                                <th class="border-top-0" colspan="2">SALIDA ALMUERZO</th>
-                                                <th class="border-top-0" colspan="2">ENTRADA ALMUERZO</th>
-                                                <th class="border-top-0" colspan="2">SALIDA OFICINA</th>
-                                            </tr>
-                                            <tr class="bg-conmebol" style="text-align:center;">
+                                                <th class="border-top-0">C&Oacute;DIGO</th>
                                                 <th class="border-top-0">FECHA</th>
-                                                <th class="border-top-0">HORA</th>
-                                                <th class="border-top-0">FECHA</th>
-                                                <th class="border-top-0">HORA</th>
-                                                <th class="border-top-0">FECHA</th>
-                                                <th class="border-top-0">HORA</th>
-                                                <th class="border-top-0">FECHA</th>
-                                                <th class="border-top-0">HORA</th>
+                                                <th class="border-top-0">ENTRADA OFICINA</th>
+                                                <th class="border-top-0">SALIDA ALMUERZO</th>
+                                                <th class="border-top-0">ENTRADA ALMUERZO</th>
+                                                <th class="border-top-0">SALIDA OFICINA</th>
+                                                <th class="border-top-0">COMENTARIO</th>
                                             </tr>
                                         </thead>
                                         <tbody>

@@ -35,20 +35,16 @@ $(document).ready(function() {
 			{ targets			: [3],	visible : true,	searchable : true,	orderData : [3, 0] },
 			{ targets			: [4],	visible : true,	searchable : true,	orderData : [4, 0] },
 			{ targets			: [5],	visible : true,	searchable : true,	orderData : [5, 0] },
-			{ targets			: [6],	visible : true,	searchable : true,	orderData : [6, 0] },
-			{ targets			: [7],	visible : true,	searchable : true,	orderData : [7, 0] },
-			{ targets			: [8],	visible : true,	searchable : true,	orderData : [8, 0] }
+			{ targets			: [6],	visible : true,	searchable : true,	orderData : [6, 0] }
 		],
 		columns		: [
 			{ data				: 'marcacion_codigo', name : 'marcacion_codigo'},
 			{ data				: 'marcacion_entrada_oficina_fecha', name : 'marcacion_entrada_oficina_fecha'},
 			{ data				: 'marcacion_entrada_oficina_hora', name : 'marcacion_entrada_oficina_hora'},
-			{ data				: 'marcacion_salida_almuerzo_fecha', name : 'marcacion_salida_almuerzo_fecha'},
 			{ data				: 'marcacion_salida_almuerzo_hora', name : 'marcacion_salida_almuerzo_hora'},
-			{ data				: 'marcacion_entrada_almuerzo_fecha', name : 'marcacion_entrada_almuerzo_fecha'},
 			{ data				: 'marcacion_entrada_almuerzo_hora', name : 'marcacion_entrada_almuerzo_hora'},
-			{ data				: 'marcacion_salida_oficina_fecha', name : 'marcacion_salida_oficina_fecha'},
 			{ data				: 'marcacion_salida_oficina_hora', name : 'marcacion_salida_oficina_hora'},
+			{ data				: 'marcacion_comentario', name : 'marcacion_comentario'},
 		]
 	});
 });
