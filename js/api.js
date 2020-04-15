@@ -206,6 +206,10 @@ function getSolicitud(var01){
 
     xJSON.forEach(element => {
         if (element.solicitud_codigo == var01){
+            solicitud_fecha_hora_colaborador   = (element.solicitud_fecha_hora_colaborador.includes('31/12/1969') ? '' : element.solicitud_fecha_hora_colaborador);
+            solicitud_fecha_hora_superior      = (element.solicitud_fecha_hora_superior.includes('31/12/1969') ? '' : element.solicitud_fecha_hora_superior);
+            solicitud_fecha_hora_talento       = (element.solicitud_fecha_hora_talento.includes('31/12/1969') ? '' : element.solicitud_fecha_hora_talento);
+            
             html     =
                 '<div class="modal-content">'+
                 '   <form id="form" data-parsley-validate method="post" action="">'+
@@ -277,7 +281,7 @@ function getSolicitud(var01){
                 '               <div class="col-sm-12 col-md-4">'+
                 '                   <div class="form-group">'+
                 '                       <label>FECHA SOLICITANTE</label>'+
-                '                       <input value="'+element.solicitud_fecha_hora_colaborador+'" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>'+
+                '                       <input value="'+solicitud_fecha_hora_colaborador+'" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>'+
                 '                   </div>'+
                 '               </div>'+
                 '               <div class="col-sm-12 col-md-4">'+
@@ -297,7 +301,7 @@ function getSolicitud(var01){
                 '               <div class="col-sm-12 col-md-4">'+
                 '                   <div class="form-group">'+
                 '                       <label>FECHA AUTORIZADOR</label>'+
-                '                       <input value="'+element.solicitud_fecha_hora_superior+'" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>'+
+                '                       <input value="'+solicitud_fecha_hora_superior+'" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>'+
                 '                   </div>'+
                 '               </div>'+
                 '               <div class="col-sm-12 col-md-4">'+
@@ -317,7 +321,7 @@ function getSolicitud(var01){
                 '               <div class="col-sm-12 col-md-4">'+
                 '                   <div class="form-group">'+
                 '                       <label>FECHA APROBADOR</label>'+
-                '                       <input value="'+element.solicitud_fecha_hora_talento+'" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>'+
+                '                       <input value="'+solicitud_fecha_hora_talento+'" class="form-control" type="text" style="text-transform:uppercase; height:40px;" readonly>'+
                 '                   </div>'+
                 '               </div>'+
                 '               <div class="col-sm-12 col-md-4">'+
