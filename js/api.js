@@ -99,8 +99,9 @@ function cantFecha(){
             fecHasta.value = fecDesde.value;
         }
     } else {
-        solicitud_fecha_hora_colaborador   = (element.solicitud_fecha_hora_colaborador.includes('31/12/1969') ? '' : element.solicitud_fecha_hora_colaborador);
         alert('La FECHA INICIO no puede ser Sábado o Domingo. Verifique!');
+        fecDesde.value = '';
+        fecHasta.value = '';
         fecDesde.focus();
     }
 }
@@ -635,7 +636,7 @@ function setSolicitud(var01){
     '               <div id="tit02" class="col-sm-12 col-md-4">'+
     '                   <div class="form-group">'+
     '                       <label for="var02">FECHA INICIO</label>'+
-    '                       <input id="var02" name="var02" class="form-control" type="date" value="'+fecIni+'" onblur="cantFecha();" style="text-transform:uppercase; height:40px;" placeholder="FECHA DESDE">'+
+    '                       <input id="var02" name="var02" class="form-control" type="date" value="'+fecIni+'" onblur="cantFecha();" style="text-transform:uppercase; height:40px;" placeholder="FECHA DESDE" required>'+
     '                   </div>'+
     '               </div>'+
     '               <div id="tit03" class="col-sm-12 col-md-4">'+
