@@ -72,31 +72,37 @@ function cantFecha(){
         }
     });
 
-    if (fec1 <= fec2) {
-        var diffDays    = ((fec2.getTime() - fec1.getTime()) / (1000 * 3600 * 24));
-        var cantDays    = 0;
+    if (fec1.getDay() != 0 && fec1.getDay() != 6) {
+        if (fec1 <= fec2) {
+            var diffDays    = ((fec2.getTime() - fec1.getTime()) / (1000 * 3600 * 24));
+            var cantDays    = 0;
 
-        for (var i=0; i < diffDays; i++) {
-            if (fec1.getDay() != 0 && fec1.getDay() != 6) {
-                cantDays++;
+            for (var i=0; i < diffDays; i++) {
+                if (fec1.getDay() != 0 && fec1.getDay() != 6) {
+                    cantDays++;
+                }
+
+                if ((fec1.getDay() == 0 || fec1.getDay() == 6) && fecCuenta == 'S') {
+                    cantDays++;
+                }
+
+                fec1.setDate(fec1.getDate() + 1);
             }
 
-            if ((fec1.getDay() == 0 || fec1.getDay() == 6) && fecCuenta == 'S') {
-                cantDays++;
+            if (cantDays == 0) {
+                cantDays = 1;
             }
 
-            fec1.setDate(fec1.getDate() + 1);
+            fecCant.value   = cantDays;
+        } else {
+            alert('La FECHA RETORNO no puede ser menor que ' + fecDesde.value);
+            fecHasta.value = fecDesde.value;
         }
-
-        if (cantDays == 0) {
-            cantDays = 1;
-        }
-
-        fecCant.value   = cantDays;
     } else {
-        alert('La FECHA HASTA no puede ser menor que ' + fecDesde.value);
-        fecHasta.value = fecDesde.value;
-    } 
+        solicitud_fecha_hora_colaborador   = (element.solicitud_fecha_hora_colaborador.includes('31/12/1969') ? '' : element.solicitud_fecha_hora_colaborador);
+        alert('La FECHA INICIO no puede ser Sábado o Domingo. Verifique!');
+        fecDesde.focus();
+    }
 }
 
 function cantHora(){
@@ -590,7 +596,7 @@ function setSolicitud(var01){
     var xSelect = '';
     var fecIni  = getDate(1);
     var fecRet  = getDate(1);
-    
+
     xJSON.forEach(element => {
         if (element.tipo_estado_codigo == 'A'){
             if (element.tipo_solicitud_codigo != 'I') {
