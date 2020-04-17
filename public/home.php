@@ -5,8 +5,10 @@
 
     if ($usu_13 == 21 || $usu_13 == 87 || $usu_13 == 109){
         $codCar = 3;
+        $codAcc = 2;
     } else {
         $codCar = 4;
+        $codAcc = 1;
     }
 
     $workPage       = 'home.php?';
@@ -267,7 +269,7 @@
                                         <div class="comment-footer">
                                             <span class="text-muted float-right"><?php echo $auditoria_fecha_hora; ?></span>
                                             <button type="button" class="btn btn-primary btn-circle" id="<?php echo $solictudesVALUE['solicitud_codigo']; ?>" value="<?php echo $solictudesVALUE['solicitud_estado_codigo']; ?>" value2="<?php echo $solictudesVALUE['solicitud_documento']; ?>" title="Ver Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="getSolicitud(this.id);"><i class="fa fa-eye"></i> </button>
-                                            <button type="button" class="btn btn-info btn-circle" id="<?php echo $solictudesVALUE['solicitud_codigo']; ?>" value="<?php echo $solictudesVALUE['solicitud_estado_codigo']; ?>" value2="<?php echo $solictudesVALUE['solicitud_documento']; ?>" title="ReIngresar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 1, 4, '<?php echo trim($usu_05); ?>', <?php echo trim($usu_13); ?>);"><i class="ti-reload"></i> </button>
+                                            <button type="button" class="btn btn-info btn-circle" id="<?php echo $solictudesVALUE['solicitud_codigo']; ?>" value="<?php echo $solictudesVALUE['solicitud_estado_codigo']; ?>" value2="<?php echo $solictudesVALUE['solicitud_documento']; ?>" title="ReIngresar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 1, <?php echo $codAcc ?>, '<?php echo trim($usu_05); ?>', <?php echo trim($usu_13); ?>);"><i class="ti-reload"></i> </button>
                                         </div>
                                     </div>
                                 </div>
