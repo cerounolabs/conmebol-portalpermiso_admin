@@ -185,6 +185,23 @@
                                 $solictudesVALUE['solicitud_observacion_talento']
                             );
 
+                            $remi = $usu_01.' '.$usu_04;
+                            setEmail(
+                                $usu_15,
+                                $remi, 
+                                $solictudesVALUE['solicitud_estado_nombre'], 
+                                $solictudesVALUE['tipo_permiso_nombre'], 
+                                $solictudesVALUE['solicitud_persona'], 
+                                $solictudesVALUE['solicitud_fecha_desde_2'], 
+                                $solictudesVALUE['solicitud_fecha_hasta_2'], 
+                                $solictudesVALUE['solicitud_hora_desde'], 
+                                $solictudesVALUE['solicitud_hora_hasta'], 
+                                $adjunto, 
+                                $solictudesVALUE['solicitud_observacion_colaborador'], 
+                                $solictudesVALUE['solicitud_observacion_aprobador'], 
+                                $solictudesVALUE['solicitud_observacion_talento']
+                            );
+
                             break;
                         }
                     }
