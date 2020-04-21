@@ -51,7 +51,7 @@
 		$result1	= post_curl('200/exportar', $dataJSON);
 	}
 
-	if ($val01 != 'P') {
+	if ($val01 == 'P' || $val01 == 'C') {
 		header('Location: ../../public/'.$work03.'code='.$result['code'].'&msg='.$result['message'].'&tipo=SOLAUT&codigo='.$work01);
 	} else {
 		header('Location: ../../public/'.$work03.'code='.$result['code'].'&msg='.$result['message']);
