@@ -78,12 +78,16 @@ function cantFecha(){
             var cantDays    = 0;
 
             for (var i=0; i < diffDays; i++) {
-                if (fec1.getDay() != 0 && fec1.getDay() != 6) {
-                    cantDays++;
-                }
+                var fecAux = fec1.getFullYear() + '-' + (fec1.getMonth()+1) + '-' + fec1.getDate();
 
-                if ((fec1.getDay() == 0 || fec1.getDay() == 6) && fecCuenta == 'S') {
-                    cantDays++;
+                if (fecAux != '2020-1-1' && fecAux != '2020-3-1' && fecAux != '2020-4-9' && fecAux != '2020-4-10' && fecAux != '2020-5-1' && fecAux != '2020-5-14' && fecAux != '2020-5-15' && fecAux != '2020-6-12' && fecAux != '2020-8-15' && fecAux != '2020-9-29' && fecAux != '2020-12-8' && fecAux != '2020-12-25' && fecAux != '2020-12-31' && fecAux != '2021-1-1') {
+                    if (fec1.getDay() != 0 && fec1.getDay() != 6) {
+                        cantDays++;
+                    }
+    
+                    if ((fec1.getDay() == 0 || fec1.getDay() == 6) && fecCuenta == 'S') {
+                        cantDays++;
+                    }
                 }
 
                 fec1.setDate(fec1.getDate() + 1);
