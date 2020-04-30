@@ -207,6 +207,27 @@ function valSolicitud(){
     });
 }
 
+function getSolicitudAll(var01) {
+    var xJSON = JSON.parse(localStorage.getItem('solicitudesJSON'));
+    var xDATA = [];
+       
+    if (xJSON['code'] == 200){
+        if (var01 == 5) {
+            xJSON['data'].forEach(element => {
+                if (element.solicitud_estado_codigo == 'I') {
+                    xDATA.push(element);
+                }
+            });
+        } else {
+            xJSON['data'].forEach(element => {
+                xDATA.push(element);
+            });
+        }
+    }
+
+    return xDATA;
+}
+
 function getSolicitud(var01){
     var xJSON   = JSON.parse(localStorage.getItem('solicitudesJSON'))['data'];
     var html    = '';

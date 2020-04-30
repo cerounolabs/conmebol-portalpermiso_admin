@@ -17,7 +17,12 @@
         $work02         = $_GET['sol'];
         $workPage       = 'solicitudes.php?tipo='.$work01.'&sol='.$work02;
     } else {
-        $work02         = 'T';
+        if ($work01 == 5) {
+            $work02         = 'I';
+        } else {
+            $work02         = 'T';
+        }
+        
         $workPage       = 'solicitudes.php?tipo='.$work01;
     }
 
@@ -30,7 +35,7 @@
             break;
 
         case 'A':
-            $col07 = 'true';
+            $col07 = 'false';
             $col08 = 'true';
             $col09 = 'false';
             $titSol= 'Solicitudes Autorizadas';
@@ -72,6 +77,10 @@
         
         case 2:
             $titSol= 'Solicitudes de mis Colaboradores';
+            break;
+
+        case 5:
+            $titSol= 'Solicitudes Recibidas';
             break;
     }
     
@@ -222,6 +231,8 @@
     <script src="../js/api.js"></script>
 
     <script>
+        localStorage.removeItem('solicitudesJSON');
+
         if (localStorage.getItem('solicitudJSON') === 'null' || localStorage.getItem('solicitudJSON') === null ){
             localStorage.removeItem('solicitudJSON');
             localStorage.setItem('solicitudJSON', JSON.stringify(<?php echo json_encode(get_curl('100/solicitud')); ?>));
@@ -233,6 +244,8 @@
         }
 
         $(document).ready(function() {
+            var xJSON	= getSolicitudAll(<?php echo $work01; ?>);
+
             $('#tableLoad').DataTable({
                 processing	: true,
                 destroy		: true,
@@ -258,7 +271,7 @@
                         sPrevious: "Anterior"
                     },
                 },
-                data		: <?php echo json_encode($solictudesJSON['data']); ?>,
+                data		: xJSON,
                 columnDefs	: [
                     { targets			: [0],	visible : false,searchable : false,	orderData : [0, 0] },
                     { targets			: [1],	visible : true,	searchable : true,	orderData : [1, 0] },
@@ -296,7 +309,7 @@
 ?>
                     { render			: function (data, type, full, meta) {return '<button type="button" class="btn btn-primary btn-circle" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Visualizar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="getSolicitud(this.id);"><i class="fa fa-eye"></i></button>&nbsp;<button type="button" class="btn btn-danger btn-circle" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Rechazar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="setEstado(this.id, 4, 1, <?php echo trim($usu_05); ?>, <?php echo trim($usu_13); ?>);"><i class="fa fa-times"></i></button>';}},
 <?php
-    } elseif ($work01 == 2) {
+    } elseif ($work01 == 2 || $work01 == 5) {
 ?>
                     { render			: function (data, type, full, meta) {
                         var btn = '<button type="button" class="btn btn-primary btn-circle" id="'+ full.solicitud_codigo +'" value="'+ full.solicitud_estado_codigo +'" value2="'+ full.solicitud_documento +'" title="Visualizar Solicitud" data-toggle="modal" data-target="#modaldiv" onclick="getSolicitud(this.id);"><i class="fa fa-eye"></i></button>';
@@ -328,18 +341,5 @@
             });
         });
     </script>
-
-<?php
-    if(isset($_GET['codigo'])){
-        if ($solictudesJSON['code'] == 200) {
-            foreach ($solictudesJSON['data'] as $key => $value) {
-                if ($_GET['codigo'] == $value['solicitud_codigo']) {
-                    setEmail($usu_15, $usu_01.' '.$usu_04, $usu_17, $usu_16, $value['solicitud_estado_nombre'], $value['tipo_permiso_nombre'], $value['solicitud_persona'], $value['solicitud_fecha_desde_2'], $value['solicitud_fecha_hasta_2'], $value['solicitud_hora_desde'], $value['solicitud_hora_hasta'], $value['solicitud_adjunto'], $value['solicitud_observacion_colaborador'], $value['solicitud_observacion_aprobador'], $value['solicitud_observacion_talento']);
-                }
-            }
-        }
-    }
-?>
-
 </body>
 </html>

@@ -135,9 +135,10 @@
                             } else {
                                 $adjunto = 'javascript:void(0)';
                             }
-                            
+
                             setEmail(
-                                $usu_17,
+//                                $usu_17,
+                                'christian@cerouno.com.py',
                                 $usu_16, 
                                 $solictudesVALUE['solicitud_estado_nombre'], 
                                 $solictudesVALUE['tipo_permiso_nombre'], 
@@ -148,7 +149,7 @@
                                 $solictudesVALUE['solicitud_hora_hasta'], 
                                 $adjunto, 
                                 $solictudesVALUE['solicitud_observacion_colaborador'], 
-                                $solictudesVALUE['solicitud_observacion_aprobador'], 
+                                $solictudesVALUE['solicitud_observacion_superior'], 
                                 $solictudesVALUE['solicitud_observacion_talento']
                             );
 
@@ -170,8 +171,9 @@
                             }
                             
                             setEmail(
-                                'rrhh@conmebol.com',
-                                'Talento Humano', 
+//                                'rrhh@conmebol.com',
+                                'christian@cerouno.com.py',
+                                'Talento Humano',
                                 $solictudesVALUE['solicitud_estado_nombre'], 
                                 $solictudesVALUE['tipo_permiso_nombre'], 
                                 $solictudesVALUE['solicitud_persona'], 
@@ -181,13 +183,14 @@
                                 $solictudesVALUE['solicitud_hora_hasta'], 
                                 $adjunto, 
                                 $solictudesVALUE['solicitud_observacion_colaborador'], 
-                                $solictudesVALUE['solicitud_observacion_aprobador'], 
+                                $solictudesVALUE['solicitud_observacion_superior'], 
                                 $solictudesVALUE['solicitud_observacion_talento']
                             );
 
                             $remi = $usu_01.' '.$usu_04;
                             setEmail(
-                                $usu_15,
+//                                $usu_15,
+                                'christian@cerouno.com.py',
                                 $remi, 
                                 $solictudesVALUE['solicitud_estado_nombre'], 
                                 $solictudesVALUE['tipo_permiso_nombre'], 
@@ -198,7 +201,7 @@
                                 $solictudesVALUE['solicitud_hora_hasta'], 
                                 $adjunto, 
                                 $solictudesVALUE['solicitud_observacion_colaborador'], 
-                                $solictudesVALUE['solicitud_observacion_aprobador'], 
+                                $solictudesVALUE['solicitud_observacion_superior'], 
                                 $solictudesVALUE['solicitud_observacion_talento']
                             );
 
