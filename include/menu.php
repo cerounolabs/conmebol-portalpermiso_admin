@@ -155,6 +155,13 @@
                                			<span class="hide-menu"> De mis Colaboradores </span>
                                     </a>
                                	</li>
+
+                                <li class="sidebar-item">
+                               		<a href="../public/solicitudes.php?tipo=5" class="sidebar-link">
+                               			<i class="mdi mdi-colaborador"></i>
+                               			<span class="hide-menu"> Solicitudes Recibidas </span>
+                                    </a>
+                               	</li>
                             </ul>
                         </li>
 
