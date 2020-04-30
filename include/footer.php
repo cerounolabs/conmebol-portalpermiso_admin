@@ -137,8 +137,7 @@
                             }
 
                             setEmail(
-//                                $usu_17,
-                                'christian@cerouno.com.py',
+                                $usu_17,
                                 $usu_16, 
                                 $solictudesVALUE['solicitud_estado_nombre'], 
                                 $solictudesVALUE['tipo_permiso_nombre'], 
@@ -171,8 +170,7 @@
                             }
                             
                             setEmail(
-//                                'rrhh@conmebol.com',
-                                'christian@cerouno.com.py',
+                                'rrhh@conmebol.com',
                                 'Talento Humano',
                                 $solictudesVALUE['solicitud_estado_nombre'], 
                                 $solictudesVALUE['tipo_permiso_nombre'], 
@@ -189,8 +187,7 @@
 
                             $remi = $usu_01.' '.$usu_04;
                             setEmail(
-//                                $usu_15,
-                                'christian@cerouno.com.py',
+                                $usu_15,
                                 $remi, 
                                 $solictudesVALUE['solicitud_estado_nombre'], 
                                 $solictudesVALUE['tipo_permiso_nombre'], 
