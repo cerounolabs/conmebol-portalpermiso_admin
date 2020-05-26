@@ -63,7 +63,7 @@
         ->setCellValue('Z2', 'ULT. MODIFICACION IP');
 
     if ($exportJSON['code'] === 200) {
-        $indexRow = 10;
+        $indexRow = 3;
 
         foreach ($exportJSON['data'] as $key => $value) {
             $sheetXLS->setActiveSheetIndex(0)
