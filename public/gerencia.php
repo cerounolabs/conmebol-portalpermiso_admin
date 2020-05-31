@@ -137,14 +137,6 @@
 ?>
 
     <script src="../js/api.js"></script>
-
-    <script>
-        if (localStorage.getItem('tipoGerenciaJSON') === 'null' || localStorage.getItem('tipoGerenciaJSON') === null ){
-            localStorage.removeItem('tipoGerenciaJSON');
-            localStorage.setItem('tipoGerenciaJSON', JSON.stringify(<?php echo json_encode(get_curl('000/gerencia')); ?>));
-        }
-    </script>
-
     <script src="../js/gerencia.js"></script>
 </body>
 </html>

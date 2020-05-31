@@ -46,7 +46,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h4 class="page-title">LICENCIA POR PAP Y MAMOGRAF&Iacute;A</h4>
+                        <h4 class="page-title">DASHBOARD</h4>
                         <div class="d-flex align-items-center"></div>
                     </div>
                     <div class="col-7 align-self-center">
@@ -74,64 +74,136 @@
                 <!-- ============================================================== -->
                 <!-- basic table -->
                 <div class="row">
-                    <div class="col-sm-12 col-md-6 col-lg-3">
-                        <div class="card bg-light-success">
-                            <div class="card-body">
-                                <h4 class="card-title">YA SE HICERON - PERIODO <?php echo date('Y'); ?></h4>
-                            </div>
-                            <div class="comment-widgets scrollable" style="height:350px;">
-<?php
-    if ($solPAPMANJSON['code'] === 200){
-        foreach ($solPAPMANJSON['data'] as $solKEY => $solVALUE) {
-            if ($solVALUE['solicitud_tipo'] == 'CON_SOLICITUD') {
-?>
-                                <!-- Comment Row -->
-                                <div class="d-flex flex-row comment-row">
-                                    <div class="p-2">
-                                        <img src="../assets/images/users/photo.png" alt="user" width="50" class="rounded-circle">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body" style="background-color:#005ea6; color:#ffffff;">
+                                <form action="#">
+                                    <div class="form-body">
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-3">
+                                                <div class="form-group">
+                                                    <label for="var01">Solicitud</label>
+                                                    <select id="var01" name="var01" class="select2 form-control custom-select" onchange="verSolicitudes();" style="width:100%; height:40px;" required></select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-3">
+                                                <div class="form-group">
+                                                    <label for="var02">Fecha Desde</label>
+                                                    <input id="var02" name="var02" value="2020-01-01"  class="form-control" onchange="verSolicitudes();" type="date" style="width:100%; height:40px;" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-3">
+                                                <div class="form-group">
+                                                    <label for="var03">Fecha Hasta</label>
+                                                    <input id="var03" name="var03" value="2020-12-31" class="form-control" onchange="verSolicitudes();" type="date" style="width:100%; height:40px;" required>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-3">
+                                                <div class="form-group">
+                                                    <label for="var04">Gerencia</label>
+                                                    <select id="var04" name="var04" class="select2 form-control custom-select" onchange="verSolicitudes();" style="width:100%; height:40px;" required></select>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="comment-text active w-100">
-                                        <h6 class="font-medium"><?php echo trim(strtoupper($solVALUE['solicitud_persona'])); ?></h6>
-                                        <span class="m-b-15 d-block">DOC NRO.: <?php echo trim(strtoupper($solVALUE['solicitud_documento'])); ?></span>
-                                    </div>
-                                </div>
-                                <!-- Comment Row -->
-<?php
-            }
-        }
-    }
-?>
+                                </form>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="col-sm-12 col-md-6 col-lg-3">
-                        <div class="card bg-light-danger">
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">LOS QUE FALTAN - PERIODO <?php echo date('Y'); ?></h4>
-                            </div>
-                            <div class="comment-widgets scrollable" style="height:350px;">
-<?php
-    if ($solPAPMANJSON['code'] === 200){
-        foreach ($solPAPMANJSON['data'] as $solKEY => $solVALUE) {
-            if ($solVALUE['solicitud_tipo'] == 'SIN_SOLICITUD') {
-?>
-                                <!-- Comment Row -->
-                                <div class="d-flex flex-row comment-row">
-                                    <div class="p-2">
-                                        <img src="../assets/images/users/photo.png" alt="user" width="50" class="rounded-circle">
-                                    </div>
-                                    <div class="comment-text active w-100">
-                                        <h6 class="font-medium"><?php echo trim(strtoupper($solVALUE['solicitud_persona'])); ?></h6>
-                                        <span class="m-b-15 d-block">DOC NRO:. <?php echo trim(strtoupper($solVALUE['solicitud_documento'])); ?></span>
+                                <div class="row p-t-10 p-b-10">
+                                    <!-- Column -->
+                                    <div class="col p-r-0">
+                                        <h1 class="font-light" id="titING01"></h1>
+                                        <h6 class="text-muted">Ingresados</h6></div>
+                                    <!-- Column -->
+                                    <div class="col text-right align-self-center">
+                                        <div id="valING01" class="css-bar m-b-0 css-bar-info"><i class="mdi mdi-star-circle"></i></div>
                                     </div>
                                 </div>
-                                <!-- Comment Row -->
-<?php
-            }
-        }
-    }
-?>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row p-t-10 p-b-10">
+                                    <!-- Column -->
+                                    <div class="col p-r-0">
+                                        <h1 class="font-light" id="titAUT01"></h1>
+                                        <h6 class="text-muted">Autorizados</h6></div>
+                                    <!-- Column -->
+                                    <div class="col text-right align-self-center">
+                                        <div id="valAUT01" class="css-bar m-b-0 css-bar-success"><i class="mdi mdi-star-circle"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row p-t-10 p-b-10">
+                                    <!-- Column -->
+                                    <div class="col p-r-0">
+                                        <h1 class="font-light" id="titAPR01"></h1>
+                                        <h6 class="text-muted">Aprobados</h6></div>
+                                    <!-- Column -->
+                                    <div class="col text-right align-self-center">
+                                        <div id="valAPR01" class="css-bar m-b-0 css-bar-warning"><i class="mdi mdi-star-circle"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row p-t-10 p-b-10">
+                                    <!-- Column -->
+                                    <div class="col p-r-0">
+                                        <h1 class="font-light" id="titANU01"></h1>
+                                        <h6 class="text-muted">Anulados</h6></div>
+                                    <!-- Column -->
+                                    <div class="col text-right align-self-center">
+                                        <div id="valANU01" class="css-bar m-b-0 css-bar-danger"><i class="mdi mdi-star-circle"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12 col-xl-6">
+                        <div class="card">
+                            <div class="card-body analytics-info">
+                                <h4 class="card-title"> Por Gerencia </h4>
+                                <div id="char01" style="height:400px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-xl-6">
+                        <div class="card">
+                            <div class="card-body analytics-info">
+                                <h4 class="card-title"> Por Rango de Edad </h4>
+                                <div>
+                                    <canvas id="char02" height="135px"></canvas>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -174,5 +246,13 @@
 <?php
     include '../include/footer.php';
 ?>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script>
+        selectSolicitud();
+        selectGerencia();
+        verSolicitudes();
+    </script>
 </body>
 </html>
