@@ -177,7 +177,7 @@
                            		<span class="hide-menu"> Talento Humano </span>
                            	</a>
 							<ul aria-expanded="false" class="collapse first-level">
-                            	<li class="sidebar-item">
+                                <li class="sidebar-item">
                                		<a href="../public/solicitudes.php?tipo=3&sol=I" class="sidebar-link">
                                			<i class="mdi mdi-reporte"></i>
                                			<span class="hide-menu"> Solicitudes Ingresadas </span>

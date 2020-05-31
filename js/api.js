@@ -1,33 +1,36 @@
 const urlBASE   = 'http://api.conmebol.com/sfholox/public/v1';
 const xHTTP	    = new XMLHttpRequest();
+const conBASE   = 'dXNlcl9zZmhvbG94Om5zM3JfNWZoMCEweA==';
 
 function getJSON(codJSON, codURL) {
     var urlJSON = urlBASE + '/' + codURL;
 
-    $.ajax({
-        'async': false,
-        'type': "GET",
-        'global': false,
-        'dataType': "json",
-        'url': urlJSON,
-        'success': function (data) {
+    xHTTP.open('GET', urlJSON, false);
+    xHTTP.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var xJSON = JSON.parse(this.responseText);
             localStorage.removeItem(codJSON);
-            localStorage.setItem(codJSON, JSON.stringify(data));
+            localStorage.setItem(codJSON, JSON.stringify(xJSON)); 
         }
-    });
+    };
+    xHTTP.setRequestHeader('Accept', 'application/json;charset=UTF-8');
+    xHTTP.setRequestHeader('Authorization', 'Basic ' + conBASE);
+    xHTTP.setRequestHeader('Content-type', 'application/json;charset=UTF-8');
+    xHTTP.send();
 }
 
 function postJSON(codPAGE, codURL, codPARS) {
     var urlJSON = urlBASE + '/' + codURL;
 
+    xHTTP.open('POST', urlJSON, true);
     xHTTP.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var xJSON = JSON.parse(this.responseText);
             window.location.replace('../public/' + codPAGE + '.php?code='+ xJSON.code + '&msg=' + xJSON.message); 
         }
     };
-    
-    xHTTP.open('POST', urlJSON);
+    xHTTP.setRequestHeader('Accept', 'application/json;charset=UTF-8');
+    xHTTP.setRequestHeader('Authorization', 'Basic ' + conBASE);
     xHTTP.setRequestHeader('Content-type', 'application/json;charset=UTF-8');
     xHTTP.send(codPARS);
 }
@@ -211,6 +214,23 @@ function valSolicitud(){
     });
 }
 
+function getSolicitudes() {
+    if (localStorage.getItem('solicitudesAllJSON') === null){
+        getJSON('solicitudesAllJSON', '200/solicitudes');
+    }
+
+    var xJSON = JSON.parse(localStorage.getItem('solicitudesAllJSON'));
+    var xDATA = [];
+       
+    if (xJSON['code'] == 200){
+        xJSON['data'].forEach(element => {
+            xDATA.push(element);
+        });
+    }
+
+    return xDATA;
+}
+
 function getSolicitudAll(var01) {
     var xJSON = JSON.parse(localStorage.getItem('solicitudesJSON'));
     var xDATA = [];
@@ -377,6 +397,10 @@ function getSolicitud(var01){
 }
 
 function getTipoGerencia(){
+    if (localStorage.getItem('tipoGerenciaJSON') === null){
+        getJSON('tipoGerenciaJSON', '000/gerencia');
+    }
+
     var xJSON = JSON.parse(localStorage.getItem('tipoGerenciaJSON'));
     var xDATA = [];
        
@@ -455,9 +479,13 @@ function getTipoInasistencia(){
 }
 
 function getTipoSolicitud(){
+    if (localStorage.getItem('tipoSolicitudJSON') === null){
+        getJSON('tipoSolicitudJSON', '100/solicitud');
+    }
+
     var xJSON = JSON.parse(localStorage.getItem('tipoSolicitudJSON'));
     var xDATA = [];
-       
+
     if (xJSON['code'] == 200){
         xJSON['data'].forEach(element => {
             xDATA.push(element);
@@ -773,6 +801,15 @@ function setEstado(rowSel, rowEst, rowAcc, rowFun, rowCar){
             colBtn  = 'btn-primary';
             titMen  = '';
             rowEst  = 'V';
+            antEst  = '';
+            break;
+
+        case 6:
+            titEst  = 'Modificar Autorizante';
+            colEst  = '#6c757d;';
+            colBtn  = 'btn-secondary';
+            titMen  = '';
+            rowEst  = 'I';
             antEst  = '';
             break;
     }

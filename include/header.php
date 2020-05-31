@@ -11,6 +11,9 @@
     <link href="../assets/libs/select2/dist/css/select2.min.css" type="text/css" rel="stylesheet">
     <link href="../assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
 	<link href="../assets/libs/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
+	<link href="../dist/js/pages/chartist/chartist-init.css" rel="stylesheet">
+    <link href="../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css" rel="stylesheet">
+    <link href="../assets/extra-libs/css-chart/css-chart.css" rel="stylesheet">
 	<link href="../assets/extra-libs/c3/c3.min.css" rel="stylesheet">
 	<link href="../assets/libs/jquery-steps/jquery.steps.css" rel="stylesheet">
     <link href="../assets/libs/jquery-steps/steps.css" rel="stylesheet">
