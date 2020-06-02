@@ -16,9 +16,43 @@ function selectSolicitud () {
     });
 }
 
+function selectEstado() {
+    var selOption   = document.getElementById('var04');
+    
+    while (selOption.length > 0) {
+        selOption.remove(0);
+    }
+
+    var option  = document.createElement('option');
+    option.value    = 'T';
+    option.text     = 'TODOS';
+    option.selected = true;
+    selOption.add(option, null);
+
+    var option  = document.createElement('option');
+    option.value    = 'I';
+    option.text     = 'INGRESADO';
+    selOption.add(option, null);
+
+    var option  = document.createElement('option');
+    option.value    = 'A';
+    option.text     = 'AUTORIZADO';
+    selOption.add(option, null);
+
+    var option  = document.createElement('option');
+    option.value    = 'P';
+    option.text     = 'APROBADO';
+    selOption.add(option, null);
+
+    var option  = document.createElement('option');
+    option.value    = 'C';
+    option.text     = 'ANULADO';
+    selOption.add(option, null);
+}
+
 function selectGerencia() {
     var xJSON       = getTipoGerencia();
-    var selOption   = document.getElementById('var04');
+    var selOption   = document.getElementById('var05');
     
     while (selOption.length > 0) {
         selOption.remove(0);
@@ -38,6 +72,53 @@ function selectGerencia() {
     });
 }
 
+function selectDepto() {
+    var codGer      = document.getElementById('var05');
+    var selOption   = document.getElementById('var06');
+    var xJSON       = getTipoDepartamento(codGer.value);
+    
+    while (selOption.length > 0) {
+        selOption.remove(0);
+    }
+
+    var option  = document.createElement('option');
+    option.value    = 0;
+    option.text     = 'TODOS';
+    option.selected = true;
+    selOption.add(option, null);
+
+    xJSON.forEach(element => {
+        var option      = document.createElement('option');
+        option.value    = element.tipo_departamento_codigo;
+        option.text     = element.tipo_departamento_nombre;
+        selOption.add(option, null);
+    });
+}
+
+function selectColaborador() {
+    var codGer      = document.getElementById('var05');
+    var codDep      = document.getElementById('var06');
+    var selOption   = document.getElementById('var07');
+    var xJSON       = getColaborador(codGer.value, codDep.value);
+    
+    while (selOption.length > 0) {
+        selOption.remove(0);
+    }
+
+    var option  = document.createElement('option');
+    option.value    = 0;
+    option.text     = 'TODOS';
+    option.selected = true;
+    selOption.add(option, null);
+
+    xJSON.forEach(element => {
+        var option      = document.createElement('option');
+        option.value    = element.documento;
+        option.text     = element.nombre_completo;
+        selOption.add(option, null);
+    });
+}
+
 function verSolicitudes() {
     var xJSON   = getSolicitudes();
 
@@ -45,6 +126,9 @@ function verSolicitudes() {
     var selFil02= formatDate(document.getElementById('var02').value);
     var selFil03= formatDate(document.getElementById('var03').value);
     var selFil04= document.getElementById('var04').value;
+    var selFil05= document.getElementById('var05').value;
+    var selFil06= document.getElementById('var06').value;
+    var selFil07= document.getElementById('var07').value;
 
     var titING01= document.getElementById('titING01');
     var titAUT01= document.getElementById('titAUT01');
@@ -69,44 +153,322 @@ function verSolicitudes() {
 
     xJSON.forEach(element => {
         if (element.tipo_permiso_codigo == selFil01 && element.solicitud_fecha_desde_1 >= selFil02 && element.solicitud_fecha_hasta_1 <= selFil03) {
-            if (selFil04 == 0){
-                switch (element.solicitud_estado_codigo) {
-                    case 'I':
-                        canING01 = canING01 + 1;
-                        break;
-                
-                    case 'A':
-                        canAUT01 = canAUT01 + 1;
-                        break;
+            if (selFil04 == 'T') {
+                if (selFil05 == 0){
+                    if (selFil06 == 0){
+                        if (selFil07 == 0){
+                            switch (element.solicitud_estado_codigo) {
+                                case 'I':
+                                    canING01 = canING01 + 1;
+                                    break;
+                            
+                                case 'A':
+                                    canAUT01 = canAUT01 + 1;
+                                    break;
 
-                    case 'P':
-                        canAPR01 = canAPR01 + 1;
-                        break;
+                                case 'P':
+                                    canAPR01 = canAPR01 + 1;
+                                    break;
 
-                    case 'C':
-                        canANU01 = canANU01 + 1;
-                        break;
-                }
-            } else {
-                if (selFil04 == element.gerencia_codigo) {
-                    switch (element.solicitud_estado_codigo) {
-                        case 'I':
-                            canING01 = canING01 + 1;
-                            break;
-                    
-                        case 'A':
-                            canAUT01 = canAUT01 + 1;
-                            break;
-        
-                        case 'P':
-                            canAPR01 = canAPR01 + 1;
-                            break;
-        
-                        case 'C':
-                            canANU01 = canANU01 + 1;
-                            break;
+                                case 'C':
+                                    canANU01 = canANU01 + 1;
+                                    break;
+                            }
+                        } else if (selFil07 == element.solicitud_documento) {
+                            switch (element.solicitud_estado_codigo) {
+                                case 'I':
+                                    canING01 = canING01 + 1;
+                                    break;
+                            
+                                case 'A':
+                                    canAUT01 = canAUT01 + 1;
+                                    break;
+
+                                case 'P':
+                                    canAPR01 = canAPR01 + 1;
+                                    break;
+
+                                case 'C':
+                                    canANU01 = canANU01 + 1;
+                                    break;
+                            }
+                        }
+                    } else if (selFil06 == element.departamento_codigo) {
+                        if (selFil07 == 0){
+                            switch (element.solicitud_estado_codigo) {
+                                case 'I':
+                                    canING01 = canING01 + 1;
+                                    break;
+                            
+                                case 'A':
+                                    canAUT01 = canAUT01 + 1;
+                                    break;
+
+                                case 'P':
+                                    canAPR01 = canAPR01 + 1;
+                                    break;
+
+                                case 'C':
+                                    canANU01 = canANU01 + 1;
+                                    break;
+                            }
+                        } else if (selFil07 == element.solicitud_documento) {
+                            switch (element.solicitud_estado_codigo) {
+                                case 'I':
+                                    canING01 = canING01 + 1;
+                                    break;
+                            
+                                case 'A':
+                                    canAUT01 = canAUT01 + 1;
+                                    break;
+
+                                case 'P':
+                                    canAPR01 = canAPR01 + 1;
+                                    break;
+
+                                case 'C':
+                                    canANU01 = canANU01 + 1;
+                                    break;
+                            }
+                        }
+                    }
+                } else if (selFil05 == element.gerencia_codigo) {
+                    if (selFil06 == 0){
+                        if (selFil07 == 0){
+                            switch (element.solicitud_estado_codigo) {
+                                case 'I':
+                                    canING01 = canING01 + 1;
+                                    break;
+                            
+                                case 'A':
+                                    canAUT01 = canAUT01 + 1;
+                                    break;
+
+                                case 'P':
+                                    canAPR01 = canAPR01 + 1;
+                                    break;
+
+                                case 'C':
+                                    canANU01 = canANU01 + 1;
+                                    break;
+                            }
+                        } else if (selFil07 == element.solicitud_documento) {
+                            switch (element.solicitud_estado_codigo) {
+                                case 'I':
+                                    canING01 = canING01 + 1;
+                                    break;
+                            
+                                case 'A':
+                                    canAUT01 = canAUT01 + 1;
+                                    break;
+
+                                case 'P':
+                                    canAPR01 = canAPR01 + 1;
+                                    break;
+
+                                case 'C':
+                                    canANU01 = canANU01 + 1;
+                                    break;
+                            }
+                        }
+                    } else if (selFil06 == element.departamento_codigo) {
+                        if (selFil07 == 0){
+                            switch (element.solicitud_estado_codigo) {
+                                case 'I':
+                                    canING01 = canING01 + 1;
+                                    break;
+                            
+                                case 'A':
+                                    canAUT01 = canAUT01 + 1;
+                                    break;
+
+                                case 'P':
+                                    canAPR01 = canAPR01 + 1;
+                                    break;
+
+                                case 'C':
+                                    canANU01 = canANU01 + 1;
+                                    break;
+                            }
+                        } else if (selFil07 == element.solicitud_documento) {
+                            switch (element.solicitud_estado_codigo) {
+                                case 'I':
+                                    canING01 = canING01 + 1;
+                                    break;
+                            
+                                case 'A':
+                                    canAUT01 = canAUT01 + 1;
+                                    break;
+
+                                case 'P':
+                                    canAPR01 = canAPR01 + 1;
+                                    break;
+
+                                case 'C':
+                                    canANU01 = canANU01 + 1;
+                                    break;
+                            }
+                        }
                     }
                 }
+            } else if (selFil04 == element.solicitud_estado_codigo) {
+                if (selFil05 == 0){
+                    if (selFil06 == 0){
+                        if (selFil07 == 0){
+                            switch (element.solicitud_estado_codigo) {
+                                case 'I':
+                                    canING01 = canING01 + 1;
+                                    break;
+                            
+                                case 'A':
+                                    canAUT01 = canAUT01 + 1;
+                                    break;
+
+                                case 'P':
+                                    canAPR01 = canAPR01 + 1;
+                                    break;
+
+                                case 'C':
+                                    canANU01 = canANU01 + 1;
+                                    break;
+                            }
+                        } else if (selFil07 == element.solicitud_documento) {
+                            switch (element.solicitud_estado_codigo) {
+                                case 'I':
+                                    canING01 = canING01 + 1;
+                                    break;
+                            
+                                case 'A':
+                                    canAUT01 = canAUT01 + 1;
+                                    break;
+
+                                case 'P':
+                                    canAPR01 = canAPR01 + 1;
+                                    break;
+
+                                case 'C':
+                                    canANU01 = canANU01 + 1;
+                                    break;
+                            }
+                        }
+                    } else if (selFil06 == element.departamento_codigo) {
+                        if (selFil07 == 0){
+                            switch (element.solicitud_estado_codigo) {
+                                case 'I':
+                                    canING01 = canING01 + 1;
+                                    break;
+                            
+                                case 'A':
+                                    canAUT01 = canAUT01 + 1;
+                                    break;
+
+                                case 'P':
+                                    canAPR01 = canAPR01 + 1;
+                                    break;
+
+                                case 'C':
+                                    canANU01 = canANU01 + 1;
+                                    break;
+                            }
+                        } else if (selFil07 == element.solicitud_documento) {
+                            switch (element.solicitud_estado_codigo) {
+                                case 'I':
+                                    canING01 = canING01 + 1;
+                                    break;
+                            
+                                case 'A':
+                                    canAUT01 = canAUT01 + 1;
+                                    break;
+
+                                case 'P':
+                                    canAPR01 = canAPR01 + 1;
+                                    break;
+
+                                case 'C':
+                                    canANU01 = canANU01 + 1;
+                                    break;
+                            }
+                        }
+                    }
+                } else if (selFil05 == element.gerencia_codigo) {
+                    if (selFil06 == 0){
+                        if (selFil07 == 0){
+                            switch (element.solicitud_estado_codigo) {
+                                case 'I':
+                                    canING01 = canING01 + 1;
+                                    break;
+                            
+                                case 'A':
+                                    canAUT01 = canAUT01 + 1;
+                                    break;
+
+                                case 'P':
+                                    canAPR01 = canAPR01 + 1;
+                                    break;
+
+                                case 'C':
+                                    canANU01 = canANU01 + 1;
+                                    break;
+                            }
+                        } else if (selFil07 == element.solicitud_documento) {
+                            switch (element.solicitud_estado_codigo) {
+                                case 'I':
+                                    canING01 = canING01 + 1;
+                                    break;
+                            
+                                case 'A':
+                                    canAUT01 = canAUT01 + 1;
+                                    break;
+
+                                case 'P':
+                                    canAPR01 = canAPR01 + 1;
+                                    break;
+
+                                case 'C':
+                                    canANU01 = canANU01 + 1;
+                                    break;
+                            }
+                        }
+                    } else if (selFil06 == element.departamento_codigo) {
+                        if (selFil07 == 0){
+                            switch (element.solicitud_estado_codigo) {
+                                case 'I':
+                                    canING01 = canING01 + 1;
+                                    break;
+                            
+                                case 'A':
+                                    canAUT01 = canAUT01 + 1;
+                                    break;
+
+                                case 'P':
+                                    canAPR01 = canAPR01 + 1;
+                                    break;
+
+                                case 'C':
+                                    canANU01 = canANU01 + 1;
+                                    break;
+                            }
+                        } else if (selFil07 == element.solicitud_documento) {
+                            switch (element.solicitud_estado_codigo) {
+                                case 'I':
+                                    canING01 = canING01 + 1;
+                                    break;
+                            
+                                case 'A':
+                                    canAUT01 = canAUT01 + 1;
+                                    break;
+
+                                case 'P':
+                                    canAPR01 = canAPR01 + 1;
+                                    break;
+
+                                case 'C':
+                                    canANU01 = canANU01 + 1;
+                                    break;
+                            }
+                        }
+                    }
+                }   
             }
         }
     });
@@ -132,7 +494,7 @@ function verSolicitudes() {
     valANU01.setAttribute('data-label', '50%');
     valANU01.setAttribute('class', 'css-bar m-b-0 css-bar-danger ' + cssANU01);
 
-    charView(selFil01, selFil02, selFil03, selFil04);
+    charView(selFil01, selFil02, selFil03, selFil04, selFil05, selFil06, selFil07);
 }
 
 function calCSS(totSOL, canTOT) {
@@ -186,13 +548,25 @@ function calCSS(totSOL, canTOT) {
     return retCSS;
 }
 
-function cantidadGer(fil01, fil02, fil03, codGer){
+function cantidadGer(fil01, fil02, fil03, fil04, fil05){
     var xJSON   = getSolicitudes();
     var retCan  = 0;
 
     xJSON.forEach(element => {
-        if (element.tipo_permiso_codigo == fil01 && element.solicitud_fecha_desde_1 >= fil02 && element.solicitud_fecha_hasta_1 <= fil03 && element.gerencia_codigo == codGer) {
-            retCan = retCan + 1;
+        if (element.tipo_permiso_codigo == fil01 && element.solicitud_fecha_desde_1 >= fil02 && element.solicitud_fecha_hasta_1 <= fil03) {
+            if (fil04 == 'T') {
+                if (fil05 == 0) {
+                    retCan = retCan + 1;
+                } else if (element.gerencia_codigo == fil05) {
+                    retCan = retCan + 1;
+                }
+            } else if (element.solicitud_estado_codigo == fil04) {
+                if (fil05 == 0) {
+                    retCan = retCan + 1;
+                } else if (element.gerencia_codigo == fil05) {
+                    retCan = retCan + 1;
+                }
+            }
         }
     });
     
@@ -211,7 +585,7 @@ function formatDate(date) {
     return [year, month, day].join('-');
 }
 
-function charView(fil01, fil02, fil03, fil04){
+function charView(fil01, fil02, fil03, fil04, fil05, fil06, fil07){
     var xJSON   = getTipoGerencia();
     var xJSON1  = getSolicitudes();
     var edad01  = 0;
@@ -224,14 +598,14 @@ function charView(fil01, fil02, fil03, fil04){
     var dataEda = [];
 
     xJSON.forEach(element => {
-        if (fil04 == 0) {
-            var cantAUX = cantidadGer(fil01, fil02, fil03, element.tipo_gerencia_codigo);
+        if (fil05 == 0) {
+            var cantAUX = cantidadGer(fil01, fil02, fil03, fil04, element.tipo_gerencia_codigo);
             var dataAUX = { "value": cantAUX, "name": element.tipo_gerencia_nombre};
     
             objGer.push(dataAUX);
             dataGer.push(element.tipo_gerencia_nombre);
-        }else if (element.tipo_gerencia_codigo == fil04) {
-            var cantAUX = cantidadGer(fil01, fil02, fil03, element.tipo_gerencia_codigo);
+        }else if (element.tipo_gerencia_codigo == fil05) {
+            var cantAUX = cantidadGer(fil01, fil02, fil03, fil04, element.tipo_gerencia_codigo);
             var dataAUX = { "value": cantAUX, "name": element.tipo_gerencia_nombre};
     
             objGer.push(dataAUX);
@@ -241,29 +615,225 @@ function charView(fil01, fil02, fil03, fil04){
 
     xJSON1.forEach(element => {
         if (element.tipo_permiso_codigo == fil01 && element.solicitud_fecha_desde_1 >= fil02 && element.solicitud_fecha_hasta_1 <= fil03) {
-            if (fil04 == 0) {
-                if (element.colaborador_edad < 21) {
-                    edad01 = edad01 + 1;
-                } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
-                    edad02 = edad02 + 1;
-                } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
-                    edad03 = edad03 + 1;
-                } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
-                    edad04 = edad04 + 1;
-                } else if (element.colaborador_edad > 50) {
-                    edad05 = edad05 + 1;
+            if (fil04 == 'T') {
+                if (fil05 == 0) {
+                    if (fil06 == 0) {
+                        if (fil07 == 0) {
+                            if (element.colaborador_edad < 21) {
+                                edad01 = edad01 + 1;
+                            } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
+                                edad02 = edad02 + 1;
+                            } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
+                                edad03 = edad03 + 1;
+                            } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
+                                edad04 = edad04 + 1;
+                            } else if (element.colaborador_edad > 50) {
+                                edad05 = edad05 + 1;
+                            }
+                        } else if (element.solicitud_documento == fil07) {
+                            if (element.colaborador_edad < 21) {
+                                edad01 = edad01 + 1;
+                            } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
+                                edad02 = edad02 + 1;
+                            } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
+                                edad03 = edad03 + 1;
+                            } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
+                                edad04 = edad04 + 1;
+                            } else if (element.colaborador_edad > 50) {
+                                edad05 = edad05 + 1;
+                            }
+                        }
+                    } else if (element.departamento_codigo == fil06) {
+                        if (fil07 == 0) {
+                            if (element.colaborador_edad < 21) {
+                                edad01 = edad01 + 1;
+                            } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
+                                edad02 = edad02 + 1;
+                            } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
+                                edad03 = edad03 + 1;
+                            } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
+                                edad04 = edad04 + 1;
+                            } else if (element.colaborador_edad > 50) {
+                                edad05 = edad05 + 1;
+                            }
+                        } else if (element.solicitud_documento == fil07) {
+                            if (element.colaborador_edad < 21) {
+                                edad01 = edad01 + 1;
+                            } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
+                                edad02 = edad02 + 1;
+                            } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
+                                edad03 = edad03 + 1;
+                            } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
+                                edad04 = edad04 + 1;
+                            } else if (element.colaborador_edad > 50) {
+                                edad05 = edad05 + 1;
+                            }
+                        }
+                    }
+                }  else if (element.gerencia_codigo == fil05) {
+                    if (fil06 == 0) {
+                        if (fil07 == 0) {
+                            if (element.colaborador_edad < 21) {
+                                edad01 = edad01 + 1;
+                            } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
+                                edad02 = edad02 + 1;
+                            } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
+                                edad03 = edad03 + 1;
+                            } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
+                                edad04 = edad04 + 1;
+                            } else if (element.colaborador_edad > 50) {
+                                edad05 = edad05 + 1;
+                            }
+                        } else if (element.solicitud_documento == fil07) {
+                            if (element.colaborador_edad < 21) {
+                                edad01 = edad01 + 1;
+                            } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
+                                edad02 = edad02 + 1;
+                            } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
+                                edad03 = edad03 + 1;
+                            } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
+                                edad04 = edad04 + 1;
+                            } else if (element.colaborador_edad > 50) {
+                                edad05 = edad05 + 1;
+                            }
+                        }
+                    } else if (element.departamento_codigo == fil06) {
+                        if (fil07 == 0) {
+                            if (element.colaborador_edad < 21) {
+                                edad01 = edad01 + 1;
+                            } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
+                                edad02 = edad02 + 1;
+                            } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
+                                edad03 = edad03 + 1;
+                            } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
+                                edad04 = edad04 + 1;
+                            } else if (element.colaborador_edad > 50) {
+                                edad05 = edad05 + 1;
+                            }
+                        } else if (element.solicitud_documento == fil07) {
+                            if (element.colaborador_edad < 21) {
+                                edad01 = edad01 + 1;
+                            } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
+                                edad02 = edad02 + 1;
+                            } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
+                                edad03 = edad03 + 1;
+                            } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
+                                edad04 = edad04 + 1;
+                            } else if (element.colaborador_edad > 50) {
+                                edad05 = edad05 + 1;
+                            }
+                        }
+                    }
                 }
-            }else if (element.gerencia_codigo == fil04) {
-                if (element.colaborador_edad < 21) {
-                    edad01 = edad01 + 1;
-                } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
-                    edad02 = edad02 + 1;
-                } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
-                    edad03 = edad03 + 1;
-                } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
-                    edad04 = edad04 + 1;
-                } else if (element.colaborador_edad > 50) {
-                    edad05 = edad05 + 1;
+            } else if (element.solicitud_estado_codigo == fil04) {
+                if (fil05 == 0) {
+                    if (fil06 == 0) {
+                        if (fil07 == 0) {
+                            if (element.colaborador_edad < 21) {
+                                edad01 = edad01 + 1;
+                            } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
+                                edad02 = edad02 + 1;
+                            } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
+                                edad03 = edad03 + 1;
+                            } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
+                                edad04 = edad04 + 1;
+                            } else if (element.colaborador_edad > 50) {
+                                edad05 = edad05 + 1;
+                            }
+                        } else if (element.solicitud_documento == fil07) {
+                            if (element.colaborador_edad < 21) {
+                                edad01 = edad01 + 1;
+                            } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
+                                edad02 = edad02 + 1;
+                            } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
+                                edad03 = edad03 + 1;
+                            } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
+                                edad04 = edad04 + 1;
+                            } else if (element.colaborador_edad > 50) {
+                                edad05 = edad05 + 1;
+                            }
+                        }
+                    } else if (element.departamento_codigo == fil06) {
+                        if (fil07 == 0) {
+                            if (element.colaborador_edad < 21) {
+                                edad01 = edad01 + 1;
+                            } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
+                                edad02 = edad02 + 1;
+                            } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
+                                edad03 = edad03 + 1;
+                            } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
+                                edad04 = edad04 + 1;
+                            } else if (element.colaborador_edad > 50) {
+                                edad05 = edad05 + 1;
+                            }
+                        } else if (element.solicitud_documento == fil07) {
+                            if (element.colaborador_edad < 21) {
+                                edad01 = edad01 + 1;
+                            } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
+                                edad02 = edad02 + 1;
+                            } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
+                                edad03 = edad03 + 1;
+                            } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
+                                edad04 = edad04 + 1;
+                            } else if (element.colaborador_edad > 50) {
+                                edad05 = edad05 + 1;
+                            }
+                        }
+                    }
+                }  else if (element.gerencia_codigo == fil05) {
+                    if (fil06 == 0) {
+                        if (fil07 == 0) {
+                            if (element.colaborador_edad < 21) {
+                                edad01 = edad01 + 1;
+                            } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
+                                edad02 = edad02 + 1;
+                            } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
+                                edad03 = edad03 + 1;
+                            } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
+                                edad04 = edad04 + 1;
+                            } else if (element.colaborador_edad > 50) {
+                                edad05 = edad05 + 1;
+                            }
+                        } else if (element.solicitud_documento == fil07) {
+                            if (element.colaborador_edad < 21) {
+                                edad01 = edad01 + 1;
+                            } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
+                                edad02 = edad02 + 1;
+                            } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
+                                edad03 = edad03 + 1;
+                            } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
+                                edad04 = edad04 + 1;
+                            } else if (element.colaborador_edad > 50) {
+                                edad05 = edad05 + 1;
+                            }
+                        }
+                    } else if (element.departamento_codigo == fil06) {
+                        if (fil07 == 0) {
+                            if (element.colaborador_edad < 21) {
+                                edad01 = edad01 + 1;
+                            } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
+                                edad02 = edad02 + 1;
+                            } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
+                                edad03 = edad03 + 1;
+                            } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
+                                edad04 = edad04 + 1;
+                            } else if (element.colaborador_edad > 50) {
+                                edad05 = edad05 + 1;
+                            }
+                        } else if (element.solicitud_documento == fil07) {
+                            if (element.colaborador_edad < 21) {
+                                edad01 = edad01 + 1;
+                            } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
+                                edad02 = edad02 + 1;
+                            } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
+                                edad03 = edad03 + 1;
+                            } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
+                                edad04 = edad04 + 1;
+                            } else if (element.colaborador_edad > 50) {
+                                edad05 = edad05 + 1;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -363,9 +933,7 @@ function charView(fil01, fil02, fil03, fil04){
         new Chart(document.getElementById("char02"), {
             type: 'pie',
             data: {
-                labels: [ 
-                    "Menor que 20", "Entre 21 a 30", "Entre 31 a 40", "Entre 41 a 50", "Mayor que 50"
-                ],
+                labels: [ "Menor que 20", "Entre 21 a 30", "Entre 31 a 40", "Entre 41 a 50", "Mayor que 50"],
                 datasets: [{
                     label: "Population (millions)",
                     backgroundColor: ["#36a2eb", "#ff6384", "#4bc0c0", "#ffcd56", "#07b107"],

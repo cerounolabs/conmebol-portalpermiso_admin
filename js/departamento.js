@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	var codigo	= document.getElementById('tableCodigo').className;	
-	var xJSON	= getTipoDepartamento();
+	var xJSON	= getTipoDepartamento(0);
 
 	$('#tableLoad').DataTable({
 		processing	: true,

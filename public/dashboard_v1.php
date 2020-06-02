@@ -101,10 +101,29 @@
                                             </div>
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
-                                                    <label for="var04">Gerencia</label>
+                                                    <label for="var04">Estado</label>
                                                     <select id="var04" name="var04" class="select2 form-control custom-select" onchange="verSolicitudes();" style="width:100%; height:40px;" required></select>
                                                 </div>
                                             </div>
+                                            <div class="col-sm-12 col-md-3">
+                                                <div class="form-group">
+                                                    <label for="var05">Gerencia</label>
+                                                    <select id="var05" name="var05" class="select2 form-control custom-select" onchange="selectDepto(); selectColaborador(); verSolicitudes();" style="width:100%; height:40px;" required></select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-3">
+                                                <div class="form-group">
+                                                    <label for="var06">Departamento</label>
+                                                    <select id="var06" name="var06" class="select2 form-control custom-select" onchange="selectColaborador(); verSolicitudes();" style="width:100%; height:40px;" required></select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6">
+                                                <div class="form-group">
+                                                    <label for="var07">Colaborador</label>
+                                                    <select id="var07" name="var07" class="select2 form-control custom-select" onchange="verSolicitudes();" style="width:100%; height:40px;" required></select>
+                                                </div>
+                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </form>
@@ -193,7 +212,7 @@
                         <div class="card">
                             <div class="card-body analytics-info">
                                 <h4 class="card-title"> Por Gerencia </h4>
-                                <div id="char01" style="height:400px;"></div>
+                                <div id="char01" style="height:450px;"></div>
                             </div>
                         </div>
                     </div>
@@ -201,8 +220,8 @@
                         <div class="card">
                             <div class="card-body analytics-info">
                                 <h4 class="card-title"> Por Rango de Edad </h4>
-                                <div>
-                                    <canvas id="char02" height="135px"></canvas>
+                                <div style="height:450px;">
+                                    <canvas id="char02"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -251,7 +270,10 @@
     <script src="../js/dashboard.js"></script>
     <script>
         selectSolicitud();
+        selectEstado();
         selectGerencia();
+        selectDepto();
+        selectColaborador();
         verSolicitudes();
     </script>
 </body>

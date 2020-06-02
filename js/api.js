@@ -413,13 +413,50 @@ function getTipoGerencia(){
     return xDATA; 
 }
 
-function getTipoDepartamento(){
+function getTipoDepartamento(var01){
+    if (localStorage.getItem('tipoDepartamentoJSON') === null){
+        getJSON('tipoDepartamentoJSON', '000/departamento');
+    }
+
     var xJSON = JSON.parse(localStorage.getItem('tipoDepartamentoJSON'));
     var xDATA = [];
        
     if (xJSON['code'] == 200){
         xJSON['data'].forEach(element => {
-            xDATA.push(element);
+            if (var01 == 0) {
+                xDATA.push(element);
+            } else if (var01 == element.tipo_gerencia_codigo) {
+                xDATA.push(element);
+            }
+        });
+    }
+
+    return xDATA; 
+}
+
+function getColaborador(var01, var02){
+    if (localStorage.getItem('colaboradorJSON') === null){
+        getJSON('colaboradorJSON', '000/colaborador');
+    }
+
+    var xJSON = JSON.parse(localStorage.getItem('colaboradorJSON'));
+    var xDATA = [];
+       
+    if (xJSON['code'] == 200){
+        xJSON['data'].forEach(element => {
+            if (var01 == 0) {
+                if (var02 == 0) {
+                    xDATA.push(element);
+                } else if (var02 == element.departamento_codigo) {
+                    xDATA.push(element);
+                }
+            } else if (var01 == element.gerencia_codigo) {
+                if (var02 == 0) {
+                    xDATA.push(element);
+                } else if (var02 == element.departamento_codigo) {
+                    xDATA.push(element);
+                }
+            }
         });
     }
 
