@@ -133,10 +133,18 @@
                                			<span class="hide-menu"> Home </span>
                                		</a>
                                	</li>
+
                                 <li class="sidebar-item">
                                		<a href="../public/dashboard_v1.php" class="sidebar-link">
                                			<i class="mdi mdi-home"></i>
                                			<span class="hide-menu"> Dashboard v1 </span>
+                               		</a>
+                               	</li>
+
+                                <li class="sidebar-item">
+                               		<a href="../public/dashboard_v2.php" class="sidebar-link">
+                               			<i class="mdi mdi-home"></i>
+                               			<span class="hide-menu"> Dashboard v2 </span>
                                		</a>
                                	</li>
                             </ul>

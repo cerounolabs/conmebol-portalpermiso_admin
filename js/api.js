@@ -434,6 +434,67 @@ function getComprobanteId(codDoc, CodCom, codPer, codMeD, codMeH){
     return xDATA;
 }
 
+function getComprobanteAll(codCom, codPer, codMeD, codMeH, codGer, codDep, codDoc){
+    if (localStorage.getItem('comprobanteJSON') === null){
+        getJSON('comprobanteJSON', '200/comprobante');
+    }
+
+    var xJSON = JSON.parse(localStorage.getItem('comprobanteJSON'));
+    var xDATA = [];
+
+    if (xJSON['code'] == 200) {
+        xJSON['data'].forEach(element => {
+            if (element.tipo_comprobante_codigo == codCom && element.comprobante_periodo == codPer && element.tipo_mes_codigo >= codMeD && element.tipo_mes_codigo <= codMeH) {
+                if (codGer == 0) {
+                    if (codDep == 0) {
+                        if (codDoc == 0) {
+                            xDATA.push(element);
+                        } else {
+                            if (element.comprobante_documento == codDoc) {
+                                xDATA.push(element);
+                            }
+                        }
+                    } else {
+                        if (element.colaborador_departamento_codigo == codDep) {
+                            if (codDoc == 0) {
+                                xDATA.push(element);
+                            } else {
+                                if (element.comprobante_documento == codDoc) {
+                                    xDATA.push(element);
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    if (element.comprobante_gerencia_codigo == codGer) {
+                        if (codDep == 0) {
+                            if (codDoc == 0) {
+                                xDATA.push(element);
+                            } else {
+                                if (element.comprobante_documento == codDoc) {
+                                    xDATA.push(element);
+                                }
+                            }
+                        } else {
+                            if (element.colaborador_departamento_codigo == codDep) {
+                                if (codDoc == 0) {
+                                    xDATA.push(element);
+                                } else {
+                                    if (element.comprobante_documento == codDoc) {
+                                        xDATA.push(element);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    return xDATA;
+}
+
 function getTipoGerencia(){
     if (localStorage.getItem('tipoGerenciaJSON') === null){
         getJSON('tipoGerenciaJSON', '000/gerencia');
@@ -1159,4 +1220,256 @@ function setEstado(rowSel, rowEst, rowAcc, rowFun, rowCar){
 
     $("#modalcontent").empty();
     $("#modalcontent").append(html);
+}
+
+function selectSolicitud(var01) {
+    var xJSON       = getTipoSolicitud();
+    var selOption   = document.getElementById(var01);
+    
+    while (selOption.length > 0) {
+        selOption.remove(0);
+    }
+
+    xJSON.forEach(element => {
+        if (element.tipo_estado_codigo == 'A'){
+            var option      = document.createElement('option');
+            option.value    = element.tipo_permiso_codigo;
+            option.text     = element.tipo_solicitud_nombre + ' - ' + element.tipo_permiso_nombre;
+            selOption.add(option, null);
+        }
+    });
+}
+
+function selectEstado(var01) {
+    var selOption   = document.getElementById(var01);
+    
+    while (selOption.length > 0) {
+        selOption.remove(0);
+    }
+
+    var option  = document.createElement('option');
+    option.value    = 'T';
+    option.text     = 'TODOS';
+    option.selected = true;
+    selOption.add(option, null);
+
+    var option  = document.createElement('option');
+    option.value    = 'I';
+    option.text     = 'INGRESADO';
+    selOption.add(option, null);
+
+    var option  = document.createElement('option');
+    option.value    = 'A';
+    option.text     = 'AUTORIZADO';
+    selOption.add(option, null);
+
+    var option  = document.createElement('option');
+    option.value    = 'P';
+    option.text     = 'APROBADO';
+    selOption.add(option, null);
+
+    var option  = document.createElement('option');
+    option.value    = 'C';
+    option.text     = 'ANULADO';
+    selOption.add(option, null);
+}
+
+function selectGerencia(var01) {
+    var xJSON       = getTipoGerencia();
+    var selOption   = document.getElementById(var01);
+    
+    while (selOption.length > 0) {
+        selOption.remove(0);
+    }
+
+    var option  = document.createElement('option');
+    option.value    = 0;
+    option.text     = 'TODOS';
+    option.selected = true;
+    selOption.add(option, null);
+
+    xJSON.forEach(element => {
+        var option      = document.createElement('option');
+        option.value    = element.tipo_gerencia_codigo;
+        option.text     = element.tipo_gerencia_nombre;
+        selOption.add(option, null);
+    });
+}
+
+function selectDepto(var01, var02) {
+    var codGer      = document.getElementById(var01);
+    var selOption   = document.getElementById(var02);
+    var xJSON       = getTipoDepartamento(codGer.value);
+    
+    while (selOption.length > 0) {
+        selOption.remove(0);
+    }
+
+    var option  = document.createElement('option');
+    option.value    = 0;
+    option.text     = 'TODOS';
+    option.selected = true;
+    selOption.add(option, null);
+
+    xJSON.forEach(element => {
+        var option      = document.createElement('option');
+        option.value    = element.tipo_departamento_codigo;
+        option.text     = element.tipo_departamento_nombre;
+        selOption.add(option, null);
+    });
+}
+
+function selectColaborador(var01, var02, var03) {
+    var codGer      = document.getElementById(var01);
+    var codDep      = document.getElementById(var02);
+    var selOption   = document.getElementById(var03);
+    var xJSON       = getColaborador(codGer.value, codDep.value);
+    
+    while (selOption.length > 0) {
+        selOption.remove(0);
+    }
+
+    var option  = document.createElement('option');
+    option.value    = 0;
+    option.text     = 'TODOS';
+    option.selected = true;
+    selOption.add(option, null);
+
+    xJSON.forEach(element => {
+        var option      = document.createElement('option');
+        option.value    = element.documento;
+        option.text     = element.nombre_completo;
+        selOption.add(option, null);
+    });
+}
+
+function selectDominio(var01, var02, var03) {
+    var selOption   = document.getElementById(var01);
+    var xJSON       = getDominio(var02);
+    
+    while (selOption.length > 0) {
+        selOption.remove(0);
+    }
+    
+    if (var03 == true) {
+        var option  = document.createElement('option');
+        option.value    = 0;
+        option.text     = 'TODOS';
+        option.selected = true;
+        selOption.add(option, null);
+    }
+
+    xJSON.forEach(element => {
+        if (element.tipo_estado_codigo == 1){
+            var option      = document.createElement('option');
+            option.value    = element.tipo_codigo;
+            option.text     = element.tipo_nombre_castellano;
+            selOption.add(option, null);
+        }
+    });
+}
+
+function selectMes(var01, var02) {
+    var xJSON       = getDominio('SISTEMAMES');
+	var selOption1	= document.getElementById(var01);
+	var selOption2	= document.getElementById(var02);
+    
+    while (selOption1.length > 0) {
+        selOption1.remove(0);
+	}
+	
+	while (selOption2.length > 0) {
+        selOption2.remove(0);
+    }
+
+    xJSON.forEach(element => {
+        if (element.tipo_estado_codigo == 1){
+            var option      = document.createElement('option');
+            option.value    = element.tipo_codigo;
+            option.text     = element.tipo_nombre_castellano;
+
+            if (element.tipo_codigo == 24) {
+                option.selected = true;
+            }
+
+            selOption1.add(option, null);
+        }
+    });
+
+    xJSON.forEach(element => {
+        if (element.tipo_estado_codigo == 1){
+            var option      = document.createElement('option');
+            option.value    = element.tipo_codigo;
+            option.text     = element.tipo_nombre_castellano;
+
+            if (element.tipo_codigo == 35) {
+                option.selected = true;
+            }
+
+            selOption2.add(option, null);
+        }
+    });
+}
+
+function calCSS(totSOL, canTOT) {
+    var retCSS  = '';
+    var porSOL  = Math.round(((canTOT * 100) / totSOL));
+
+    if(porSOL == 0){
+        retCSS  = 'css-bar-0';
+    } else if (porSOL > 0 && porSOL < 6) {
+        retCSS  = 'css-bar-5';
+    } else if (porSOL > 5 && porSOL < 11) {
+        retCSS  = 'css-bar-10';
+    } else if (porSOL > 10 && porSOL < 16) {
+        retCSS  = 'css-bar-15';
+    } else if (porSOL > 15 && porSOL < 21) {
+        retCSS  = 'css-bar-20';
+    } else if (porSOL > 20 && porSOL < 26) {
+        retCSS  = 'css-bar-25';
+    } else if (porSOL > 25 && porSOL < 31) {
+        retCSS  = 'css-bar-30';
+    } else if (porSOL > 30 && porSOL < 36) {
+        retCSS  = 'css-bar-35';
+    } else if (porSOL > 35 && porSOL < 41) {
+        retCSS  = 'css-bar-40';
+    } else if (porSOL > 40 && porSOL < 46) {
+        retCSS  = 'css-bar-45';
+    } else if (porSOL > 45 && porSOL < 51) {
+        retCSS  = 'css-bar-50';
+    } else if (porSOL > 50 && porSOL < 56) {
+        retCSS  = 'css-bar-55';
+    } else if (porSOL > 55 && porSOL < 61) {
+        retCSS  = 'css-bar-60';
+    } else if (porSOL > 60 && porSOL < 66) {
+        retCSS  = 'css-bar-65';
+    } else if (porSOL > 65 && porSOL < 71) {
+        retCSS  = 'css-bar-70';
+    } else if (porSOL > 70 && porSOL < 76) {
+        retCSS  = 'css-bar-75';
+    } else if (porSOL > 75 && porSOL < 81) {
+        retCSS  = 'css-bar-80';
+    } else if (porSOL > 80 && porSOL < 86) {
+        retCSS  = 'css-bar-85';
+    } else if (porSOL > 85 && porSOL < 91) {
+        retCSS  = 'css-bar-90';
+    } else if (porSOL > 90 && porSOL < 96) {
+        retCSS  = 'css-bar-95';
+    } else if (porSOL > 95 && porSOL < 101) {
+        retCSS  = 'css-bar-100';
+    }
+
+    return retCSS;
+}
+
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
 }
