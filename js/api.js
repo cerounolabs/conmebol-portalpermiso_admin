@@ -396,6 +396,44 @@ function getSolicitud(var01){
     $("#modalcontent").append(html);
 }
 
+function getComprobante(codElem){
+    if (localStorage.getItem('comprobanteJSON') === null){
+        getJSON('comprobanteJSON', '200/comprobante');
+    }
+
+    var xJSON = JSON.parse(localStorage.getItem('comprobanteJSON'));
+    var xDATA = [];
+
+    if (xJSON['code'] == 200) {
+        xJSON['data'].forEach(element => {
+            if (element.comprobante_documento == codElem) {
+                xDATA.push(element);
+            }
+        });
+    }
+
+    return xDATA;
+}
+
+function getComprobanteId(codDoc, CodCom, codPer, codMeD, codMeH){
+    if (localStorage.getItem('comprobanteJSON') === null){
+        getJSON('comprobanteJSON', '200/comprobante');
+    }
+
+    var xJSON = JSON.parse(localStorage.getItem('comprobanteJSON'));
+    var xDATA = [];
+
+    if (xJSON['code'] == 200) {
+        xJSON['data'].forEach(element => {
+            if (element.comprobante_documento == codDoc && element.tipo_comprobante_codigo == CodCom && element.comprobante_periodo == codPer && element.tipo_mes_codigo >= codMeD && element.tipo_mes_codigo <= codMeH) {
+                xDATA.push(element);
+            }
+        });
+    }
+
+    return xDATA;
+}
+
 function getTipoGerencia(){
     if (localStorage.getItem('tipoGerenciaJSON') === null){
         getJSON('tipoGerenciaJSON', '000/gerencia');
@@ -680,6 +718,44 @@ function getTipoSolicitudId(codigo){
     xHTTP.setRequestHeader('Content-type', 'application/json;charset=UTF-8');
     xHTTP.setRequestHeader('Authorization', 'Basic dXNlcl9zZmhvbG94Om5zM3JfNWZoMCEweA==');
     xHTTP.send();
+}
+
+function getDominio(codDom){
+    if (localStorage.getItem('dominioJSON') === null){
+        getJSON('dominioJSON', '100/dominio');
+    }
+
+    var xJSON = JSON.parse(localStorage.getItem('dominioJSON'));
+    var xDATA = [];
+
+    if (xJSON['code'] == 200) {
+        xJSON['data'].forEach(element => {
+            if (element.tipo_dominio == codDom) {
+                xDATA.push(element);
+            }
+        });
+    }
+
+    return xDATA;
+}
+
+function getADominio(codDom, codElem){
+    if (localStorage.getItem('dominioAJSON'+codDom) === null){
+        getJSON('dominioAJSON'+codDom, '100/auditoria/'+codDom);
+    }
+
+    var xJSON = JSON.parse(localStorage.getItem('dominioAJSON'+codDom));
+    var xDATA = [];
+
+    if (xJSON['code'] == 200) {
+        xJSON['data'].forEach(element => {
+            if (element.tipo_codigo == codElem) {
+                xDATA.push(element);
+            }
+        });
+    }
+
+    return xDATA;
 }
 
 function setSolicitud(var01){

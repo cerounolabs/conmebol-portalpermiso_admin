@@ -3,9 +3,7 @@
     require '../class/function/function.php';
     require '../class/session/session_system.php';
 
-    if ($usu_09 != 6){
-        header('Location: ../public/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
-    }
+    $var02 = date('Y');
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +42,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h4 class="page-title">Bienvenido <?php echo $usu_01.' '.$usu_04; ?></h4>
+                        <h4 class="page-title">Comprobante</h4>
                         <div class="d-flex align-items-center"></div>
                     </div>
                     <div class="col-7 align-self-center">
@@ -54,7 +52,7 @@
                                     <li class="breadcrumb-item">
                                         <a href="../public/home.php">Home</a>
                                     </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Permiso</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Comprobante</li>
                                 </ol>
                             </nav>
                         </div>
@@ -75,21 +73,61 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
+                            <div class="card-body" style="background-color:#005ea6; color:#ffffff;">
+                                <form action="#">
+                                    <div class="form-body">
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-3">
+                                                <div class="form-group">
+                                                    <label for="var01">Comprobante</label>
+                                                    <select id="var01" name="var01" class="select2 form-control custom-select" onchange="viewComprobantes();" style="width:100%; height:40px;" required></select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-3">
+                                                <div class="form-group">
+                                                    <label for="var02">Periodo</label>
+                                                    <input id="var02" name="var02" value="<?php echo $var02; ?>"  class="form-control" onchange="viewComprobantes();" type="number" min="2020" max="<?php echo $var02; ?>" style="width:100%; height:40px;" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-3">
+                                                <div class="form-group">
+                                                    <label for="var03">Mes Desde</label>
+                                                    <select id="var03" name="var03" class="select2 form-control custom-select" onchange="viewComprobantes();" style="width:100%; height:40px;" required></select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-3">
+                                                <div class="form-group">
+                                                    <label for="var04">Mes Hasta</label>
+                                                    <select id="var04" name="var04" class="select2 form-control custom-select" onchange="viewComprobantes();" style="width:100%; height:40px;" required></select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
                             <div class="card-body">
                                 <div class="row">
-                                    <h4 class="col-10 card-title">Permisos</h4>
+                                    <h4 class="col-10 card-title"> Detalle </h4>
+                                    <h4 class="col-2 card-title" style="text-align: right;">
+                                	</h4>
 								</div>
                                 <div class="table-responsive">
                                     <table id="tableLoad" class="table v-middle" style="width: 100%;">
-                                        <thead id="tableCodigo" class="">
+                                        <thead id="tableCodigo" class="<?php echo $usu_05; ?>">
                                             <tr class="bg-conmebol" style="text-align:center;">
-                                                <th class="border-top-0">C&Oacute;DIGO 1</th>
-                                                <th class="border-top-0">C&Oacute;DIGO 2</th>
-                                                <th class="border-top-0">C&Oacute;DIGO 3</th>
-                                                <th class="border-top-0">INASISTENCIA</th>
-                                                <th class="border-top-0">CALIFICA</th>
+                                                <th class="border-top-0">C&Oacute;DIGO</th>
+                                                <th class="border-top-0">VER</th>
+                                                <th class="border-top-0">TIPO</th>
                                                 <th class="border-top-0">PERIODO</th>
-                                                <th class="border-top-0">CANTIDAD</th>
+                                                <th class="border-top-0">MES</th>
+                                                <th class="border-top-0">COMENTARIO</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -102,8 +140,8 @@
                 </div>
 
                 <!-- Modal Procesar -->
-                <div id="modalprocesar" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" id="prodesc">
+                <div id="modaldiv" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" id="modalcontent">
                     </div>
                 </div>
                 <!-- Modal Procesar -->
@@ -118,6 +156,15 @@
                 <!-- End Right sidebar -->
                 <!-- ============================================================== -->
             </div>
+<?php
+            if ($usu_09 == 7){
+?>
+            <a href="javascript:void(0)" class="float" style="background-color:#163562 !important; color:#ffffff !important;" data-toggle="modal" data-target="#modaldiv" title="Nuevo Comprobante" onclick="setComprobante(0, 1);">
+                <i class="fa fa-plus custom-float"></i>
+            </a>
+<?php
+    }
+?>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
@@ -140,14 +187,10 @@
 ?>
 
     <script src="../js/api.js"></script>
-
+    <script src="../js/comprobante.js"></script>
     <script>
-        if (localStorage.getItem('tipoPermisoJSON') === 'null' || localStorage.getItem('tipoPermisoJSON') === null ){
-            localStorage.removeItem('tipoPermisoJSON');
-            localStorage.setItem('tipoPermisoJSON', JSON.stringify(<?php echo json_encode(get_curl('000/permiso')); ?>));
-        }
+        selectComprobante();
+        selectMes();
     </script>
-
-    <script src="../js/permiso.js"></script>
 </body>
 </html>
