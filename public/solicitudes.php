@@ -294,7 +294,7 @@
                         var btn = '';
 
                         if (full.solicitud_adjunto) {
-                            btn = '<a href="../uploads/'+full.solicitud_adjunto+'" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';
+                            btn = '<a href="../uploads/solicitud/'+full.solicitud_adjunto+'" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';
                         }
                             
                         return btn;

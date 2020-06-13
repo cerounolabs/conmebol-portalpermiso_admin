@@ -239,4 +239,15 @@
             $result = $mail->ErrorInfo;
         }
     }
+
+    function getTitleDominio($var01){
+        switch ($var01) {
+            //PARAMETRO COMPROBANTE
+            case 'COMPROBANTETIPO':
+                $result = 'Tipo Comprobante';
+                break;
+        }
+
+        return $result;
+    }
 ?>

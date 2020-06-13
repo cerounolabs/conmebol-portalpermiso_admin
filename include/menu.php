@@ -173,6 +173,36 @@
 
                         <li class="sidebar-item">
                         	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                           		<i class="icon-ATM"></i>
+                           		<span class="hide-menu"> Comprobantes </span>
+                           	</a>
+							<ul aria-expanded="false" class="collapse first-level">
+                                <li class="sidebar-item">
+                               		<a href="../public/comprobante.php" class="sidebar-link">
+                               			<i class="mdi mdi-comprobante"></i>
+                               			<span class="hide-menu"> Comprobante </span>
+                                    </a>
+                               	</li>
+                            </ul>
+                        </li>
+<!--
+                        <li class="sidebar-item">
+                        	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                           		<i class="icon-Love-Window"></i>
+                           		<span class="hide-menu"> Salud </span>
+                           	</a>
+							<ul aria-expanded="false" class="collapse first-level">
+                                <li class="sidebar-item">
+                               		<a href="javascript:void(0)" class="sidebar-link">
+                               			<i class="mdi mdi-comprobante"></i>
+                               			<span class="hide-menu"> Chequeos M&eacute;dico </span>
+                                    </a>
+                               	</li>
+                            </ul>
+                        </li>
+-->
+                        <li class="sidebar-item">
+                        	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                            		<i class="icon-Bar-Chart "></i>
                            		<span class="hide-menu"> Talento Humano </span>
                            	</a>
@@ -190,7 +220,7 @@
                                			<span class="hide-menu"> Solicitudes Autorizadas </span>
                                     </a>
                                	</li>
-
+                                
                                 <li class="sidebar-item">
                                		<a href="../public/solicitudes.php?tipo=3&sol=PC" class="sidebar-link">
                                			<i class="mdi mdi-reporte"></i>
@@ -266,6 +296,13 @@
                                	    <a href="../public/inasistencia.php" class="sidebar-link">
                                		    <i class="mdi mdi-parm"></i>
                                		    <span class="hide-menu"> Inasistencias</span>
+                               	    </a>
+                                </li>
+
+                                <li class="sidebar-item">
+                               	    <a href="../public/dominio.php?dominio=COMPROBANTETIPO" class="sidebar-link">
+                               		    <i class="mdi mdi-parm"></i>
+                               		    <span class="hide-menu"> Comprobante</span>
                                	    </a>
                                 </li>
                             </ul>

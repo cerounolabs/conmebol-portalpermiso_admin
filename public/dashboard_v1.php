@@ -208,7 +208,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-12 col-xl-6">
+                    <div class="col-sm-12 col-lg-6">
                         <div class="card">
                             <div class="card-body analytics-info">
                                 <h4 class="card-title"> Por Gerencia </h4>
@@ -216,7 +216,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-12 col-xl-6">
+                    <div class="col-sm-12 col-lg-6">
                         <div class="card">
                             <div class="card-body analytics-info">
                                 <h4 class="card-title"> Por Rango de Edad </h4>
