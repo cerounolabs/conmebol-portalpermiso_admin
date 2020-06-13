@@ -13,7 +13,7 @@
     $val03          = $_POST['var03'];
     $val04          = $_POST['var04'];
 	$val05          = trim(strtoupper(strtolower($_POST['var05'])));
-	$val06          = $_POST['var06'];
+	$val06          = '';
 	$val07          = trim(strtoupper(strtolower($_POST['var07'])));
 	$target_ban     = false;
 
@@ -29,7 +29,7 @@
 	if (!empty($_FILES['var06']['tmp_name'])) {
         $target_msn     = '';
 		$target_nam     = getFechaHora();
-		$target_dir     = '../../uploads/comprobrante/';
+		$target_dir     = '../../uploads/comprobante/';
         $target_file    = $target_dir.basename($_FILES['var06']['name']);
 		$imageFileType  = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 		$target_file	= $target_nam.'.'.$imageFileType;
@@ -112,8 +112,7 @@
 		$code	= $result['code'];
 		$message= $result['message'];
 	}
-
-//	header('Location: ../../public/'.$work03.'.php?code='.$code.'&msg='.$message);
-echo json_encode($result);
+	
+	header('Location: ../../public/'.$work03.'.php?code='.$code.'&msg='.$message);
 	ob_end_flush();
 ?>
