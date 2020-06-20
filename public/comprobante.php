@@ -70,25 +70,8 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <!-- basic table -->
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <h4 class="col-10 card-title"> Detalle </h4>
-                                    <h4 class="col-2 card-title" style="text-align: right;">
-                                	</h4>
-								</div>
-                                <div class="table-responsive">
-                                    <table id="tableLoad" class="table v-middle" style="width: 100%;">
-                                        <thead id="tableCodigo" class="<?php echo $usu_05; ?>">
-                                            <tr class="bg-conmebol" style="text-align:center;">
-                                                <th class="border-top-0">MES - PERIODO</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
+                <div class="row el-element-overlay">
 <?php
-    $index  = 1;
     $path   = '../uploads/comprobante';
     $files  = dirToArray($path);
 
@@ -100,28 +83,29 @@
                 $filNam = str_replace('_', '', $file);
 
                 if ($filNam == $usu_05) {
-                    if ($index%2 == 0) {
-                        $classRow = 'even';
-                    } else {
-                        $classRow = 'odd';
-                    }
 ?>
-                                            <tr class="<?php echo $classRow; ?>">
-                                                <td style="width:200px"> <a href="../uploads/comprobante/<?php echo $perKEY.'/'.$monKEY.'/'.$filVALUE; ?>" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i> <?php echo getMonthName($monKEY).' - '.$perKEY; ?> </a></td>
-                                            </tr>
+                    <div class="col-md-2">
+                        <div class="card">
+                            <div class="el-card-item">
+                                <div class="el-card-avatar el-overlay-1"> <img src="../assets/images/icon/pdf.png" alt="user" />
+                                    <div class="el-overlay">
+                                        <ul class="list-style-none el-info">
+                                            <li class="el-item"><a class="btn default btn-outline el-link" href="../uploads/comprobante/<?php echo $perKEY.'/'.$monKEY.'/'.$filVALUE; ?>" target="_blank"><i class="sl-icon-magnifier"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="el-card-content">
+                                    <h4 class="m-b-0"><?php echo $perKEY.' - '.getMonthName($monKEY); ?></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 <?php
-                    $index = $index + 1;
                 }
             }
         }
     }
 ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Modal Procesar -->
