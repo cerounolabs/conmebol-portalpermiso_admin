@@ -1,3 +1,4 @@
+/*
 $(document).ready(function() {
     var codDoc  = document.getElementById('tableCodigo').className;
     var codCom	= document.getElementById('var01').value;
@@ -69,6 +70,7 @@ $(document).ready(function() {
         tableData.clear().rows.add(xDATA).draw();
     });
 });
+*/
 
 function setComprobante(codElem, codAcc){
 	var xJSON0      = getDominio('COMPROBANTETIPO');
