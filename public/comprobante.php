@@ -77,28 +77,10 @@
                                 <form action="#">
                                     <div class="form-body">
                                         <div class="row">
-                                            <div class="col-sm-12 col-md-3">
+                                            <div class="col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label for="var01">Comprobante</label>
-                                                    <select id="var01" name="var01" class="select2 form-control custom-select" onchange="viewComprobantes();" style="width:100%; height:40px;" required></select>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12 col-md-3">
-                                                <div class="form-group">
-                                                    <label for="var02">Periodo</label>
-                                                    <input id="var02" name="var02" value="<?php echo $var02; ?>"  class="form-control" onchange="viewComprobantes();" type="number" min="2020" max="<?php echo $var02; ?>" style="width:100%; height:40px;" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12 col-md-3">
-                                                <div class="form-group">
-                                                    <label for="var03">Mes Desde</label>
-                                                    <select id="var03" name="var03" class="select2 form-control custom-select" onchange="viewComprobantes();" style="width:100%; height:40px;" required></select>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12 col-md-3">
-                                                <div class="form-group">
-                                                    <label for="var04">Mes Hasta</label>
-                                                    <select id="var04" name="var04" class="select2 form-control custom-select" onchange="viewComprobantes();" style="width:100%; height:40px;" required></select>
+                                                    <select id="var01" name="var01" class="select2 form-control custom-select" onchange="" style="width:100%; height:40px;" required></select>
                                                 </div>
                                             </div>
                                         </div>
@@ -122,15 +104,42 @@
                                     <table id="tableLoad" class="table v-middle" style="width: 100%;">
                                         <thead id="tableCodigo" class="<?php echo $usu_05; ?>">
                                             <tr class="bg-conmebol" style="text-align:center;">
-                                                <th class="border-top-0">C&Oacute;DIGO</th>
                                                 <th class="border-top-0">VER</th>
-                                                <th class="border-top-0">TIPO</th>
                                                 <th class="border-top-0">PERIODO</th>
                                                 <th class="border-top-0">MES</th>
-                                                <th class="border-top-0">COMENTARIO</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+<?php
+    for ($i=2019; $i < 2021; $i++) {
+        $folders= '../uploads/comprobante/'.$i;
+       $files  = fopen($folders, "r") or die($folders.' => DISCO NO MONTADO'."\n");
+
+        if (!$files) {
+            echo 'NO SE PUDO ABRIR EL DIRECTORIO DEL COMPROBANTE';
+        } else {
+            $dir = opendir($folders);
+
+            for ($i=1; $i < 13; $i++) {
+                if ($i < 10){
+                    $month = '0'.$i;
+                }
+
+                while ($element = readdir($dir.'/'.$month)) {
+                    if ($element != '.' && $element != '..' && $element != 'Thumbs.db') {
+                        if (strpos($element, '__'.$usu_05) !== false) {
+?>
+                                            <tr class="odd"></tr>
+<?php
+                        }
+                    }
+                }
+            }
+
+            closedir($dir);
+        }
+    }
+?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -189,8 +198,7 @@
     <script src="../js/api.js"></script>
     <script src="../js/comprobante.js"></script>
     <script>
-        selectDominio('var01', 'COMPROBANTETIPO', 1);
-        selectMes('var03', 'var04');
+        selectColaborador('', '', 'var01');
     </script>
 </body>
 </html>

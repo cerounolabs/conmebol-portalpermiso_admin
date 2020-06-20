@@ -250,4 +250,60 @@
 
         return $result;
     }
+
+    function getMonthName($var01) {
+        $result = '';
+
+        switch ($var01) {
+            case '01':
+                $result = 'ENERO';
+                break;
+
+            case '02':
+                $result = 'FEBRERO';
+                break;
+
+            case '03':
+                $result = 'MARZO';
+                break;
+
+            case '04':
+                $result = 'ABRIL';
+                break;
+
+            case '05':
+                $result = 'MAYO';
+                break;
+
+            case '06':
+                $result = 'JUNIO';
+                break;
+
+            case '07':
+                $result = 'JULIO';
+                break;
+                
+            case '08':
+                $result = 'AGOSTO';
+                break;
+
+            case '09':
+                $result = 'SEPTIEMBRE';
+                break;
+
+            case '10':
+                $result = 'OCTUBRE';
+                break;
+
+            case '11':
+                $result = 'NOVIEMBRE';
+                break;
+
+            case '12':
+                $result = 'DICIEMBRE';
+                break;
+        }
+
+        return $result;
+    }
 ?>

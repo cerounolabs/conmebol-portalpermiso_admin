@@ -1323,8 +1323,13 @@ function selectColaborador(var01, var02, var03) {
     var codGer      = document.getElementById(var01);
     var codDep      = document.getElementById(var02);
     var selOption   = document.getElementById(var03);
-    var xJSON       = getColaborador(codGer.value, codDep.value);
-    
+
+    if (codGer != null || codDep != null) {
+        var xJSON       = getColaborador(codGer.value, codDep.value);
+    } else {
+        var xJSON       = getColaborador(0, 0);
+    }
+
     while (selOption.length > 0) {
         selOption.remove(0);
     }
