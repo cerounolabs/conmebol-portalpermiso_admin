@@ -107,7 +107,7 @@
                     }
 ?>
                                             <tr class="<?php echo $classRow; ?>">
-                                                <td style="width:200px"> <a href="../uploads/comprobante/<?php echo $perKEY.'/'.$monKEY.'/'.$file; ?>" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i> <?php echo getMonthName($monKEY).' - '.$perKEY; ?> </a></td>
+                                                <td style="width:200px"> <a href="../uploads/comprobante/<?php echo $perKEY.'/'.$monKEY.'/'.$filVALUE; ?>" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i> <?php echo getMonthName($monKEY).' - '.$perKEY; ?> </a></td>
                                             </tr>
 <?php
                     $index = $index + 1;
