@@ -73,27 +73,6 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-body" style="background-color:#005ea6; color:#ffffff;">
-                                <form action="#">
-                                    <div class="form-body">
-                                        <div class="row">
-                                            <div class="col-sm-12 col-md-12">
-                                                <div class="form-group">
-                                                    <label for="var01">Comprobante</label>
-                                                    <select id="var01" name="var01" class="select2 form-control custom-select" onchange="" style="width:100%; height:40px;" required></select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
                             <div class="card-body">
                                 <div class="row">
                                     <h4 class="col-10 card-title"> Detalle </h4>
@@ -104,39 +83,36 @@
                                     <table id="tableLoad" class="table v-middle" style="width: 100%;">
                                         <thead id="tableCodigo" class="<?php echo $usu_05; ?>">
                                             <tr class="bg-conmebol" style="text-align:center;">
-                                                <th class="border-top-0">VER</th>
-                                                <th class="border-top-0">PERIODO</th>
-                                                <th class="border-top-0">MES</th>
+                                                <th class="border-top-0">MES - PERIODO</th>
                                             </tr>
                                         </thead>
                                         <tbody>
 <?php
-    for ($i=2019; $i < 2021; $i++) {
-        $folders= '../uploads/comprobante/'.$i;
-       $files  = fopen($folders, "r") or die($folders.' => DISCO NO MONTADO'."\n");
+    $index  = 1;
+    $path   = '../uploads/comprobante';
+    $files  = dirToArray($path);
 
-        if (!$files) {
-            echo 'NO SE PUDO ABRIR EL DIRECTORIO DEL COMPROBANTE';
-        } else {
-            $dir = opendir($folders);
+    foreach ($files as $perKEY => $perVALUE) {
+        foreach ($perVALUE as $monKEY => $monVALUE) {
+            foreach ($monVALUE as $filKEY => $filVALUE) {
+                $filDat = explode('.', $filVALUE);
+                $file   = $filDat[0];
+                $filNam = str_replace('_', '', $file);
 
-            for ($i=1; $i < 13; $i++) {
-                if ($i < 10){
-                    $month = '0'.$i;
-                }
-
-                while ($element = readdir($dir.'/'.$month)) {
-                    if ($element != '.' && $element != '..' && $element != 'Thumbs.db') {
-                        if (strpos($element, '__'.$usu_05) !== false) {
-?>
-                                            <tr class="odd"></tr>
-<?php
-                        }
+                if ($filNam != $usu_05) {
+                    if ($index%2 == 0) {
+                        $classRow = 'even';
+                    } else {
+                        $classRow = 'odd';
                     }
+?>
+                                            <tr class="<?php echo $classRow; ?>">
+                                                <td style="width:200px"> <a href="../uploads/comprobante/<?php echo $perKEY.'/'.$monKEY.'/'.$file; ?>" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i> <?php echo getMonthName($monKEY).' - '.$perKEY; ?> </a></td>
+                                            </tr>
+<?php
+                    $index = $index + 1;
                 }
             }
-
-            closedir($dir);
         }
     }
 ?>
@@ -165,15 +141,6 @@
                 <!-- End Right sidebar -->
                 <!-- ============================================================== -->
             </div>
-<?php
-            if ($usu_09 == 7){
-?>
-            <a href="javascript:void(0)" class="float" style="background-color:#163562 !important; color:#ffffff !important;" data-toggle="modal" data-target="#modaldiv" title="Nuevo Comprobante" onclick="setComprobante(0, 1);">
-                <i class="fa fa-plus custom-float"></i>
-            </a>
-<?php
-    }
-?>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
@@ -197,8 +164,5 @@
 
     <script src="../js/api.js"></script>
     <script src="../js/comprobante.js"></script>
-    <script>
-        selectColaborador('', '', 'var01');
-    </script>
 </body>
 </html>

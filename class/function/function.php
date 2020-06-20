@@ -306,4 +306,21 @@
 
         return $result;
     }
+
+    function dirToArray($var01) {
+        $result = array();
+        $cdir   = scandir($var01, SCANDIR_SORT_DESCENDING);
+    
+        foreach ($cdir as $key => $value) {
+            if (!in_array($value,array('.', '..'))) {
+                if (is_dir($var01.DIRECTORY_SEPARATOR.$value)) {
+                    $result[$value] = dirToArray($var01.DIRECTORY_SEPARATOR.$value);
+                } else {
+                    $result[] = $value;
+                }
+            }
+        }
+    
+        return $result;
+    } 
 ?>
