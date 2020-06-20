@@ -16,7 +16,8 @@
     <link href="../assets/extra-libs/css-chart/css-chart.css" rel="stylesheet">
 	<link href="../assets/extra-libs/c3/c3.min.css" rel="stylesheet">
 	<link href="../assets/libs/jquery-steps/jquery.steps.css" rel="stylesheet">
-    <link href="../assets/libs/jquery-steps/steps.css" rel="stylesheet">
+	<link href="../assets/libs/jquery-steps/steps.css" rel="stylesheet">
+    <link href="../assets/libs/magnific-popup/dist/magnific-popup.css" rel="stylesheet">
 	<link href="../dist/css/style.css" rel="stylesheet">
 	<link href="../dist/css/custom.css" rel="stylesheet">
 	

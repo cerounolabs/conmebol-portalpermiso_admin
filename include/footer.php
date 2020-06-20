@@ -93,6 +93,10 @@
         <script src="../assets/libs/jquery-steps/build/jquery.steps.min.js"></script>
         <script src="../assets/libs/jquery-validation/dist/jquery.validate.min.js"></script>
 
+         <!--This page JavaScript -->
+        <script src="../assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+        <script src="../assets/libs/magnific-popup/meg.init.js"></script>
+
 <?php
     if(isset($_GET['code'])){
         $codeRest       = $_GET['code'];
