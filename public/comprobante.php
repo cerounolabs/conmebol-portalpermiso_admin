@@ -99,7 +99,7 @@
                 $file   = $filDat[0];
                 $filNam = str_replace('_', '', $file);
 
-                if ($filNam != $usu_05) {
+                if ($filNam == $usu_05) {
                     if ($index%2 == 0) {
                         $classRow = 'even';
                     } else {
