@@ -44,25 +44,28 @@
 				$FilNew	= str_replace('-', '', $FilNew);
 				$FilNew	= str_replace('_', '', $FilNew);
 
-				move_uploaded_file($element, $path.'/'.$FilNew.'.pdf');
-				
-				$dataJSON 	= json_encode(
-					array(
-						'tipo_estado_codigo'				=> $val01,
-						'tipo_comprobante_codigo'			=> $val02,
-						'tipo_mes_codigo'					=> $val04,
-						'comprobante_documento'				=> $filNam,
-						'comprobante_periodo'				=> $val03,
-						'comprobante_adjunto'				=> $FilNew.'.pdf',
-						'comprobante_observacion'			=> $val07,
-						'auditoria_usuario'     			=> $usu_03,
-						'auditoria_fecha_hora'  			=> date('Y-m-d H:i:s'),
-						'auditoria_ip'          			=> $log_03
-					));
+				if (move_uploaded_file($folder.''.$element, $path.'/'.$FilNew.'.pdf')) {				
+					$dataJSON 	= json_encode(
+						array(
+							'tipo_estado_codigo'				=> $val01,
+							'tipo_comprobante_codigo'			=> $val02,
+							'tipo_mes_codigo'					=> $val04,
+							'comprobante_documento'				=> $filNam,
+							'comprobante_periodo'				=> $val03,
+							'comprobante_adjunto'				=> $FilNew.'.pdf',
+							'comprobante_observacion'			=> $val07,
+							'auditoria_usuario'     			=> $usu_03,
+							'auditoria_fecha_hora'  			=> date('Y-m-d H:i:s'),
+							'auditoria_ip'          			=> $log_03
+						));
 
-				$result	= post_curl('200/comprobante', $dataJSON);
-				echo $dataJSON;
-				echo json_encode($result);
+					$result	= post_curl('200/comprobante', $dataJSON);
+					echo $dataJSON;
+					echo json_encode($result);
+				} else {
+					echo 'NO MOVIO EL ARCHIVO '.$element;
+					echo '<br>';
+				}
 			}
 
 			closedir($dh);
