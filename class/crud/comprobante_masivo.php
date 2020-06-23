@@ -25,8 +25,8 @@
 
 	$log_03         = $_SESSION['log_03'];
 
-	$path			= '../../uploads/comprobante';
-	$folder			= $path.'/temporal/';
+	$path			= '../../uploads/comprobante/';
+	$folder			= $path.'temporal/';
 
 	if (is_dir($folder)) {
 		echo 'ENTRO 01';
@@ -44,7 +44,7 @@
 				$FilNew	= str_replace('-', '', $FilNew);
 				$FilNew	= str_replace('_', '', $FilNew);
 
-				if (move_uploaded_file($folder.''.$element, $path.'/'.$FilNew.'.pdf')) {				
+				if (rename($element, $path.''.$FilNew.'.pdf')) {				
 					$dataJSON 	= json_encode(
 						array(
 							'tipo_estado_codigo'				=> $val01,
