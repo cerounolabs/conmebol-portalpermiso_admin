@@ -3,8 +3,6 @@
     require '../class/function/function.php';
     require '../class/session/session_system.php';
 
-    header('Location: ../public/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
-
     $var02 = date('Y');
 ?>
 
@@ -72,6 +70,25 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <!-- basic table -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <table id="tableLoad" class="table v-middle" style="width: 100%;">
+                                <thead id="tableCodigo" class="<?php echo $usu_05; ?>">
+                                    <tr class="bg-conmebol" style="text-align:center;">
+                                        <th class="border-top-0">VER</th>
+                                        <th class="border-top-0">TIPO</th>
+                                        <th class="border-top-0">PERIODO</th>
+                                        <th class="border-top-0">MES</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row el-element-overlay">
 <?php
     $path   = '../uploads/comprobante';
@@ -127,9 +144,20 @@
                 <!-- End Right sidebar -->
                 <!-- ============================================================== -->
             </div>
+
+<?php
+    if ($usu_09 == 7){
+?>
+            <a href="javascript:void(0)" class="float" style="background-color:#163562 !important; color:#ffffff !important;" data-toggle="modal" data-target="#modaldiv" title="Nuevo Comprobante" onclick="setComprobante(0, 1);">
+                <i class="fa fa-plus custom-float"></i>
+            </a>
+<?php
+    }
+?>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
+
 <?php
     include '../include/development.php';
 ?>
@@ -150,5 +178,8 @@
 
     <script src="../js/api.js"></script>
     <script src="../js/comprobante.js"></script>
+    <script>
+        selectColaborador('', '', 'var01');
+    </script>
 </body>
 </html>

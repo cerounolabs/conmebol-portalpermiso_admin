@@ -415,7 +415,7 @@ function getComprobante(codElem){
     return xDATA;
 }
 
-function getComprobanteId(codDoc, CodCom, codPer, codMeD, codMeH){
+function getComprobanteId(codDoc){
     if (localStorage.getItem('comprobanteJSON') === null){
         getJSON('comprobanteJSON', '200/comprobante');
     }
@@ -425,9 +425,13 @@ function getComprobanteId(codDoc, CodCom, codPer, codMeD, codMeH){
 
     if (xJSON['code'] == 200) {
         xJSON['data'].forEach(element => {
-            if (element.comprobante_documento == codDoc && element.tipo_comprobante_codigo == CodCom && element.comprobante_periodo == codPer && element.tipo_mes_codigo >= codMeD && element.tipo_mes_codigo <= codMeH) {
+            if (element.comprobante_documento == codDoc) {
                 xDATA.push(element);
             }
+        });
+    } else {
+        xJSON['data'].forEach(element => {
+            xDATA.push(element);
         });
     }
 
