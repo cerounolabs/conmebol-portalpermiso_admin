@@ -38,17 +38,13 @@ $(document).ready(function() {
 		columns		: [
             { data				: 'comprobante_codigo', name : 'comprobante_codigo'},
             { render			: function (data, type, full, meta) {
-                var btn = '';
-
-                if (full.solicitud_adjunto) {
-                    btn = '<a href="../uploads/comprobante/'+ full.comprobante_adjunto +'" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';
-                }
-                    
+                var btn = '<a href="../uploads/comprobante/'+ full.comprobante_adjunto +'" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';
                 return btn;
             }},
 			{ data				: 'tipo_comprobante_nombre', name : 'tipo_comprobante_nombre'},
 			{ data				: 'comprobante_periodo', name : 'comprobante_periodo'},
 			{ data				: 'tipo_mes_nombre', name : 'tipo_mes_nombre'},
+			{ data				: 'comprobante_observacion', name : 'comprobante_observacion'},
 		]
     });
 });
