@@ -73,24 +73,36 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <table id="tableLoad" class="table v-middle" style="width: 100%;">
-                                <thead id="tableCodigo" class="<?php echo $usu_05; ?>">
-                                    <tr class="bg-conmebol" style="text-align:center;">
-                                        <th class="border-top-0">VER</th>
-                                        <th class="border-top-0">TIPO</th>
-                                        <th class="border-top-0">PERIODO</th>
-                                        <th class="border-top-0">MES</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
+                            <div class="card-body">
+                                <div class="row">
+                                    <h4 class="col-10 card-title"> Detalle </h4>
+                                    <h4 class="col-2 card-title" style="text-align: right;">
+                                	</h4>
+								</div>
+                                <div class="table-responsive">
+                                    <table id="tableLoad" class="table v-middle" style="width: 100%;">
+                                        <thead id="tableCodigo" class="<?php echo $usu_05; ?>">
+                                            <tr class="bg-conmebol" style="text-align:center;">
+                                                <th class="border-top-0">C&Oacute;DIGO</th>
+                                                <th class="border-top-0">VER</th>
+                                                <th class="border-top-0">TIPO</th>
+                                                <th class="border-top-0">PERIODO</th>
+                                                <th class="border-top-0">MES</th>
+                                                <th class="border-top-0">COMENTARIO</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
+<!--
                 <div class="row el-element-overlay">
 <?php
+/*
     $path   = '../uploads/comprobante';
     $files  = dirToArray($path);
 
@@ -102,6 +114,7 @@
                 $filNam = str_replace('_', '', $file);
 
                 if ($filNam == $usu_05) {
+*/
 ?>
                     <div class="col-md-2">
                         <div class="card">
@@ -109,24 +122,26 @@
                                 <div class="el-card-avatar el-overlay-1"> <img src="../assets/images/icon/pdf.png" alt="user" />
                                     <div class="el-overlay">
                                         <ul class="list-style-none el-info">
-                                            <li class="el-item"><a class="btn default btn-outline el-link" href="../uploads/comprobante/<?php echo $perKEY.'/'.$monKEY.'/'.$filVALUE; ?>" target="_blank"><i class="sl-icon-magnifier"></i></a></li>
+                                            <li class="el-item"><a class="btn default btn-outline el-link" href="../uploads/comprobante/<?php //echo $perKEY.'/'.$monKEY.'/'.$filVALUE; ?>" target="_blank"><i class="sl-icon-magnifier"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="el-card-content">
-                                    <h4 class="m-b-0"><?php echo $perKEY.' - '.getMonthName($monKEY); ?></h4>
+                                    <h4 class="m-b-0"><?php //echo $perKEY.' - '.getMonthName($monKEY); ?></h4>
                                 </div>
                             </div>
                         </div>
                     </div>
 <?php
+/*
                 }
             }
         }
     }
+*/
 ?>
                 </div>
-
+-->
                 <!-- Modal Procesar -->
                 <div id="modaldiv" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" id="modalcontent">
