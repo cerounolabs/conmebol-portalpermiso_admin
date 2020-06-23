@@ -3,6 +3,8 @@
     require '../class/function/function.php';
     require '../class/session/session_system.php';
 
+    header('Location: ../public/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
+
     $var02 = date('Y');
 ?>
 
