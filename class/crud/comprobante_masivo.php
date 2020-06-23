@@ -29,58 +29,43 @@
 	$folder			= $path.'temporal/';
 
 	if (is_dir($folder)) {
-		echo 'ENTRO 01';
-		echo '<br>';
 		if ($dh = opendir($folder)){
-			echo 'ENTRO 02';
-			echo '<br>';
 			while (($element = readdir($dh)) !== false) {
-				echo 'ENTRO 03 '.$element;
-				echo '<br>';
-				$filDat = explode('.', $element);
-                $file   = $filDat[0];
-				$filNam = str_replace('_', '', $file);
-				$FilNew	= getUUID();
-				$FilNew	= str_replace('-', '', $FilNew);
-				$FilNew	= str_replace('_', '', $FilNew);
+				if ($element != '.' &&  $element != '..') {
+					$filDat = explode('.', $element);
+					$file   = $filDat[0];
+					$filNam = str_replace('_', '', $file);
+					$FilNew	= getUUID();
+					$FilNew	= str_replace('-', '', $FilNew);
+					$FilNew	= str_replace('_', '', $FilNew);
 
-				if (rename($folder.''.$element, $path.''.$FilNew.'.pdf')) {				
-					$dataJSON 	= json_encode(
-						array(
-							'tipo_estado_codigo'				=> $val01,
-							'tipo_comprobante_codigo'			=> $val02,
-							'tipo_mes_codigo'					=> $val04,
-							'comprobante_documento'				=> $filNam,
-							'comprobante_periodo'				=> $val03,
-							'comprobante_adjunto'				=> $FilNew.'.pdf',
-							'comprobante_observacion'			=> $val07,
-							'auditoria_usuario'     			=> $usu_03,
-							'auditoria_fecha_hora'  			=> date('Y-m-d H:i:s'),
-							'auditoria_ip'          			=> $log_03
-						));
+					if (rename($folder.''.$element, $path.''.$FilNew.'.pdf')) {				
+						$dataJSON 	= json_encode(
+							array(
+								'tipo_estado_codigo'				=> $val01,
+								'tipo_comprobante_codigo'			=> $val02,
+								'tipo_mes_codigo'					=> $val04,
+								'comprobante_documento'				=> $filNam,
+								'comprobante_periodo'				=> $val03,
+								'comprobante_adjunto'				=> $FilNew.'.pdf',
+								'comprobante_observacion'			=> $val07,
+								'auditoria_usuario'     			=> $usu_03,
+								'auditoria_fecha_hora'  			=> date('Y-m-d H:i:s'),
+								'auditoria_ip'          			=> $log_03
+							));
 
-					$result	= post_curl('200/comprobante', $dataJSON);
-					echo $dataJSON;
-					echo json_encode($result);
-				} else {
-					echo 'NO MOVIO EL ARCHIVO '.$element;
-					echo '<br>';
+						$result	= post_curl('200/comprobante', $dataJSON);
+					}
 				}
 			}
 
 			closedir($dh);
-		} else {
-			echo 'NO ENTRO 02';
-			echo '<br>';
 		}
-	} else {
-		echo 'NO ENTRO 01';
-		echo '<br>';
 	}
 
 	$code	= 200;
 	$message= 'Proceso concluido';
 	
-//	header('Location: ../../public/'.$work03.'.php?code='.$code.'&msg='.$message);
+	header('Location: ../../public/'.$work03.'.php?code='.$code.'&msg='.$message);
 	ob_end_flush();
 ?>
