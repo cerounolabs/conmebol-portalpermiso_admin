@@ -12,8 +12,8 @@ $(document).ready(function() {
 	$('#tableLoad').DataTable({
 		processing	: true,
 		destroy		: true,
-		searching	: false,
-		paging		: false,
+		searching	: true,
+		paging		: true,
 		lengthChange: true,
 		info		: true,
 		order: [[ 0, "desc" ]],
@@ -47,12 +47,7 @@ $(document).ready(function() {
 		columns		: [
             { data				: 'comprobante_codigo', name : 'comprobante_codigo'},
             { render			: function (data, type, full, meta) {
-                var btn = '';
-
-                if (full.solicitud_adjunto) {
-                    btn = '<a href="../uploads/comprobante/'+full.comprobante_adjunto+'" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';
-                }
-                    
+                var btn = '<a href="../uploads/comprobante/'+full.comprobante_adjunto+'" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';    
                 return btn;
             }},
 			{ data				: 'tipo_comprobante_nombre', name : 'tipo_comprobante_nombre'},
@@ -71,9 +66,10 @@ $(document).ready(function() {
         var codGer  = document.getElementById('var05').value;
         var codDep  = document.getElementById('var06').value;
         var codDoc  = document.getElementById('var07').value;
-
+        
         var xDATA	= getComprobanteAll(codCom, codPer, codMeD, codMeH, codGer, codDep, codDoc);
 
+        var tableData   = $('#tableLoad').DataTable();
         tableData.clear().rows.add(xDATA).draw();
     });
 });
