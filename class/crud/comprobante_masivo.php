@@ -44,7 +44,7 @@
 				$FilNew	= str_replace('-', '', $FilNew);
 				$FilNew	= str_replace('_', '', $FilNew);
 
-				if (rename($element, $path.''.$FilNew.'.pdf')) {				
+				if (rename($folder.''.$element, $path.''.$FilNew.'.pdf')) {				
 					$dataJSON 	= json_encode(
 						array(
 							'tipo_estado_codigo'				=> $val01,
