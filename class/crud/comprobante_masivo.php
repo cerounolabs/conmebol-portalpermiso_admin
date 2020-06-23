@@ -29,8 +29,14 @@
 	$folder			= $path.'/temporal/';
 
 	if (is_dir($folder)) {
+		echo 'ENTRO 01';
+		echo '<br>';
 		if ($dh = opendir($folder)){
+			echo 'ENTRO 02';
+			echo '<br>';
 			while (($element = readdir($dh)) !== false) {
+				echo 'ENTRO 03 '.$element;
+				echo '<br>';
 				$filDat = explode('.', $element);
                 $file   = $filDat[0];
 				$filNam = str_replace('_', '', $file);
@@ -55,15 +61,23 @@
 					));
 
 				$result	= post_curl('200/comprobante', $dataJSON);
+				echo $dataJSON;
+				echo json_encode($result);
 			}
 
 			closedir($dh);
+		} else {
+			echo 'NO ENTRO 02';
+			echo '<br>';
 		}
+	} else {
+		echo 'NO ENTRO 01';
+		echo '<br>';
 	}
 
 	$code	= 200;
 	$message= 'Proceso concluido';
 	
-	header('Location: ../../public/'.$work03.'.php?code='.$code.'&msg='.$message);
+//	header('Location: ../../public/'.$work03.'.php?code='.$code.'&msg='.$message);
 	ob_end_flush();
 ?>
