@@ -1,12 +1,6 @@
-/*
 $(document).ready(function() {
     var codDoc  = document.getElementById('tableCodigo').className;
-    var codCom	= document.getElementById('var01').value;
-    var codPer	= document.getElementById('var02').value;
-    var codMeD	= document.getElementById('var03').value;
-    var codMeH  = document.getElementById('var04').value;
-
-	var dataJSON	= getComprobanteId(codDoc, codCom, codPer, codMeD, codMeH);
+	var dataJSON	= getComprobanteId(codDoc);
 	
 	$('#tableLoad').DataTable({
 		processing	: true,
@@ -39,8 +33,7 @@ $(document).ready(function() {
 			{ targets			: [1],	visible : true,	searchable : true,	orderData : [1, 0] },
 			{ targets			: [2],	visible : true,	searchable : true,	orderData : [2, 0] },
 			{ targets			: [3],	visible : true,	searchable : true,	orderData : [3, 0] },
-			{ targets			: [4],	visible : true,	searchable : true,	orderData : [4, 0] },
-			{ targets			: [5],	visible : true,	searchable : true,	orderData : [5, 0] }
+			{ targets			: [4],	visible : true,	searchable : true,	orderData : [4, 0] }
 		],
 		columns		: [
             { data				: 'comprobante_codigo', name : 'comprobante_codigo'},
@@ -48,7 +41,7 @@ $(document).ready(function() {
                 var btn = '';
 
                 if (full.solicitud_adjunto) {
-                    btn = '<a href="../uploads/comprobante/'+full.comprobante_adjunto+'" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';
+                    btn = '<a href="../uploads/comprobante/'+ full.comprobante_adjunto +'" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';
                 }
                     
                 return btn;
@@ -56,21 +49,9 @@ $(document).ready(function() {
 			{ data				: 'tipo_comprobante_nombre', name : 'tipo_comprobante_nombre'},
 			{ data				: 'comprobante_periodo', name : 'comprobante_periodo'},
 			{ data				: 'tipo_mes_nombre', name : 'tipo_mes_nombre'},
-			{ data				: 'comprobante_observacion', name : 'comprobante_observacion'},
 		]
     });
-    
-    $('.form-group').change(function() {
-        var codCom	= document.getElementById('var01').value;
-        var codPer	= document.getElementById('var02').value;
-        var codMeD	= document.getElementById('var03').value;
-        var codMeH  = document.getElementById('var04').value;
-        var xDATA   = getComprobanteId(codDoc, codCom, codPer, codMeD, codMeH);
-
-        tableData.clear().rows.add(xDATA).draw();
-    });
 });
-*/
 
 function setComprobante(codElem, codAcc){
 	var xJSON0      = getDominio('COMPROBANTETIPO');
@@ -94,11 +75,11 @@ function setComprobante(codElem, codAcc){
 
 	switch (codAcc) {
 		case 1:
-			bodyTit = 'NUEVO';
+			bodyTit = 'PROCESAR';
 			bodyCol = '#163562;';
 			bodyMod = 'C';
 			bodyOnl = '';
-			bodyBot = '           <button type="submit" id="submit" name="submit" class="btn btn-info">Agregar</button>';
+			bodyBot = '           <button type="submit" id="submit" name="submit" class="btn btn-info">Ejecutar</button>';
 			break;
 
 		case 2:
@@ -152,7 +133,7 @@ function setComprobante(codElem, codAcc){
 
 		html = 
 			'<div class="modal-content">'+
-			'   <form id="form" data-parsley-validate method="post" enctype="multipart/form-data" action="../class/crud/comprobante.php">'+
+			'   <form id="form" data-parsley-validate method="post" enctype="multipart/form-data" action="../class/crud/comprobante_masivo.php">'+
 			'	    <div class="modal-header" style="color:#fff; background:'+ bodyCol +'">'+
 			'		    <h4 class="modal-title" id="vcenter"> '+ bodyTit +' </h4>'+
 			'		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
@@ -198,24 +179,9 @@ function setComprobante(codElem, codAcc){
             '                       </select>'+
 			'                   </div>'+
             '               </div>'+
-            '               <div class="col-sm-12">'+
-			'                   <div class="form-group">'+
-			'                       <label for="var05">COLABORADOR</label>'+
-            '                       <select id="var05" name="var05" class="select2 form-control custom-select" style="width:100%; height:40px;" required>'+
-            '                           <optgroup label="Colaborador">'+ selColab +
-            '                           </optgroup>'+
-            '                       </select>'+
-			'                   </div>'+
-            '               </div>'+
-            '               <div class="col-sm-12">'+
-            '                   <div class="form-group">'+
-            '                       <label for="var06">ADJUNTAR</label>'+
-            '                       <input id="var06" name="var06" class="form-control-file form-control" type="file" style="text-transform:uppercase; height:40px;" required>'+
-            '                   </div>'+
-            '               </div>'+
 			'               <div class="col-sm-12">'+
 			'                   <div class="form-group">'+
-			'                       <label for="var07">OBSERVACIÓN</label>'+
+			'                       <label for="var07">COMENTARIO</label>'+
 			'                       <textarea id="var07" name="var07" value="" class="form-control" rows="5" style="text-transform:uppercase;" '+ bodyOnl +'></textarea>'+
 			'                   </div>'+
 			'               </div>'+
