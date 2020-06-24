@@ -26,7 +26,7 @@
 	$log_03         = $_SESSION['log_03'];
 
 	$path			= '../../uploads/comprobante/';
-	$folder			= $path.'temporal/';
+	$folder			= $path.'2020/';
 
 	if (is_dir($folder)) {
 		if ($dh = opendir($folder)){
