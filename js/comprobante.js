@@ -163,7 +163,7 @@ function setComprobante(codElem, codAcc){
 			'               <div class="col-sm-12 col-md-6">'+
 			'                   <div class="form-group">'+
 			'                       <label for="var03">PERIODO</label>'+
-			'                       <input id="var03" name="var03" value="" class="form-control" type="number" style="text-transform:uppercase; height:40px;" min="2020" max="2030" required '+ bodyOnl +'>'+
+			'                       <input id="var03" name="var03" value="" class="form-control" type="number" style="text-transform:uppercase; height:40px;" min="2019" max="2030" required '+ bodyOnl +'>'+
 			'                   </div>'+
 			'               </div>'+
 			'               <div class="col-sm-12 col-md-6">'+
