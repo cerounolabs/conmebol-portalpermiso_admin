@@ -39,8 +39,15 @@ $(document).ready(function() {
 		columns		: [
             { data				: 'comprobante_codigo', name : 'comprobante_codigo'},
             { render			: function (data, type, full, meta) {
-                var btn = '<a href="../uploads/comprobante/'+ full.comprobante_adjunto +'" id="'+ full.comprobante_codigo +'" onclick="setComprobanteEstado(this.id, 40);" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';
-                return btn;
+				var btn = '';
+
+				if (full.tipo_estado_codigo == 39) {
+					btn = '<a href="../uploads/comprobante/'+ full.comprobante_adjunto +'" id="'+ full.comprobante_codigo +'" onclick="setComprobanteEstado(this.id, 40);" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';
+				} else {
+					btn = '<a href="../uploads/comprobante/'+ full.comprobante_adjunto +'" id="'+ full.comprobante_codigo +'" onclick="" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';
+				}
+                
+				return btn;
 			}},
 			{ data				: 'tipo_estado_nombre', name : 'tipo_estado_nombre'},
 			{ data				: 'tipo_comprobante_nombre', name : 'tipo_comprobante_nombre'},
