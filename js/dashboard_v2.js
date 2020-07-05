@@ -48,9 +48,17 @@ $(document).ready(function() {
 		columns		: [
             { data				: 'comprobante_codigo', name : 'comprobante_codigo'},
             { render			: function (data, type, full, meta) {
-                var btnDSP = '<a href="../uploads/comprobante/'+full.comprobante_adjunto+'" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';
-                var btnUPD = '<a href="javascript:void(0)" id="'+ full.comprobante_codigo +'" onclick="setComprobanteEstado(this.id, 41);" role="button" class="btn btn-warning"><i class="fa fa-check"></i></a>';
-                return btnDSP + '&nbsp;' + btnUPD;
+                var btnDSP = '';
+                var btnUPD = '';
+
+                if (full.tipo_estado_codigo == 40) {
+                    btnDSP = '<a href="../uploads/comprobante/'+full.comprobante_adjunto+'" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';
+                    btnUPD = '<a href="javascript:void(0)" id="'+ full.comprobante_codigo +'" onclick="setComprobanteEstado(this.id, 41);" role="button" class="btn btn-warning"><i class="fa fa-check"></i></a>';
+                } else {
+                    btnDSP = '<a href="../uploads/comprobante/'+full.comprobante_adjunto+'" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';
+                    btnUPD = '';
+                }
+                return btnDSP + '&nbsp; &nbsp;' + btnUPD;
             }},
             { data				: 'tipo_estado_nombre', name : 'tipo_estado_nombre'},
 			{ data				: 'tipo_comprobante_nombre', name : 'tipo_comprobante_nombre'},
