@@ -42,14 +42,17 @@ $(document).ready(function() {
 			{ targets			: [3],	visible : true,	searchable : true,	orderData : [3, 0] },
 			{ targets			: [4],	visible : true,	searchable : true,	orderData : [4, 0] },
             { targets			: [5],	visible : true,	searchable : true,	orderData : [5, 0] },
-            { targets			: [6],	visible : true,	searchable : true,	orderData : [6, 0] }
+            { targets			: [6],	visible : true,	searchable : true,	orderData : [6, 0] },
+            { targets			: [7],	visible : true,	searchable : true,	orderData : [7, 0] }
 		],
 		columns		: [
             { data				: 'comprobante_codigo', name : 'comprobante_codigo'},
             { render			: function (data, type, full, meta) {
-                var btn = '<a href="../uploads/comprobante/'+full.comprobante_adjunto+'" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';    
-                return btn;
+                var btnDSP = '<a href="../uploads/comprobante/'+full.comprobante_adjunto+'" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';
+                var btnUPD = '<a href="javascript:void(0)" id="'+ full.comprobante_codigo +'" onclick="setComprobanteEstado(this.id, 41);" role="button" class="btn btn-warning"><i class="fa fa-check"></i></a>';
+                return btnDSP + '&nbsp;' + btnUPD;
             }},
+            { data				: 'tipo_estado_nombre', name : 'tipo_estado_nombre'},
 			{ data				: 'tipo_comprobante_nombre', name : 'tipo_comprobante_nombre'},
 			{ data				: 'comprobante_periodo', name : 'comprobante_periodo'},
             { data				: 'tipo_mes_nombre', name : 'tipo_mes_nombre'},
