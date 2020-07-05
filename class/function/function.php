@@ -243,8 +243,12 @@
     function getTitleDominio($var01){
         switch ($var01) {
             //PARAMETRO COMPROBANTE
+            case 'COMPROBANTEESTADO':
+                $result = 'Comprobante Estado';
+                break;
+
             case 'COMPROBANTETIPO':
-                $result = 'Tipo Comprobante';
+                $result = 'Comprobante Tipo';
                 break;
         }
 

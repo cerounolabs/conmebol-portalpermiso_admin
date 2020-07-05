@@ -1,6 +1,6 @@
 const urlBASE   = 'http://api.conmebol.com/sfholox/public/v1';
+const autBASE   = 'dXNlcl9zZmhvbG94Om5zM3JfNWZoMCEweA==';
 const xHTTP	    = new XMLHttpRequest();
-const conBASE   = 'dXNlcl9zZmhvbG94Om5zM3JfNWZoMCEweA==';
 
 function getJSON(codJSON, codURL) {
     var urlJSON = urlBASE + '/' + codURL;
@@ -14,7 +14,7 @@ function getJSON(codJSON, codURL) {
         }
     };
     xHTTP.setRequestHeader('Accept', 'application/json;charset=UTF-8');
-    xHTTP.setRequestHeader('Authorization', 'Basic ' + conBASE);
+    xHTTP.setRequestHeader('Authorization', 'Basic ' + autBASE);
     xHTTP.setRequestHeader('Content-type', 'application/json;charset=UTF-8');
     xHTTP.send();
 }
@@ -30,7 +30,23 @@ function postJSON(codPAGE, codURL, codPARS) {
         }
     };
     xHTTP.setRequestHeader('Accept', 'application/json;charset=UTF-8');
-    xHTTP.setRequestHeader('Authorization', 'Basic ' + conBASE);
+    xHTTP.setRequestHeader('Authorization', 'Basic ' + autBASE);
+    xHTTP.setRequestHeader('Content-type', 'application/json;charset=UTF-8');
+    xHTTP.send(codPARS);
+}
+
+function putJSON(codPAGE, codURL, codPARS) {
+    var urlJSON = urlBASE + '/' + codURL;
+
+    xHTTP.open('PUT', urlJSON, true);
+    xHTTP.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var xJSON = JSON.parse(this.responseText);
+            window.location.replace('../public/' + codPAGE + '.php?code='+ xJSON.code + '&msg=' + xJSON.message); 
+        }
+    };
+    xHTTP.setRequestHeader('Accept', 'application/json;charset=UTF-8');
+    xHTTP.setRequestHeader('Authorization', 'Basic ' + autBASE);
     xHTTP.setRequestHeader('Content-type', 'application/json;charset=UTF-8');
     xHTTP.send(codPARS);
 }
@@ -1224,6 +1240,19 @@ function setEstado(rowSel, rowEst, rowAcc, rowFun, rowCar){
 
     $("#modalcontent").empty();
     $("#modalcontent").append(html);
+}
+
+function setComprobanteEstado(codElem, codEst) {
+	var xPAGE	= parm04BASE;
+	var xURL	= '200/comprobante/' + codElem;
+	var xPARS   = JSON.stringify({
+		"tipo_estado_codigo" : codEst,
+		"auditoria_usuario": parm01BASE,
+		"auditoria_fecha_hora": parm02BASE,
+		"auditoria_ip": parm03BASE
+	});
+	
+	putJSON(xPAGE, xURL, xPARS);
 }
 
 function selectSolicitud(var01) {

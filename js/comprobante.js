@@ -33,14 +33,16 @@ $(document).ready(function() {
 			{ targets			: [1],	visible : true,	searchable : true,	orderData : [1, 0] },
 			{ targets			: [2],	visible : true,	searchable : true,	orderData : [2, 0] },
 			{ targets			: [3],	visible : true,	searchable : true,	orderData : [3, 0] },
-			{ targets			: [4],	visible : true,	searchable : true,	orderData : [4, 0] }
+			{ targets			: [4],	visible : true,	searchable : true,	orderData : [4, 0] },
+			{ targets			: [5],	visible : true,	searchable : true,	orderData : [5, 0] }
 		],
 		columns		: [
             { data				: 'comprobante_codigo', name : 'comprobante_codigo'},
             { render			: function (data, type, full, meta) {
-                var btn = '<a href="../uploads/comprobante/'+ full.comprobante_adjunto +'" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';
+                var btn = '<a href="../uploads/comprobante/'+ full.comprobante_adjunto +'" id="'+ full.comprobante_codigo +'" onclick="setComprobanteEstado(this.id, 40);" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';
                 return btn;
-            }},
+			}},
+			{ data				: 'tipo_estado_nombre', name : 'tipo_estado_nombre'},
 			{ data				: 'tipo_comprobante_nombre', name : 'tipo_comprobante_nombre'},
 			{ data				: 'comprobante_periodo', name : 'comprobante_periodo'},
 			{ data				: 'tipo_mes_nombre', name : 'tipo_mes_nombre'},
@@ -52,7 +54,8 @@ $(document).ready(function() {
 function setComprobante(codElem, codAcc){
 	var xJSON0      = getDominio('COMPROBANTETIPO');
     var xJSON1      = getDominio('SISTEMAMES');
-    var xJSON2      = getColaborador(0, 0);
+	var xJSON2      = getColaborador(0, 0);
+	var xJSON3      = getDominio('COMPROBANTEESTADO');
 	var html        = '';
 	var bodyCol     = '';
 	var bodyTit     = '';
@@ -62,12 +65,13 @@ function setComprobante(codElem, codAcc){
     var selEstado   = '';
     var selCompb    = '';
     var selectMes   = '';
-    var selColab    = '';
+	var selColab    = '';
+	var selCEst    	= '';
     var rowDominio	= '';
 
-    selCompb    = selCompb + '                               <option selected disabled> SELECCIONAR... </option>';
-    selectMes   = selectMes + '                               <option selected disabled> SELECCIONAR... </option>';
-    selColab    = selColab + '                               <option selected disabled> SELECCIONAR... </option>';
+    selCompb    	= selCompb + '                               <option value="" selected disabled> SELECCIONAR... </option>';
+    selectMes   	= selectMes + '                               <option value="" selected disabled> SELECCIONAR... </option>';
+	selColab    	= selColab + '                               <option value="" selected disabled> SELECCIONAR... </option>';
 
 	switch (codAcc) {
 		case 1:
@@ -116,15 +120,21 @@ function setComprobante(codElem, codAcc){
 
 	if (codAcc == 1) {
         xJSON0.forEach(element1 => {
-            selCompb = selCompb + '                               <option value="'+ element1.tipo_codigo +'"> '+ element1.tipo_nombre_castellano +' </option>';
+            selCompb	= selCompb + '                               <option value="'+ element1.tipo_codigo +'"> '+ element1.tipo_nombre_castellano +' </option>';
         });
 
         xJSON1.forEach(element1 => {
-            selectMes = selectMes + '                               <option value="'+ element1.tipo_codigo +'"> '+ element1.tipo_nombre_castellano +' </option>';
+            selectMes	= selectMes + '                               <option value="'+ element1.tipo_codigo +'"> '+ element1.tipo_nombre_castellano +' </option>';
         });
 
         xJSON2.forEach(element1 => {
-            selColab = selColab + '                               <option value="'+ element1.documento +'"> '+ element1.nombre_completo +' </option>';
+            selColab	= selColab + '                               <option value="'+ element1.documento +'"> '+ element1.nombre_completo +' </option>';
+		});
+		
+		xJSON3.forEach(element1 => {
+			if (element1.tipo_codigo == 39) {
+				selCEst		= selCEst + '                               <option value="'+ element1.tipo_codigo +'"> '+ element1.tipo_nombre_castellano +' </option>';
+			}
         });
 
 		html = 
@@ -145,8 +155,7 @@ function setComprobante(codElem, codAcc){
 			'                   <div class="form-group">'+
 			'                       <label for="var01">ESTADO</label>'+
 			'                       <select id="var01" name="var01" class="select2 form-control custom-select" style="width:100%; height:40px;" '+ bodyOnl +'>'+
-			'                           <optgroup label="Estado">'+
-			'                               <option value="1">ACTIVO</option>'+
+			'                           <optgroup label="Estado">'+ selCEst +
 			'                           </optgroup>'+
 			'                       </select>'+
 			'                   </div>'+

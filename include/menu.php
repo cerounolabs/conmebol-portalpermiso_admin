@@ -308,9 +308,16 @@
                                 </li>
 
                                 <li class="sidebar-item">
+                               	    <a href="../public/dominio.php?dominio=COMPROBANTEESTADO" class="sidebar-link">
+                               		    <i class="mdi mdi-parm"></i>
+                               		    <span class="hide-menu"> Comprobante Estado</span>
+                               	    </a>
+                                </li>
+
+                                <li class="sidebar-item">
                                	    <a href="../public/dominio.php?dominio=COMPROBANTETIPO" class="sidebar-link">
                                		    <i class="mdi mdi-parm"></i>
-                               		    <span class="hide-menu"> Comprobante</span>
+                               		    <span class="hide-menu"> Comprobante Tipo</span>
                                	    </a>
                                 </li>
                             </ul>

@@ -169,6 +169,7 @@
                                             <tr class="bg-conmebol" style="text-align:center;">
                                                 <th class="border-top-0">C&Oacute;DIGO</th>
                                                 <th class="border-top-0">VER</th>
+                                                <th class="border-top-0">ESTADO</th>
                                                 <th class="border-top-0">TIPO</th>
                                                 <th class="border-top-0">PERIODO</th>
                                                 <th class="border-top-0">MES</th>
@@ -227,6 +228,11 @@
     <script src="../js/dashboard_v2.js"></script>
 
     <script>
+        const parm01BASE   = '<?php echo trim($usu_03); ?>';
+        const parm02BASE   = '<?php echo date('Y-m-d H:i:s'); ?>';
+        const parm03BASE   = '<?php echo trim($log_03); ?>';
+        const parm04BASE   = 'dashboard_v2';
+
         selectDominio('var01', 'COMPROBANTETIPO', 0);
         selectMes('var03', 'var04');
         selectGerencia('var05');
