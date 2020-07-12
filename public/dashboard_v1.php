@@ -331,6 +331,7 @@
         selectDepto('var05', 'var06');
         selectColaborador('var05', 'var06', 'var07');
         verDashboard();
+        viewVacaciones('rowVac', 'var01', 'var02', 'var07');
     </script>
 </body>
 </html>
