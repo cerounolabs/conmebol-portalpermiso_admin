@@ -839,6 +839,25 @@ function getADominio(codDom, codElem){
     return xDATA;
 }
 
+function getVacacion(codElem, codAnhio){
+    if (localStorage.getItem('vacacionJSON') === null){
+        getJSON('vacacionJSON', '000/vacacion');
+    }
+
+    var xJSON = JSON.parse(localStorage.getItem('vacacionJSON'));
+    var xDATA = [];
+
+    if (xJSON['code'] == 200) {
+        xJSON['data'].forEach(element => {
+            if (element.vacacion_colaborador_codigo == codElem && element.vacacion_periodo == codAnhio) {
+                xDATA.push(element);
+            }
+        });
+    }
+
+    return xDATA;
+}
+
 function setSolicitud(var01){
     var xJSON   = JSON.parse(localStorage.getItem('solicitudJSON'))['data'];
     var xSelect = '';
