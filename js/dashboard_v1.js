@@ -769,7 +769,7 @@ function charView(fil01, fil02, fil03, fil04, fil05, fil06, fil07){
 function viewVacaciones(parm01, parm02, parm03, parm04) {
     var rowView = document.getElementById(parm01);
     var selTipo = document.getElementById(parm02).value;
-    var selAnho = formatDate(document.getElementById(parm03).value).substring(0, 4);;
+    var selAnho = (document.getElementById(parm03).value).substring(0, 4);
     var selFunc = document.getElementById(parm04).value;
 
     if (selTipo == 22 && selFunc != 0) {
