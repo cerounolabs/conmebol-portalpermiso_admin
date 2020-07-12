@@ -17,6 +17,13 @@
 	$val07          = $_POST['var07'];
 	$val08          = '';
 	$val09          = strtoupper($_POST['var09']);
+
+	if (isset($_POST['var10'])) {
+		$val10          = $_POST['var10'];
+	} else {
+		$val10          = date('Y');
+	}
+	
 	$target_ban     = true;
 
 	$work01         = $_POST['workCodigo'];
@@ -25,6 +32,7 @@
 
 	$usu_03         = strtoupper($_SESSION['usu_03']);
 	$usu_05         = strtoupper($_SESSION['usu_05']);
+	$usu_18         = strtoupper(trim($_SESSION['usu_18']));
 
 	$log_03         = $_SESSION['log_03'];
 
@@ -95,6 +103,8 @@
 					'solicitud_hora_desde'				=> $val05,
 					'solicitud_hora_hasta'				=> $val06,
 					'solicitud_hora_cantidad'			=> $val07,
+					'solicitud_periodo'					=> $val10,
+					'solicitud_documento_jefe'			=> $usu_18,
 					'solicitud_adjunto'					=> $val08,
 					'solicitud_observacion_colaborador'	=> $val09,
 					'auditoria_usuario'     			=> $usu_03,

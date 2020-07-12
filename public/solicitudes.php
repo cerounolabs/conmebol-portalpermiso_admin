@@ -232,6 +232,8 @@
     <script src="../js/api.js"></script>
 
     <script>
+        const docFunc = '<?php echo trim($usu_05); ?>';
+
         localStorage.removeItem('solicitudesJSON');
 
         if (localStorage.getItem('solicitudJSON') === 'null' || localStorage.getItem('solicitudJSON') === null ){
