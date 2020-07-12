@@ -371,6 +371,8 @@
     <script src="../js/api.js"></script>
 
     <script>
+        const docFunc = '<?php echo trim($usu_05); ?>';
+
         if (localStorage.getItem('solicitudJSON') === 'null' || localStorage.getItem('solicitudJSON') === null ){
             localStorage.removeItem('solicitudJSON');
             localStorage.setItem('solicitudJSON', JSON.stringify(<?php echo json_encode(get_curl('100/solicitud')); ?>));

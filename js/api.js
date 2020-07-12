@@ -178,6 +178,12 @@ function valSolicitud(){
     var titHCa  = document.getElementById('tit07');
     var inpAdj  = document.getElementById('var08');
     var titAdj  = document.getElementById('tit08');
+    var inpVaP  = document.getElementById('var10');
+    var titVaP  = document.getElementById('tit10');
+    var inpVaC  = document.getElementById('var10_1');
+    var titVaC  = document.getElementById('tit10_1');
+    var inpVaD  = document.getElementById('var10_2');
+    var titVaD  = document.getElementById('tit10_2');
 
     xJSON.forEach(element => {
         if (inpSol.value == element.tipo_permiso_codigo){
@@ -227,7 +233,40 @@ function valSolicitud(){
                 titAdj.style.display= 'none';
             }
         }
+
+        if (inpSol.value == 22){
+            inpVaP.style.display= '';
+            titVaP.style.display= '';
+            inpVaC.style.display= '';
+            titVaC.style.display= '';
+            inpVaD.style.display= '';
+            titVaD.style.display= '';
+        } else {
+            inpVaP.style.display= 'none';
+            titVaP.style.display= 'none';
+            inpVaC.style.display= 'none';
+            titVaC.style.display= 'none';
+            inpVaD.style.display= 'none';
+            titVaD.style.display= 'none';
+        }
     });
+}
+
+function valVacacion(var01, var02) {
+    var inpVaD  = document.getElementById('var10_1');
+    var inpVaP  = document.getElementById('var10_2');
+    var xJSON   = getVacacion(var01, var02);
+
+    var canVaD  = 0;
+    var canVaP  = 0;
+
+    xJSON.forEach(element => {
+        canVaD  = element.vacacion_cantidad_dia;
+        canVaP  = element.vacacion_cantidad_restante;
+    });
+
+    inpVaD.value = canVaD;
+    inpVaP.value = canVaP;
 }
 
 function getSolicitudes() {
@@ -875,95 +914,119 @@ function setSolicitud(var01){
     });
     
     var html     =
-    '<div class="modal-content">'+
-    '   <form id="form" data-parsley-validate method="post" enctype="multipart/form-data" action="../class/crud/solicitudes.php">'+
-    '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
-    '		    <h4 class="modal-title" id="vcenter"> Solicitud </h4>'+
-    '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
-    '	    </div>'+
-    '	    <div class="modal-body" >'+
-    '           <div class="form-group">'+
-    '               <input id="workCodigo" name="workCodigo" value="0" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-    '               <input id="workModo" name="workModo" value="C" class="form-control" type="hidden" placeholder="Modo" required readonly>'+
-    '               <input id="workPage" name="workPage" value="'+var01+'" class="form-control" type="hidden" placeholder="Modo" required readonly>'+
-    '           </div>'+
-    '           <div class="row pt-3">'+
-    '               <div class="col-sm-12">'+
-    '                   <div class="form-group">'+
-    '                       <label for="var01">SOLICITUD DE</label>'+
-    '                       <select id="var01" name="var01" class="select2 form-control custom-select" style="width:100%; height:40px;" onblur="valSolicitud();">'+
-    '                           <optgroup label="Solicitud">'+xSelect+
-    '                           </optgroup>'+
-    '                       </select>'+
-    '                   </div>'+
-    '               </div>'+
-    '           </div>'+
-    '           <div class="row pt-3">'+
-    '               <div id="tit02" class="col-sm-12 col-md-4">'+
-    '                   <div class="form-group">'+
-    '                       <label for="var02">FECHA INICIO</label>'+
-    '                       <input id="var02" name="var02" class="form-control" type="date" value="'+fecIni+'" onblur="cantFecha();" style="text-transform:uppercase; height:40px;" placeholder="FECHA DESDE" required>'+
-    '                   </div>'+
-    '               </div>'+
-    '               <div id="tit03" class="col-sm-12 col-md-4">'+
-    '                   <div class="form-group">'+
-    '                       <label for="var03">FECHA RETORNO</label>'+
-    '                       <input id="var03" name="var03" class="form-control" type="date" value="'+fecRet+'" onblur="cantFecha();" style="text-transform:uppercase; height:40px;" placeholder="FECHA HASTA">'+
-    '                   </div>'+
-    '               </div>'+
-    '               <div id="tit04" class="col-sm-12 col-md-4">'+
-    '                   <div class="form-group">'+
-    '                       <label for="var04">CANTIDAD DE DIAS</label>'+
-    '                       <input id="var04" name="var04" class="form-control" type="number" value="1" style="text-transform:uppercase; height:40px;" placeholder="CANTIDAD DE DIAS" readonly>'+
-    '                   </div>'+
-    '               </div>'+
-    '           </div>'+
-    '           <div class="row pt-3">'+
-    '               <div id="tit05" class="col-sm-12 col-md-4">'+
-    '                   <div class="form-group">'+
-    '                       <label for="var05">HORA DESDE</label>'+
-    '                       <input id="var05" name="var05" class="form-control" type="time" value="08:00" onblur="cantHora();" style="text-transform:uppercase; height:40px;" placeholder="HORA DESDE">'+
-    '                   </div>'+
-    '               </div>'+
-    '               <div id="tit06" class="col-sm-12 col-md-4">'+
-    '                   <div class="form-group">'+
-    '                       <label for="var06">HORA HASTA</label>'+
-    '                       <input id="var06" name="var06" class="form-control" type="time" value="18:00" onblur="cantHora();" style="text-transform:uppercase; height:40px;" placeholder="HORA HASTA">'+
-    '                   </div>'+
-    '               </div>'+
-    '               <div id="tit07" class="col-sm-12 col-md-4">'+
-    '                   <div class="form-group">'+
-    '                       <label for="var07">CANTIDAD DE HORAS</label>'+
-    '                       <input id="var07" name="var07" class="form-control" type="number" value="0" style="text-transform:uppercase; height:40px;" placeholder="CANTIDAD DE HORAS" readonly>'+
-    '                   </div>'+
-    '               </div>'+
-    '           </div>'+
-    '           <div class="row pt-3">'+
-    '                <div id="tit08" class="col-sm-12">'+
-    '                    <div class="form-group">'+
-    '                       <label for="var08">ADJUNTAR</label>'+
-    '                       <input id="var08" name="var08" class="form-control-file" type="file" style="text-transform:uppercase; height:40px;">'+
-    '                    </div>'+
-    '                </div>'+
-    '           </div>'+
-    '           <div class="row pt-3">'+
-    '                <div class="col-sm-12">'+
-    '                    <div class="form-group">'+
-    '                        <label for="var09">COMENTARIO</label>'+
-    '                        <textarea id="var09" name="var09" class="form-control" rows="3" style="text-transform:uppercase;"></textarea>'+
-    '                    </div>'+
-    '                </div>'+
-    '           </div>'+
-    '	    </div>'+
-    '	    <div class="modal-footer">'+
-    '           <button type="submit" name="submit" class="btn btn-info">Guardar</button>'+
-    '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
-    '	    </div>'+
-    '   </form>'+
-    '</div>';
+        '<div class="modal-content">'+
+        '   <form id="form" data-parsley-validate method="post" enctype="multipart/form-data" action="../class/crud/solicitudes.php">'+
+        '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
+        '		    <h4 class="modal-title" id="vcenter"> Solicitud </h4>'+
+        '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+        '	    </div>'+
+        '	    <div class="modal-body" >'+
+        '           <div class="form-group">'+
+        '               <input id="workCodigo" name="workCodigo" value="0" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+        '               <input id="workModo" name="workModo" value="C" class="form-control" type="hidden" placeholder="Modo" required readonly>'+
+        '               <input id="workPage" name="workPage" value="'+var01+'" class="form-control" type="hidden" placeholder="Modo" required readonly>'+
+        '           </div>'+
+        '           <div class="row pt-3">'+
+        '               <div class="col-sm-12">'+
+        '                   <div class="form-group">'+
+        '                       <label for="var01">SOLICITUD DE</label>'+
+        '                       <select id="var01" name="var01" class="select2 form-control custom-select" style="width:100%; height:40px;" onblur="valSolicitud();">'+
+        '                           <optgroup label="Solicitud">'+xSelect+
+        '                           </optgroup>'+
+        '                       </select>'+
+        '                   </div>'+
+        '               </div>'+
+        '           </div>'+
+        '           <div class="row pt-3">'+
+        '               <div id="tit10" class="col-sm-12 col-md-4">'+
+        '                   <div class="form-group">'+
+        '                       <label for="var10">PERIODO</label>'+
+        '                       <input id="var10" name="var10" min="2018" class="form-control" type="number" style="text-transform:uppercase; height:40px;" onblur="valVacacion('+ docFunc +', this.value);" required>'+
+        '                   </div>'+
+        '               </div>'+
+        '               <div id="tit10_1" class="col-sm-12 col-md-4">'+
+        '                   <div class="form-group">'+
+        '                       <label for="var10_1">CORRESPONDIENTE</label>'+
+        '                       <input id="var10_1" name="var10_1" class="form-control" type="number" style="text-transform:uppercase; height:40px;" readonly>'+
+        '                   </div>'+
+        '               </div>'+
+        '               <div id="tit10_2" class="col-sm-12 col-md-4">'+
+        '                   <div class="form-group">'+
+        '                       <label for="var10_2">DISPONIBLE</label>'+
+        '                       <input id="var10_2" name="var10_2" class="form-control" type="number" style="text-transform:uppercase; height:40px;" readonly>'+
+        '                   </div>'+
+        '               </div>'+
+        '           </div>'+
+        '           <div class="row pt-3">'+
+        '               <div id="tit02" class="col-sm-12 col-md-4">'+
+        '                   <div class="form-group">'+
+        '                       <label for="var02">FECHA INICIO</label>'+
+        '                       <input id="var02" name="var02" class="form-control" type="date" value="'+fecIni+'" onblur="cantFecha();" style="text-transform:uppercase; height:40px;" placeholder="FECHA DESDE" required>'+
+        '                   </div>'+
+        '               </div>'+
+        '               <div id="tit03" class="col-sm-12 col-md-4">'+
+        '                   <div class="form-group">'+
+        '                       <label for="var03">FECHA RETORNO</label>'+
+        '                       <input id="var03" name="var03" class="form-control" type="date" value="'+fecRet+'" onblur="cantFecha();" style="text-transform:uppercase; height:40px;" placeholder="FECHA HASTA">'+
+        '                   </div>'+
+        '               </div>'+
+        '               <div id="tit04" class="col-sm-12 col-md-4">'+
+        '                   <div class="form-group">'+
+        '                       <label for="var04">CANTIDAD DE DIAS</label>'+
+        '                       <input id="var04" name="var04" class="form-control" type="number" value="1" style="text-transform:uppercase; height:40px;" placeholder="CANTIDAD DE DIAS" readonly>'+
+        '                   </div>'+
+        '               </div>'+
+        '           </div>'+
+        '           <div class="row pt-3">'+
+        '               <div id="tit05" class="col-sm-12 col-md-4">'+
+        '                   <div class="form-group">'+
+        '                       <label for="var05">HORA DESDE</label>'+
+        '                       <input id="var05" name="var05" class="form-control" type="time" value="08:00" onblur="cantHora();" style="text-transform:uppercase; height:40px;" placeholder="HORA DESDE">'+
+        '                   </div>'+
+        '               </div>'+
+        '               <div id="tit06" class="col-sm-12 col-md-4">'+
+        '                   <div class="form-group">'+
+        '                       <label for="var06">HORA HASTA</label>'+
+        '                       <input id="var06" name="var06" class="form-control" type="time" value="18:00" onblur="cantHora();" style="text-transform:uppercase; height:40px;" placeholder="HORA HASTA">'+
+        '                   </div>'+
+        '               </div>'+
+        '               <div id="tit07" class="col-sm-12 col-md-4">'+
+        '                   <div class="form-group">'+
+        '                       <label for="var07">CANTIDAD DE HORAS</label>'+
+        '                       <input id="var07" name="var07" class="form-control" type="number" value="0" style="text-transform:uppercase; height:40px;" placeholder="CANTIDAD DE HORAS" readonly>'+
+        '                   </div>'+
+        '               </div>'+
+        '           </div>'+
+        '           <div class="row pt-3">'+
+        '                <div id="tit08" class="col-sm-12">'+
+        '                    <div class="form-group">'+
+        '                       <label for="var08">ADJUNTAR</label>'+
+        '                       <input id="var08" name="var08" class="form-control-file" type="file" style="text-transform:uppercase; height:40px;">'+
+        '                    </div>'+
+        '                </div>'+
+        '           </div>'+
+        '           <div class="row pt-3">'+
+        '                <div class="col-sm-12">'+
+        '                    <div class="form-group">'+
+        '                        <label for="var09">COMENTARIO</label>'+
+        '                        <textarea id="var09" name="var09" class="form-control" rows="3" style="text-transform:uppercase;"></textarea>'+
+        '                    </div>'+
+        '                </div>'+
+        '           </div>'+
+        '	    </div>'+
+        '	    <div class="modal-footer">'+
+        '           <button type="submit" name="submit" class="btn btn-info">Guardar</button>'+
+        '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+        '	    </div>'+
+        '   </form>'+
+        '</div>';
 
     $("#modalcontent").empty();
     $("#modalcontent").append(html);
+
+    $('#var002').change(function() {
+        
+    });
 }
 
 function setEstado(rowSel, rowEst, rowAcc, rowFun, rowCar){
