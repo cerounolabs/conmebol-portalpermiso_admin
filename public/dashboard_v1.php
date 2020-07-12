@@ -83,13 +83,13 @@
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
                                                     <label for="var01">Solicitud</label>
-                                                    <select id="var01" name="var01" class="select2 form-control custom-select" onchange="verDashboard();" style="width:100%; height:40px;" required></select>
+                                                    <select id="var01" name="var01" class="select2 form-control custom-select" onchange="verDashboard(); viewVacaciones('rowVac', 'var01', 'var02', 'var07');" style="width:100%; height:40px;" required></select>
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
                                                     <label for="var02">Fecha Desde</label>
-                                                    <input id="var02" name="var02" value="2020-01-01"  class="form-control" onchange="verDashboard();" type="date" style="width:100%; height:40px;" required>
+                                                    <input id="var02" name="var02" value="2020-01-01"  class="form-control" onchange="verDashboard();  viewVacaciones('rowVac', 'var01', 'var02', 'var07');" type="date" style="width:100%; height:40px;" required>
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-3">
@@ -120,10 +120,9 @@
                                             <div class="col-sm-12 col-md-6">
                                                 <div class="form-group">
                                                     <label for="var07">Colaborador</label>
-                                                    <select id="var07" name="var07" class="select2 form-control custom-select" onchange="verDashboard();" style="width:100%; height:40px;" required></select>
+                                                    <select id="var07" name="var07" class="select2 form-control custom-select" onchange="verDashboard();  viewVacaciones('rowVac', 'var01', 'var02', 'var07');" style="width:100%; height:40px;" required></select>
                                                 </div>
                                             </div>
-                                            
                                         </div>
                                     </div>
                                 </form>
@@ -199,6 +198,63 @@
                                     <!-- Column -->
                                     <div class="col text-right align-self-center">
                                         <div id="valANU01" class="css-bar m-b-0 css-bar-danger"><i class="mdi mdi-star-circle"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                </div>
+
+                <div class="row" id="rowVac">
+                    <!-- Column -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row p-t-10 p-b-10">
+                                    <!-- Column -->
+                                    <div class="col p-r-0">
+                                        <h1 class="font-light" id="titCOR02"></h1>
+                                        <h6 class="text-muted">Correspondiente</h6></div>
+                                    <!-- Column -->
+                                    <div class="col text-right align-self-center">
+                                        <div id="valCOR02" class="css-bar m-b-0 css-bar-info"><i class="mdi mdi-star-circle"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row p-t-10 p-b-10">
+                                    <!-- Column -->
+                                    <div class="col p-r-0">
+                                        <h1 class="font-light" id="titUSU02"></h1>
+                                        <h6 class="text-muted">Utilizadas</h6></div>
+                                    <!-- Column -->
+                                    <div class="col text-right align-self-center">
+                                        <div id="valUSU02" class="css-bar m-b-0 css-bar-danger"><i class="mdi mdi-star-circle"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row p-t-10 p-b-10">
+                                    <!-- Column -->
+                                    <div class="col p-r-0">
+                                        <h1 class="font-light" id="titDIS02"></h1>
+                                        <h6 class="text-muted">Disponibles</h6></div>
+                                    <!-- Column -->
+                                    <div class="col text-right align-self-center">
+                                        <div id="valDIS02" class="css-bar m-b-0 css-bar-warning"><i class="mdi mdi-star-circle"></i></div>
                                     </div>
                                 </div>
                             </div>
