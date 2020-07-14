@@ -208,8 +208,26 @@
 
                 <div class="row" id="rowVac">
                     <!-- Column -->
-                    <div class="col-lg-4 col-md-6">
-                        <div class="card">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card card bg-light-info">
+                            <div class="card-body">
+                                <div class="row p-t-10 p-b-10">
+                                    <!-- Column -->
+                                    <div class="col p-r-0">
+                                        <h1 class="font-light" id="titPER02"></h1>
+                                        <h6 class="text-muted">Periodo</h6></div>
+                                    <!-- Column -->
+                                    <div class="col text-right align-self-center">
+                                        <div id="valPER02" class="css-bar m-b-0 css-bar-info"><i class="mdi mdi-star-circle"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card bg-light-success">
                             <div class="card-body">
                                 <div class="row p-t-10 p-b-10">
                                     <!-- Column -->
@@ -218,7 +236,7 @@
                                         <h6 class="text-muted">Correspondiente</h6></div>
                                     <!-- Column -->
                                     <div class="col text-right align-self-center">
-                                        <div id="valCOR02" class="css-bar m-b-0 css-bar-info"><i class="mdi mdi-star-circle"></i></div>
+                                        <div id="valCOR02" class="css-bar m-b-0 css-bar-success"><i class="mdi mdi-star-circle"></i></div>
                                     </div>
                                 </div>
                             </div>
@@ -226,8 +244,8 @@
                     </div>
                     <!-- Column -->
                     <!-- Column -->
-                    <div class="col-lg-4 col-md-6">
-                        <div class="card">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card bg-light-danger">
                             <div class="card-body">
                                 <div class="row p-t-10 p-b-10">
                                     <!-- Column -->
@@ -244,8 +262,8 @@
                     </div>
                     <!-- Column -->
                     <!-- Column -->
-                    <div class="col-lg-4 col-md-6">
-                        <div class="card">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card bg-light-warning">
                             <div class="card-body">
                                 <div class="row p-t-10 p-b-10">
                                     <!-- Column -->

@@ -775,18 +775,22 @@ function viewVacaciones(parm01, parm02, parm03, parm04) {
     if (selTipo == 22 && selFunc != 0) {
         rowView.style.display = 'flex';
 
+        var titPER02= document.getElementById('titPER02');
         var titCOR02= document.getElementById('titCOR02');
         var titUSU02= document.getElementById('titUSU02');
         var titDIS02= document.getElementById('titDIS02');
     
+        var valPER02= document.getElementById('valPER02');
         var valCOR02= document.getElementById('valCOR02');
         var valUSU02= document.getElementById('valUSU02');
         var valDIS02= document.getElementById('valDIS02');
     
+        var canPER02= 0;
         var canCOR02= 0;
         var canUSU02= 0;
         var canDIS02= 0;
     
+        var cssPER02= 'css-bar-0';
         var cssCOR02= 'css-bar-0';
         var cssUSU02= 'css-bar-0';
         var cssDIS02= 'css-bar-0';
@@ -799,20 +803,24 @@ function viewVacaciones(parm01, parm02, parm03, parm04) {
             canDIS02 = element.vacacion_cantidad_restante;
         });
 
+        titPER02.innerHTML  = selAnho;
         titCOR02.innerHTML  = canCOR02;
         titUSU02.innerHTML  = canUSU02;
         titDIS02.innerHTML  = canDIS02;
 
+        cssPER02            = calCSS(canCOR02, canCOR02);
         cssCOR02            = calCSS(canCOR02, canCOR02);
         cssUSU02            = calCSS(canCOR02, canUSU02);
         cssDIS02            = calCSS(canCOR02, canDIS02);
 
+        valPER02.setAttribute('data-label', '100%');
+        valPER02.setAttribute('class', 'css-bar m-b-0 css-bar-info ' + cssPER02);
         valCOR02.setAttribute('data-label', '100%');
-        valCOR02.setAttribute('class', 'css-bar m-b-0 css-bar-info ' + cssCOR02);
+        valCOR02.setAttribute('class', 'css-bar m-b-0 css-bar-success ' + cssCOR02);
         valUSU02.setAttribute('data-label', '30%');
         valUSU02.setAttribute('class', 'css-bar m-b-0 css-bar-danger ' + cssUSU02);
         valDIS02.setAttribute('data-label', '40%');
-        valDIS02.setAttribute('class', 'css-bar m-b-0 css-bar-success ' + cssDIS02);
+        valDIS02.setAttribute('class', 'css-bar m-b-0 css-bar-warning ' + cssDIS02);
     } else {
         rowView.style.display = 'none';
     }
