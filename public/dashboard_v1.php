@@ -83,13 +83,13 @@
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
                                                     <label for="var01">Solicitud</label>
-                                                    <select id="var01" name="var01" class="select2 form-control custom-select" onchange="verDashboard(); viewVacaciones('rowVac', 'var01', 'var02', 'var07');" style="width:100%; height:40px;" required></select>
+                                                    <select id="var01" name="var01" class="select2 form-control custom-select" onchange="verDashboard(); viewVacaciones('rowVac', 'var01', 'var02', 'var05', 'var06', 'var07');" style="width:100%; height:40px;" required></select>
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
                                                     <label for="var02">Fecha Desde</label>
-                                                    <input id="var02" name="var02" value="2020-01-01"  class="form-control" onchange="verDashboard();  viewVacaciones('rowVac', 'var01', 'var02', 'var07');" type="date" style="width:100%; height:40px;" required>
+                                                    <input id="var02" name="var02" value="2020-01-01"  class="form-control" onchange="verDashboard();  viewVacaciones('rowVac', 'var01', 'var02', 'var05', 'var06', 'var07');" type="date" style="width:100%; height:40px;" required>
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-3">
@@ -108,19 +108,19 @@
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
                                                     <label for="var05">Gerencia</label>
-                                                    <select id="var05" name="var05" class="select2 form-control custom-select" onchange="selectDepto('var05', 'var06'); selectColaborador('var05', 'var06', 'var07'); verDashboard();" style="width:100%; height:40px;" required></select>
+                                                    <select id="var05" name="var05" class="select2 form-control custom-select" onchange="selectDepto('var05', 'var06'); selectColaborador('var05', 'var06', 'var07'); verDashboard();   viewVacaciones('rowVac', 'var01', 'var02', 'var05', 'var06', 'var07');" style="width:100%; height:40px;" required></select>
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
                                                     <label for="var06">Departamento</label>
-                                                    <select id="var06" name="var06" class="select2 form-control custom-select" onchange="selectColaborador('var05', 'var06', 'var07'); verDashboard();" style="width:100%; height:40px;" required></select>
+                                                    <select id="var06" name="var06" class="select2 form-control custom-select" onchange="selectColaborador('var05', 'var06', 'var07'); verDashboard();   viewVacaciones('rowVac', 'var01', 'var02', 'var05', 'var06', 'var07');" style="width:100%; height:40px;" required></select>
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-6">
                                                 <div class="form-group">
                                                     <label for="var07">Colaborador</label>
-                                                    <select id="var07" name="var07" class="select2 form-control custom-select" onchange="verDashboard();  viewVacaciones('rowVac', 'var01', 'var02', 'var07');" style="width:100%; height:40px;" required></select>
+                                                    <select id="var07" name="var07" class="select2 form-control custom-select" onchange="verDashboard();  viewVacaciones('rowVac', 'var01', 'var02', 'var05', 'var06', 'var07');" style="width:100%; height:40px;" required></select>
                                                 </div>
                                             </div>
                                         </div>
@@ -349,7 +349,7 @@
         selectDepto('var05', 'var06');
         selectColaborador('var05', 'var06', 'var07');
         verDashboard();
-        viewVacaciones('rowVac', 'var01', 'var02', 'var07');
+        viewVacaciones('rowVac', 'var01', 'var02', 'var05', 'var06', 'var07');
     </script>
 </body>
 </html>
