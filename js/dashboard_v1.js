@@ -766,13 +766,15 @@ function charView(fil01, fil02, fil03, fil04, fil05, fil06, fil07){
     });
 }
 
-function viewVacaciones(parm01, parm02, parm03, parm04) {
+function viewVacaciones(parm01, parm02, parm03, parm04, parm05, parm06) {
     var rowView = document.getElementById(parm01);
     var selTipo = document.getElementById(parm02).value;
     var selAnho = (document.getElementById(parm03).value).substring(0, 4);
-    var selFunc = document.getElementById(parm04).value;
+    var selGer  = document.getElementById(parm04).value;
+    var selDep  = document.getElementById(parm05).value;
+    var selFunc = document.getElementById(parm06).value;
 
-    if (selTipo == 22 && selFunc != 0) {
+    if (selTipo == 22) {
         rowView.style.display = 'flex';
 
         var titPER02= document.getElementById('titPER02');
@@ -795,12 +797,29 @@ function viewVacaciones(parm01, parm02, parm03, parm04) {
         var cssUSU02= 'css-bar-0';
         var cssDIS02= 'css-bar-0';
 
-        var xJSON   = getVacacion(selFunc, selAnho);
+        var xJSON   = getColaborador(selGer, selDep);
+        var xJSON1  = getVacacion(selAnho);
 
         xJSON.forEach(element => {
-            canCOR02 = element.vacacion_cantidad_dia;
-            canUSU02 = element.vacacion_cantidad_usuado;
-            canDIS02 = element.vacacion_cantidad_restante;
+            if (selFunc == 0) {
+                xJSON1.forEach(element1 => {
+                    if (element.documento == element1.vacacion_colaborador_codigo) {
+                        canCOR02 = canCOR02 + element1.vacacion_cantidad_dia;
+                        canUSU02 = canUSU02 + element1.vacacion_cantidad_usuado;
+                        canDIS02 = canDIS02 + element1.vacacion_cantidad_restante;
+                    }
+                });
+            } else {
+                if (element.documento == selFunc) {
+                    xJSON1.forEach(element1 => {
+                        if (element.documento == element1.vacacion_colaborador_codigo) {
+                            canCOR02 = element1.vacacion_cantidad_dia;
+                            canUSU02 = element1.vacacion_cantidad_usuado;
+                            canDIS02 = element1.vacacion_cantidad_restante;
+                        }
+                    });
+                }
+            }
         });
 
         titPER02.innerHTML  = selAnho;

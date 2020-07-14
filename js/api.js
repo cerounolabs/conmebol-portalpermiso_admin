@@ -878,7 +878,7 @@ function getADominio(codDom, codElem){
     return xDATA;
 }
 
-function getVacacion(codElem, codAnhio){
+function getVacacion(codAnhio){
     if (localStorage.getItem('vacacionJSON') === null){
         getJSON('vacacionJSON', '000/vacacion');
     }
@@ -888,7 +888,7 @@ function getVacacion(codElem, codAnhio){
 
     if (xJSON['code'] == 200) {
         xJSON['data'].forEach(element => {
-            if (element.vacacion_colaborador_codigo == codElem && element.vacacion_periodo == codAnhio) {
+            if (element.vacacion_periodo == codAnhio) {
                 xDATA.push(element);
             }
         });
