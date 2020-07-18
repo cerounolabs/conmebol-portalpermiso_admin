@@ -723,7 +723,11 @@ function getTipoSolicitud(){
     return xDATA; 
 }
 
-function getMarcacion(){
+function getMarcacion(codElem){
+    if (localStorage.getItem('marcacionJSON') === null){
+        getJSON('marcacionJSON', '000/marcacion/colaborador/'+codElem);
+    }
+
     var xJSON = JSON.parse(localStorage.getItem('marcacionJSON'));
     var xDATA = [];
        
