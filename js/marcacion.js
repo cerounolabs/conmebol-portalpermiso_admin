@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	var codigo	= document.getElementById('tableCodigo').className;	  
-	var xJSON	= getMarcacion();
+	var xJSON	= getMarcacion(docFunc);
 
 	$('#tableLoad').DataTable({
 		processing	: true,

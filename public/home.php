@@ -382,11 +382,6 @@
             localStorage.removeItem('solicitudesJSON');
             localStorage.setItem('solicitudesJSON', JSON.stringify(<?php echo json_encode($solictudesJSON); ?>));
         }
-
-        if (localStorage.getItem('marcacionJSON') === 'null' || localStorage.getItem('marcacionJSON') === null ){
-            localStorage.removeItem('marcacionJSON');
-            localStorage.setItem('marcacionJSON', JSON.stringify(<?php echo json_encode(get_curl('000/marcacion/colaborador/'.$usu_05)); ?>));
-        }
     </script>
 
     <script src="../js/marcacion.js"></script>
