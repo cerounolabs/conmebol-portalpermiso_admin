@@ -9,7 +9,7 @@ $(document).ready(function() {
 		paging		: true,
 		lengthChange: true,
 		info		: true,
-		order: [[ 0, "desc" ]],
+		order: [[ 4, 'desc' ], [ 5, 'desc' ]],
 		orderCellsTop: true,
 		fixedHeader	: true,
 		language	: {
@@ -29,22 +29,32 @@ $(document).ready(function() {
         },
 		data		: dataJSON,
 		columnDefs	: [
-			{ targets			: [0],	visible : false,searchable : false,	orderData : [0, 0] },
-			{ targets			: [1],	visible : true,	searchable : true,	orderData : [1, 0] },
-			{ targets			: [2],	visible : true,	searchable : true,	orderData : [2, 0] },
-			{ targets			: [3],	visible : true,	searchable : true,	orderData : [3, 0] },
-			{ targets			: [4],	visible : true,	searchable : true,	orderData : [4, 0] },
-			{ targets			: [5],	visible : true,	searchable : true,	orderData : [5, 0] }
+			{ targets			: [0],	visible : false,searchable : false,	orderData : [0, 9] },
+			{ targets			: [1],	visible : true,	searchable : true,	orderData : [1, 9] },
+			{ targets			: [2],	visible : true,	searchable : true,	orderData : [2, 9] },
+			{ targets			: [3],	visible : true,	searchable : true,	orderData : [3, 9] },
+			{ targets			: [4],	visible : true,	searchable : true,	orderData : [4, 1] },
+			{ targets			: [5],	visible : false,searchable : false,	orderData : [5, 2] },
+			{ targets			: [6],	visible : true,	searchable : true,	orderData : [6, 9] },
+			{ targets			: [7],	visible : true,	searchable : true,	orderData : [7, 9] }
 		],
 		columns		: [
             { data				: 'comprobante_codigo', name : 'comprobante_codigo'},
             { render			: function (data, type, full, meta) {
 				var btn = '';
 
-				if (full.tipo_estado_codigo == 39) {
-					btn = '<a href="../uploads/comprobante/'+ full.comprobante_adjunto +'" id="'+ full.comprobante_codigo +'" onclick="setComprobanteEstado(this.id, 40);" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';
-				} else {
-					btn = '<a href="../uploads/comprobante/'+ full.comprobante_adjunto +'" id="'+ full.comprobante_codigo +'" onclick="" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';
+				switch (full.tipo_estado_codigo) {
+					case 39:
+						btn = '<a href="../uploads/comprobante/'+ full.comprobante_adjunto +'" id="'+ full.comprobante_codigo +'" onclick="setComprobanteEstado(this.id, 40);" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';
+						break;
+
+					case 999:
+						btn = '<a href="javascript:void(0)" ></a>';
+						break;
+				
+					default:
+						btn = '<a href="../uploads/comprobante/'+ full.comprobante_adjunto +'" id="'+ full.comprobante_codigo +'" onclick="" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';
+						break;
 				}
                 
 				return btn;
@@ -52,6 +62,7 @@ $(document).ready(function() {
 			{ data				: 'tipo_estado_nombre', name : 'tipo_estado_nombre'},
 			{ data				: 'tipo_comprobante_nombre', name : 'tipo_comprobante_nombre'},
 			{ data				: 'comprobante_periodo', name : 'comprobante_periodo'},
+			{ data				: 'tipo_mes_codigo', name : 'tipo_mes_codigo'},
 			{ data				: 'tipo_mes_nombre', name : 'tipo_mes_nombre'},
 			{ data				: 'comprobante_observacion', name : 'comprobante_observacion'},
 		]

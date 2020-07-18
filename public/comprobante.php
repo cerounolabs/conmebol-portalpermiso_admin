@@ -89,6 +89,7 @@
                                                 <th class="border-top-0">TIPO</th>
                                                 <th class="border-top-0">PERIODO</th>
                                                 <th class="border-top-0">MES</th>
+                                                <th class="border-top-0">MES</th>
                                                 <th class="border-top-0">COMENTARIO</th>
                                             </tr>
                                         </thead>
@@ -100,49 +101,7 @@
                         </div>
                     </div>
                 </div>
-<!--
-                <div class="row el-element-overlay">
-<?php
-/*
-    $path   = '../uploads/comprobante';
-    $files  = dirToArray($path);
 
-    foreach ($files as $perKEY => $perVALUE) {
-        foreach ($perVALUE as $monKEY => $monVALUE) {
-            foreach ($monVALUE as $filKEY => $filVALUE) {
-                $filDat = explode('.', $filVALUE);
-                $file   = $filDat[0];
-                $filNam = str_replace('_', '', $file);
-
-                if ($filNam == $usu_05) {
-*/
-?>
-                    <div class="col-md-2">
-                        <div class="card">
-                            <div class="el-card-item">
-                                <div class="el-card-avatar el-overlay-1"> <img src="../assets/images/icon/pdf.png" alt="user" />
-                                    <div class="el-overlay">
-                                        <ul class="list-style-none el-info">
-                                            <li class="el-item"><a class="btn default btn-outline el-link" href="../uploads/comprobante/<?php //echo $perKEY.'/'.$monKEY.'/'.$filVALUE; ?>" target="_blank"><i class="sl-icon-magnifier"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="el-card-content">
-                                    <h4 class="m-b-0"><?php //echo $perKEY.' - '.getMonthName($monKEY); ?></h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-<?php
-/*
-                }
-            }
-        }
-    }
-*/
-?>
-                </div>
--->
                 <!-- Modal Procesar -->
                 <div id="modaldiv" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" id="modalcontent">
