@@ -17,4 +17,10 @@
 
 .bg-conmebol {
 	background-color: #005ea6 !important; 
-	color: #ffffff;}
+	color: #ffffff;
+}
+
+.bg-table {
+	font-weight: bold;
+	background-color: #f0f0f0 !important;
+}

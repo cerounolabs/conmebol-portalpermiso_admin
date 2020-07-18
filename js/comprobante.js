@@ -65,7 +65,12 @@ $(document).ready(function() {
 			{ data				: 'tipo_mes_codigo', name : 'tipo_mes_codigo'},
 			{ data				: 'tipo_mes_nombre', name : 'tipo_mes_nombre'},
 			{ data				: 'comprobante_observacion', name : 'comprobante_observacion'},
-		]
+		],
+		createdRow : function( row, data, dataIndex ) {
+			if ( data['comprobante_codigo'] == '' ) {        
+				$(row).addClass('bg-table');
+			}
+		}
     });
 });
 
