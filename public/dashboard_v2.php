@@ -173,6 +173,7 @@
                                                 <th class="border-top-0">TIPO</th>
                                                 <th class="border-top-0">PERIODO</th>
                                                 <th class="border-top-0">MES</th>
+                                                <th class="border-top-0">MES</th>
                                                 <th class="border-top-0">COLABORADOR</th>
                                                 <th class="border-top-0">COMENTARIO</th>
                                             </tr>

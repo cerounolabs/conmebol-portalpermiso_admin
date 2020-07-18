@@ -477,6 +477,19 @@ function getComprobanteId(codDoc){
 
     var xJSON = JSON.parse(localStorage.getItem('comprobanteJSON'));
     var xDATA = [];
+    aDATA     = {
+        comprobante_codigo: '', 
+        comprobante_adjunto: '', 
+        tipo_estado_codigo: 999, 
+        tipo_estado_nombre: '', 
+        tipo_comprobante_nombre: '', 
+        comprobante_periodo: 2019, 
+        tipo_mes_codigo: 999, 
+        tipo_mes_nombre: '', 
+        comprobante_observacion: '' 
+    };
+
+    xDATA.push(aDATA);
 
     if (xJSON['code'] == 200) {
         xJSON['data'].forEach(element => {
