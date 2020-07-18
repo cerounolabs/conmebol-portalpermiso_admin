@@ -477,30 +477,50 @@ function getComprobanteId(codDoc){
 
     var xJSON = JSON.parse(localStorage.getItem('comprobanteJSON'));
     var xDATA = [];
-    aDATA     = {
-        comprobante_codigo: '', 
-        comprobante_adjunto: '', 
-        tipo_estado_codigo: 999, 
-        tipo_estado_nombre: '', 
-        tipo_comprobante_nombre: '', 
-        comprobante_periodo: 2019, 
-        tipo_mes_codigo: 999, 
-        tipo_mes_nombre: '', 
-        comprobante_observacion: '' 
-    };
-
-    xDATA.push(aDATA);
+    var minPer= 9999;
+    var maxPer= 0;
 
     if (xJSON['code'] == 200) {
         xJSON['data'].forEach(element => {
             if (element.comprobante_documento == codDoc) {
+                if (element.comprobante_periodo < minPer) {
+                    minPer = element.comprobante_periodo;
+                }
+
+                if (element.comprobante_periodo > maxPer) {
+                    maxPer = element.comprobante_periodo;
+                }
+
                 xDATA.push(element);
             }
         });
     } else {
         xJSON['data'].forEach(element => {
+            if (element.comprobante_periodo < minPer) {
+                minPer = element.comprobante_periodo;
+            }
+
+            if (element.comprobante_periodo > maxPer) {
+                maxPer = element.comprobante_periodo;
+            }
+
             xDATA.push(element);
         });
+    }
+
+    for (let index = 0; index <= (maxPer - minPer); index++) {
+        var aDATA = {
+            comprobante_codigo: '', 
+            comprobante_adjunto: '', 
+            tipo_estado_codigo: 999, 
+            tipo_estado_nombre: '', 
+            tipo_comprobante_nombre: '', 
+            comprobante_periodo: (minPer + index), 
+            tipo_mes_codigo: 999, 
+            tipo_mes_nombre: '', 
+            comprobante_observacion: '' 
+        };
+        xDATA.push(aDATA);
     }
 
     return xDATA;
