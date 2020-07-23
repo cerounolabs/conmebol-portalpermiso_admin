@@ -137,7 +137,7 @@ function cantHora(){
     var horCant     = document.getElementById('var07');
 
     var fec1        = new Date(fecDesde.value + ' ' + horDesde.value);
-    var fec2        = new Date(fecHasta.value + ' ' + horHasta.value);
+    var fec2        = new Date(fecDesde.value + ' ' + horHasta.value);
 
     if (fec1 <= fec2) {
         var diff        = (fec2.getTime() - fec1.getTime()) / 1000;
