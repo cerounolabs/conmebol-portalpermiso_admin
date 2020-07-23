@@ -978,7 +978,7 @@ function setSolicitud(var01){
         '               <div id="tit10" class="col-sm-12 col-md-4">'+
         '                   <div class="form-group">'+
         '                       <label for="var10">PERIODO</label>'+
-        '                       <input id="var10" name="var10" min="2018" class="form-control" type="number" style="text-transform:uppercase; height:40px;" onblur="valVacacion('+ docFunc +', this.value);" required>'+
+        '                       <input id="var10" name="var10" value="2018" min="2018" class="form-control" type="number" style="text-transform:uppercase; height:40px;" onblur="valVacacion('+ docFunc +', this.value);">'+
         '                   </div>'+
         '               </div>'+
         '               <div id="tit10_1" class="col-sm-12 col-md-4">'+
