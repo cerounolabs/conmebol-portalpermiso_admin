@@ -235,12 +235,12 @@ function valSolicitud(){
         }
 
         if (inpSol.value == 22){
-            inpVaP.style.display= '';
-            titVaP.style.display= '';
-            inpVaC.style.display= '';
-            titVaC.style.display= '';
-            inpVaD.style.display= '';
-            titVaD.style.display= '';
+            inpVaP.style.display= 'none';
+            titVaP.style.display= 'none';
+            inpVaC.style.display= 'none';
+            titVaC.style.display= 'none';
+            inpVaD.style.display= 'none';
+            titVaD.style.display= 'none';
         } else {
             inpVaP.style.display= 'none';
             titVaP.style.display= 'none';
@@ -978,19 +978,19 @@ function setSolicitud(var01){
         '               <div id="tit10" class="col-sm-12 col-md-4">'+
         '                   <div class="form-group">'+
         '                       <label for="var10">PERIODO</label>'+
-        '                       <input id="var10" name="var10" value="2018" min="2018" class="form-control" type="number" style="text-transform:uppercase; height:40px;" onblur="valVacacion('+ docFunc +', this.value);">'+
+        '                       <input id="var10" name="var10" value="2018" min="2018" class="form-control" type="hidden" style="text-transform:uppercase; height:40px;" onblur="valVacacion('+ docFunc +', this.value);">'+
         '                   </div>'+
         '               </div>'+
         '               <div id="tit10_1" class="col-sm-12 col-md-4">'+
         '                   <div class="form-group">'+
         '                       <label for="var10_1">CORRESPONDIENTE</label>'+
-        '                       <input id="var10_1" name="var10_1" class="form-control" type="number" style="text-transform:uppercase; height:40px;" readonly>'+
+        '                       <input id="var10_1" name="var10_1" class="form-control" type="hidden" style="text-transform:uppercase; height:40px;" readonly>'+
         '                   </div>'+
         '               </div>'+
         '               <div id="tit10_2" class="col-sm-12 col-md-4">'+
         '                   <div class="form-group">'+
         '                       <label for="var10_2">DISPONIBLE</label>'+
-        '                       <input id="var10_2" name="var10_2" class="form-control" type="number" style="text-transform:uppercase; height:40px;" readonly>'+
+        '                       <input id="var10_2" name="var10_2" class="form-control" type="hidden" style="text-transform:uppercase; height:40px;" readonly>'+
         '                   </div>'+
         '               </div>'+
         '           </div>'+
