@@ -33,10 +33,10 @@
     $val_03 = $_SERVER['REMOTE_ADDR'];
     
     if ($expire < time()) {
-        header('Location: ../../class/session/session_logout.php');
+        header('Location: ../class/session/session_logout.php');
     } else {
         if ($log_01 == '' ) {
-            header('Location: ../../class/session/session_logout.php');
+            header('Location: ../class/session/session_logout.php');
         } else {
             if (isset($log_01) && isset($log_03) && isset($val_03)) {
                 setlocale(LC_MONETARY, 'es_PY');
@@ -66,7 +66,7 @@
                 }
 */
             } else {
-                header('Location: ../../class/session/session_logout.php');
+                header('Location: ../class/session/session_logout.php');
             }
         }
     }
