@@ -1066,7 +1066,7 @@ function setSolicitud(var01){
     });
 }
 
-function setEstado(rowSel, rowEst, rowAcc, rowFun, rowCar){
+function setEstado(rowSel, rowEst, rowAcc, rowFun, rowCar, rowPage){
     var codRow  = document.getElementById(rowSel);
     var html    = '';
     var titEst  = '';
@@ -1235,7 +1235,7 @@ function setEstado(rowSel, rowEst, rowAcc, rowFun, rowCar){
                 '           <div class="form-group">'+
                 '               <input id="workCodigo" name="workCodigo" value="'+codRow.id+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
                 '               <input id="workAccion" name="workAccion" value="'+rowAcc+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-                '               <input id="workPage" name="workPage" value="home.php?" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                '               <input id="workPage" name="workPage" value="'+ rowPage +'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
                 '               <input id="var01" name="var01" value="'+rowEst+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
                 '           </div>'+
                 '           <div class="row pt-3">'+
@@ -1266,7 +1266,7 @@ function setEstado(rowSel, rowEst, rowAcc, rowFun, rowCar){
                     '           <div class="form-group">'+
                     '               <input id="workCodigo" name="workCodigo" value="'+codRow.id+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
                     '               <input id="workAccion" name="workAccion" value="'+rowAcc+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-                    '               <input id="workPage" name="workPage" value="home.php?" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                    '               <input id="workPage" name="workPage" value="'+ rowPage +'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
                     '               <input id="var01" name="var01" value="'+rowEst+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
                     '           </div>'+
                     '           <div class="row pt-3">'+
@@ -1317,7 +1317,7 @@ function setEstado(rowSel, rowEst, rowAcc, rowFun, rowCar){
                 '           <div class="form-group">'+
                 '               <input id="workCodigo" name="workCodigo" value="'+codRow.id+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
                 '               <input id="workAccion" name="workAccion" value="'+rowAcc+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-                '               <input id="workPage" name="workPage" value="home.php?" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                '               <input id="workPage" name="workPage" value="'+ rowPage +'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
                 '               <input id="var01" name="var01" value="'+rowEst+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
                 '           </div>'+
                 '           <div class="row pt-3">'+
