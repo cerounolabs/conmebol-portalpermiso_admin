@@ -52,7 +52,7 @@ $(document).ready(function() {
                 var btnDSP = '';
                 var btnUPD = '';
 
-                if (full.tipo_estado_codigo == 40) {
+                if (full.tipo_estado_codigo == 39 || full.tipo_estado_codigo == 40) {
                     btnDSP = '<a href="../uploads/comprobante/'+full.comprobante_adjunto+'" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';
                     btnUPD = '<a href="javascript:void(0)" id="'+ full.comprobante_codigo +'" onclick="setComprobanteEstado(this.id, 41);" role="button" class="btn btn-warning"><i class="fa fa-check"></i></a>';
                 } else {
