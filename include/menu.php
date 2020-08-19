@@ -212,7 +212,7 @@
                         <li class="sidebar-item">
                         	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                            		<i class="icon-Bar-Chart "></i>
-                           		<span class="hide-menu"> Talento Humano </span>
+                           		<span class="hide-menu"> Gesti&oacute;n de Talento </span>
                            	</a>
 							<ul aria-expanded="false" class="collapse first-level">
                                 <li class="sidebar-item">
@@ -232,7 +232,7 @@
                                 <li class="sidebar-item">
                                		<a href="../public/solicitudes.php?tipo=3&sol=PC" class="sidebar-link">
                                			<i class="mdi mdi-reporte"></i>
-                               			<span class="hide-menu"> Solicitudes Aprobadas<br> / Rechazadas por TH </span>
+                               			<span class="hide-menu"> Solicitudes Aprobadas<br> / Rechazadas por GT </span>
                                     </a>
                                	</li>
 
