@@ -373,297 +373,32 @@ function verDashboard() {
     valANU01.setAttribute('data-label', '50%');
     valANU01.setAttribute('class', 'css-bar m-b-0 css-bar-danger ' + cssANU01);
 
-    charView(selFil01, selFil02, selFil03, selFil04, selFil05, selFil06, selFil07);
+    charView01(selFil01, selFil02, selFil03, selFil04, selFil05);
+    charView02(selFil01, selFil02, selFil03, selFil04, selFil05, selFil06);
 }
 
-function cantidadGer(fil01, fil02, fil03, fil04, fil05){
-    var xJSON   = getSolicitudes();
-    var retCan  = 0;
-
-    xJSON.forEach(element => {
-        if (element.tipo_permiso_codigo == fil01 && element.solicitud_fecha_desde_1 >= fil02 && element.solicitud_fecha_hasta_1 <= fil03) {
-            if (fil04 == 'T') {
-                if (fil05 == 0) {
-                    retCan = retCan + 1;
-                } else if (element.gerencia_codigo == fil05) {
-                    retCan = retCan + 1;
-                }
-            } else if (element.solicitud_estado_codigo == fil04) {
-                if (fil05 == 0) {
-                    retCan = retCan + 1;
-                } else if (element.gerencia_codigo == fil05) {
-                    retCan = retCan + 1;
-                }
-            }
-        }
-    });
-    
-    return retCan;
-}
-
-function charView(fil01, fil02, fil03, fil04, fil05, fil06, fil07){
+function charView01(fil01, fil02, fil03, fil04, fil05){
     var xJSON   = getTipoGerencia();
-    var xJSON1  = getSolicitudes();
-    var edad01  = 0;
-    var edad02  = 0;
-    var edad03  = 0;
-    var edad04  = 0;
-    var edad05  = 0;
-    var objGer  = [];
-    var dataGer = [];
-    var dataEda = [];
+    var objData  = [];
 
     xJSON.forEach(element => {
         if (fil05 == 0) {
-            var cantAUX = cantidadGer(fil01, fil02, fil03, fil04, element.tipo_gerencia_codigo);
+            var cantAUX = cantGerencia(fil01, fil02, fil03, fil04, element.tipo_gerencia_codigo);
             var dataAUX = { "value": cantAUX, "name": element.tipo_gerencia_nombre};
     
-            objGer.push(dataAUX);
-            dataGer.push(element.tipo_gerencia_nombre);
+            objData.push(dataAUX);
         }else if (element.tipo_gerencia_codigo == fil05) {
-            var cantAUX = cantidadGer(fil01, fil02, fil03, fil04, element.tipo_gerencia_codigo);
+            var cantAUX = cantGerencia(fil01, fil02, fil03, fil04, element.tipo_gerencia_codigo);
             var dataAUX = { "value": cantAUX, "name": element.tipo_gerencia_nombre};
     
-            objGer.push(dataAUX);
-            dataGer.push(element.tipo_gerencia_nombre);
+            objData.push(dataAUX);
         }
     });
-
-    xJSON1.forEach(element => {
-        if (element.tipo_permiso_codigo == fil01 && element.solicitud_fecha_desde_1 >= fil02 && element.solicitud_fecha_hasta_1 <= fil03) {
-            if (fil04 == 'T') {
-                if (fil05 == 0) {
-                    if (fil06 == 0) {
-                        if (fil07 == 0) {
-                            if (element.colaborador_edad < 21) {
-                                edad01 = edad01 + 1;
-                            } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
-                                edad02 = edad02 + 1;
-                            } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
-                                edad03 = edad03 + 1;
-                            } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
-                                edad04 = edad04 + 1;
-                            } else if (element.colaborador_edad > 50) {
-                                edad05 = edad05 + 1;
-                            }
-                        } else if (element.solicitud_documento == fil07) {
-                            if (element.colaborador_edad < 21) {
-                                edad01 = edad01 + 1;
-                            } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
-                                edad02 = edad02 + 1;
-                            } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
-                                edad03 = edad03 + 1;
-                            } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
-                                edad04 = edad04 + 1;
-                            } else if (element.colaborador_edad > 50) {
-                                edad05 = edad05 + 1;
-                            }
-                        }
-                    } else if (element.departamento_codigo == fil06) {
-                        if (fil07 == 0) {
-                            if (element.colaborador_edad < 21) {
-                                edad01 = edad01 + 1;
-                            } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
-                                edad02 = edad02 + 1;
-                            } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
-                                edad03 = edad03 + 1;
-                            } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
-                                edad04 = edad04 + 1;
-                            } else if (element.colaborador_edad > 50) {
-                                edad05 = edad05 + 1;
-                            }
-                        } else if (element.solicitud_documento == fil07) {
-                            if (element.colaborador_edad < 21) {
-                                edad01 = edad01 + 1;
-                            } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
-                                edad02 = edad02 + 1;
-                            } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
-                                edad03 = edad03 + 1;
-                            } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
-                                edad04 = edad04 + 1;
-                            } else if (element.colaborador_edad > 50) {
-                                edad05 = edad05 + 1;
-                            }
-                        }
-                    }
-                }  else if (element.gerencia_codigo == fil05) {
-                    if (fil06 == 0) {
-                        if (fil07 == 0) {
-                            if (element.colaborador_edad < 21) {
-                                edad01 = edad01 + 1;
-                            } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
-                                edad02 = edad02 + 1;
-                            } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
-                                edad03 = edad03 + 1;
-                            } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
-                                edad04 = edad04 + 1;
-                            } else if (element.colaborador_edad > 50) {
-                                edad05 = edad05 + 1;
-                            }
-                        } else if (element.solicitud_documento == fil07) {
-                            if (element.colaborador_edad < 21) {
-                                edad01 = edad01 + 1;
-                            } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
-                                edad02 = edad02 + 1;
-                            } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
-                                edad03 = edad03 + 1;
-                            } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
-                                edad04 = edad04 + 1;
-                            } else if (element.colaborador_edad > 50) {
-                                edad05 = edad05 + 1;
-                            }
-                        }
-                    } else if (element.departamento_codigo == fil06) {
-                        if (fil07 == 0) {
-                            if (element.colaborador_edad < 21) {
-                                edad01 = edad01 + 1;
-                            } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
-                                edad02 = edad02 + 1;
-                            } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
-                                edad03 = edad03 + 1;
-                            } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
-                                edad04 = edad04 + 1;
-                            } else if (element.colaborador_edad > 50) {
-                                edad05 = edad05 + 1;
-                            }
-                        } else if (element.solicitud_documento == fil07) {
-                            if (element.colaborador_edad < 21) {
-                                edad01 = edad01 + 1;
-                            } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
-                                edad02 = edad02 + 1;
-                            } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
-                                edad03 = edad03 + 1;
-                            } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
-                                edad04 = edad04 + 1;
-                            } else if (element.colaborador_edad > 50) {
-                                edad05 = edad05 + 1;
-                            }
-                        }
-                    }
-                }
-            } else if (element.solicitud_estado_codigo == fil04) {
-                if (fil05 == 0) {
-                    if (fil06 == 0) {
-                        if (fil07 == 0) {
-                            if (element.colaborador_edad < 21) {
-                                edad01 = edad01 + 1;
-                            } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
-                                edad02 = edad02 + 1;
-                            } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
-                                edad03 = edad03 + 1;
-                            } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
-                                edad04 = edad04 + 1;
-                            } else if (element.colaborador_edad > 50) {
-                                edad05 = edad05 + 1;
-                            }
-                        } else if (element.solicitud_documento == fil07) {
-                            if (element.colaborador_edad < 21) {
-                                edad01 = edad01 + 1;
-                            } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
-                                edad02 = edad02 + 1;
-                            } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
-                                edad03 = edad03 + 1;
-                            } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
-                                edad04 = edad04 + 1;
-                            } else if (element.colaborador_edad > 50) {
-                                edad05 = edad05 + 1;
-                            }
-                        }
-                    } else if (element.departamento_codigo == fil06) {
-                        if (fil07 == 0) {
-                            if (element.colaborador_edad < 21) {
-                                edad01 = edad01 + 1;
-                            } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
-                                edad02 = edad02 + 1;
-                            } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
-                                edad03 = edad03 + 1;
-                            } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
-                                edad04 = edad04 + 1;
-                            } else if (element.colaborador_edad > 50) {
-                                edad05 = edad05 + 1;
-                            }
-                        } else if (element.solicitud_documento == fil07) {
-                            if (element.colaborador_edad < 21) {
-                                edad01 = edad01 + 1;
-                            } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
-                                edad02 = edad02 + 1;
-                            } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
-                                edad03 = edad03 + 1;
-                            } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
-                                edad04 = edad04 + 1;
-                            } else if (element.colaborador_edad > 50) {
-                                edad05 = edad05 + 1;
-                            }
-                        }
-                    }
-                }  else if (element.gerencia_codigo == fil05) {
-                    if (fil06 == 0) {
-                        if (fil07 == 0) {
-                            if (element.colaborador_edad < 21) {
-                                edad01 = edad01 + 1;
-                            } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
-                                edad02 = edad02 + 1;
-                            } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
-                                edad03 = edad03 + 1;
-                            } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
-                                edad04 = edad04 + 1;
-                            } else if (element.colaborador_edad > 50) {
-                                edad05 = edad05 + 1;
-                            }
-                        } else if (element.solicitud_documento == fil07) {
-                            if (element.colaborador_edad < 21) {
-                                edad01 = edad01 + 1;
-                            } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
-                                edad02 = edad02 + 1;
-                            } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
-                                edad03 = edad03 + 1;
-                            } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
-                                edad04 = edad04 + 1;
-                            } else if (element.colaborador_edad > 50) {
-                                edad05 = edad05 + 1;
-                            }
-                        }
-                    } else if (element.departamento_codigo == fil06) {
-                        if (fil07 == 0) {
-                            if (element.colaborador_edad < 21) {
-                                edad01 = edad01 + 1;
-                            } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
-                                edad02 = edad02 + 1;
-                            } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
-                                edad03 = edad03 + 1;
-                            } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
-                                edad04 = edad04 + 1;
-                            } else if (element.colaborador_edad > 50) {
-                                edad05 = edad05 + 1;
-                            }
-                        } else if (element.solicitud_documento == fil07) {
-                            if (element.colaborador_edad < 21) {
-                                edad01 = edad01 + 1;
-                            } else if (element.colaborador_edad > 20 && element.colaborador_edad < 31) {
-                                edad02 = edad02 + 1;
-                            } else if (element.colaborador_edad > 30 && element.colaborador_edad < 41) {
-                                edad03 = edad03 + 1;
-                            } else if (element.colaborador_edad > 40 && element.colaborador_edad < 51) {
-                                edad04 = edad04 + 1;
-                            } else if (element.colaborador_edad > 50) {
-                                edad05 = edad05 + 1;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    });
-
-    dataEda.push(edad01);
-    dataEda.push(edad02);
-    dataEda.push(edad03);
-    dataEda.push(edad04);
-    dataEda.push(edad05);
 
     $(function() {
         "use strict";
         var cha01 = echarts.init(document.getElementById('char01'));
+        
         var opt01 = 
             {
                 title: {
@@ -739,31 +474,193 @@ function charView(fil01, fil02, fil03, fil04, fil05, fil06, fil07){
                     max: 450,
                     sort: 'ascending',
 
-                    data: objGer
+                    data: objData
                 }
             ]
         };
 
         cha01.setOption(opt01);
+    });
+}
+
+function charView02(fil01, fil02, fil03, fil04, fil05, fil06){
+    var xJSON   = getTipoDepartamento(fil05);
+    var objData  = [];
+
+    xJSON.forEach(element => {
+        if (fil06 == 0) {
+            var cantAUX = cantDepartamento(fil01, fil02, fil03, fil04, fil05, element.tipo_departamento_codigo);
+            var dataAUX = { "value": cantAUX, "name": element.tipo_departamento_nombre};
+    
+            objData.push(dataAUX);
+        }else if (element.tipo_departamento_codigo == fil06) {
+            var cantAUX = cantDepartamento(fil01, fil02, fil03, fil04, fil05, element.tipo_departamento_codigo);
+            var dataAUX = { "value": cantAUX, "name": element.tipo_departamento_nombre};
+    
+            objData.push(dataAUX);
+        }
+    });
+
+    $(function() {
+        "use strict";
+        var cha01 = echarts.init(document.getElementById('char02'));
         
-        new Chart(document.getElementById("char02"), {
-            type: 'pie',
-            data: {
-                labels: [ "Menor que 20", "Entre 21 a 30", "Entre 31 a 40", "Entre 41 a 50", "Mayor que 50"],
-                datasets: [{
-                    label: "Population (millions)",
-                    backgroundColor: ["#36a2eb", "#ff6384", "#4bc0c0", "#ffcd56", "#07b107"],
-                    data: dataEda
-                }]
-            },
-            options: {
+        var opt01 = 
+            {
                 title: {
-                    display: false,
-                    text: ''
+                text: '',
+                subtext: '',
+                x: 'center'
+            },
+
+            // Add tooltip
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b}: Solicitudes {c} ({d}%)"
+            },
+
+            color: ['#006064', '#FF1744', '#1565C0', '#FFC400', '#64FFDA', '#607D8B', '#ffbc34', '#4fc3f7', '#212529', '#f62d51', '#2962FF', '#FFC400'],
+
+            // Display toolbox
+            toolbox: {
+                show: true,
+                orient: 'vertical',
+                feature: {
+                    mark: {
+                        show: true,
+                        title: {
+                            mark: 'Markline switch',
+                            markUndo: 'Undo markline',
+                            markClear: 'Clear markline'
+                        }
+                    },
+                    dataView: {
+                        show: false,
+                        readOnly: false,
+                        title: 'View data',
+                        lang: ['View chart data', 'Close', 'Update']
+                    },
+                    magicType: {
+                        show: true,
+                        title: {
+                            pie: 'Switch to pies',
+                            funnel: 'Switch to funnel',
+                        },
+                        type: ['pie', 'funnel']
+                    },
+                    restore: {
+                        show: false,
+                        title: 'Restore'
+                    },
+                    saveAsImage: {
+                        show: false,
+                        title: 'Same as image',
+                        lang: ['Save']
+                    }
+                }
+            },
+
+            // Enable drag recalculate
+            calculable: true,
+
+            // Add series
+            series: [
+                {
+                    name: 'DEPARTAMENTO',
+                    type: 'pie',
+                    radius: ['15%', '73%'],
+                    center: ['50%', '57%'],
+                    roseType: 'area',
+
+                    // Funnel
+                    width: '40%',
+                    height: '78%',
+                    x: '30%',
+                    y: '17.5%',
+                    max: 450,
+                    sort: 'ascending',
+
+                    data: objData
+                }
+            ]
+        };
+
+        cha01.setOption(opt01);
+    });
+}
+
+function cantGerencia(fil01, fil02, fil03, fil04, fil05){
+    var xJSON   = getSolicitudes();
+    var retCan  = 0;
+
+    xJSON.forEach(element => {
+        if (element.tipo_permiso_codigo == fil01 && element.solicitud_fecha_desde_1 >= fil02 && element.solicitud_fecha_hasta_1 <= fil03) {
+            if (fil04 == 'T') {
+                if (fil05 == 0) {
+                    retCan = retCan + 1;
+                } else if (element.gerencia_codigo == fil05) {
+                    retCan = retCan + 1;
+                }
+            } else if (element.solicitud_estado_codigo == fil04) {
+                if (fil05 == 0) {
+                    retCan = retCan + 1;
+                } else if (element.gerencia_codigo == fil05) {
+                    retCan = retCan + 1;
                 }
             }
-        });
+        }
     });
+    
+    return retCan;
+}
+
+function cantDepartamento(fil01, fil02, fil03, fil04, fil05, fil06){
+    var xJSON   = getSolicitudes();
+    var retCan  = 0;
+
+    xJSON.forEach(element => {
+        if (element.tipo_permiso_codigo == fil01 && element.solicitud_fecha_desde_1 >= fil02 && element.solicitud_fecha_hasta_1 <= fil03) {
+            if (fil04 == 'T') {
+                if (fil05 == 0) {
+                    if (fil06 == 0) {
+                        retCan = retCan + 1;
+                    } else {
+                        if (fil06 == element.departamento_codigo) {
+                            retCan = retCan + 1; 
+                        }
+                    }
+                } else if (element.gerencia_codigo == fil05) {
+                    if (fil06 == 0) {
+                        retCan = retCan + 1;
+                    } else {
+                        if (fil06 == element.departamento_codigo) {
+                            retCan = retCan + 1; 
+                        }
+                    }
+                }
+            } else if (element.solicitud_estado_codigo == fil04) {
+                if (fil05 == 0) {
+                    if (fil06 == 0) {
+                        retCan = retCan + 1;
+                    } else {
+                        if (fil06 == element.departamento_codigo) {
+                            retCan = retCan + 1; 
+                        }
+                    }
+                } else if (element.gerencia_codigo == fil05) {
+                    if (fil06 == 0) {
+                        retCan = retCan + 1;
+                    } else {
+                        if (fil06 == element.departamento_codigo) {
+                            retCan = retCan + 1; 
+                        }
+                    }
+                }
+            }
+        }
+    });
+    
+    return retCan;
 }
 
 function viewVacaciones(parm01, parm02, parm03, parm04, parm05, parm06) {
