@@ -6,7 +6,6 @@
     if ($usu_09 != 7){
         header('Location: ../public/home.php?code=401&msg=No tiene permiso para ingresar!Contacte con TI');
     }
-    $usu_09 = 'select * from colabodor';
 ?>
 
 <!DOCTYPE html>
@@ -290,13 +289,12 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-sm-12 col-lg-6">
                         <div class="card">
                             <div class="card-body analytics-info">
-                                <h4 class="card-title"> Por Rango de Edad </h4>
-                                <div style="height:450px;">
-                                    <canvas id="char02"></canvas>
-                                </div>
+                                <h4 class="card-title"> Por Departamento </h4>
+                                <div id="char02" style="height:450px;"></div>
                             </div>
                         </div>
                     </div>
