@@ -7,8 +7,8 @@ $(document).ready(function() {
     var codDep  = document.getElementById('var06').value;
     var codDoc  = document.getElementById('var07').value;
 
-	var dataJSON	= getComprobanteAll(codCom, codPer, codMeD, codMeH, codGer, codDep, codDoc);
-	
+    var dataJSON	= getComprobanteAll(codCom, codPer, codMeD, codMeH, codGer, codDep, codDoc);
+    
 	$('#tableLoad').DataTable({
 		processing	: true,
 		destroy		: true,
@@ -72,17 +72,16 @@ $(document).ready(function() {
     });
     
     $('.form-group').change(function() {
-        var codCom	= document.getElementById('var01').value;
-        var codPer	= document.getElementById('var02').value;
-        var codMeD	= document.getElementById('var03').value;
-        var codMeH  = document.getElementById('var04').value;
-        var codGer  = document.getElementById('var05').value;
-        var codDep  = document.getElementById('var06').value;
-        var codDoc  = document.getElementById('var07').value;
-        
-        var xDATA	= getComprobanteAll(codCom, codPer, codMeD, codMeH, codGer, codDep, codDoc);
-
+        var codCom	    = document.getElementById('var01').value;
+        var codPer	    = document.getElementById('var02').value;
+        var codMeD	    = document.getElementById('var03').value;
+        var codMeH      = document.getElementById('var04').value;
+        var codGer      = document.getElementById('var05').value;
+        var codDep      = document.getElementById('var06').value;
+        var codDoc      = document.getElementById('var07').value;
+        var xDATA	    = getComprobanteAll(codCom, codPer, codMeD, codMeH, codGer, codDep, codDoc);
         var tableData   = $('#tableLoad').DataTable();
+
         tableData.clear().rows.add(xDATA).draw();
     });
 });

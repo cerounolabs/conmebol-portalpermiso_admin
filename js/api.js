@@ -35,14 +35,37 @@ function postJSON(codPAGE, codURL, codPARS) {
     xHTTP.send(codPARS);
 }
 
-function putJSON(codPAGE, codURL, codPARS) {
+function putJSON(codPAGE, codURL, codPARS, codLOAD) {
     var urlJSON = urlBASE + '/' + codURL;
 
     xHTTP.open('PUT', urlJSON, true);
     xHTTP.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var xJSON = JSON.parse(this.responseText);
-            window.location.replace('../public/' + codPAGE + '.php?code='+ xJSON.code + '&msg=' + xJSON.message); 
+
+            switch (codLOAD) {
+                case 1:
+                    window.location.replace('../public/' + codPAGE + '.php?code='+ xJSON.code + '&msg=' + xJSON.message);
+                    break;
+            
+                case 2:
+                    $(document).ready(function() {
+                        localStorage.removeItem('comprobanteJSON');
+    
+                        var codCom	    = document.getElementById('var01').value;
+                        var codPer	    = document.getElementById('var02').value;
+                        var codMeD	    = document.getElementById('var03').value;
+                        var codMeH      = document.getElementById('var04').value;
+                        var codGer      = document.getElementById('var05').value;
+                        var codDep      = document.getElementById('var06').value;
+                        var codDoc      = document.getElementById('var07').value;
+                        var xDATA	    = getComprobanteAll(codCom, codPer, codMeD, codMeH, codGer, codDep, codDoc);
+                        var tableData   = $('#tableLoad').DataTable();
+                
+                        tableData.clear().rows.add(xDATA).draw();
+                    });
+                    break;
+            }
         }
     };
     xHTTP.setRequestHeader('Accept', 'application/json;charset=UTF-8');
@@ -1362,16 +1385,17 @@ function setEstado(rowSel, rowEst, rowAcc, rowFun, rowCar, rowPage){
 }
 
 function setComprobanteEstado(codElem, codEst) {
-	var xPAGE	= parm04BASE;
+    var xPAGE	= parm04BASE;
+    var xLOAD   = 2;
 	var xURL	= '200/comprobante/' + codElem;
 	var xPARS   = JSON.stringify({
 		"tipo_estado_codigo" : codEst,
 		"auditoria_usuario": parm01BASE,
 		"auditoria_fecha_hora": parm02BASE,
 		"auditoria_ip": parm03BASE
-	});
-	
-	putJSON(xPAGE, xURL, xPARS);
+    });
+    
+    putJSON(xPAGE, xURL, xPARS, xLOAD);
 }
 
 function selectSolicitud(var01) {
