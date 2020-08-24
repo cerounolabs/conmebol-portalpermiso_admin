@@ -570,7 +570,7 @@ function getComprobanteAll(codCom, codPer, codMeD, codMeH, codGer, codDep, codDo
                             }
                         }
                     } else {
-                        if (element.colaborador_departamento_codigo == codDep) {
+                        if (element.tipo_departamento_codigo == codDep) {
                             if (codDoc == 0) {
                                 xDATA.push(element);
                             } else {
@@ -581,7 +581,7 @@ function getComprobanteAll(codCom, codPer, codMeD, codMeH, codGer, codDep, codDo
                         }
                     }
                 } else {
-                    if (element.comprobante_gerencia_codigo == codGer) {
+                    if (element.tipo_gerencia_codigo == codGer) {
                         if (codDep == 0) {
                             if (codDoc == 0) {
                                 xDATA.push(element);
@@ -591,7 +591,7 @@ function getComprobanteAll(codCom, codPer, codMeD, codMeH, codGer, codDep, codDo
                                 }
                             }
                         } else {
-                            if (element.colaborador_departamento_codigo == codDep) {
+                            if (element.tipo_departamento_codigo == codDep) {
                                 if (codDoc == 0) {
                                     xDATA.push(element);
                                 } else {
