@@ -1384,9 +1384,8 @@ function setEstado(rowSel, rowEst, rowAcc, rowFun, rowCar, rowPage){
     $("#modalcontent").append(html);
 }
 
-function setComprobanteEstado(codElem, codEst) {
+function setComprobanteEstado(codElem, codEst, codLoad) {
     var xPAGE	= parm04BASE;
-    var xLOAD   = 2;
 	var xURL	= '200/comprobante/' + codElem;
 	var xPARS   = JSON.stringify({
 		"tipo_estado_codigo" : codEst,
@@ -1395,7 +1394,7 @@ function setComprobanteEstado(codElem, codEst) {
 		"auditoria_ip": parm03BASE
     });
     
-    putJSON(xPAGE, xURL, xPARS, xLOAD);
+    putJSON(xPAGE, xURL, xPARS, codLoad);
 }
 
 function selectSolicitud(var01) {

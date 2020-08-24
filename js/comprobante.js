@@ -45,7 +45,7 @@ $(document).ready(function() {
 
 				switch (full.tipo_estado_codigo) {
 					case 39:
-						btn = '<a href="../uploads/comprobante/'+ full.comprobante_adjunto +'" id="'+ full.comprobante_codigo +'" onclick="setComprobanteEstado(this.id, 40);" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';
+						btn = '<a href="../uploads/comprobante/'+ full.comprobante_adjunto +'" id="'+ full.comprobante_codigo +'" onclick="setComprobanteEstado(this.id, 40, 1);" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';
 						break;
 
 					case 999:
