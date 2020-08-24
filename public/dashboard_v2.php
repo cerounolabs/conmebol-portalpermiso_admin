@@ -84,43 +84,43 @@
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
                                                     <label for="var01">Comprobante</label>
-                                                    <select id="var01" name="var01" class="select2 form-control custom-select" onchange="" style="width:100%; height:40px;" required></select>
+                                                    <select id="var01" name="var01" class="select2 form-control custom-select" onchange="verDashboard();" style="width:100%; height:40px;" required></select>
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
                                                     <label for="var02">Periodo</label>
-                                                    <input id="var02" name="var02" value="<?php echo $var02; ?>"  class="form-control" onchange="" type="number" min="2020" max="<?php echo $var02; ?>" style="width:100%; height:40px;" required>
+                                                    <input id="var02" name="var02" value="<?php echo $var02; ?>"  class="form-control" onchange="verDashboard();" type="number" min="2020" max="<?php echo $var02; ?>" style="width:100%; height:40px;" required>
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
                                                     <label for="var03">Mes Desde</label>
-                                                    <select id="var03" name="var03" class="select2 form-control custom-select" onchange="" style="width:100%; height:40px;" required></select>
+                                                    <select id="var03" name="var03" class="select2 form-control custom-select" onchange="verDashboard();" style="width:100%; height:40px;" required></select>
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
                                                     <label for="var04">Mes Hasta</label>
-                                                    <select id="var04" name="var04" class="select2 form-control custom-select" onchange="" style="width:100%; height:40px;" required></select>
+                                                    <select id="var04" name="var04" class="select2 form-control custom-select" onchange="verDashboard();" style="width:100%; height:40px;" required></select>
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
                                                     <label for="var05">Gerencia</label>
-                                                    <select id="var05" name="var05" class="select2 form-control custom-select" onchange="selectDepto('var05', 'var06'); selectColaborador('var05', 'var06', 'var07');" style="width:100%; height:40px;" required></select>
+                                                    <select id="var05" name="var05" class="select2 form-control custom-select" onchange="selectDepto('var05', 'var06'); selectColaborador('var05', 'var06', 'var07'); verDashboard();" style="width:100%; height:40px;" required></select>
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
                                                     <label for="var06">Departamento</label>
-                                                    <select id="var06" name="var06" class="select2 form-control custom-select" onchange="selectColaborador('var05', 'var06', 'var07');" style="width:100%; height:40px;" required></select>
+                                                    <select id="var06" name="var06" class="select2 form-control custom-select" onchange="selectColaborador('var05', 'var06', 'var07'); verDashboard();" style="width:100%; height:40px;" required></select>
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-6">
                                                 <div class="form-group">
                                                     <label for="var07">Colaborador</label>
-                                                    <select id="var07" name="var07" class="select2 form-control custom-select" onchange="" style="width:100%; height:40px;" required></select>
+                                                    <select id="var07" name="var07" class="select2 form-control custom-select" onchange="verDashboard();" style="width:100%; height:40px;" required></select>
                                                 </div>
                                             </div>
                                         </div>
@@ -132,26 +132,56 @@
                 </div>
 
                 <div class="row">
-                    <!-- Column -->
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card card bg-light-info">
+                            <div class="card-body">
+                                <div class="row p-t-10 p-b-10">
+                                    <div class="col p-r-0">
+                                        <h1 class="font-light" id="titPEN01"></h1>
+                                        <h6 class="text-muted">Pendiente Descarga</h6>
+                                    </div>
 
+                                    <div class="col text-right align-self-center">
+                                        <div id="valPEN01" class="css-bar m-b-0 css-bar-info"><i class="mdi mdi-star-circle"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <!-- Column -->
-                    <!-- Column -->
-                    <div class="col-lg-3 col-md-6">
 
-                    </div>
-                    <!-- Column -->
-                    <!-- Column -->
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card bg-light-success">
+                            <div class="card-body">
+                                <div class="row p-t-10 p-b-10">
+                                    <div class="col p-r-0">
+                                        <h1 class="font-light" id="titDES01"></h1>
+                                        <h6 class="text-muted">Pendiente Entrega</h6>
+                                    </div>
 
+                                    <div class="col text-right align-self-center">
+                                        <div id="valDES01" class="css-bar m-b-0 css-bar-success"><i class="mdi mdi-star-circle"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <!-- Column -->
-                    <!-- Column -->
-                    <div class="col-lg-3 col-md-6">
 
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card bg-light-warning">
+                            <div class="card-body">
+                                <div class="row p-t-10 p-b-10">
+                                    <div class="col p-r-0">
+                                        <h1 class="font-light" id="titENT01"></h1>
+                                        <h6 class="text-muted">Recibido G.T.</h6>
+                                    </div>
+
+                                    <div class="col text-right align-self-center">
+                                        <div id="valENT01" class="css-bar m-b-0 css-bar-warning"><i class="mdi mdi-star-circle"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <!-- Column -->
                 </div>
 
                 <div class="row">
@@ -239,6 +269,7 @@
         selectGerencia('var05');
         selectDepto('var05', 'var06');
         selectColaborador('var05', 'var06', 'var07');
+        verDashboard();
     </script>
 </body>
 </html>
