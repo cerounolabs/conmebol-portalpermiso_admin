@@ -10,7 +10,7 @@
         $codCar = 4;
         $codAcc = 1;
     }
-
+    
     $workPage       = 'home.php?';
     $solictudesJSON = get_curl('200/solicitudes/'.$codCar.'/'.$usu_05.'/T');
 ?>

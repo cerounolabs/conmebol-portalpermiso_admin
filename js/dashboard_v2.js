@@ -7,8 +7,8 @@ $(document).ready(function() {
     var codDep  = document.getElementById('var06').value;
     var codDoc  = document.getElementById('var07').value;
 
-	var dataJSON	= getComprobanteAll(codCom, codPer, codMeD, codMeH, codGer, codDep, codDoc);
-	
+    var dataJSON	= getComprobanteAll(codCom, codPer, codMeD, codMeH, codGer, codDep, codDoc);
+    
 	$('#tableLoad').DataTable({
 		processing	: true,
 		destroy		: true,
@@ -54,7 +54,7 @@ $(document).ready(function() {
 
                 if (full.tipo_estado_codigo == 39 || full.tipo_estado_codigo == 40) {
                     btnDSP = '<a href="../uploads/comprobante/'+full.comprobante_adjunto+'" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';
-                    btnUPD = '<a href="javascript:void(0)" id="'+ full.comprobante_codigo +'" onclick="setComprobanteEstado(this.id, 41);" role="button" class="btn btn-warning"><i class="fa fa-check"></i></a>';
+                    btnUPD = '<a href="javascript:void(0)" id="'+ full.comprobante_codigo +'" onclick="setComprobanteEstado(this.id, 41, 2);" role="button" class="btn btn-warning"><i class="fa fa-check"></i></a>';
                 } else {
                     btnDSP = '<a href="../uploads/comprobante/'+full.comprobante_adjunto+'" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';
                     btnUPD = '';
@@ -72,17 +72,16 @@ $(document).ready(function() {
     });
     
     $('.form-group').change(function() {
-        var codCom	= document.getElementById('var01').value;
-        var codPer	= document.getElementById('var02').value;
-        var codMeD	= document.getElementById('var03').value;
-        var codMeH  = document.getElementById('var04').value;
-        var codGer  = document.getElementById('var05').value;
-        var codDep  = document.getElementById('var06').value;
-        var codDoc  = document.getElementById('var07').value;
-        
-        var xDATA	= getComprobanteAll(codCom, codPer, codMeD, codMeH, codGer, codDep, codDoc);
-
+        var codCom	    = document.getElementById('var01').value;
+        var codPer	    = document.getElementById('var02').value;
+        var codMeD	    = document.getElementById('var03').value;
+        var codMeH      = document.getElementById('var04').value;
+        var codGer      = document.getElementById('var05').value;
+        var codDep      = document.getElementById('var06').value;
+        var codDoc      = document.getElementById('var07').value;
+        var xDATA	    = getComprobanteAll(codCom, codPer, codMeD, codMeH, codGer, codDep, codDoc);
         var tableData   = $('#tableLoad').DataTable();
+
         tableData.clear().rows.add(xDATA).draw();
     });
 });
