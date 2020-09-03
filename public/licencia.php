@@ -137,7 +137,7 @@
     include '../include/footer.php';
 ?>
 
-    <script src="../js/api.js"></script>
+    <script src="../js/api.js?<?php echo date('Ymd');?>"></script>
 
     <script>
         if (localStorage.getItem('tipoLicenciaJSON') === 'null' || localStorage.getItem('tipoLicenciaJSON') === null ){
@@ -146,6 +146,6 @@
         }
     </script>
 
-    <script src="../js/licencia.js"></script>
+    <script src="../js/licencia.js?<?php echo date('Ymd');?>"></script>
 </body>
 </html>

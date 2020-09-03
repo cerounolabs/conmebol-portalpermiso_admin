@@ -151,8 +151,8 @@
     include '../include/footer.php';
 ?>
 
-    <script src="../js/api.js"></script>
-    <script src="../js/comprobante.js"></script>
+    <script src="../js/api.js?<?php echo date('Ymd');?>"></script>
+    <script src="../js/comprobante.js?<?php echo date('Ymd');?>"></script>
     <script>
         const parm01BASE   = '<?php echo trim($usu_03); ?>';
         const parm02BASE   = '<?php echo date('Y-m-d H:i:s'); ?>';

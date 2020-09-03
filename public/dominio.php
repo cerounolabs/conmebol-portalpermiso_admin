@@ -155,7 +155,7 @@
     include '../include/footer.php';
 ?>
 
-    <script src="../js/api.js"></script>
-    <script src="../js/dominio.js"></script>
+    <script src="../js/api.js?<?php echo date('Ymd');?>"></script>
+    <script src="../js/dominio.js?<?php echo date('Ymd');?>"></script>
 </body>
 </html>
