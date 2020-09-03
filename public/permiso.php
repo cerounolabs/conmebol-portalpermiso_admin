@@ -139,7 +139,7 @@
     include '../include/footer.php';
 ?>
 
-    <script src="../js/api.js"></script>
+    <script src="../js/api.js?<?php echo date('Ymd');?>"></script>
 
     <script>
         if (localStorage.getItem('tipoPermisoJSON') === 'null' || localStorage.getItem('tipoPermisoJSON') === null ){
@@ -148,6 +148,6 @@
         }
     </script>
 
-    <script src="../js/permiso.js"></script>
+    <script src="../js/permiso.js?<?php echo date('Ymd');?>"></script>
 </body>
 </html>
