@@ -25,9 +25,9 @@
 
     if ($resultJSON['code'] === 200) {
         if ($val_01 == 'czelaya' || $val_01 == 'CZELAYA') {
-            $personJSON         = get_curl('000/colaborador/1019125');
+            $personJSON         = get_curl('000/colaborador/login/1019125');
         } else {
-            $personJSON         = get_curl('000/colaborador/'.$resultJSON['data'][0]['user_var05']);
+            $personJSON         = get_curl('000/colaborador/login/'.$resultJSON['data'][0]['user_var05']);
         }
         
         $_SESSION['log_01'] = trim(strtoupper($val_01));
