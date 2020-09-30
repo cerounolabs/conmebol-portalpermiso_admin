@@ -59,7 +59,8 @@ function putJSON(codPAGE, codURL, codPARS, codLOAD) {
                         var codGer      = document.getElementById('var05').value;
                         var codDep      = document.getElementById('var06').value;
                         var codDoc      = document.getElementById('var07').value;
-                        var xDATA	    = getComprobanteAll(codCom, codPer, codMeD, codMeH, codGer, codDep, codDoc);
+                        var codEst      = document.getElementById('var08').value;
+                        var xDATA	    = getComprobanteAll(codCom, codPer, codMeD, codMeH, codGer, codDep, codDoc, codEst);
                         var tableData   = $('#tableLoad').DataTable();
                 
                         tableData.clear().rows.add(xDATA).draw();
@@ -549,7 +550,7 @@ function getComprobanteId(codDoc){
     return xDATA;
 }
 
-function getComprobanteAll(codCom, codPer, codMeD, codMeH, codGer, codDep, codDoc){
+function getComprobanteAll(codCom, codPer, codMeD, codMeH, codGer, codDep, codDoc, codEst){
     if (localStorage.getItem('comprobanteJSON') === null){
         getJSON('comprobanteJSON', '200/comprobante');
     }
@@ -563,19 +564,43 @@ function getComprobanteAll(codCom, codPer, codMeD, codMeH, codGer, codDep, codDo
                 if (codGer == 0) {
                     if (codDep == 0) {
                         if (codDoc == 0) {
-                            xDATA.push(element);
+                            if (codEst == 0) {
+                                xDATA.push(element);
+                            } else {
+                                if (element.tipo_estado_codigo == codEst) {
+                                    xDATA.push(element);
+                                }
+                            }
                         } else {
                             if (element.comprobante_documento == codDoc) {
-                                xDATA.push(element);
+                                if (codEst == 0) {
+                                    xDATA.push(element);
+                                } else {
+                                    if (element.tipo_estado_codigo == codEst) {
+                                        xDATA.push(element);
+                                    }
+                                }
                             }
                         }
                     } else {
                         if (element.tipo_departamento_codigo == codDep) {
                             if (codDoc == 0) {
-                                xDATA.push(element);
+                                if (codEst == 0) {
+                                    xDATA.push(element);
+                                } else {
+                                    if (element.tipo_estado_codigo == codEst) {
+                                        xDATA.push(element);
+                                    }
+                                }
                             } else {
                                 if (element.comprobante_documento == codDoc) {
-                                    xDATA.push(element);
+                                    if (codEst == 0) {
+                                        xDATA.push(element);
+                                    } else {
+                                        if (element.tipo_estado_codigo == codEst) {
+                                            xDATA.push(element);
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -584,19 +609,43 @@ function getComprobanteAll(codCom, codPer, codMeD, codMeH, codGer, codDep, codDo
                     if (element.tipo_gerencia_codigo == codGer) {
                         if (codDep == 0) {
                             if (codDoc == 0) {
-                                xDATA.push(element);
+                                if (codEst == 0) {
+                                    xDATA.push(element);
+                                } else {
+                                    if (element.tipo_estado_codigo == codEst) {
+                                        xDATA.push(element);
+                                    }
+                                }
                             } else {
                                 if (element.comprobante_documento == codDoc) {
-                                    xDATA.push(element);
+                                    if (codEst == 0) {
+                                        xDATA.push(element);
+                                    } else {
+                                        if (element.tipo_estado_codigo == codEst) {
+                                            xDATA.push(element);
+                                        }
+                                    }
                                 }
                             }
                         } else {
                             if (element.tipo_departamento_codigo == codDep) {
                                 if (codDoc == 0) {
-                                    xDATA.push(element);
+                                    if (codEst == 0) {
+                                        xDATA.push(element);
+                                    } else {
+                                        if (element.tipo_estado_codigo == codEst) {
+                                            xDATA.push(element);
+                                        }
+                                    }
                                 } else {
                                     if (element.comprobante_documento == codDoc) {
-                                        xDATA.push(element);
+                                        if (codEst == 0) {
+                                            xDATA.push(element);
+                                        } else {
+                                            if (element.tipo_estado_codigo == codEst) {
+                                                xDATA.push(element);
+                                            }
+                                        }
                                     }
                                 }
                             }
