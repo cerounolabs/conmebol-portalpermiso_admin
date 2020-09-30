@@ -117,10 +117,16 @@
                                                     <select id="var06" name="var06" class="select2 form-control custom-select" onchange="selectColaborador('var05', 'var06', 'var07'); verDashboard();" style="width:100%; height:40px;" required></select>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-12 col-md-6">
+                                            <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
                                                     <label for="var07">Colaborador</label>
                                                     <select id="var07" name="var07" class="select2 form-control custom-select" onchange="verDashboard();" style="width:100%; height:40px;" required></select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-3">
+                                                <div class="form-group">
+                                                    <label for="var08">Estado</label>
+                                                    <select id="var08" name="var08" class="select2 form-control custom-select" onchange="verDashboard();" style="width:100%; height:40px;" required></select>
                                                 </div>
                                             </div>
                                         </div>
@@ -269,6 +275,7 @@
         selectGerencia('var05');
         selectDepto('var05', 'var06');
         selectColaborador('var05', 'var06', 'var07');
+        selectDominio('var08', 'COMPROBANTEESTADO', true);
         verDashboard();
     </script>
 </body>

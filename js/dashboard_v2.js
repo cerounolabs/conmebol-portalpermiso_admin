@@ -6,8 +6,8 @@ $(document).ready(function() {
     var codGer  = document.getElementById('var05').value;
     var codDep  = document.getElementById('var06').value;
     var codDoc  = document.getElementById('var07').value;
-
-    var dataJSON	= getComprobanteAll(codCom, codPer, codMeD, codMeH, codGer, codDep, codDoc);
+    var codEst  = document.getElementById('var08').value;
+    var dataJSON	= getComprobanteAll(codCom, codPer, codMeD, codMeH, codGer, codDep, codDoc, codEst);
     
 	$('#tableLoad').DataTable({
 		processing	: true,
@@ -79,7 +79,8 @@ $(document).ready(function() {
         var codGer      = document.getElementById('var05').value;
         var codDep      = document.getElementById('var06').value;
         var codDoc      = document.getElementById('var07').value;
-        var xDATA	    = getComprobanteAll(codCom, codPer, codMeD, codMeH, codGer, codDep, codDoc);
+        var codEst      = document.getElementById('var08').value;
+        var xDATA	    = getComprobanteAll(codCom, codPer, codMeD, codMeH, codGer, codDep, codDoc, codEst);
         var tableData   = $('#tableLoad').DataTable();
 
         tableData.clear().rows.add(xDATA).draw();
@@ -94,7 +95,8 @@ function verDashboard() {
     var selFil05= document.getElementById('var05').value;
     var selFil06= document.getElementById('var06').value;
     var selFil07= document.getElementById('var07').value;
-    var xJSON	= getComprobanteAll(selFil01, selFil02, selFil03, selFil04, selFil05, selFil06, selFil07);
+    var selFil08= document.getElementById('var08').value;
+    var xJSON	= getComprobanteAll(selFil01, selFil02, selFil03, selFil04, selFil05, selFil06, selFil07, selFil08);
 
     var titPEN01= document.getElementById('titPEN01');
     var titDES01= document.getElementById('titDES01');
