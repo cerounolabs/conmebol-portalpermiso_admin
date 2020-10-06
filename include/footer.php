@@ -212,6 +212,56 @@
                 }
                 
                 break;
+
+
+            case 'SOLING26':
+                if ($solictudesJSON['code'] == 200) {
+                    foreach ($solictudesJSON['data'] as $solictudesKEY => $solictudesVALUE) {
+                        if ($solictudesVALUE['solicitud_codigo'] == $_GET['codigo']) {
+                            if (!empty($solictudesVALUE['solicitud_adjunto'])) {
+                                $adjunto = 'http://permisos.conmebol.com/uploads/'.$solictudesVALUE['solicitud_adjunto'];
+                            } else {
+                                $adjunto = 'javascript:void(0)';
+                            }
+
+                            setEmail2(
+                                'christian@cerouno.com.py',
+                                'christian@cerouno.com.py', 
+                                $solictudesVALUE['solicitud_estado_nombre'], 
+                                $solictudesVALUE['tipo_permiso_nombre'], 
+                                $solictudesVALUE['solicitud_persona'], 
+                                $solictudesVALUE['solicitud_fecha_desde_2'], 
+                                $solictudesVALUE['solicitud_fecha_hasta_2'], 
+                                $solictudesVALUE['solicitud_hora_desde'], 
+                                $solictudesVALUE['solicitud_hora_hasta'], 
+                                $adjunto, 
+                                $solictudesVALUE['solicitud_observacion_colaborador'], 
+                                $solictudesVALUE['solicitud_observacion_superior'], 
+                                $solictudesVALUE['solicitud_observacion_talento']
+                            );
+
+                            setEmail2(
+                                'ofarina@conmebol.com',
+                                'ofarina@conmebol.com', 
+                                $solictudesVALUE['solicitud_estado_nombre'], 
+                                $solictudesVALUE['tipo_permiso_nombre'], 
+                                $solictudesVALUE['solicitud_persona'], 
+                                $solictudesVALUE['solicitud_fecha_desde_2'], 
+                                $solictudesVALUE['solicitud_fecha_hasta_2'], 
+                                $solictudesVALUE['solicitud_hora_desde'], 
+                                $solictudesVALUE['solicitud_hora_hasta'], 
+                                $adjunto, 
+                                $solictudesVALUE['solicitud_observacion_colaborador'], 
+                                $solictudesVALUE['solicitud_observacion_superior'], 
+                                $solictudesVALUE['solicitud_observacion_talento']
+                            );
+
+                            break;
+                        }
+                    }
+                }
+                
+                break;
         }
     }
 ?>
