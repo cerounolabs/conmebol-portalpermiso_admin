@@ -438,12 +438,12 @@
         try {
             $mail->SMTPDebug    = SMTP::DEBUG_SERVER;
             $mail->isSMTP();
-            $mail->Host         = '192.185.195.43';
+            $mail->Host         = '40.97.100.2';
             $mail->Port         = 587;
             $mail->SMTPSecure   = 'tls';
             $mail->SMTPAuth     = PHPMailer::ENCRYPTION_STARTTLS;
-            $mail->Username     = 'czelaya@it.com.py';
-            $mail->Password     = 'fxiw~M3Lg%Qp';
+            $mail->Username     = 'notificaciones@conmebol.com';
+            $mail->Password     = 'P3lota.2019';
             
             $mail->SMTPOptions = array(
                 'ssl' => array(
