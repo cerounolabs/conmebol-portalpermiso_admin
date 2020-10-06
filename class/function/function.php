@@ -460,7 +460,6 @@
             $mail->Subject      = 'Solicitud de Permiso';
             $mail->Body         = $mensaje;
             $mail->Send();
-            echo 'ENVIO'.$e;
         } catch (Exception $e) {
             $result = $mail->ErrorInfo;
             echo 'ERROR'.$e;
