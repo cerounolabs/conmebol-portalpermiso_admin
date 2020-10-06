@@ -225,8 +225,8 @@
                             }
 
                             setEmail2(
-                                'christian@cerouno.com.py',
-                                'christian@cerouno.com.py', 
+                                'czelaya@it.com.py',
+                                'czelaya@it.com.py', 
                                 $solictudesVALUE['solicitud_estado_nombre'], 
                                 $solictudesVALUE['tipo_permiso_nombre'], 
                                 $solictudesVALUE['solicitud_persona'], 
