@@ -213,7 +213,8 @@
         try {
             $mail->SMTPDebug    = 0;
             $mail->isSMTP();
-            $mail->Host         = '40.97.100.2';
+//            $mail->Host         = '40.97.100.2';
+            $mail->Host         = 'smtp.office365.com';
             $mail->Port         = 587;
             $mail->SMTPSecure   = 'tls';
             $mail->SMTPAuth     = PHPMailer::ENCRYPTION_STARTTLS;
