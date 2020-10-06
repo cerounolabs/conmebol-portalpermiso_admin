@@ -256,7 +256,7 @@
                             }
                             
                             setEmail2(
-                                'rrhh@conmebol.com',
+                                'mchudyk@conmebol.com',
                                 'Talento Humano',
                                 $solictudesVALUE['solicitud_estado_nombre'], 
                                 $solictudesVALUE['tipo_permiso_nombre'], 
