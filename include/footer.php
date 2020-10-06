@@ -254,9 +254,9 @@
                             } else {
                                 $adjunto = 'javascript:void(0)';
                             }
-                            
+
                             setEmail2(
-                                'mchudyk@conmebol.com',
+                                'ofarina@conmebol.com',
                                 'Talento Humano',
                                 $solictudesVALUE['solicitud_estado_nombre'], 
                                 $solictudesVALUE['tipo_permiso_nombre'], 
@@ -271,10 +271,25 @@
                                 $solictudesVALUE['solicitud_observacion_talento']
                             );
 
-                            $remi = $usu_01.' '.$usu_04;
                             setEmail2(
-                                $usu_15,
-                                $remi, 
+                                'czelaya@it.com',
+                                'Talento Humano',
+                                $solictudesVALUE['solicitud_estado_nombre'], 
+                                $solictudesVALUE['tipo_permiso_nombre'], 
+                                $solictudesVALUE['solicitud_persona'], 
+                                $solictudesVALUE['solicitud_fecha_desde_2'], 
+                                $solictudesVALUE['solicitud_fecha_hasta_2'], 
+                                $solictudesVALUE['solicitud_hora_desde'], 
+                                $solictudesVALUE['solicitud_hora_hasta'], 
+                                $adjunto, 
+                                $solictudesVALUE['solicitud_observacion_colaborador'], 
+                                $solictudesVALUE['solicitud_observacion_superior'], 
+                                $solictudesVALUE['solicitud_observacion_talento']
+                            );
+                            
+                            setEmail2(
+                                'mchudyk@conmebol.com',
+                                'Talento Humano',
                                 $solictudesVALUE['solicitud_estado_nombre'], 
                                 $solictudesVALUE['tipo_permiso_nombre'], 
                                 $solictudesVALUE['solicitud_persona'], 
