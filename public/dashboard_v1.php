@@ -85,12 +85,14 @@
                                                     <select id="var01" name="var01" class="select2 form-control custom-select" onchange="verDashboard(); viewVacaciones('rowVac', 'var01', 'var02', 'var05', 'var06', 'var07');" style="width:100%; height:40px;" required></select>
                                                 </div>
                                             </div>
+
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
                                                     <label for="var02">Fecha Desde</label>
                                                     <input id="var02" name="var02" value="2020-01-01"  class="form-control" onchange="verDashboard();  viewVacaciones('rowVac', 'var01', 'var02', 'var05', 'var06', 'var07');" type="date" style="width:100%; height:40px;" required>
                                                 </div>
                                             </div>
+
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
                                                     <label for="var03">Fecha Hasta</label>
@@ -98,30 +100,40 @@
                                                     </select>
                                                 </div>
                                             </div>
+
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
                                                     <label for="var04">Estado</label>
                                                     <select id="var04" name="var04" class="select2 form-control custom-select" onchange="verDashboard();" style="width:100%; height:40px;" required></select>
                                                 </div>
                                             </div>
+
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
                                                     <label for="var05">Gerencia</label>
                                                     <select id="var05" name="var05" class="select2 form-control custom-select" onchange="selectDepto('var05', 'var06'); selectColaborador('var05', 'var06', 'var07'); verDashboard();   viewVacaciones('rowVac', 'var01', 'var02', 'var05', 'var06', 'var07');" style="width:100%; height:40px;" required></select>
                                                 </div>
                                             </div>
+
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
                                                     <label for="var06">Departamento</label>
                                                     <select id="var06" name="var06" class="select2 form-control custom-select" onchange="selectColaborador('var05', 'var06', 'var07'); verDashboard();   viewVacaciones('rowVac', 'var01', 'var02', 'var05', 'var06', 'var07');" style="width:100%; height:40px;" required></select>
                                                 </div>
                                             </div>
+
                                             <div class="col-sm-12 col-md-6">
                                                 <div class="form-group">
                                                     <label for="var07">Colaborador</label>
                                                     <select id="var07" name="var07" class="select2 form-control custom-select" onchange="verDashboard();  viewVacaciones('rowVac', 'var01', 'var02', 'var05', 'var06', 'var07');" style="width:100%; height:40px;" required></select>
                                                 </div>
                                             </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <h4 class="col-12 card-title" style="text-align: right;">
+                                                <a class="btn btn-info" style="background-color:#163562; border-color:#163562;"  href="javascript:void(0)" onclick="loadExport()" role="button" title="Export XLS"><i class="ti-cloud-down"></i> Exportar</a>
+                                            </h4>
                                         </div>
                                     </div>
                                 </form>
@@ -131,16 +143,19 @@
                 </div>
 
                 <div class="row">
-                    <!-- Column -->
+                    <h4 class="col-10 card-title"> Detalle </h4>
+                </div>
+                
+                <div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="card">
                             <div class="card-body">
                                 <div class="row p-t-10 p-b-10">
-                                    <!-- Column -->
                                     <div class="col p-r-0">
                                         <h1 class="font-light" id="titING01"></h1>
-                                        <h6 class="text-muted">Ingresados</h6></div>
-                                    <!-- Column -->
+                                        <h6 class="text-muted">Ingresados</h6>
+                                    </div>
+
                                     <div class="col text-right align-self-center">
                                         <div id="valING01" class="css-bar m-b-0 css-bar-info"><i class="mdi mdi-star-circle"></i></div>
                                     </div>
@@ -148,17 +163,16 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Column -->
-                    <!-- Column -->
+
                     <div class="col-lg-3 col-md-6">
                         <div class="card">
                             <div class="card-body">
                                 <div class="row p-t-10 p-b-10">
-                                    <!-- Column -->
                                     <div class="col p-r-0">
                                         <h1 class="font-light" id="titAUT01"></h1>
-                                        <h6 class="text-muted">Autorizados</h6></div>
-                                    <!-- Column -->
+                                        <h6 class="text-muted">Autorizados</h6>
+                                    </div>
+
                                     <div class="col text-right align-self-center">
                                         <div id="valAUT01" class="css-bar m-b-0 css-bar-success"><i class="mdi mdi-star-circle"></i></div>
                                     </div>
@@ -166,17 +180,16 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Column -->
-                    <!-- Column -->
+
                     <div class="col-lg-3 col-md-6">
                         <div class="card">
                             <div class="card-body">
                                 <div class="row p-t-10 p-b-10">
-                                    <!-- Column -->
                                     <div class="col p-r-0">
                                         <h1 class="font-light" id="titAPR01"></h1>
-                                        <h6 class="text-muted">Aprobados</h6></div>
-                                    <!-- Column -->
+                                        <h6 class="text-muted">Aprobados</h6>
+                                    </div>
+
                                     <div class="col text-right align-self-center">
                                         <div id="valAPR01" class="css-bar m-b-0 css-bar-warning"><i class="mdi mdi-star-circle"></i></div>
                                     </div>
@@ -184,17 +197,16 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Column -->
-                    <!-- Column -->
+
                     <div class="col-lg-3 col-md-6">
                         <div class="card">
                             <div class="card-body">
                                 <div class="row p-t-10 p-b-10">
-                                    <!-- Column -->
                                     <div class="col p-r-0">
                                         <h1 class="font-light" id="titANU01"></h1>
-                                        <h6 class="text-muted">Anulados</h6></div>
-                                    <!-- Column -->
+                                        <h6 class="text-muted">Anulados</h6>
+                                    </div>
+
                                     <div class="col text-right align-self-center">
                                         <div id="valANU01" class="css-bar m-b-0 css-bar-danger"><i class="mdi mdi-star-circle"></i></div>
                                     </div>
@@ -202,20 +214,18 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Column -->
                 </div>
 
                 <div class="row" id="rowVac">
-                    <!-- Column -->
                     <div class="col-lg-3 col-md-6">
                         <div class="card card bg-light-info">
                             <div class="card-body">
                                 <div class="row p-t-10 p-b-10">
-                                    <!-- Column -->
                                     <div class="col p-r-0">
                                         <h1 class="font-light" id="titPER02"></h1>
-                                        <h6 class="text-muted">Periodo</h6></div>
-                                    <!-- Column -->
+                                        <h6 class="text-muted">Periodo</h6>
+                                    </div>
+
                                     <div class="col text-right align-self-center">
                                         <div id="valPER02" class="css-bar m-b-0 css-bar-info"><i class="mdi mdi-star-circle"></i></div>
                                     </div>
@@ -223,17 +233,16 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Column -->
-                    <!-- Column -->
+
                     <div class="col-lg-3 col-md-6">
                         <div class="card bg-light-success">
                             <div class="card-body">
                                 <div class="row p-t-10 p-b-10">
-                                    <!-- Column -->
                                     <div class="col p-r-0">
                                         <h1 class="font-light" id="titCOR02"></h1>
-                                        <h6 class="text-muted">Correspondiente</h6></div>
-                                    <!-- Column -->
+                                        <h6 class="text-muted">Correspondiente</h6>
+                                    </div>
+
                                     <div class="col text-right align-self-center">
                                         <div id="valCOR02" class="css-bar m-b-0 css-bar-success"><i class="mdi mdi-star-circle"></i></div>
                                     </div>
@@ -241,17 +250,16 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Column -->
-                    <!-- Column -->
+
                     <div class="col-lg-3 col-md-6">
                         <div class="card bg-light-danger">
                             <div class="card-body">
                                 <div class="row p-t-10 p-b-10">
-                                    <!-- Column -->
                                     <div class="col p-r-0">
                                         <h1 class="font-light" id="titUSU02"></h1>
-                                        <h6 class="text-muted">Utilizadas</h6></div>
-                                    <!-- Column -->
+                                        <h6 class="text-muted">Utilizadas</h6>
+                                    </div>
+
                                     <div class="col text-right align-self-center">
                                         <div id="valUSU02" class="css-bar m-b-0 css-bar-danger"><i class="mdi mdi-star-circle"></i></div>
                                     </div>
@@ -259,17 +267,16 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Column -->
-                    <!-- Column -->
+
                     <div class="col-lg-3 col-md-6">
                         <div class="card bg-light-warning">
                             <div class="card-body">
                                 <div class="row p-t-10 p-b-10">
-                                    <!-- Column -->
                                     <div class="col p-r-0">
                                         <h1 class="font-light" id="titDIS02"></h1>
-                                        <h6 class="text-muted">Disponibles</h6></div>
-                                    <!-- Column -->
+                                        <h6 class="text-muted">Disponibles</h6>
+                                    </div>
+
                                     <div class="col text-right align-self-center">
                                         <div id="valDIS02" class="css-bar m-b-0 css-bar-warning"><i class="mdi mdi-star-circle"></i></div>
                                     </div>
@@ -277,7 +284,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Column -->
                 </div>
 
                 <div class="row">
@@ -341,6 +347,18 @@
     <script src="../js/api.js?<?php echo date('Ymd');?>"></script>
     <script src="../js/dashboard_v1.js?<?php echo date('Ymd');?>"></script>
     <script>
+        function loadExport(){
+            var parm01 = document.getElementById('var01').value;  
+            var parm02 = document.getElementById('var02').value;  
+            var parm03 = document.getElementById('var03').value;  
+            var parm04 = document.getElementById('var04').value;  
+            var parm05 = document.getElementById('var05').value;  
+            var parm06 = document.getElementById('var06').value;  
+            var parm07 = document.getElementById('var07').value;  
+             
+            window.location.replace('../export/export_dashboard_v1.php?cod01='+ parm01 +'&cod02='+ parm02 +'&cod03='+ parm03 +'&cod04='+ parm04 +'&cod05='+ parm05 +'&cod06='+ parm06 +'&cod07='+ parm07); 
+        }
+        
         selectSolicitud('var01');
         selectEstado('var04');
         selectGerencia('var05');
