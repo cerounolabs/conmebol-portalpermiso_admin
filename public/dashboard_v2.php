@@ -197,6 +197,7 @@
                                 <div class="row">
                                     <h4 class="col-10 card-title"> Detalle </h4>
                                     <h4 class="col-2 card-title" style="text-align: right;">
+                                    <a class="btn btn-info" style="background-color:#163562; border-color:#163562;"  href="javascript:void(0)" onclick="loadExport()" role="button" title="Export XLS"><i class="ti-cloud-down"></i></a>
                                 	</h4>
 								</div>
                                 <div class="table-responsive">
@@ -269,6 +270,19 @@
         const parm02BASE   = '<?php echo date('Y-m-d H:i:s'); ?>';
         const parm03BASE   = '<?php echo trim($log_03); ?>';
         const parm04BASE   = 'dashboard_v2';
+
+        function loadExport(){
+            var parm01=document.getElementById('var01').value;  
+            var parm02=document.getElementById('var02').value;  
+            var parm03=document.getElementById('var03').value;  
+            var parm04=document.getElementById('var04').value;  
+            var parm05=document.getElementById('var05').value;  
+            var parm06=document.getElementById('var06').value;  
+            var parm07=document.getElementById('var07').value;  
+            var parm08=document.getElementById('var08').value;  
+            
+            window.location.replace('../export/export_dashboard_v2.php?cod01='+ parm01 +'&cod02='+ parm02 +'&cod03='+ parm03 +'&cod04='+ parm04 +'&cod05='+ parm05 +'&cod06='+ parm06 +'&cod07='+ parm07 +'&cod08='+ parm08); 
+        }
 
         selectDominio('var01', 'COMPROBANTETIPO', 0);
         selectMes('var03', 'var04');
