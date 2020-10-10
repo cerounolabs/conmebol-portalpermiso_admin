@@ -1,4 +1,4 @@
-<?php 
+<?php
     ob_start();
 
     require '../class/function/curl_api.php';
@@ -58,7 +58,7 @@
     }
 
     $dataJSON   = get_curl('200/comprobante');
-    $fileName   = 'planilla_comprobantes_'.date('YmdHis').'.xls';
+    $fileName   = "planilla_comprobantes_".date('YmdHis').".xls";
     $sheetXLS   = new Spreadsheet();
 
     // Set document properties
@@ -92,7 +92,7 @@
     if ($dataJSON['code'] === 200) {
         $indexRow = 2;
 
-        foreach ($dataJSON['data'] as $dataKEY => $value) {
+        foreach ($dataJSON['data'] as $dataKEY => $valueJSON) {
             if ($valueJSON['tipo_comprobante_codigo'] == $parm01 && $valueJSON['comprobante_periodo'] == $parm02 && $valueJSON['tipo_mes_codigo'] >= $parm03 && $valueJSON['tipo_mes_codigo'] <= $parm04){
                 if ($parm05 == 0){
                     if ($parm06 == 0) {
