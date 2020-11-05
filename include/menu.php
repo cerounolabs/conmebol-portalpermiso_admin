@@ -97,6 +97,8 @@
                                 </div>
                                 <a class="dropdown-item" href="javascript:void(0)">
                                     <i class="ti-user m-r-5 m-l-5"></i> Perfil</a>
+                                <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal" data-target="#modaldiv" onclick="getQR(<?php echo $usu_05; ?>);">
+                                    <i class="ti-target m-r-5 m-l-5"></i> Código QR</a>
                                 <a class="dropdown-item" href="../class/session/session_logout.php">
                                     <i class="fa fa-power-off m-r-5 m-l-5"></i> Cerrar Sesi&oacute;n</a>
                                 <div class="dropdown-divider"></div>
