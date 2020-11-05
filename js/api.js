@@ -1138,6 +1138,21 @@ function setSolicitud(var01){
     });
 }
 
+function getQR(var01){    
+    var html     =
+        '<div style="width:auto;">'+
+        '   <div class="card" style="background-color:transparent;">'+
+        '       <div class="el-card-item">'+
+        '           <div class="el-card-avatar el-overlay-1"> <img style="margin-left:250px;" src="http://permisos.conmebol.com/uploads/perfil/'+var01+'.png" alt="user" />'+
+        '           </div>'+
+        '       </div>'+
+        '   </div>'+
+        '</div>';
+
+    $("#modalcontent").empty();
+    $("#modalcontent").append(html);
+}
+
 function setEstado(rowSel, rowEst, rowAcc, rowFun, rowCar, rowPage){
     var codRow  = document.getElementById(rowSel);
     var html    = '';
