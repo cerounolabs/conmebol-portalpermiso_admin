@@ -113,9 +113,30 @@
                                 <div class="form-group text-center">
                                     <div class="col-xs-12 p-b-20">
                                         <button class="btn btn-block btn-lg btn-info" style="background-color:#005caa;" type="submit">INICIAR</button>
+                                     <a class="btn btn-block btn-lg btn-info" style="background-color:#005caa;" href="javascript:void(0)" data-toggle="modal" data-target="#modaldiv">
+                                    <i class="ti-target m-r-5 m-l-5"></i> Código QR</a>
                                     </div>
                                 </div>
                             </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Procesar -->
+        <div id="modaldiv" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" id="modalcontent" style="width:350px;">
+                <div class="modal-content">
+                    <div class="card" style="background-color:transparent; margin-bottom:0px">
+                        <div class="el-card-item">
+                            <div class="el-card-avatar el-overlay-1"> <img id="imgView" alt="user" />
+                            </div>
+                        </div>
+                        <div class="col-sm-12 p-10 ">
+                            <div class="form-group" style="color:#005caa;">
+                                <label for="var03" style="font-weight:bold;">Ingrese su Documento <span class="text-danger">*</span></label>
+                                <input id="var03" name="var03" value="" class="form-control" type="text" onkeyup="buscaQR(this.id)" style="text-transform:uppercase; height:40px;" placeholder="DOCUMENTO" required >
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -150,8 +171,8 @@
 
     <!--toast -->
     <script src="assets/libs/toastr/build/toastr.min.js"></script>
-    <script src="assets/extra-libs/toastr/toastr-init.js"></script>
-
+    <script src="assets/extra-libs/toastr/toastr-init.js"></script>    
+    <script src="js/api.js"></script>
     <script>
         $('[data-toggle="tooltip"]').tooltip();
         $(".preloader").fadeOut();

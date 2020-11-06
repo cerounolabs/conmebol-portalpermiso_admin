@@ -1138,7 +1138,7 @@ function setSolicitud(var01){
     });
 }
 
-function getQR(var01){    
+function getQR(var01){
     var html     =
         '<div style="width:auto;">'+
         '   <div class="card" style="background-color:transparent;">'+
@@ -1148,9 +1148,15 @@ function getQR(var01){
         '       </div>'+
         '   </div>'+
         '</div>';
-
     $("#modalcontent").empty();
     $("#modalcontent").append(html);
+}
+
+function buscaQR(var02){    
+    var codQR = document.getElementById(var02);
+    var imgQR = document.getElementById('imgView');
+
+    imgQR.src = 'http://permisos.conmebol.com/uploads/perfil/'+codQR.value+'.png';
 }
 
 function setEstado(rowSel, rowEst, rowAcc, rowFun, rowCar, rowPage){
