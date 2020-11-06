@@ -1155,7 +1155,7 @@ function getQR(var01){
 function buscaQR(var02){    
     var codQR = document.getElementById(var02);
     var imgQR = document.getElementById('imgView');
-
+    imgQR.style.display = '';
     imgQR.src = 'http://permisos.conmebol.com/uploads/perfil/'+codQR.value+'.png';
 }
 
