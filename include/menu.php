@@ -79,7 +79,7 @@
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="<?php echo $usu_06; ?>" alt="<?php echo $usu_01.' '.$usu_04; ?>" class="rounded-circle" width="31">
+                                <img src="<?php echo $usu_06; ?>" alt="<?php echo $usu_01.' '.$usu_04; ?>" style="width:50px;" class="rounded-circle" width="31">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
                                 <span class="with-arrow">
