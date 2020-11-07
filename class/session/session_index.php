@@ -46,7 +46,7 @@
         }
 
         if (isset($resultJSON['data'][0]['user_var06'])) {
-            $_SESSION['usu_06'] = 'data:image/jpeg;base64,'.base64_encode($resultJSON['data'][0]['user_var06']);
+            $_SESSION['usu_06'] = 'data:image/jpeg;base64,'.$resultJSON['data'][0]['user_var06'];
         } else {
             $_SESSION['usu_06'] = '../assets/images/users/photo.png';
         }
