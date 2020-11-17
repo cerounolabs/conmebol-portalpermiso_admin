@@ -205,7 +205,8 @@
                                         <thead id="tableCodigo" class="">
                                             <tr class="bg-conmebol" style="text-align:center;">
                                                 <th class="border-top-0">C&Oacute;DIGO</th>
-                                                <th class="border-top-0">VER</th>
+                                                <th class="border-top-0" style="width:80px">VER</th>
+                                                <th class="border-top-0">C&Oacute;DIGO BARRA</th>
                                                 <th class="border-top-0">ESTADO</th>
                                                 <th class="border-top-0">TIPO</th>
                                                 <th class="border-top-0">PERIODO</th>

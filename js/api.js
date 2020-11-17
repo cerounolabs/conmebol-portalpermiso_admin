@@ -200,8 +200,12 @@ function valSolicitud(){
     var titHHa  = document.getElementById('tit06');
     var inpHCa  = document.getElementById('var07');
     var titHCa  = document.getElementById('tit07');
-    var inpAdj  = document.getElementById('var08');
-    var titAdj  = document.getElementById('tit08');
+    var inpAdj1 = document.getElementById('var08_1');
+    var titAdj1 = document.getElementById('tit08_1');
+    var inpAdj2 = document.getElementById('var08_2');
+    var titAdj2 = document.getElementById('tit08_2');
+    var inpAdj3 = document.getElementById('var08_3');
+    var titAdj3 = document.getElementById('tit08_3');
     var inpVaP  = document.getElementById('var10');
     var titVaP  = document.getElementById('tit10');
     var inpVaC  = document.getElementById('var10_1');
@@ -248,13 +252,29 @@ function valSolicitud(){
             }
 
             if (element.tipo_archivo_adjunto == 'S') {
-                inpAdj.readOnly     = true;
-                inpAdj.required     = true;
-                titAdj.style.display= '';
+                inpAdj1.readOnly     = true;
+                inpAdj2.readOnly     = true;
+                inpAdj3.readOnly     = true;
+
+                inpAdj1.required     = true;
+                inpAdj2.required     = true;
+                inpAdj3.required     = true;
+
+                titAdj1.style.display= '';
+                titAdj2.style.display= '';
+                titAdj3.style.display= '';
             } else {
-                inpAdj.readOnly     = false;
-                inpAdj.required     = false;
-                titAdj.style.display= 'none';
+                inpAdj1.readOnly     = false;
+                inpAdj2.readOnly     = false;
+                inpAdj3.readOnly     = false;
+
+                inpAdj1.required     = false;
+                inpAdj2.required     = false;
+                inpAdj3.required     = false;
+
+                titAdj1.style.display= 'none';
+                titAdj2.style.display= 'none';
+                titAdj3.style.display= 'none';
             }
         }
 
@@ -495,11 +515,11 @@ function getComprobante(codElem){
 }
 
 function getComprobanteId(codDoc){
-    if (localStorage.getItem('comprobanteJSON') === null){
-        getJSON('comprobanteJSON', '200/comprobante');
+    if (localStorage.getItem('comprobanteIdJSON') === null){
+        getJSON('comprobanteIdJSON', '200/comprobante/documento/'+codDoc);
     }
 
-    var xJSON = JSON.parse(localStorage.getItem('comprobanteJSON'));
+    var xJSON = JSON.parse(localStorage.getItem('comprobanteIdJSON'));
     var xDATA = [];
     var minPer= 9999;
     var maxPer= 0;
@@ -535,13 +555,14 @@ function getComprobanteId(codDoc){
     for (let index = 0; index <= (maxPer - minPer); index++) {
         var aDATA = {
             comprobante_codigo: '', 
+            comprobante_codigo_barra: '',
             comprobante_adjunto: '', 
             tipo_estado_codigo: 999, 
-            tipo_estado_nombre: '', 
-            tipo_comprobante_nombre: '', 
+            tipo_estado_castellano: '', 
+            tipo_comprobante_castellano: '', 
             comprobante_periodo: (minPer + index), 
             tipo_mes_codigo: 999, 
-            tipo_mes_nombre: '', 
+            tipo_mes_castellano: '', 
             comprobante_observacion: '' 
         };
         xDATA.push(aDATA);
@@ -1107,10 +1128,26 @@ function setSolicitud(var01){
         '               </div>'+
         '           </div>'+
         '           <div class="row pt-3">'+
-        '                <div id="tit08" class="col-sm-12">'+
+        '                <div id="tit08_1" class="col-sm-12 col-md-4">'+
         '                    <div class="form-group">'+
-        '                       <label for="var08">ADJUNTAR</label>'+
-        '                       <input id="var08" name="var08" class="form-control-file" type="file" style="text-transform:uppercase; height:40px;">'+
+        '                       <label for="var08_1">ADJUNTO 1</label>'+
+        '                       <input id="var08_1" name="var08_1" class="form-control-file" type="file" style="text-transform:uppercase; height:40px;">'+
+        '                    </div>'+
+        '                </div>'+
+        '           </div>'+
+        '           <div class="row pt-3">'+
+        '                <div id="tit08_2" class="col-sm-12 col-md-4">'+
+        '                    <div class="form-group">'+
+        '                       <label for="var08_2">ADJUNTO 2</label>'+
+        '                       <input id="var08_2" name="var08_2" class="form-control-file" type="file" style="text-transform:uppercase; height:40px;">'+
+        '                    </div>'+
+        '                </div>'+
+        '           </div>'+
+        '           <div class="row pt-3">'+
+        '                <div id="tit08_3" class="col-sm-12 col-md-4">'+
+        '                    <div class="form-group">'+
+        '                       <label for="var08_3">ADJUNTO 3</label>'+
+        '                       <input id="var08_3" name="var08_3" class="form-control-file" type="file" style="text-transform:uppercase; height:40px;">'+
         '                    </div>'+
         '                </div>'+
         '           </div>'+

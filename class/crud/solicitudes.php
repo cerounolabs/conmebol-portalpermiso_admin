@@ -15,7 +15,9 @@
 	$val05          = $_POST['var05'];
 	$val06          = $_POST['var06'];
 	$val07          = $_POST['var07'];
-	$val08          = '';
+	$val08_1		= '';
+	$val08_2		= '';
+	$val08_3		= '';
 	$val09          = strtoupper($_POST['var09']);
 
 	if (isset($_POST['var10'])) {
@@ -36,20 +38,20 @@
 
 	$log_03         = $_SESSION['log_03'];
 
-	if (!empty($_FILES['var08']['tmp_name'])) {
+	if (!empty($_FILES['var08_1']['tmp_name'])) {
 		$target_ban     = false;
         $target_msn     = '';
 		$target_nam     = getFechaHora();
 		$target_dir     = '../../uploads/solicitud/';
-        $target_file    = $target_dir.basename($_FILES['var08']['name']);
+        $target_file    = $target_dir.basename($_FILES['var08_1']['name']);
 		$imageFileType  = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 		$target_file	= $target_nam.'.'.$imageFileType;
 
         if(isset($_POST['submit'])) {
-			if ($_FILES['var08']['type'] == 'application/pdf') {
-				$check = $_FILES['var08']['size'];
+			if ($_FILES['var08_1']['type'] == 'application/pdf') {
+				$check = $_FILES['var08_1']['size'];
 			} else {
-				$check = getimagesize($_FILES['var08']['tmp_name']);
+				$check = getimagesize($_FILES['var08_1']['tmp_name']);
 			}
 
             if($check !== false) {
@@ -65,7 +67,7 @@
             $target_ban = false;
         }
         
-        if ($_FILES['var08']['size'] > 20000001 && $target_ban == true) {
+        if ($_FILES['var08_1']['size'] > 20000001 && $target_ban == true) {
             $target_msn = 'ERROR: El archivo es muy pesado, sobrepasa lo permitido de 20MB. Verifique!';
             $target_ban = false;
         }
@@ -76,8 +78,116 @@
         }
 
         if ($target_ban == true) {
-            if (move_uploaded_file($_FILES['var08']['tmp_name'], $target_dir.''.$target_file)) {
-				$val08		= $target_file;
+            if (move_uploaded_file($_FILES['var08_1']['tmp_name'], $target_dir.''.$target_file)) {
+				$val08_1	= $target_file;
+				$target_msn	= $target_file;
+                $target_ban = true;
+            } else {
+                $target_msn = 'ERROR: El archivo tuvo inconveniente en subir, favor intente devuelta. Verifique!';
+                $target_ban = false;
+            }
+		}
+		
+		$code	= 400;
+		$message= $target_msn;
+	}
+
+	if (!empty($_FILES['var08_2']['tmp_name'])) {
+		$target_ban     = false;
+        $target_msn     = '';
+		$target_nam     = getFechaHora();
+		$target_dir     = '../../uploads/solicitud/';
+        $target_file    = $target_dir.basename($_FILES['var08_2']['name']);
+		$imageFileType  = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+		$target_file	= $target_nam.'.'.$imageFileType;
+
+        if(isset($_POST['submit'])) {
+			if ($_FILES['var08_2']['type'] == 'application/pdf') {
+				$check = $_FILES['var08_2']['size'];
+			} else {
+				$check = getimagesize($_FILES['var08_2']['tmp_name']);
+			}
+
+            if($check !== false) {
+				$target_ban = true;
+            } else {
+				$target_ban = false;
+				$target_msn = 'ERROR: El archivo no es correcto. Verifique!';
+            }
+        }
+        
+        if (file_exists($target_file) && $target_ban == true) {
+            $target_msn = 'ERROR: Ya existe una archivo con el mismo nombre. Verifique!';
+            $target_ban = false;
+        }
+        
+        if ($_FILES['var08_2']['size'] > 20000001 && $target_ban == true) {
+            $target_msn = 'ERROR: El archivo es muy pesado, sobrepasa lo permitido de 20MB. Verifique!';
+            $target_ban = false;
+        }
+        
+        if($imageFileType != 'jpg' && $imageFileType != 'png' && $imageFileType != 'jpeg' && $imageFileType != 'pdf' && $target_ban == true) {
+            $target_msn = 'ERROR: El formato del archivo no corresponde, solo permitido .jpg, .png, .jpeg, .pdf. Verifique!';
+            $target_ban = false;
+        }
+
+        if ($target_ban == true) {
+            if (move_uploaded_file($_FILES['var08_2']['tmp_name'], $target_dir.''.$target_file)) {
+				$val08_2	= $target_file;
+				$target_msn	= $target_file;
+                $target_ban = true;
+            } else {
+                $target_msn = 'ERROR: El archivo tuvo inconveniente en subir, favor intente devuelta. Verifique!';
+                $target_ban = false;
+            }
+		}
+		
+		$code	= 400;
+		$message= $target_msn;
+	}
+
+	if (!empty($_FILES['var08_3']['tmp_name'])) {
+		$target_ban     = false;
+        $target_msn     = '';
+		$target_nam     = getFechaHora();
+		$target_dir     = '../../uploads/solicitud/';
+        $target_file    = $target_dir.basename($_FILES['var08_3']['name']);
+		$imageFileType  = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+		$target_file	= $target_nam.'.'.$imageFileType;
+
+        if(isset($_POST['submit'])) {
+			if ($_FILES['var08_3']['type'] == 'application/pdf') {
+				$check = $_FILES['var08_3']['size'];
+			} else {
+				$check = getimagesize($_FILES['var08_3']['tmp_name']);
+			}
+
+            if($check !== false) {
+				$target_ban = true;
+            } else {
+				$target_ban = false;
+				$target_msn = 'ERROR: El archivo no es correcto. Verifique!';
+            }
+        }
+        
+        if (file_exists($target_file) && $target_ban == true) {
+            $target_msn = 'ERROR: Ya existe una archivo con el mismo nombre. Verifique!';
+            $target_ban = false;
+        }
+        
+        if ($_FILES['var08_3']['size'] > 20000001 && $target_ban == true) {
+            $target_msn = 'ERROR: El archivo es muy pesado, sobrepasa lo permitido de 20MB. Verifique!';
+            $target_ban = false;
+        }
+        
+        if($imageFileType != 'jpg' && $imageFileType != 'png' && $imageFileType != 'jpeg' && $imageFileType != 'pdf' && $target_ban == true) {
+            $target_msn = 'ERROR: El formato del archivo no corresponde, solo permitido .jpg, .png, .jpeg, .pdf. Verifique!';
+            $target_ban = false;
+        }
+
+        if ($target_ban == true) {
+            if (move_uploaded_file($_FILES['var08_3']['tmp_name'], $target_dir.''.$target_file)) {
+				$val08_3	= $target_file;
 				$target_msn	= $target_file;
                 $target_ban = true;
             } else {
@@ -105,7 +215,9 @@
 					'solicitud_hora_cantidad'			=> $val07,
 					'solicitud_periodo'					=> $val10,
 					'solicitud_documento_jefe'			=> $usu_18,
-					'solicitud_adjunto'					=> $val08,
+					'solicitud_adjunto1'				=> $val08_1,
+					'solicitud_adjunto2'				=> $val08_2,
+					'solicitud_adjunto3'				=> $val08_3,
 					'solicitud_observacion_colaborador'	=> $val09,
 					'auditoria_usuario'     			=> $usu_03,
 					'auditoria_fecha_hora'  			=> date('Y-m-d H:i:s'),
