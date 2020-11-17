@@ -85,6 +85,7 @@
                                             <tr class="bg-conmebol" style="text-align:center;">
                                                 <th class="border-top-0">C&Oacute;DIGO</th>
                                                 <th class="border-top-0">VER</th>
+                                                <th class="border-top-0">C&Oacute;DIGO BARRA</th>
                                                 <th class="border-top-0">ESTADO</th>
                                                 <th class="border-top-0">TIPO</th>
                                                 <th class="border-top-0">PERIODO</th>
@@ -151,13 +152,13 @@
     include '../include/footer.php';
 ?>
 
-    <script src="../js/api.js?<?php echo date('Ymd');?>"></script>
-    <script src="../js/comprobante.js?<?php echo date('Ymd');?>"></script>
     <script>
         const parm01BASE   = '<?php echo trim($usu_03); ?>';
         const parm02BASE   = '<?php echo date('Y-m-d H:i:s'); ?>';
         const parm03BASE   = '<?php echo trim($log_03); ?>';
         const parm04BASE   = 'comprobante';
     </script>
+    <script src="../js/api.js?<?php echo date('Ymd');?>"></script>
+    <script src="../js/comprobante.js?<?php echo date('Ymd');?>"></script>
 </body>
 </html>

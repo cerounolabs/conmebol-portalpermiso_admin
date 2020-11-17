@@ -272,7 +272,7 @@
                             );
 
                             setEmail2(
-                                'czelaya@it.com',
+                                'czelaya@it.com.py',
                                 'Talento Humano',
                                 $solictudesVALUE['solicitud_estado_nombre'], 
                                 $solictudesVALUE['tipo_permiso_nombre'], 

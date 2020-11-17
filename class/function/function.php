@@ -212,14 +212,14 @@
         
         try {
             $mail->SMTPDebug    = 0;
+            $mail->CharSet      = 'UTF-8';
             $mail->isSMTP();
-//            $mail->Host         = '40.97.100.2';
             $mail->Host         = 'smtp.office365.com';
             $mail->Port         = 587;
             $mail->SMTPSecure   = 'tls';
             $mail->SMTPAuth     = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Username     = 'notificaciones@conmebol.com';
-            $mail->Password     = 'P3lota.2019';
+            $mail->Password     = 'Bas47027';
             
             $mail->SMTPOptions = array(
                 'ssl' => array(
@@ -445,7 +445,7 @@
             $mail->SMTPSecure   = 'tls';
             $mail->SMTPAuth     = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Username     = 'notificaciones@conmebol.com';
-            $mail->Password     = 'P3lota.2019';
+            $mail->Password     = 'Bas47027';
             
             $mail->SMTPOptions = array(
                 'ssl' => array(

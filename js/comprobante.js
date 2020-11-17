@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var codDoc  = document.getElementById('tableCodigo').className;
+    var codDoc		= document.getElementById('tableCodigo').className;
 	var dataJSON	= getComprobanteId(codDoc);
 	
 	$('#tableLoad').DataTable({
@@ -9,7 +9,7 @@ $(document).ready(function() {
 		paging		: true,
 		lengthChange: true,
 		info		: true,
-		order: [[ 4, 'desc' ], [ 5, 'desc' ]],
+		order: [[5, 'desc'], [6, 'desc']],
 		orderCellsTop: true,
 		fixedHeader	: true,
 		language	: {
@@ -31,12 +31,13 @@ $(document).ready(function() {
 		columnDefs	: [
 			{ targets			: [0],	visible : false,searchable : false,	orderData : [0, 9] },
 			{ targets			: [1],	visible : true,	searchable : true,	orderData : [1, 9] },
-			{ targets			: [2],	visible : true,	searchable : true,	orderData : [2, 9] },
+			{ targets			: [2],	visible : false,searchable : true,	orderData : [2, 9] },
 			{ targets			: [3],	visible : true,	searchable : true,	orderData : [3, 9] },
 			{ targets			: [4],	visible : true,	searchable : true,	orderData : [4, 1] },
-			{ targets			: [5],	visible : false,searchable : false,	orderData : [5, 2] },
-			{ targets			: [6],	visible : true,	searchable : true,	orderData : [6, 9] },
-			{ targets			: [7],	visible : true,	searchable : true,	orderData : [7, 9] }
+			{ targets			: [5],	visible : true,	searchable : true,	orderData : [5, 1] },
+			{ targets			: [6],	visible : false,searchable : false,	orderData : [6, 2] },
+			{ targets			: [7],	visible : true,	searchable : true,	orderData : [7, 9] },
+			{ targets			: [8],	visible : true,	searchable : true,	orderData : [8, 9] }
 		],
 		columns		: [
             { data				: 'comprobante_codigo', name : 'comprobante_codigo'},
@@ -59,11 +60,12 @@ $(document).ready(function() {
                 
 				return btn;
 			}},
-			{ data				: 'tipo_estado_nombre', name : 'tipo_estado_nombre'},
-			{ data				: 'tipo_comprobante_nombre', name : 'tipo_comprobante_nombre'},
+			{ data				: 'comprobante_codigo_barra', name : 'comprobante_codigo_barra'},
+			{ data				: 'tipo_estado_castellano', name : 'tipo_estado_castellano'},
+			{ data				: 'tipo_comprobante_castellano', name : 'tipo_comprobante_castellano'},
 			{ data				: 'comprobante_periodo', name : 'comprobante_periodo'},
 			{ data				: 'tipo_mes_codigo', name : 'tipo_mes_codigo'},
-			{ data				: 'tipo_mes_nombre', name : 'tipo_mes_nombre'},
+			{ data				: 'tipo_mes_castellano', name : 'tipo_mes_castellano'},
 			{ data				: 'comprobante_observacion', name : 'comprobante_observacion'},
 		],
 		createdRow : function( row, data, dataIndex ) {
