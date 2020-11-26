@@ -572,8 +572,10 @@ function getComprobanteId(codDoc){
 }
 
 function getComprobanteAll(codCom, codPer, codMeD, codMeH, codGer, codDep, codDoc, codEst){
+    localStorage.removeItem('comprobanteJSON');
+
     if (localStorage.getItem('comprobanteJSON') === null){
-        getJSON('comprobanteJSON', '200/comprobante');
+        getJSON('comprobanteJSON', '200/comprobante/periodo/'+ codCom + '/'+ codPer +'/'+ codMeD +'/'+ codMeH);
     }
 
     var xJSON = JSON.parse(localStorage.getItem('comprobanteJSON'));
