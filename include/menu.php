@@ -97,6 +97,8 @@
                                 </div>
                                 <a class="dropdown-item" href="javascript:void(0)">
                                     <i class="ti-user m-r-5 m-l-5"></i> Perfil</a>
+                                <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal" data-target="#modaldiv" onclick="getTarjetas(1,<?php echo $usu_05; ?>);">
+                                    <i class="ti-target m-r-5 m-l-5"></i> Tarjeta Personal Digital</a>
                                 <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal" data-target="#modaldiv" onclick="getQR(<?php echo $usu_05; ?>);">
                                     <i class="ti-target m-r-5 m-l-5"></i> Código QR</a>
                                 <a class="dropdown-item" href="../class/session/session_logout.php">
@@ -104,6 +106,7 @@
                                 <div class="dropdown-divider"></div>
                             </div>
                         </li>
+                        
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
@@ -320,6 +323,20 @@
                                	    <a href="../public/dominio.php?dominio=COMPROBANTETIPO" class="sidebar-link">
                                		    <i class="mdi mdi-parm"></i>
                                		    <span class="hide-menu"> Comprobante Tipo</span>
+                               	    </a>
+                                </li>
+
+                                <li class="sidebar-item">
+                               	    <a href="../public/dominio.php?dominio=TARJETAPERSONALCANTIDAD" class="sidebar-link">
+                               		    <i class="mdi mdi-parm"></i>
+                               		    <span class="hide-menu"> Tarjeta Personal Cantidad</span>
+                               	    </a>
+                                </li>
+
+                                <li class="sidebar-item">
+                               	    <a href="../public/dominio.php?dominio=REDSOCIALTIPO" class="sidebar-link">
+                               		    <i class="mdi mdi-parm"></i>
+                               		    <span class="hide-menu"> Res Social Tipo</span>
                                	    </a>
                                 </li>
                             </ul>

@@ -1,4 +1,4 @@
-const urlBASE   = 'http://api.conmebol.com/sfholox/public/v1';
+const urlBASE   = 'http://api.conmebol.com/sfholox/public/v2';
 const autBASE   = 'dXNlcl9zZmhvbG94Om5zM3JfNWZoMCEweA==';
 const xHTTP	    = new XMLHttpRequest();
 
@@ -1175,6 +1175,192 @@ function setSolicitud(var01){
     $('#var002').change(function() {
         
     });
+}
+
+function getColaboradorId(codDocu){
+    if (localStorage.getItem('ColaboradorJSON') === null){
+        getJSON('ColaboradorJSON', '000/colaborador/' + codDocu);
+    }
+
+    var xJSON = JSON.parse(localStorage.getItem('ColaboradorJSON'));
+    var xDATA = [];
+
+    if (xJSON['code'] == 200) {
+        xJSON['data'].forEach(element => {
+           
+                xDATA.push(element);
+
+        });
+    }
+
+    return xDATA;
+}
+
+/*function getPrefijos(){
+    if (localStorage.getItem('PrefijosJSON') === null){
+        getJSON('PrefijosJSON', '200/tarjeta/personal/telefono/prefijos');
+    }
+
+    var xJSON = JSON.parse(localStorage.getItem('PrefijosJSON'));
+    var xDATA = [];
+
+    if (xJSON['code'] == 200) {
+        xJSON['data'].forEach(element => {
+           
+                xDATA.push(element);
+
+        });
+    }
+
+    return xDATA;
+}*/
+
+function getTarjetas(codElem, codDocu){
+    var xJSON   = getColaboradorId(codDocu);
+    //var xJSON1   = getPrefijos(codElem);
+    var xJSON2  = getDominio('TARJETAPERSONALCANTIDAD');
+    var xJSON3  = getDominio('REDSOCIALTIPO');
+    var xJSON4  = getDominio('PREFIJOCELULARTIPO');
+    console.log(xJSON2);
+    var selTel  = 0;
+    var optPre  = 0;
+    var html    = '';
+    var redes   = '';
+    var prefijo = 0;
+    
+    xJSON.forEach(element => {
+        //xJSON1.forEach(element1 =>{
+
+            xJSON2.forEach(element2 => {
+                if (element2.tipo_estado_parametro == element2.tipo_parametro || element2.tipo_estado_parametro !== element2.tipo_parametro ) {
+                    selTel = selTel + '                               <option value="'+ element2.tipo_parametro +'" selected>'+element2.tipo_nombre_castellano+'</option>';
+                } 
+            });
+           
+            xJSON3.forEach(element3 => {
+                if (element3.tipo_estado_parametro == element3.tipo_parametro) {
+                    redes = redes + '                               <option value="'+ element3.tipo_parametro +'" selected>'+element3.tipo_nombre_castellano+'</option>';
+                } 
+            });
+        
+            xJSON4.forEach(element4 => {
+                if (element4.tipo_estado_parametro == element4.tipo_parametro) {
+                    prefijo = prefijo + '                               <option value="'+ element4.tipo_parametro +'" selected>'+element4.tipo_nombre_castellano+'</option>';
+                } 
+            });
+           
+        html    =
+                '<div class="modal-content">'+
+                '   <form id="form" data-parsley-validate method="post" enctype="multipart/form-data" action="../class/crud/solicitudes_tarjetas.php">'+
+                '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
+                '		    <h4 class="modal-title" id="vcenter"> Datos Personales </h4>'+
+                '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+                '	    </div>'+
+                '	    <div class="modal-body" >'+
+                '           <div class="form-group">'+
+                '               <input id="workCodigo" name="workCodigo" value="'+codElem+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                '               <input id="workModo" name="workModo" value="C" class="form-control" type="hidden" placeholder="Modo" required readonly>'+
+                '               <input id="workPage" name="workPage" value="home.php" class="form-control" type="hidden" placeholder="Modo" required readonly>'+
+                '           </div>'+
+                '           <div class="row pt-3">'+
+                '               <div id="tit10" class="col-sm-12 col-md-6">'+
+                '                   <div class="form-group">'+
+                '                       <label for="var01">NOMBRE</label>'+
+                '                       <input id="var01" name="var01" value="'+element.nombre_completo+'" class="form-control" type="text"  height:40px;" readonly>'+
+                '                   </div>'+
+                '               </div>'+
+                ''+
+                '               <div id="tit10" class="col-sm-12 col-md-6">'+
+                '                   <div class="form-group">'+
+                '                       <label for="var02">CORREO</label>'+
+                '                       <input id="var02" name="var02" value="'+element.email+'"  class="form-control" type="text"  height:40px;" readonly>'+
+                '                   </div>'+
+                '               </div>'+
+                ''+
+                '               <div id="tit10" class="col-sm-12 col-md-2">'+
+                '                   <div class="form-group">'+
+                '                       <label for="var03_1">PREFIJO</label>'+
+                '                       <select id="var03_1" name="var03_1" class="select2 form-control custom-select" height:40px;" readonly>'+ prefijo +
+                '                       </select>'+
+                '                   </div>'+
+                '               </div>'+
+                ''+
+                '               <div id="tit10" class="col-sm-12 col-md-4">'+
+                '                   <div class="form-group">'+
+                '                       <label for="var04_1">TELÉFONO</label>'+
+                '                       <input id="var04_1" name="var04_1" value="" class="form-control" type="text"  height:40px;">'+
+                '                   </div>'+
+                '               </div>'+
+                ''+
+                '              <div class="form-group">'+
+                '                  <label for="var05_1">Visualizar número de Tarjeta</label>'+
+                '                  <select id="var05_1" name="var05_1" class="select2 form-control custom-select"  height:40px;">'+
+                '                      <optgroup label="">'+
+                '								<option value="N">NO</option>'+
+                '								<option value="S">SI</option>'+
+                '                      </optgroup>'+ 
+                '                  </select>'+
+                '              </div>'+
+                ''+
+                '               <div id="tit10" class="col-sm-12 col-md-2">'+
+                '                   <div class="form-group">'+
+                '                       <label for="var03_2">PREFIJO</label>'+
+                '                       <select id="var03_2" name="var03_2" class="select2 form-control custom-select" height:40px;" readonly>'+ prefijo +
+                '                       </select>'+
+                '                   </div>'+
+                '               </div>'+
+                ''+
+                '               <div id="tit10" class="col-sm-12 col-md-4">'+
+                '                   <div class="form-group">'+
+                '                       <label for="var04_2">TELÉFONO</label>'+
+                '                       <input id="var04_2" name="var04_2"  class="form-control" type="text"  height:40px;">'+
+                '                   </div>'+
+                '               </div>'+
+                ''+
+                '              <div class="form-group">'+
+                '                  <label for="var05_2">Visualizar número de Tarjeta</label>'+
+                '                  <select id="var05_2" name="var05_2" class="select2 form-control custom-select"  height:40px;">'+
+                '                      <optgroup label="">'+
+                '								<option value="N">NO</option>'+
+                '								<option value="S">SI</option>'+
+                '                      </optgroup>'+ 
+                '                  </select>'+
+                '              </div>'+
+                ''+
+                '              <div class="form-group">'+
+                '                  <label for="var09">RED SOCIAL</label>'+
+                '                  <select id="var09" name="var09" class="select2 form-control custom-select" height:40px;">'+
+                '                      </optgroup>'+ redes +
+                '                  </select>'+
+                '              </div>'+
+                ''+
+                '               <div id="tit10" class="col-sm-12 col-md-4">'+
+                '                   <div class="form-group">'+
+                '                       <label for="var010">REDES SOCIALES</label>'+
+                '                       <input id="var010" name="var010"  class="form-control" type="text"  height:40px;">'+ 
+                '                   </div>'+
+                '               </div>'+
+                ''+
+                '              <div class="form-group">'+
+                '                  <label for="var011">TARJETAS REQUERIDAS</label>'+
+                '                  <select id="var011" name="var011" class="select2 form-control custom-select" height:40px;">'+
+                '                      </optgroup>'+ selTel +
+                '                  </select>'+
+                '              </div>'+
+                ''+
+                '	    </div>'+
+                '	    <div class="modal-footer">'+
+                '           <button type="submit" name="submit" class="btn btn-info">Generar Tarjeta</button>'+
+                '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+                '	    </div>'+
+                '   </form>'+
+                '</div>';
+            
+       // });
+    });
+       
+    $("#modalcontent").empty();
+    $("#modalcontent").append(html);
 }
 
 function getQR(var01){
