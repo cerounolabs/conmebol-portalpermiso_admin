@@ -74,6 +74,44 @@
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
                 <!-- basic table -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body" style="background-color:#005ea6; color:#ffffff;">
+                                <form action="#">
+                                    <div class="form-body">
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-3">
+                                                <div class="form-group">
+                                                    <label for="var05">Gerencia</label>
+                                                    <select id="var05" name="var05" class="select2 form-control custom-select" onchange="selectDepto('var05', 'var06'); selectColaborador('var05', 'var06', 'var07'); verDashboard();" style="width:100%; height:40px;" required></select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-3">
+                                                <div class="form-group">
+                                                    <label for="var06">Departamento</label>
+                                                    <select id="var06" name="var06" class="select2 form-control custom-select" onchange="selectColaborador('var05', 'var06', 'var07'); verDashboard();" style="width:100%; height:40px;" required></select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-3">
+                                                <div class="form-group">
+                                                    <label for="var07">Colaborador</label>
+                                                    <select id="var07" name="var07" class="select2 form-control custom-select"  style="width:100%; height:40px;" required></select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-3">
+                                                <div class="form-group">
+                                                    <label for="var08">Estado</label>
+                                                    <select id="var08" name="var08" class="select2 form-control custom-select"  style="width:100%; height:40px;" required></select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="row">
                     <div class="col-12">
@@ -164,6 +202,11 @@
             
             window.location.replace('../export/export_dashboard_v2.php?cod01='+ parm01 +'&cod02='+ parm02 +'&cod03='+ parm03 +'&cod04='+ parm04 +'&cod05='+ parm05 +'&cod06='+ parm06 +'&cod07='+ parm07 +'&cod08='+ parm08); 
         }
+
+        selectGerencia('var05');
+        selectDepto('var05', 'var06');
+        selectColaborador('var05', 'var06', 'var07');
+        selectDominio('var08', 'TARJETAPERSONALESTADO', true);
     </script>
 </body>
 </html>

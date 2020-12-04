@@ -1215,6 +1215,85 @@ function getTarjetaPersona(){
     return xDATA;
 }
 
+function getTarjetaPersonaAll(codGer,codDep,codCol,codEst){
+    if (localStorage.getItem('TarjetaPersonaJSON') === null){
+        getJSON('TarjetaPersonaJSON', '200/tarjetapersonal/listado');
+    }
+
+    var xJSON = JSON.parse(localStorage.getItem('TarjetaPersonaJSON'));
+    var xDATA = [];
+    if (xJSON['code'] == 200) {
+        xJSON['data'].forEach(element => {
+            if(codGer == 0){
+                if(codDep == 0){
+                    if(codCol == 0){
+                        if(codEst == 0){
+                            xDATA.push(element);
+                        }else if(element.tipo_estado_codigo == codEst){
+                            xDATA.push(element);
+                        }
+                    }else if(element.tarjeta_personal_documento == codCol){
+                        if(codEst == 0){
+                            xDATA.push(element);
+                        }else if(element.tipo_estado_codigo == codEst){
+                            xDATA.push(element);
+                        }
+                    }
+
+                }else if(element.tipo_departamento_codigo == codDep){
+                    if(codCol == 0){
+                        if(codEst == 0){
+                            xDATA.push(element);
+                        }else if(element.tipo_estado_codigo == codEst){
+                            xDATA.push(element);
+                        }
+                    }else if(element.tarjeta_personal_documento == codCol){
+                        if(codEst == 0){
+                            xDATA.push(element);
+                        }else if(element.tipo_estado_codigo == codEst){
+                            xDATA.push(element);
+                        }
+                    }
+                }
+            }else if(element.tipo_gerencia_codigo == codGer){
+                if(codDep == 0){
+                    if(codCol == 0){
+                        if(codEst == 0){
+                            xDATA.push(element);
+                        }else if(element.tipo_estado_codigo == codEst){
+                            xDATA.push(element);
+                        }
+                    }else if(element.tarjeta_personal_documento == codCol){
+                        if(codEst == 0){
+                            xDATA.push(element);
+                        }else if(element.tipo_estado_codigo == codEst){
+                            xDATA.push(element);
+                        }
+                    }
+
+                }else if(element.tipo_departamento_codigo == codDep){
+                    if(codCol == 0){
+                        if(codEst == 0){
+                            xDATA.push(element);
+                        }else if(element.tipo_estado_codigo == codEst){
+                            xDATA.push(element);
+                        }
+                    }else if(element.tarjeta_personal_documento == codCol){
+                        if(codEst == 0){
+                            xDATA.push(element);
+                        }else if(element.tipo_estado_codigo == codEst){
+                            xDATA.push(element);
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    return xDATA;
+}
+
+
 function getTarjetaPrefijo(codElem){
     localStorage.removeItem('TarjetaPrefijoJSON');
 

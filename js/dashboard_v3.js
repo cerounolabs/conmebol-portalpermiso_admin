@@ -1,15 +1,11 @@
 $(document).ready(function() {
-    /*var codCom	= document.getElementById('var01').value;
-    var codPer	= document.getElementById('var02').value;
-    var codMeD	= document.getElementById('var03').value;
-    var codMeH  = document.getElementById('var04').value;
+   
     var codGer  = document.getElementById('var05').value;
     var codDep  = document.getElementById('var06').value;
-    var codDoc  = document.getElementById('var07').value;
-    var codEst  = document.getElementById('var08').value;*/
-    var dataJSON	= getTarjetaPersona();
-    
-    //codCom, codPer, codMeD, codMeH, codGer, codDep, codDoc, codEst
+    var codCol  = document.getElementById('var07').value;
+    var codEst  = document.getElementById('var08').value;
+    var dataJSON	= getTarjetaPersonaAll(codGer,codDep,codCol,codEst);
+
 	$('#tableLoad').DataTable({
 		processing	: true,
 		destroy		: true,
@@ -65,21 +61,16 @@ $(document).ready(function() {
             
 		]
     });
-   // console.log(_parm07BASE);
 
-   /* $('.form-group').change(function() {
-        var codCom	    = document.getElementById('var01').value;
-        var codPer	    = document.getElementById('var02').value;
-        var codMeD	    = document.getElementById('var03').value;
-        var codMeH      = document.getElementById('var04').value;
-        var codGer      = document.getElementById('var05').value;
-        var codDep      = document.getElementById('var06').value;
-        var codDoc      = document.getElementById('var07').value;
-        var codEst      = document.getElementById('var08').value;
-        var xDATA	    = getComprobanteAll(codCom, codPer, codMeD, codMeH, codGer, codDep, codDoc, codEst);
+   $('.form-group').change(function() {
+        var codGer  = document.getElementById('var05').value;
+        var codDep  = document.getElementById('var06').value;
+        var codCol  = document.getElementById('var07').value;
+        var codEst  = document.getElementById('var08').value;
+        var xDATA	= getTarjetaPersonaAll(codGer,codDep,codCol,codEst);
         var tableData   = $('#tableLoad').DataTable();
 
         tableData.clear().rows.add(xDATA).draw();
-    });*/
+    });
 });
 
