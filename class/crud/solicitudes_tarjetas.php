@@ -101,6 +101,7 @@
 		for ($i=1; $i < $work08 ; $i++) {
 			$val010			= trim($_POST['var010_'.$i]);
 			$val11			= trim($_POST['var011_'.$i]);
+			$val012			= trim($_POST['var012_'.$i]);
 			$dataJSON = json_encode(
 				array(
 					'tipo_estado_parametro'						=> $work06,

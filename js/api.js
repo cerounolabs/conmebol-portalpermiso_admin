@@ -1461,7 +1461,7 @@ function getTarjetas(codElem, codDocu, codAcc){
                     ''+
                     '               <div id="tit10" class="col-sm-12 col-md-4">'+
                     '                   <div class="form-group">'+
-                    '                       <label for="var04_1">TELÉFONO</label>'+
+                    '                       <label for="var04_1">TELÉFONO CORPORATIVO</label>'+
                     '                       <input id="var04_1" name="var04_1" value="" class="form-control" type="text"  height:40px;">'+
                     '                   </div>'+
                     '               </div>'+
@@ -1486,7 +1486,7 @@ function getTarjetas(codElem, codDocu, codAcc){
                     ''+
                     '               <div id="tit10" class="col-sm-12 col-md-4">'+
                     '                   <div class="form-group">'+
-                    '                       <label for="var04_2">TELÉFONO</label>'+
+                    '                       <label for="var04_2">TELÉFONO CELULAR</label>'+
                     '                       <input id="var04_2" name="var04_2"  class="form-control" type="text"  height:40px;">'+
                     '                   </div>'+
                     '               </div>'+
@@ -1494,6 +1494,16 @@ function getTarjetas(codElem, codDocu, codAcc){
                     '              <div class="form-group">'+
                     '                  <label for="var05_2">Visualizar número de Tarjeta</label>'+
                     '                  <select id="var05_2" name="var05_2" class="select2 form-control custom-select"  height:40px;">'+
+                    '                      <optgroup label="">'+
+                    '								<option value="N">NO</option>'+
+                    '								<option value="S">SI</option>'+
+                    '                      </optgroup>'+ 
+                    '                  </select>'+
+                    '              </div>'+
+                    ''+
+                    '              <div class="form-group">'+
+                    '                  <label for="var012_1">VIZUALIZAR RED SOCIAL</label>'+
+                    '                  <select id="var012_1" name="var012_1" class="select2 form-control custom-select"  height:40px;">'+
                     '                      <optgroup label="">'+
                     '								<option value="N">NO</option>'+
                     '								<option value="S">SI</option>'+
