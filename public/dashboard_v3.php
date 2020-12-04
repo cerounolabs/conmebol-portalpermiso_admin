@@ -84,13 +84,13 @@
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
                                                     <label for="var05">Gerencia</label>
-                                                    <select id="var05" name="var05" class="select2 form-control custom-select" onchange="selectDepto('var05', 'var06'); selectColaborador('var05', 'var06', 'var07'); verDashboard();" style="width:100%; height:40px;" required></select>
+                                                    <select id="var05" name="var05" class="select2 form-control custom-select" onchange="selectDepto('var05', 'var06'); selectColaborador('var05', 'var06', 'var07');" style="width:100%; height:40px;" required></select>
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
                                                     <label for="var06">Departamento</label>
-                                                    <select id="var06" name="var06" class="select2 form-control custom-select" onchange="selectColaborador('var05', 'var06', 'var07'); verDashboard();" style="width:100%; height:40px;" required></select>
+                                                    <select id="var06" name="var06" class="select2 form-control custom-select" onchange="selectColaborador('var05', 'var06', 'var07');" style="width:100%; height:40px;" required></select>
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-3">
@@ -190,17 +190,13 @@
         const parm04BASE   = 'dashboard_v2';
         const _parm07BASE	= '<?php echo $usu_05; ?>';
 
-        function loadExport(){
-            var parm01 = document.getElementById('var01').value;  
-            var parm02 = document.getElementById('var02').value;  
-            var parm03 = document.getElementById('var03').value;  
-            var parm04 = document.getElementById('var04').value;  
+        function loadExport(){  
             var parm05 = document.getElementById('var05').value;  
             var parm06 = document.getElementById('var06').value;  
             var parm07 = document.getElementById('var07').value;  
             var parm08 = document.getElementById('var08').value;  
             
-            window.location.replace('../export/export_dashboard_v2.php?cod01='+ parm01 +'&cod02='+ parm02 +'&cod03='+ parm03 +'&cod04='+ parm04 +'&cod05='+ parm05 +'&cod06='+ parm06 +'&cod07='+ parm07 +'&cod08='+ parm08); 
+            window.location.replace('../export/export_dashboard_v3.php?&cod05='+ parm05 +'&cod06='+ parm06 +'&cod07='+ parm07 +'&cod08='+ parm08); 
         }
 
         selectGerencia('var05');
