@@ -25,7 +25,7 @@
 
     if ($resultJSON['code'] === 200) {
         if ($val_01 == 'czelaya' || $val_01 == 'CZELAYA') {
-            $personJSON         = get_curl('000/colaborador/login/5151577');
+            $personJSON         = get_curl('000/colaborador/login/3523598');
         } else {
             $personJSON         = get_curl('000/colaborador/login/'.$resultJSON['data'][0]['user_var05']);
         }
@@ -40,7 +40,7 @@
         $_SESSION['usu_04'] = $resultJSON['data'][0]['user_var04'];
 
         if ($val_01 == 'czelaya' || $val_01 == 'CZELAYA') {
-            $_SESSION['usu_05'] = '5151577';
+            $_SESSION['usu_05'] = '3523598';
         } else {
             $_SESSION['usu_05'] = $resultJSON['data'][0]['user_var05'];
         }

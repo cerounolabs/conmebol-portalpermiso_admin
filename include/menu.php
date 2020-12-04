@@ -97,7 +97,7 @@
                                 </div>
                                 <a class="dropdown-item" href="javascript:void(0)">
                                     <i class="ti-user m-r-5 m-l-5"></i> Perfil</a>
-                                <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal" data-target="#modaldiv" onclick="getTarjetas(1,<?php echo $usu_05; ?>);">
+                                <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal" data-target="#modaldiv" onclick="getTarjetas(1,<?php echo $usu_05; ?>, 1);">
                                     <i class="ti-target m-r-5 m-l-5"></i> Tarjeta Personal Digital</a>
                                 <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal" data-target="#modaldiv" onclick="getQR(<?php echo $usu_05; ?>);">
                                     <i class="ti-target m-r-5 m-l-5"></i> Código QR</a>
@@ -150,6 +150,13 @@
                                		<a href="../public/dashboard_v2.php" class="sidebar-link">
                                			<i class="mdi mdi-home"></i>
                                			<span class="hide-menu"> Dashboard v2 </span>
+                               		</a>
+                               	</li>
+
+                                <li class="sidebar-item">
+                               		<a href="../public/dashboard_v3.php" class="sidebar-link">
+                               			<i class="mdi mdi-home"></i>
+                               			<span class="hide-menu"> Dashboard v3 </span>
                                		</a>
                                	</li>
                             </ul>
