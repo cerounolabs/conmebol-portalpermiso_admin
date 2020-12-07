@@ -110,7 +110,7 @@
 					'tarjeta_personal_codigo'					=> $work01,
 					'tarjeta_personal_red_social_direccion'		=> $val010,
 					'tarjeta_personal_red_social_observacion' 	=>'',
-					
+					'tarjeta_personal_red_social_visualizar'	=>$val012,
 					'auditoria_usuario'     			        => $log_01,
 					'auditoria_fecha_hora'  			        => date('Y-m-d H:i:s'),
 					'auditoria_ip'          			        => $log_03

@@ -1593,7 +1593,19 @@ function getTarjetas(codElem, codDocu, codAcc){
 
                 xJSON6.forEach(element1 => {
                     if(element1.tarjeta_personal_codigo == codElem){
+                        var rowView1 = 'SI';
+
+                        if (element1.tarjeta_personal_red_social_visualizar != 'S'){
+                            rowView1 = 'NO';
+                        }
                         htmlRedS = htmlRedS +
+                        '               <div id="tit10" class="col-sm-12 col-md-4">'+
+                        '                   <div class="form-group">'+
+                        '                       <label for="var08_'+indRSocial+'">VIZUALIZAR RED SOCIAL</label>'+
+                        '                       <input id="var08_'+indRSocial+'" name="var08_'+indRSocial+'" value="'+rowView1+'" class="form-control" type="text"  height:40px;" readonly>'+ 
+                        '                   </div>'+
+                        '               </div>'+
+                        ''+
                         '               <div id="tit10" class="col-sm-12 col-md-4">'+
                         '                   <div class="form-group">'+
                         '                       <label for="var09_'+indRSocial+'">RED SOCIAL</label>'+
@@ -1608,7 +1620,7 @@ function getTarjetas(codElem, codDocu, codAcc){
                         '                   </div>'+
                         '               </div>'+
                         ''+
-                        '               <div id="tit10" class="col-sm-12 col-md-8">'+
+                        '               <div id="tit10" class="col-sm-12 col-md-4">'+
                         '                   <div class="form-group">'+
                         '                       <label for="var010_'+indRSocial+'">REDES SOCIALES</label>'+
                         '                       <input id="var010_'+indRSocial+'" name="var010_'+indRSocial+'" value="'+element1.tarjeta_personal_red_social_direccion+'" class="form-control" type="text"  height:40px;" readonly>'+ 
@@ -1709,7 +1721,19 @@ function getTarjetas(codElem, codDocu, codAcc){
 
                 xJSON6.forEach(element1 => {
                     if(element1.tarjeta_personal_codigo == codElem){
+                        var rowView1 = 'SI';
+
+                        if (element1.tarjeta_personal_red_social_visualizar != 'S'){
+                            rowView1 = 'NO';
+                        }
                         htmlRedS = htmlRedS +
+                        '               <div id="tit10" class="col-sm-12 col-md-4">'+
+                        '                   <div class="form-group">'+
+                        '                       <label for="var08_'+indRSocial+'">VIZUALIZAR RED SOCIAL</label>'+
+                        '                       <input id="var08_'+indRSocial+'" name="var08_'+indRSocial+'" value="'+rowView1+'" class="form-control" type="text"  height:40px;" readonly>'+ 
+                        '                   </div>'+
+                        '               </div>'+
+                        ''+
                         '               <div id="tit10" class="col-sm-12 col-md-4">'+
                         '                   <div class="form-group">'+
                         '                       <label for="var09_'+indRSocial+'">RED SOCIAL</label>'+
@@ -1724,7 +1748,7 @@ function getTarjetas(codElem, codDocu, codAcc){
                         '                   </div>'+
                         '               </div>'+
                         ''+
-                        '               <div id="tit10" class="col-sm-12 col-md-8">'+
+                        '               <div id="tit10" class="col-sm-12 col-md-4">'+
                         '                   <div class="form-group">'+
                         '                       <label for="var010_'+indRSocial+'">REDES SOCIALES</label>'+
                         '                       <input id="var010_'+indRSocial+'" name="var010_'+indRSocial+'" value="'+element1.tarjeta_personal_red_social_direccion+'" class="form-control" type="text"  height:40px;" readonly>'+ 
