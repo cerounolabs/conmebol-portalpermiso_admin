@@ -478,6 +478,14 @@
             case 'COMPROBANTETIPO':
                 $result = 'Comprobante Tipo';
                 break;
+
+            case 'TARJETAPERSONALCANTIDAD':
+                $result = 'Tarjeta Personal Cantidad';
+                break;
+
+            case 'REDSOCIALTIPO':
+                $result = 'Red Social Tipo';
+                break;
         }
 
         return $result;
