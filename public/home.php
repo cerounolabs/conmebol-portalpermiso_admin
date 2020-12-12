@@ -321,6 +321,7 @@
 ?>
 
         <script src="../js/api.js?<?php echo date('Ymd');?>"></script>
+        <script src="../js/tpersonal.js?<?php echo date('Ymd');?>"></script>
 
         <script>
             const docFunc = '<?php echo trim($usu_05); ?>';

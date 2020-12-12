@@ -111,7 +111,7 @@
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
                                                     <label for="var05">Gerencia</label>
-                                                    <select id="var05" name="var05" class="select2 form-control custom-select" onchange="selectDepto('var05', 'var06'); selectColaborador('var05', 'var06', 'var07'); verDashboard();   viewVacaciones('rowVac', 'var01', 'var02', 'var05', 'var06', 'var07');" style="width:100%; height:40px;" required></select>
+                                                    <select id="var05" name="var05" class="select2 form-control custom-select" onchange="selectDepartamento('var05', 'var06'); selectColaborador('var05', 'var06', 'var07'); verDashboard();   viewVacaciones('rowVac', 'var01', 'var02', 'var05', 'var06', 'var07');" style="width:100%; height:40px;" required></select>
                                                 </div>
                                             </div>
 
@@ -345,7 +345,9 @@
 ?>
 
     <script src="../js/api.js?<?php echo date('Ymd');?>"></script>
+    <script src="../js/select.js?<?php echo date('Ymd');?>"></script>
     <script src="../js/dashboard_v1.js?<?php echo date('Ymd');?>"></script>
+    
     <script>
         function loadExport(){
             var parm01 = document.getElementById('var01').value;  
@@ -362,7 +364,7 @@
         selectSolicitud('var01');
         selectEstado('var04');
         selectGerencia('var05');
-        selectDepto('var05', 'var06');
+        selectDepartamento('var05', 'var06');
         selectColaborador('var05', 'var06', 'var07');
         verDashboard();
         viewVacaciones('rowVac', 'var01', 'var02', 'var05', 'var06', 'var07');

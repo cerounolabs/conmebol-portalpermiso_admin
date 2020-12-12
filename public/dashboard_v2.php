@@ -108,7 +108,7 @@
                                             <div class="col-sm-12 col-md-3">
                                                 <div class="form-group">
                                                     <label for="var05">Gerencia</label>
-                                                    <select id="var05" name="var05" class="select2 form-control custom-select" onchange="selectDepto('var05', 'var06'); selectColaborador('var05', 'var06', 'var07'); verDashboard();" style="width:100%; height:40px;" required></select>
+                                                    <select id="var05" name="var05" class="select2 form-control custom-select" onchange="selectDepartamento('var05', 'var06'); selectColaborador('var05', 'var06', 'var07'); verDashboard();" style="width:100%; height:40px;" required></select>
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 col-md-3">
@@ -264,6 +264,7 @@
 ?>
 
     <script src="../js/api.js?<?php echo date('Ymd');?>"></script>
+    <script src="../js/select.js?<?php echo date('Ymd');?>"></script>
     <script src="../js/dashboard_v2.js?<?php echo date('Ymd');?>"></script>
 
     <script>
@@ -288,7 +289,7 @@
         selectDominio('var01', 'COMPROBANTETIPO', 0);
         selectMes('var03', 'var04');
         selectGerencia('var05');
-        selectDepto('var05', 'var06');
+        selectDepartamento('var05', 'var06');
         selectColaborador('var05', 'var06', 'var07');
         selectDominio('var08', 'COMPROBANTEESTADO', true);
         verDashboard();
