@@ -1187,101 +1187,52 @@ function getColaboradorId(codDocu){
 
     if (xJSON['code'] == 200) {
         xJSON['data'].forEach(element => {
-           
-                xDATA.push(element);
-
+            xDATA.push(element);
         });
     }
 
     return xDATA;
 }
 
-function getTarjetaPersona(){
-    if (localStorage.getItem('TarjetaPersonaJSON') === null){
-        getJSON('TarjetaPersonaJSON', '200/tarjetapersonal/listado');
+function getTPersonaAll(codEst, codGer, codDep, codCol){
+    if (localStorage.getItem('tpersonaJSON') === null){
+        getJSON('tpersonaJSON', '200/tarjetapersonal/listado');
     }
 
-    var xJSON = JSON.parse(localStorage.getItem('TarjetaPersonaJSON'));
+    var xJSON = JSON.parse(localStorage.getItem('tpersonaJSON'));
     var xDATA = [];
 
     if (xJSON['code'] == 200) {
         xJSON['data'].forEach(element => {
-           
-                xDATA.push(element);
-
-        });
-    }
-
-    return xDATA;
-}
-
-function getTarjetaPersonaAll(codGer,codDep,codCol,codEst){
-    if (localStorage.getItem('TarjetaPersonaJSON') === null){
-        getJSON('TarjetaPersonaJSON', '200/tarjetapersonal/listado');
-    }
-
-    var xJSON = JSON.parse(localStorage.getItem('TarjetaPersonaJSON'));
-    var xDATA = [];
-    if (xJSON['code'] == 200) {
-        xJSON['data'].forEach(element => {
-            if(codGer == 0){
-                if(codDep == 0){
-                    if(codCol == 0){
-                        if(codEst == 0){
+            if(element.tipo_estado_codigo == codEst){
+                if(codGer == 0){
+                    if(codDep == 0){
+                        if(codCol == 0){
                             xDATA.push(element);
-                        }else if(element.tipo_estado_codigo == codEst){
+                        } else if(element.tarjeta_personal_documento == codCol){
                             xDATA.push(element);
                         }
-                    }else if(element.tarjeta_personal_documento == codCol){
-                        if(codEst == 0){
+
+                    } else if(element.tipo_departamento_codigo == codDep){
+                        if(codCol == 0){
                             xDATA.push(element);
-                        }else if(element.tipo_estado_codigo == codEst){
+                        } else if(element.tarjeta_personal_documento == codCol){
                             xDATA.push(element);
                         }
                     }
 
-                }else if(element.tipo_departamento_codigo == codDep){
-                    if(codCol == 0){
-                        if(codEst == 0){
+                } else if(element.tipo_gerencia_codigo == codGer){
+                    if(codDep == 0){
+                        if(codCol == 0){
                             xDATA.push(element);
-                        }else if(element.tipo_estado_codigo == codEst){
-                            xDATA.push(element);
-                        }
-                    }else if(element.tarjeta_personal_documento == codCol){
-                        if(codEst == 0){
-                            xDATA.push(element);
-                        }else if(element.tipo_estado_codigo == codEst){
+                        } else if(element.tarjeta_personal_documento == codCol){
                             xDATA.push(element);
                         }
-                    }
-                }
-            }else if(element.tipo_gerencia_codigo == codGer){
-                if(codDep == 0){
-                    if(codCol == 0){
-                        if(codEst == 0){
-                            xDATA.push(element);
-                        }else if(element.tipo_estado_codigo == codEst){
-                            xDATA.push(element);
-                        }
-                    }else if(element.tarjeta_personal_documento == codCol){
-                        if(codEst == 0){
-                            xDATA.push(element);
-                        }else if(element.tipo_estado_codigo == codEst){
-                            xDATA.push(element);
-                        }
-                    }
 
-                }else if(element.tipo_departamento_codigo == codDep){
-                    if(codCol == 0){
-                        if(codEst == 0){
+                    } else if(element.tipo_departamento_codigo == codDep){
+                        if(codCol == 0){
                             xDATA.push(element);
-                        }else if(element.tipo_estado_codigo == codEst){
-                            xDATA.push(element);
-                        }
-                    }else if(element.tarjeta_personal_documento == codCol){
-                        if(codEst == 0){
-                            xDATA.push(element);
-                        }else if(element.tipo_estado_codigo == codEst){
+                        } else if(element.tarjeta_personal_documento == codCol){
                             xDATA.push(element);
                         }
                     }
@@ -1293,8 +1244,43 @@ function getTarjetaPersonaAll(codGer,codDep,codCol,codEst){
     return xDATA;
 }
 
+function getTPersonaId(codElem){
+    if (localStorage.getItem('tpersonaJSON') === null){
+        getJSON('tpersonaJSON', '200/tarjetapersonal/listado');
+    }
 
-function getTarjetaPrefijo(codElem){
+    var xJSON = JSON.parse(localStorage.getItem('tpersonaJSON'));
+    var xDATA = [];
+
+    if (xJSON['code'] == 200) {
+        xJSON['data'].forEach(element => {
+            if (element.tarjeta_personal_codigo == codElem) {
+                xDATA.push(element);
+            }
+        });
+    }
+    
+    return xDATA;
+}
+
+function getTPersonalDocumento(codDocu){
+    if (localStorage.getItem('tpersonalDocumentoJSON') === null){
+        getJSON('tpersonalDocumentoJSON', '200/tarjetapersonal/documento/'+ codDocu);
+    }
+
+    var xJSON = JSON.parse(localStorage.getItem('tpersonalDocumentoJSON'));
+    var xDATA = [];
+
+    if (xJSON['code'] == 200) {
+        xJSON['data'].forEach(element => {
+            xDATA.push(element);
+        });
+    }
+    
+    return xDATA;
+}
+
+function getTPersonalPrefijo(codElem){
     localStorage.removeItem('TarjetaPrefijoJSON');
 
     if (localStorage.getItem('TarjetaPrefijoJSON') === null){
@@ -1316,501 +1302,21 @@ function getTarjetaPrefijo(codElem){
     return xDATA;
 }
 
-function getTarjetaRedSocial(codElem){
-    if (localStorage.getItem('TarjetaRedSocialJSON') === null){
-        getJSON('TarjetaRedSocialJSON', '200/tarjetapersonal/redsocial/tarjetapersonal/'+ codElem);
+function getTPersonalRSocial(codElem){
+    if (localStorage.getItem('tpersonalRSocialJSON') === null){
+        getJSON('tpersonalRSocialJSON', '200/tarjetapersonal/redsocial/tarjetapersonal/'+ codElem);
     }
 
-    var xJSON = JSON.parse(localStorage.getItem('TarjetaRedSocialJSON'));
+    var xJSON = JSON.parse(localStorage.getItem('tpersonalRSocialJSON'));
     var xDATA = [];
 
     if (xJSON['code'] == 200) {
         xJSON['data'].forEach(element => {
-           
-                xDATA.push(element);
-
+            xDATA.push(element);
         });
     }
 
     return xDATA;
-}
-
-function getTarjetaDocumento(codDocu){
-    localStorage.removeItem('TarjetaDocumentoJSON');
-
-    if (localStorage.getItem('TarjetaDocumentoJSON') === null){
-        getJSON('TarjetaDocumentoJSON', '200/tarjetapersonal/documento/'+ codDocu);
-    }
-    
-
-    var xJSON = JSON.parse(localStorage.getItem('TarjetaDocumentoJSON'));
-    var xDATA = [];
-
-    if (xJSON['code'] == 200) {
-        xJSON['data'].forEach(element => {
-           
-                xDATA.push(element);
-
-        });
-    }
-    
-    return xDATA;
-}
-
-function getTarjetas(codElem, codDocu, codAcc){
-    var xJSON   = getColaboradorId(codDocu);
-    var xJSON2  = getDominio('TARJETAPERSONALCANTIDAD')
-    var xJSON3  = getDominio('REDSOCIALTIPO');
-    var xJSON4  = getDominio('PREFIJOCELULARTIPO');
-    var xJSON5  = getTarjetaPrefijo(codElem);
-    var xJSON6  = getTarjetaRedSocial(codElem);
-    var xJSON7  = getTarjetaDocumento(codDocu);
-    var selTel  = 0;
-    var html    = '';
-    var html1    = '';
-    var htmlTelf = '';
-    var htmlRedS = '';
-    var redes   = '';
-    var prefijo = 0;
-    var selTel1	= '';
-    var indTelf = 1;
-    var indRSocial = 1;
-
-    switch (codAcc) {
-            case 1:
-                bodyTit = ':';
-                bodyCol = '#163562;';
-                bodyMod = 'C';
-                bodyOnl = 'readonly';
-
-                break;
-            
-            case 2:
-                bodyTit = ':';
-                bodyCol = '#007979;';
-                bodyMod = 'U';
-                bodyOnl = '';
-                bodyBot =''; 
-
-                break;
-
-            case 3:
-                bodyTit = '';
-                bodyCol = '#ff2924;';
-                bodyMod = 'U';
-                bodyOnl = 'readonly';
-                bodyBot = '';
-
-            default:
-			    break;
-    }
-
-    if(codAcc == 1){
-        xJSON2.forEach(element2 => {
-            if (element2.tipo_estado_parametro == element2.tipo_parametro || element2.tipo_estado_parametro !== element2.tipo_parametro ) {
-                selTel = selTel + '                               <option value="'+ element2.tipo_parametro +'" selected>'+element2.tipo_nombre_castellano+'</option>';
-            } 
-        });
-
-        xJSON.forEach(element => {
-            redes = '';
-            prefijo = '';
-            
-            xJSON3.forEach(element1 => {
-                if (element1.tipo_estado_parametro == 1) {
-                    redes = redes + '                               <option value="'+ element1.tipo_parametro +'">'+element1.tipo_nombre_castellano+'</option>';
-                } 
-            });
-        
-            xJSON4.forEach(element1 => {
-                if (element1.tipo_estado_parametro == 1) {
-                    prefijo = prefijo + '                               <option value="'+ element1.tipo_parametro +'">'+element1.tipo_nombre_castellano+'</option>';
-                } 
-            });
-            
-            html    =
-                    '<div class="modal-content">'+
-                    '   <form id="form" data-parsley-validate method="post" enctype="multipart/form-data" action="../class/crud/solicitudes_tarjetas.php">'+
-                    '	    <div class="modal-header" style="color:#fff; background:#163562;">'+
-                    '		    <h4 class="modal-title" id="vcenter"> Datos Personales </h4>'+
-                    '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
-                    '	    </div>'+
-                    '	    <div class="modal-body" >'+
-                    '           <div class="row pt-3">'+
-                    '               <div id="tit10" class="col-sm-12 col-md-6">'+
-                    '                   <div class="form-group">'+
-                    '                       <label for="var01">NOMBRE</label>'+
-                    '                       <input id="var01" name="var01" value="'+element.nombre_completo+'" class="form-control" type="text"  height:40px;" readonly>'+
-                    '                   </div>'+
-                    '               </div>'+
-                    ''+
-                    '               <div id="tit10" class="col-sm-12 col-md-6">'+
-                    '                   <div class="form-group">'+
-                    '                       <label for="var02">CORREO</label>'+
-                    '                       <input id="var02" name="var02" value="'+element.email+'"  class="form-control" type="text"  height:40px;" readonly>'+
-                    '                   </div>'+
-                    '               </div>'+
-                    ''+
-                    '               <div id="tit10" class="col-sm-12 col-md-2">'+
-                    '                   <div class="form-group">'+
-                    '                       <label for="var03_1">PREFIJO</label>'+
-                    '                       <select id="var03_1" name="var03_1" class="select2 form-control custom-select" height:40px;" readonly>'+ prefijo +
-                    '                       </select>'+
-                    '                   </div>'+
-                    '               </div>'+
-                    ''+
-                    '               <div id="tit10" class="col-sm-12 col-md-4">'+
-                    '                   <div class="form-group">'+
-                    '                       <label for="var04_1">TELÉFONO CORPORATIVO</label>'+
-                    '                       <input id="var04_1" name="var04_1" value="" class="form-control" type="text"  height:40px;">'+
-                    '                   </div>'+
-                    '               </div>'+
-                    ''+
-                    '              <div class="form-group">'+
-                    '                  <label for="var05_1">Visualizar número de Tarjeta</label>'+
-                    '                  <select id="var05_1" name="var05_1" class="select2 form-control custom-select"  height:40px;">'+
-                    '                      <optgroup label="">'+
-                    '								<option value="N">NO</option>'+
-                    '								<option value="S">SI</option>'+
-                    '                      </optgroup>'+ 
-                    '                  </select>'+
-                    '              </div>'+
-                    ''+
-                    '               <div id="tit10" class="col-sm-12 col-md-2">'+
-                    '                   <div class="form-group">'+
-                    '                       <label for="var03_2">PREFIJO</label>'+
-                    '                       <select id="var03_2" name="var03_2" class="select2 form-control custom-select" height:40px;" readonly>'+ prefijo +
-                    '                       </select>'+
-                    '                   </div>'+
-                    '               </div>'+
-                    ''+
-                    '               <div id="tit10" class="col-sm-12 col-md-4">'+
-                    '                   <div class="form-group">'+
-                    '                       <label for="var04_2">TELÉFONO CELULAR</label>'+
-                    '                       <input id="var04_2" name="var04_2"  class="form-control" type="text"  height:40px;">'+
-                    '                   </div>'+
-                    '               </div>'+
-                    ''+
-                    '              <div class="form-group">'+
-                    '                  <label for="var05_2">Visualizar número de Tarjeta</label>'+
-                    '                  <select id="var05_2" name="var05_2" class="select2 form-control custom-select"  height:40px;">'+
-                    '                      <optgroup label="">'+
-                    '								<option value="N">NO</option>'+
-                    '								<option value="S">SI</option>'+
-                    '                      </optgroup>'+ 
-                    '                  </select>'+
-                    '              </div>'+
-                    ''+
-                    '              <div class="form-group">'+
-                    '                  <label for="var012_1">VIZUALIZAR RED SOCIAL</label>'+
-                    '                  <select id="var012_1" name="var012_1" class="select2 form-control custom-select"  height:40px;">'+
-                    '                      <optgroup label="">'+
-                    '								<option value="N">NO</option>'+
-                    '								<option value="S">SI</option>'+
-                    '                      </optgroup>'+ 
-                    '                  </select>'+
-                    '              </div>'+
-                    ''+
-                    '              <div class="form-group">'+
-                    '                  <label for="var011_1">RED SOCIAL</label>'+
-                    '                  <select id="var011_1" name="var011_1" class="select2 form-control custom-select" height:40px;">'+
-                    '                      </optgroup>'+ redes +
-                    '                  </select>'+
-                    '              </div>'+
-                    ''+
-                    '               <div id="tit10" class="col-sm-12 col-md-4">'+
-                    '                   <div class="form-group">'+
-                    '                       <label for="var010_1">REDES SOCIALES</label>'+
-                    '                       <input id="var010_1" name="var010_1"  class="form-control" type="text"  height:40px;">'+ 
-                    '                   </div>'+
-                    '               </div>'+
-                    ''+
-                    '              <div class="form-group">'+
-                    '                  <label for="var011">TARJETAS REQUERIDAS</label>'+
-                    '                  <select id="var011" name="var011" value="" class="select2 form-control custom-select" height:40px;">'+
-                    '                      </optgroup>'+ selTel +
-                    '                  </select>'+
-                    '              </div>'+
-                    ''+
-                    '           <div class="form-group">'+
-                    '               <input id="workCodigo" name="workCodigo" value="'+codElem+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-                    '               <input id="workDocumento" name="workDocumento" value="'+codDocu+'" class="form-control" type="hidden" placeholder="Documento" required readonly>'+
-                    '               <input id="workModo" name="workModo" value="'+bodyMod+'" class="form-control" type="hidden" placeholder="Modo" required readonly>'+
-                    '               <input id="workPage" name="workPage" value="dashboard_v3.php" class="form-control" type="hidden" placeholder="Modo" required readonly>'+
-                    '				<input class="form-control" type="hidden" id="workEstado"       name="workEstado"       value="1"      required readonly>'+
-                    '               <input class="form-control" type="hidden" id="workAccion"	name="workAccion" value="1" required readonly>'+
-                    '               <input id="workCTelefono" name="workCTelefono" value="3" class="form-control" type="hidden" placeholder="Solicitud" required readonly>'+
-                    '               <input id="workCRSocial" name="workCRSocial" value="2" class="form-control" type="hidden" placeholder="Solicitud" required readonly>'+
-                    '           </div>'+
-                    '	    </div>'+
-                    '	    <div class="modal-footer">'+
-                    '           <button type="submit" name="submit" class="btn btn-info">Generar Tarjeta</button>'+
-                    '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
-                    '	    </div>'+
-                    '   </form>'+
-                    '</div>';
-                
-        });
-    } else if(codAcc == 2){
-        xJSON   = getTarjetaPersona();
-
-        xJSON.forEach(element => {
-            if(element.tarjeta_personal_codigo == codElem){  
-                console.log(xJSON5);
-                console.log(xJSON6);             
-                xJSON5.forEach(element1 => {
-                    if(element1.tarjeta_personal_codigo == codElem){
-                        var rowView = 'SI';
-
-                        if (element1.tarjeta_personal_telefono_visualizar != 'S'){
-                            rowView = 'NO';
-                        }
-
-                        htmlTelf = htmlTelf +
-                                '               <div id="tit10" class="col-sm-12 col-md-4">'+
-                                '                   <div class="form-group">'+
-                                '                       <label for="var05_'+ indTelf +'">Visualizar</label>'+
-                                '                       <input id="var05_'+indTelf+'" name="var05_'+indTelf+'" value="'+rowView+'" class="form-control" type="text"  height:40px;" readonly>'+ 
-                                '                   </div>'+
-                                '               </div>'+
-                                ''+
-                                '               <div id="tit10" class="col-sm-12 col-md-4">'+
-                                '                   <div class="form-group">'+
-                                '                       <label for="var03_'+ indTelf +'">PREFIJO</label>'+
-                                '                       <input id="var03_'+indTelf+'" name="var03_'+indTelf+'" value="'+element1.tipo_prefijo_castellano+'" class="form-control" type="text"  height:40px;" readonly>'+ 
-                                '                   </div>'+
-                                '               </div>'+
-                                ''+
-                                '               <div id="tit10" class="col-sm-12 col-md-4">'+
-                                '                   <div class="form-group">'+
-                                '                       <label for="var04_'+ indTelf +'">TELÉFONO</label>'+
-                                '                       <input id="var04_'+indTelf+'" name="var04_'+indTelf+'" value="'+element1.tarjeta_personal_telefono_numero+'" class="form-control" type="text"  height:40px;" readonly>'+ 
-                                '                   </div>'+
-                                '               </div>';
-                        indTelf= indTelf + 1;
-                     }  
-                });
-
-                xJSON6.forEach(element1 => {
-                    if(element1.tarjeta_personal_codigo == codElem){
-                        var rowView1 = 'SI';
-
-                        if (element1.tarjeta_personal_red_social_visualizar != 'S'){
-                            rowView1 = 'NO';
-                        }
-                        htmlRedS = htmlRedS +
-                        '               <div id="tit10" class="col-sm-12 col-md-4">'+
-                        '                   <div class="form-group">'+
-                        '                       <label for="var08_'+indRSocial+'">VIZUALIZAR RED SOCIAL</label>'+
-                        '                       <input id="var08_'+indRSocial+'" name="var08_'+indRSocial+'" value="'+rowView1+'" class="form-control" type="text"  height:40px;" readonly>'+ 
-                        '                   </div>'+
-                        '               </div>'+
-                        ''+
-                        '               <div id="tit10" class="col-sm-12 col-md-4">'+
-                        '                   <div class="form-group">'+
-                        '                       <label for="var09_'+indRSocial+'">RED SOCIAL</label>'+
-                        '                       <input id="var09_'+indRSocial+'" name="var09_'+indRSocial+'" value="'+element1.tipo_red_social_castellano+'" class="form-control" type="text"  height:40px;" readonly>'+ 
-                        '                   </div>'+
-                        '               </div>'+
-                        ''+
-                        '               <div id="tit10" class="col-sm-12 col-md-4" style="display: none;">'+
-                        '                   <div class="form-group">'+
-                        '                       <label for="var011_'+indRSocial+'">RED SOCIAL</label>'+
-                        '                       <input id="var011_'+indRSocial+'" name="var011_'+indRSocial+'" value="'+element1.tipo_red_social_parametro+'" class="form-control" type="text"  height:40px;" readonly>'+ 
-                        '                   </div>'+
-                        '               </div>'+
-                        ''+
-                        '               <div id="tit10" class="col-sm-12 col-md-4">'+
-                        '                   <div class="form-group">'+
-                        '                       <label for="var010_'+indRSocial+'">REDES SOCIALES</label>'+
-                        '                       <input id="var010_'+indRSocial+'" name="var010_'+indRSocial+'" value="'+element1.tarjeta_personal_red_social_direccion+'" class="form-control" type="text"  height:40px;" readonly>'+ 
-                        '                   </div>'+
-                        '               </div>';
-                        indRSocial = indRSocial + 1;
-                     }  
-                });
-            
-                html    =
-                    '<div class="modal-content">'+
-                    '   <form id="form" data-parsley-validate method="post" enctype="multipart/form-data" action="../class/crud/solicitudes_tarjetas.php">'+
-                    '	    <div class="modal-header" style="color:#fff; background:#16878C;">'+
-                    '		    <h4 class="modal-title" id="vcenter"> Datos Personales </h4>'+
-                    '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
-                    '	    </div>'+
-                    '	    <div class="modal-body" >'+
-                    '           <div class="row">'+
-                    '               <div id="tit10" class="col-sm-12 col-md-4">'+
-                    '                   <div class="form-group">'+
-                    '                       <label for="var01">NOMBRE</label>'+
-                    '                       <input id="var01" name="var01" value="'+element.tarjeta_personal_nombre+'" class="form-control" type="text"  height:40px;" readonly>'+
-                    '                   </div>'+
-                    '               </div>'+
-                    ''+
-                    '               <div id="tit10" class="col-sm-12 col-md-4">'+
-                    '                   <div class="form-group">'+
-                    '                       <label for="var02">CORREO</label>'+
-                    '                       <input id="var02" name="var02" value="'+element.tarjeta_personal_email+'"  class="form-control" type="text"  height:40px;" readonly>'+
-                    '                   </div>'+
-                    '               </div>'+ 
-                    ''+
-                    '               <div id="tit10" class="col-sm-12 col-md-4">'+
-                    '                   <div class="form-group">'+
-                    '                       <label for="var011">TARJETAS REQUERIDAS</label>'+
-                    '                       <input id="var011" name="var011" value="'+element.tipo_cantidad_castellano+'"  class="form-control" type="text"  height:40px;" readonly>'+
-                    '                   </div>'+
-                    '               </div>'+ htmlTelf + htmlRedS +
-                    ''+
-                    '           <div class="form-group">'+
-                    '               <input id="workCodigo" name="workCodigo" value="'+codElem+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-                    '               <input id="workCTelefono" name="workCTelefono" value="'+indTelf+'" class="form-control" type="hidden" placeholder="Solicitud" required readonly>'+
-                    '               <input id="workCRSocial" name="workCRSocial" value="'+indRSocial+'" class="form-control" type="hidden" placeholder="Solicitud" required readonly>'+
-                    '               <input id="workCodigo" name="workDocumento" value="'+codDocu+'" class="form-control" type="hidden" placeholder="Documento" required readonly>'+
-                    '               <input id="workModo" name="workModo" value="'+bodyMod+'" class="form-control" type="hidden" placeholder="Modo" required readonly>'+
-                    '               <input id="workPage" name="workPage" value="dashboard_v3.php" class="form-control" type="hidden" placeholder="Modo" required readonly>'+
-                    '				<input class="form-control" type="hidden" id="workEstado"       name="workEstado"       value="2"   required readonly>'+
-                    '               <input class="form-control" type="hidden" id="workAccion"	name="workAccion" value="2" required readonly>'+
-                    '           </div>'+
-                    '	    </div>'+
-                    '	    <div class="modal-footer">'+
-                    '           <button type="submit" name="submit" class="btn btn-success">Generar</button>'+
-                    '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
-                    '	    </div>'+
-                    '   </form>'+
-                    '</div>';     
-            }         
-        });
-    }else if(codAcc == 3){
-        xJSON   = getTarjetaPersona();
-
-        xJSON.forEach(element => {
-            if(element.tarjeta_personal_codigo == codElem){  
-                console.log(xJSON5);
-                console.log(xJSON6);             
-                xJSON5.forEach(element1 => {
-                    if(element1.tarjeta_personal_codigo == codElem){
-                        var rowView = 'SI';
-
-                        if (element1.tarjeta_personal_telefono_visualizar != 'S'){
-                            rowView = 'NO';
-                        }
-
-                        htmlTelf = htmlTelf +
-                                '               <div id="tit10" class="col-sm-12 col-md-4">'+
-                                '                   <div class="form-group">'+
-                                '                       <label for="var05_'+ indTelf +'">Visualizar</label>'+
-                                '                       <input id="var05_'+indTelf+'" name="var05_'+indTelf+'" value="'+rowView+'" class="form-control" type="text"  height:40px;" readonly>'+ 
-                                '                   </div>'+
-                                '               </div>'+
-                                ''+
-                                '               <div id="tit10" class="col-sm-12 col-md-4">'+
-                                '                   <div class="form-group">'+
-                                '                       <label for="var03_'+ indTelf +'">PREFIJO</label>'+
-                                '                       <input id="var03_'+indTelf+'" name="var03_'+indTelf+'" value="'+element1.tipo_prefijo_castellano+'" class="form-control" type="text"  height:40px;" readonly>'+ 
-                                '                   </div>'+
-                                '               </div>'+
-                                ''+
-                                '               <div id="tit10" class="col-sm-12 col-md-4">'+
-                                '                   <div class="form-group">'+
-                                '                       <label for="var04_'+ indTelf +'">TELÉFONO</label>'+
-                                '                       <input id="var04_'+indTelf+'" name="var04_'+indTelf+'" value="'+element1.tarjeta_personal_telefono_numero+'" class="form-control" type="text"  height:40px;" readonly>'+ 
-                                '                   </div>'+
-                                '               </div>';
-                        indTelf= indTelf + 1;
-                     }  
-                });
-
-                xJSON6.forEach(element1 => {
-                    if(element1.tarjeta_personal_codigo == codElem){
-                        var rowView1 = 'SI';
-
-                        if (element1.tarjeta_personal_red_social_visualizar != 'S'){
-                            rowView1 = 'NO';
-                        }
-                        htmlRedS = htmlRedS +
-                        '               <div id="tit10" class="col-sm-12 col-md-4">'+
-                        '                   <div class="form-group">'+
-                        '                       <label for="var08_'+indRSocial+'">VIZUALIZAR RED SOCIAL</label>'+
-                        '                       <input id="var08_'+indRSocial+'" name="var08_'+indRSocial+'" value="'+rowView1+'" class="form-control" type="text"  height:40px;" readonly>'+ 
-                        '                   </div>'+
-                        '               </div>'+
-                        ''+
-                        '               <div id="tit10" class="col-sm-12 col-md-4">'+
-                        '                   <div class="form-group">'+
-                        '                       <label for="var09_'+indRSocial+'">RED SOCIAL</label>'+
-                        '                       <input id="var09_'+indRSocial+'" name="var09_'+indRSocial+'" value="'+element1.tipo_red_social_castellano+'" class="form-control" type="text"  height:40px;" readonly>'+ 
-                        '                   </div>'+
-                        '               </div>'+
-                        ''+
-                        '               <div id="tit10" class="col-sm-12 col-md-4" style="display: none;">'+
-                        '                   <div class="form-group">'+
-                        '                       <label for="var011_'+indRSocial+'">RED SOCIAL</label>'+
-                        '                       <input id="var011_'+indRSocial+'" name="var011_'+indRSocial+'" value="'+element1.tipo_red_social_parametro+'" class="form-control" type="text"  height:40px;" readonly>'+ 
-                        '                   </div>'+
-                        '               </div>'+
-                        ''+
-                        '               <div id="tit10" class="col-sm-12 col-md-4">'+
-                        '                   <div class="form-group">'+
-                        '                       <label for="var010_'+indRSocial+'">REDES SOCIALES</label>'+
-                        '                       <input id="var010_'+indRSocial+'" name="var010_'+indRSocial+'" value="'+element1.tarjeta_personal_red_social_direccion+'" class="form-control" type="text"  height:40px;" readonly>'+ 
-                        '                   </div>'+
-                        '               </div>';
-                        indRSocial = indRSocial + 1;
-                     }  
-                });
-            
-                html    =
-                    '<div class="modal-content">'+
-                    '   <form id="form" data-parsley-validate method="post" enctype="multipart/form-data" action="../class/crud/solicitudes_tarjetas.php">'+
-                    '	    <div class="modal-header" style="color:#fff; background:#E42514;">'+
-                    '		    <h4 class="modal-title" id="vcenter"> Datos Personales </h4>'+
-                    '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
-                    '	    </div>'+
-                    '	    <div class="modal-body" >'+
-                    '           <div class="row">'+
-                    '               <div id="tit10" class="col-sm-12 col-md-4">'+
-                    '                   <div class="form-group">'+
-                    '                       <label for="var01">NOMBRE</label>'+
-                    '                       <input id="var01" name="var01" value="'+element.tarjeta_personal_nombre+'" class="form-control" type="text"  height:40px;" readonly>'+
-                    '                   </div>'+
-                    '               </div>'+
-                    ''+
-                    '               <div id="tit10" class="col-sm-12 col-md-4">'+
-                    '                   <div class="form-group">'+
-                    '                       <label for="var02">CORREO</label>'+
-                    '                       <input id="var02" name="var02" value="'+element.tarjeta_personal_email+'"  class="form-control" type="text"  height:40px;" readonly>'+
-                    '                   </div>'+
-                    '               </div>'+ 
-                    ''+
-                    '               <div id="tit10" class="col-sm-12 col-md-4">'+
-                    '                   <div class="form-group">'+
-                    '                       <label for="var011">TARJETAS REQUERIDAS</label>'+
-                    '                       <input id="var011" name="var011" value="'+element.tipo_cantidad_castellano+'"  class="form-control" type="text"  height:40px;" readonly>'+
-                    '                   </div>'+
-                    '               </div>'+ htmlTelf + htmlRedS +
-                    ''+
-                    '           <div class="form-group">'+
-                    '               <input id="workCodigo" name="workCodigo" value="'+codElem+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-                    '               <input id="workCTelefono" name="workCTelefono" value="'+indTelf+'" class="form-control" type="hidden" placeholder="Solicitud" required readonly>'+
-                    '               <input id="workCRSocial" name="workCRSocial" value="'+indRSocial+'" class="form-control" type="hidden" placeholder="Solicitud" required readonly>'+
-                    '               <input id="workCodigo" name="workDocumento" value="'+codDocu+'" class="form-control" type="hidden" placeholder="Documento" required readonly>'+
-                    '               <input id="workModo" name="workModo" value="'+bodyMod+'" class="form-control" type="hidden" placeholder="Modo" required readonly>'+
-                    '               <input id="workPage" name="workPage" value="dashboard_v3.php" class="form-control" type="hidden" placeholder="Modo" required readonly>'+
-                    '				<input class="form-control" type="hidden" id="workEstado"       name="workEstado"       value="3"   required readonly>'+
-                    '               <input class="form-control" type="hidden" id="workAccion"	name="workAccion" value="2" required readonly>'+
-                    '           </div>'+
-                    '	    </div>'+
-                    '	    <div class="modal-footer">'+
-                    '           <button type="submit" name="submit" class="btn btn-danger">Rechazar</button>'+
-                    '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
-                    '	    </div>'+
-                    '   </form>'+
-                    '</div>';     
-            }         
-        });
-    }
-
-    $("#modalcontent").empty();
-    $("#modalcontent").append(html);
 }
 
 function getQR(var01){
@@ -2192,106 +1698,6 @@ function selectEstado(var01) {
     option.value    = 'C';
     option.text     = 'ANULADO';
     selOption.add(option, null);
-}
-
-function selectGerencia(var01) {
-    var xJSON       = getTipoGerencia();
-    var selOption   = document.getElementById(var01);
-    
-    while (selOption.length > 0) {
-        selOption.remove(0);
-    }
-
-    var option  = document.createElement('option');
-    option.value    = 0;
-    option.text     = 'TODOS';
-    option.selected = true;
-    selOption.add(option, null);
-
-    xJSON.forEach(element => {
-        var option      = document.createElement('option');
-        option.value    = element.tipo_gerencia_codigo;
-        option.text     = element.tipo_gerencia_nombre;
-        selOption.add(option, null);
-    });
-}
-
-function selectDepto(var01, var02) {
-    var codGer      = document.getElementById(var01);
-    var selOption   = document.getElementById(var02);
-    var xJSON       = getTipoDepartamento(codGer.value);
-    
-    while (selOption.length > 0) {
-        selOption.remove(0);
-    }
-
-    var option  = document.createElement('option');
-    option.value    = 0;
-    option.text     = 'TODOS';
-    option.selected = true;
-    selOption.add(option, null);
-
-    xJSON.forEach(element => {
-        var option      = document.createElement('option');
-        option.value    = element.tipo_departamento_codigo;
-        option.text     = element.tipo_departamento_nombre;
-        selOption.add(option, null);
-    });
-}
-
-function selectColaborador(var01, var02, var03) {
-    var codGer      = document.getElementById(var01);
-    var codDep      = document.getElementById(var02);
-    var selOption   = document.getElementById(var03);
-
-    if (codGer != null || codDep != null) {
-        var xJSON       = getColaborador(codGer.value, codDep.value);
-    } else {
-        var xJSON       = getColaborador(0, 0);
-    }
-
-    while (selOption.length > 0) {
-        selOption.remove(0);
-    }
-
-    var option  = document.createElement('option');
-    option.value    = 0;
-    option.text     = 'TODOS';
-    option.selected = true;
-    selOption.add(option, null);
-
-    xJSON.forEach(element => {
-        var option      = document.createElement('option');
-        option.value    = element.documento;
-        option.text     = element.nombre_completo;
-        selOption.add(option, null);
-    });
-}
-
-function selectDominio(var01, var02, var03) {
-    var selOption   = document.getElementById(var01);
-    var xJSON       = getDominio(var02);
-    
-    while (selOption.length > 0) {
-        selOption.remove(0);
-    }
-    
-    if (var03 == true) {
-        var option  = document.createElement('option');
-        option.value    = 0;
-        option.text     = 'TODOS';
-        option.selected = true;
-        selOption.add(option, null);
-    }
-
-    xJSON.forEach(element => {
-        if (element.tipo_estado_codigo == 1){
-            var option      = document.createElement('option');
-            option.value    = element.tipo_codigo;
-            option.text     = element.tipo_nombre_castellano;
-            selOption.add(option, null);
-        }
-    });
 }
 
 function selectMes(var01, var02) {
