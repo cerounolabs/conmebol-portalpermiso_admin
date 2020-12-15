@@ -1,6 +1,24 @@
+/*
 @font-face {
     font-family: "Branding"; src: url("//db.onlinewebfonts.com/t/3643bcd919053053c823ac9c581c211c.eot");
      src: url("//db.onlinewebfonts.com/t/3643bcd919053053c823ac9c581c211c.eot?#iefix") format("embedded-opentype"),
       url("//db.onlinewebfonts.com/t/3643bcd919053053c823ac9c581c211c.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/3643bcd919053053c823ac9c581c211c.woff") format("woff"),
       url("//db.onlinewebfonts.com/t/3643bcd919053053c823ac9c581c211c.ttf") format("truetype"),
       url("//db.onlinewebfonts.com/t/3643bcd919053053c823ac9c581c211c.svg#Branding") format("svg"); }
+
+
+*/
+@font-face{
+    font-family:'Branding Bold';
+    src:url('../dist/font/Latinotype_Branding_Bold.ttf') format('truetype');
+}
+
+@font-face{
+    font-family:'Branding Medium';
+    src:url('../dist/font/Latinotype_Branding_Medium.ttf') format('truetype');
+}
+
+@font-face{
+    font-family:'Branding Semibold';
+    src:url('../dist/font/Latinotype_Branding_Semibold.ttf') format('truetype');
+}

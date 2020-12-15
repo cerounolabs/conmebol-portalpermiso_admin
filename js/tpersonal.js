@@ -4,7 +4,7 @@ function setTPersonal(codElem, codAcc){
     var xJSON3  = getDominio('REDSOCIALTIPO');
     var xJSON4  = getDominio('PREFIJOCELULARTIPO');
     var xJSON5  = getTPersonaId(codElem);
-    var xJSON6  = getTPersonalPrefijo(codElem);
+    var xJSON6  = getTPersonalPrefijoCodigo(codElem);
     var xJSON7  = getTPersonalRSocial(codElem);
     var html    = '';
     var htmlTelf= '';

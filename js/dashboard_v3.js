@@ -45,13 +45,15 @@ $(document).ready(function() {
 				function (data, type, full, meta) {
                     var rowVCARD    = '';
 					var rowVIEW     = '';
+/*
 					var rowTEFL		= '';
+					dataJSON1		= getTPersonalPrefijoCodigo(full.tarjeta_personal_codigo);
 
-	//				dataJSON1.forEach(element1 => {
-	//					if (element1.tarjeta_personal_telefono_visualizar == 'S'){
-	//						rowTEFL = rowTEFL + 'TEL;TYPE=WORK;CELL:+' + element1.tarjeta_personal_telefono_completo + "\n";
-	//					}
-	//				});
+					dataJSON1.forEach(element1 => {
+						if (element1.tarjeta_personal_telefono_visualizar == 'S'){
+							rowTEFL = rowTEFL + 'TEL;TYPE=WORK;CELL:+' + element1.tarjeta_personal_telefono_completo + "\n";
+						}
+					});
 	
                     rowVCARD = rowVCARD + 
                     'BEGIN:VCARD' + "\n" + 
@@ -66,7 +68,7 @@ $(document).ready(function() {
                     'EMAIL;TYPE=WORK:' + full.tarjeta_personal_email + "\n" + 
                     'URL:https://www.conmebol.com/' + "\n" + 
                     'END:VCARD';
-
+*/
                     rowVIEW = rowVIEW + '<div class="row" style="height:200px;">';
                     rowVIEW = rowVIEW + '<div class="col-sm-10">';
                     rowVIEW = rowVIEW + '<span style="font-weight:bold;">Código Solicitud:</span> ' + full.tarjeta_personal_codigo;
@@ -99,7 +101,7 @@ $(document).ready(function() {
                     rowVIEW = rowVIEW + '</div>';
 					rowVIEW = rowVIEW + '</div>';
 
-                    $('#qrcode'+ full.tarjeta_personal_codigo).html('<img src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=' + encodeURIComponent(rowVCARD) + '&choe=UTF-8" alt="QR code" />');
+//                    $('#qrcode'+ full.tarjeta_personal_codigo).html('<img src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=' + encodeURIComponent(rowVCARD) + '&choe=UTF-8" alt="QR code" />');
                     
 					return rowVIEW;	
 				}

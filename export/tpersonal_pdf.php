@@ -16,7 +16,7 @@
         $det2JSON   = get_curl('200/tarjetapersonal/redsocial/tarjetapersonal/'.$codElem);
         
         $css = file_get_contents('../css/font.css');
-        $style = '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">';
+//        $style = '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">';
 /*
         $css2 = file_get_contents('../dist/css/icons/font-awesome/css/fontawesome-all.css');
         $css3 = file_get_contents('../dist/css/icons/font-awesome/css/fontawesome.css');
@@ -37,17 +37,9 @@
         $defaultFontConfig = (new Mpdf\Config\FontVariables())->getDefaults();
         $fontData = $defaultFontConfig['fontdata'];
 
-
-
-
-
-
         $mpdf = new \Mpdf\Mpdf([
-
-
-
             'fontDir' => array_merge($fontDirs, [
-                __DIR__ . '/../../resources/fonts',
+                __DIR__.'/../../resources/fonts',
             ]),
             "fontawesome" => [
                 'R' => "fa-brands-400.ttf"
@@ -58,10 +50,15 @@
             "fontawesome" => [
                 'R' => "fa-solid-900.ttf"
             ],
-
-
-
-
+            "Latinotype_Branding_Bold" => [
+                'R' => "Latinotype_Branding_Bold.ttf"
+            ],
+            "Latinotype_Branding_Medium" => [
+                'R' => "Latinotype_Branding_Medium.ttf"
+            ],
+            "Latinotype_Branding_Semibold" => [
+                'R' => "Latinotype_Branding_Semibold.ttf"
+            ],
             'mode' => 'utf-8', 
             'format' => [274, 695], 
             'orientation' => 'L',
@@ -70,7 +67,7 @@
             'margin_right' => 5,
             'margin_bottom' => 0,
             'default_font_size' => 4,
-            'default_font' => 'Branding',
+            'default_font' => 'Branding Bold',
             'mirrorMargins' => true,
         ]);
 
@@ -91,13 +88,14 @@
         $numero ='+595 215172000';
         $direccion= 'Autopista Silvio Pettirossi y Valois Rivarola - Luque - Paraguay';
         $url = 'www.conmebol.com';
+        $style = "font-family: 'Branding Bold'; font-size:100pt; font-weight:bold; color:#205aa7;";
 
 
         
 
-        $mpdf->WriteHTML($style);
-        $mpdf->WriteHTML('<body style="background:url('.$ima.') no-repeat center center;">');
-        $mpdf->WriteFixedPosHTML('<span style="font-size:100pt; font-weight:bold; color:#205aa7;">'.$cabJSON['data'][0]['tarjeta_personal_nombre'].'</span>', 113, 70,150, 20, 'auto');
+ //       $mpdf->WriteHTML($style);
+        $mpdf->WriteHTML('<body style="background:url('.$ima.') no-repeat center center; '.$style.'">');
+        $mpdf->WriteFixedPosHTML('<span style="'.$style.'">'.$cabJSON['data'][0]['tarjeta_personal_nombre'].'</span>', 113, 70,150, 20, 'auto');
         $mpdf->WriteFixedPosHTML('<span style="font-size:4rem; color:#205aa7;">'.$cabJSON['data'][0]['tipo_cargo_nombre'].'</span>', 113, 85, 120, 14, 'auto');
         $mpdf->WriteFixedPosHTML('<span style="font-family: fontawesome; font-size: 20pt; color:#74b8e5;">&#xf0e0;</span>', 113, 115, 100, 10, 'auto'); 
         $mpdf->WriteFixedPosHTML('<span style="font-size:7rem; color:#205aa7;">'.$cabJSON['data'][0]['tarjeta_personal_email'].'</span>', 125, 115, 100, 10, 'auto');
@@ -127,7 +125,7 @@
         }*/
         
         $mpdf->WriteFixedPosHTML('<span style="font-size:5rem; color:#205aa7;">'.$direccion.'</span>', 165, 175, 100, 16, 'auto');
-        $mpdf->WriteFixedPosHTML('<span style="font-size:5rem; color:#205aa7;">'.$url.'</span>', 170, 200, 100, 10, 'auto');
+        $mpdf->WriteFixedPosHTML('<span style="font-family: Branding Bold; font-size:100pt; font-weight:bold; color:#205aa7;">'.$url.'</span>', 170, 200, 100, 10, 'auto');
 
         $rowVCARD   = '';
 
@@ -152,7 +150,7 @@
         'END:VCARD';
 
         //style =" background-image: linear-gradient(top, #c7cdde, #f0f2ff)";
-        $mpdf->WriteFixedPosHTML('<img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl='.urlencode($rowVCARD).'&choe=UTF-8" alt="QR code"  />', 104, 165, 100, 140, 'auto');
+        $mpdf->WriteFixedPosHTML('<img src="https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl='.urlencode($rowVCARD).'&choe=UTF-8" alt="QR code"  />', 104, 165, 100, 140, 'auto');
         	
 
         $mpdf->WriteHTML('</body>');

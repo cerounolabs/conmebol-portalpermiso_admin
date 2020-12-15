@@ -1,7 +1,6 @@
 $(document).ready(function() {
     var dataJSON = getTPersonalDocumento(_parm05BASE);
-    var dataJSON1= getTPersonalPrefijo(_parm05BASE);
-    var dataJSON1= getTPersonalPrefijo(_parm05BASE);
+    var dataJSON1= getTPersonalPrefijoDocumento(_parm05BASE);
 
 	$('#tableLoad').DataTable({
 		processing	: true,
@@ -63,7 +62,7 @@ $(document).ready(function() {
                     'URL:https://www.conmebol.com/' + "\n" + 
                     'END:VCARD';
 
-                    rowVIEW = rowVIEW + '<div class="row">';
+                    rowVIEW = rowVIEW + '<div class="row" style="height:200px;">';
                     rowVIEW = rowVIEW + '<div class="col-sm-10">';
                     rowVIEW = rowVIEW + '<span style="font-weight:bold;">Código Solicitud:</span> ' + full.tarjeta_personal_codigo;
                     rowVIEW = rowVIEW + '<br>';
@@ -72,14 +71,27 @@ $(document).ready(function() {
                     rowVIEW = rowVIEW + '<span style="font-weight:bold;">Fecha Solicitud:</span> ' + full.auditoria_fecha_hora;
                     rowVIEW = rowVIEW + '<br>';
                     rowVIEW = rowVIEW + '<span style="font-weight:bold;">Cargo Solicitud:</span> ' + full.tipo_cargo_nombre;
+					rowVIEW = rowVIEW + '<br>';
+					rowVIEW = rowVIEW + '<span style="font-weight:bold;">Colaborador Solicitud:</span> ' + full.tarjeta_personal_nombre;
+					rowVIEW = rowVIEW + '<br>';
+					rowVIEW = rowVIEW + '<span style="font-weight:bold;">Documento Solicitud:</span> ' + full.tarjeta_personal_documento;
                     rowVIEW = rowVIEW + '<br>';
                     rowVIEW = rowVIEW + '<span style="font-weight:bold;">Cantidad Solicitud:</span> ' + full.tipo_cantidad_castellano;
+					rowVIEW = rowVIEW + '<br>';
+					rowVIEW = rowVIEW + '<div class="row" style="position:absolute; bottom:0px;">';
+					rowVIEW = rowVIEW + '<button onclick="setTPersonal('+ full.tarjeta_personal_codigo +', 2);" type="button" class="btn btn-primary" style="margin-right:5px;" data-toggle="modal" data-target="#modaldiv" title="Ver"><i class="fa fa-eye"></i></button>';
+
+					if (full.tipo_estado_parametro == 1){
+						rowVIEW = rowVIEW + '<button onclick="setTPersonal('+ full.tarjeta_personal_codigo +', 4);" type="button" class="btn btn-danger" data-toggle="modal" data-target="#modaldiv" title="Anular"><i class="fa fa-window-close"></i></button>';
+					}
+
+					rowVIEW = rowVIEW + '</div>';
                     rowVIEW = rowVIEW + '</div>';
                     rowVIEW = rowVIEW + '<div class="col-sm-2">';
                     rowVIEW = rowVIEW + '<div id="qrcode'+ full.tarjeta_personal_codigo +'" style="float:right;">';
                     rowVIEW = rowVIEW + '</div>';
                     rowVIEW = rowVIEW + '</div>';
-                    rowVIEW = rowVIEW + '</div>';
+					rowVIEW = rowVIEW + '</div>';
 
                     $('#qrcode'+ full.tarjeta_personal_codigo).html('<img src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=' + encodeURIComponent(rowVCARD) + '&choe=UTF-8" alt="QR code" />');
                     
