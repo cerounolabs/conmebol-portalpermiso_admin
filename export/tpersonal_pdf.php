@@ -88,6 +88,12 @@
 
         $mpdf->SetTitle('CONMEBOL | PLATAFORMA PERMISO');
         $ima = '../assets/images/background/fondo3.png';
+        $numero ='+595 215172000';
+        $direccion= 'Autopista Silvio Pettirossi y Valois Rivarola - Luque - Paraguay';
+        $url = 'www.conmebol.com';
+
+
+        
 
         $mpdf->WriteHTML($style);
         $mpdf->WriteHTML('<body style="background:url('.$ima.') no-repeat center center;">');
@@ -95,49 +101,58 @@
         $mpdf->WriteFixedPosHTML('<span style="font-size:4rem; color:#205aa7;">'.$cabJSON['data'][0]['tipo_cargo_nombre'].'</span>', 113, 85, 120, 14, 'auto');
         $mpdf->WriteFixedPosHTML('<span style="font-family: fontawesome; font-size: 20pt; color:#74b8e5;">&#xf0e0;</span>', 113, 115, 100, 10, 'auto'); 
         $mpdf->WriteFixedPosHTML('<span style="font-size:7rem; color:#205aa7;">'.$cabJSON['data'][0]['tarjeta_personal_email'].'</span>', 125, 115, 100, 10, 'auto');
-        
-        $y=130;
 
+        $mpdf->WriteFixedPosHTML('<span style="font-family: fontawesome; font-size: 20pt; color:#74b8e5;">&#xf879;</span>' , 113, 130, 100, 10, 'auto');
+        $mpdf->WriteFixedPosHTML('<span style="font-size:5rem; color:#205aa7;">'.$numero.'</span>', 125, 130, 100, 10, 'auto');
+        
+        
+        $y=140;
         foreach($det1JSON['data'] as $sol01KEY => $sol01VALUE){
-            
             if($sol01VALUE['tarjeta_personal_telefono_visualizar']=='S'){
+
                 $tarjetanro = $sol01VALUE['tarjeta_personal_telefono_completo'];
-                $mpdf->WriteHTML('');
-              //  $mpdf->WriteHTML('<span style="font-family: fontawesome;style="font-size:100pt";">&#xf3ed;  </span>');
-               // $mpdf->WriteFixedPosHTML('<span style="font-size:5rem; color:#205aa7; style="font-family: fontawesome;">&#xf3cd;'.$tarjetanro.'</span>', 113, $y, 100, 100, 'auto');
-                $mpdf->WriteFixedPosHTML('<span style="font-family: fontawesome; font-size: 20pt; color:#74b8e5;">&#xf879;</span>' , 113, $y, 100, 100, 'auto');
-                $mpdf->WriteFixedPosHTML('<span style="font-size:5rem; color:#205aa7;">'.$tarjetanro.' </span>' , 125, $y, 100, 100, 'auto');
-                $y=145;
+
+                $mpdf->WriteFixedPosHTML('<span style="font-family: fontawesome; font-size: 20pt; color:#74b8e5;">&#xf10b;</span>' , 113, $y, 100, 10, 'auto');
+                $mpdf->WriteFixedPosHTML('<span style="font-size:5rem; color:#205aa7;"> '.$tarjetanro.' </span>' , 125, $y, 100, 10, 'auto');
+
+                $y=150;
             }
         }
 
-       // $mpdf->WriteHTML();
+      /*  foreach($det1JSON['data'] as $sol01KEY => $sol01VALUE){
+            if($sol01VALUE['tarjeta_personal_telefono_visualizar']=='S'){ 
+                $mpdf->WriteFixedPosHTML('<span style="font-family: fontawesome; font-size: 20pt; color:#74b8e5;">&#xf10b;</span>' , 113, 145, 100, 100, 'auto');
+                $mpdf->WriteFixedPosHTML('<span style="font-size:5rem; color:#205aa7;">'.$det1JSON['data'][0]['tarjeta_personal_telefono_completo'].' </span>' , 125, 145, 100, 100, 'auto');
+            }
+        }*/
+        
+        $mpdf->WriteFixedPosHTML('<span style="font-size:5rem; color:#205aa7;">'.$direccion.'</span>', 165, 175, 100, 16, 'auto');
+        $mpdf->WriteFixedPosHTML('<span style="font-size:5rem; color:#205aa7;">'.$url.'</span>', 170, 200, 100, 10, 'auto');
 
         $rowVCARD   = '';
 
-        $rowVCARD = $rowVCARD .
-        'BEGIN:VCARD' .  "\n" .
-        'VERSION:3.0' . "\n" .
-        'N' . "\n" .
-        'FN:' . "\n" .
-        'ORG:Confederación Sudamericana de Fútbol - CONMEBOL' . "\n" .
-        'ADR;TYPE=WORK:Autopista Silvio Pettirossi y Valois Rivarola - Luque - Paraguay ' . "\n" .
-        'ROLE::'. $cabJSON['data'][0]['tipo_cargo_nombre']. "\n" . 
-        'TITLE::' .$cabJSON['data'][0]['tipo_cargo_nombre']. "\n" .
-        'TEL;TYPE=WORK;VOICE:+595215172000:' . "\n" .'';
+        $rowVCARD = 'BEGIN:VCARD'."\n".
+        'VERSION:3.0'."\n".
+        'N'.$cabJSON['data'][0]['tarjeta_personal_nombre']."\n".
+        'FN:'.$cabJSON['data'][0]['tarjeta_personal_nombre']."\n".
+        'ORG:Confederación Sudamericana de Fútbol - CONMEBOL'."\n".
+        'ADR;TYPE=WORK:Autopista Silvio Pettirossi y Valois Rivarola - Luque - Paraguay '."\n".
+        'ROLE::'.$cabJSON['data'][0]['tipo_cargo_nombre']."\n". 
+        'TITLE::' .$cabJSON['data'][0]['tipo_cargo_nombre']."\n".
+        'TEL;TYPE=WORK;VOICE:+595215172000:'."\n".'';
 
         foreach($det1JSON['data'] as $sol01KEY => $sol01VALUE){
-
             if($sol01VALUE['tarjeta_personal_telefono_visualizar']=='S'){ 
-                'TEL;TYPE=WORK;CELL:+' .$det1JSON['data'][1]['tarjeta_personal_telefono_completo']. "\n";
+                $rowVCARD = $rowVCARD.'TEL;TYPE=WORK;CELL:+'.$sol01VALUE['tarjeta_personal_telefono_completo']."\n";
             }
         }
 
-        'EMAIL;TYPE=WORK:' .$cabJSON['data'][0]['tarjeta_personal_email']. "\n" .
-        'URL:https://www.conmebol.com/' . "\n" .
+        $rowVCARD = $rowVCARD.'EMAIL;TYPE=WORK:'.$cabJSON['data'][0]['tarjeta_personal_email']."\n".
+        'URL:https://www.conmebol.com/'."\n".
         'END:VCARD';
+
         //style =" background-image: linear-gradient(top, #c7cdde, #f0f2ff)";
-        $mpdf->WriteFixedPosHTML('<img style="color:#205aa7;" src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=' .$rowVCARD . '&choe=UTF-8" alt="QR code"  />', 104, 165, 100, 100, 'auto');
+        $mpdf->WriteFixedPosHTML('<img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl='.urlencode($rowVCARD).'&choe=UTF-8" alt="QR code"  />', 104, 165, 100, 140, 'auto');
         	
 
         $mpdf->WriteHTML('</body>');

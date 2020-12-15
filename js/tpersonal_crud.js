@@ -1,5 +1,7 @@
 $(document).ready(function() {
     var dataJSON = getTPersonalDocumento(_parm05BASE);
+    var dataJSON1= getTPersonalPrefijo(_parm05BASE);
+    var dataJSON1= getTPersonalPrefijo(_parm05BASE);
 
 	$('#tableLoad').DataTable({
 		processing	: true,
@@ -39,6 +41,13 @@ $(document).ready(function() {
 				function (data, type, full, meta) {
                     var rowVCARD    = '';
                     var rowVIEW     = '';
+                    var rowTEFL     = '';
+                    
+    				dataJSON1.forEach(element1 => {
+						if (element1.tarjeta_personal_telefono_visualizar == 'S' && element1.tarjeta_personal_codigo == full.tarjeta_personal_codigo){
+							rowTEFL = rowTEFL + 'TEL;TYPE=WORK;CELL:+' + element1.tarjeta_personal_telefono_completo + "\n";
+						}
+					});
 
                     rowVCARD = rowVCARD + 
                     'BEGIN:VCARD' + "\n" + 
@@ -49,9 +58,7 @@ $(document).ready(function() {
                     'ADR;TYPE=WORK:Autopista Silvio Pettirossi y Valois Rivarola - Luque - Paraguay' + "\n" +
                     'ROLE:' + full.tipo_cargo_nombre + "\n" + 
                     'TITLE:' + full.tipo_cargo_nombre + "\n" +
-                    'TEL;TYPE=WORK;VOICE:+595215172000' + "\n" +
-                    'TEL;TYPE=WORK;CELL:+' + "\n" + 
-                    'TEL;TYPE=HOME;CELL:+' + "\n" + 
+                    'TEL;TYPE=WORK;VOICE:+595215172000' + "\n" + rowTEFL +
                     'EMAIL;TYPE=WORK:' + full.tarjeta_personal_email + "\n" + 
                     'URL:https://www.conmebol.com/' + "\n" + 
                     'END:VCARD';

@@ -46,7 +46,7 @@ function setTPersonal(codElem, codAcc){
             codEst  = 3;
 			bodyTit = 'ANULAR';
 			bodyCol = '#ff2924;';
-			bodyMod = 'D';
+			bodyMod = 'U';
 			bodyOnl = 'readonly';
 			bodyBot = '           <button type="submit" class="btn text-center text-white" style="background-color:'+ bodyCol +'">Anular Solicitud</button>';
 			break;

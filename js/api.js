@@ -1284,7 +1284,7 @@ function getTPersonalPrefijo(codElem){
     localStorage.removeItem('TarjetaPrefijoJSON');
 
     if (localStorage.getItem('TarjetaPrefijoJSON') === null){
-        getJSON('TarjetaPrefijoJSON', '200/tarjetapersonal/telefonoprefijo/tarjetapersonal/'+ codElem);
+        getJSON('TarjetaPrefijoJSON', '200/tarjetapersonal/telefonoprefijo/documento/'+ codElem);
     }
     
 
