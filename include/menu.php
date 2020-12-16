@@ -150,13 +150,14 @@
                                			<span class="hide-menu"> Dashboard v2 </span>
                                		</a>
                                	</li>
-
+<!--
                                 <li class="sidebar-item">
                                		<a href="../public/dashboard_v3.php" class="sidebar-link">
                                			<i class="mdi mdi-home"></i>
                                			<span class="hide-menu"> Dashboard v3 </span>
                                		</a>
-                               	</li>
+                                </li>
+-->
                             </ul>
                         </li>
 
@@ -201,9 +202,16 @@
                                			<span class="hide-menu"> Comprobante </span>
                                     </a>
                                	</li>
+
+                                <li class="sidebar-item">
+                               		<a href="../public/comprobante_lector.php" class="sidebar-link">
+                               			<i class="mdi mdi-comprobante"></i>
+                               			<span class="hide-menu"> Comprobante Lector </span>
+                                    </a>
+                               	</li>
                             </ul>
                         </li>
-
+<!--
                         <li class="sidebar-item">
                         	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                            		<i class="icon-ATM"></i>
@@ -218,6 +226,7 @@
                                	</li>
                             </ul>
                         </li>
+-->
 <!--
                         <li class="sidebar-item">
                         	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">

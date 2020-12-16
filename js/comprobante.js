@@ -46,7 +46,7 @@ $(document).ready(function() {
 
 				switch (full.tipo_estado_codigo) {
 					case 39:
-						btn = '<a href="../uploads/comprobante/'+ full.comprobante_adjunto +'" id="'+ full.comprobante_codigo +'" onclick="setComprobanteEstado(this.id, 40, 1);" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';
+						btn = '<a href="../uploads/comprobante/'+ full.comprobante_adjunto +'" id="'+ full.comprobante_codigo +'" onclick="setComprobanteEstado(this.id, 40, 3);" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';
 						break;
 
 					case 999:
@@ -230,4 +230,26 @@ function setComprobante(codElem, codAcc){
 
 	$("#modalcontent").empty();
 	$("#modalcontent").append(html);
+}
+
+function searchComprobante(Parm01){
+	var var01 = document.getElementById(Parm01);
+	var var02 = document.getElementById(var01.value);
+	
+	if (var02 != null){
+		setComprobanteEstado(var02.value, 41, 3);
+	}
+}
+
+function setComprobanteEstado(codElem, codEst, codLoad) {
+    var xPAGE	= _parm04BASE;
+	var xURL	= '200/comprobante/' + codElem;
+	var xPARS   = JSON.stringify({
+		"tipo_estado_codigo" : codEst,
+		"auditoria_usuario": _parm01BASE,
+		"auditoria_fecha_hora": _parm02BASE,
+		"auditoria_ip": _parm03BASE
+	});
+
+	putJSON(xPAGE, xURL, xPARS, codLoad);
 }

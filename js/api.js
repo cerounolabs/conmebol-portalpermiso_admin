@@ -1,4 +1,4 @@
-const urlBASE   = 'http://api.conmebol.com/sfholox/public/v2';
+const urlBASE   = 'http://api.conmebol.com/sfholox/public/v1';
 const autBASE   = 'dXNlcl9zZmhvbG94Om5zM3JfNWZoMCEweA==';
 const xHTTP	    = new XMLHttpRequest();
 
@@ -65,6 +65,10 @@ function putJSON(codPAGE, codURL, codPARS, codLOAD) {
                 
                         tableData.clear().rows.add(xDATA).draw();
                     });
+                    break;
+
+                case 3:
+                    window.location.replace(codPAGE + 'code='+ xJSON.code + '&msg=' + xJSON.message);
                     break;
             }
         }
@@ -1633,19 +1637,6 @@ function setEstado(rowSel, rowEst, rowAcc, rowFun, rowCar, rowPage){
 
     $("#modalcontent").empty();
     $("#modalcontent").append(html);
-}
-
-function setComprobanteEstado(codElem, codEst, codLoad) {
-    var xPAGE	= parm04BASE;
-	var xURL	= '200/comprobante/' + codElem;
-	var xPARS   = JSON.stringify({
-		"tipo_estado_codigo" : codEst,
-		"auditoria_usuario": parm01BASE,
-		"auditoria_fecha_hora": parm02BASE,
-		"auditoria_ip": parm03BASE
-    });
-    
-    putJSON(xPAGE, xURL, xPARS, codLoad);
 }
 
 function selectSolicitud(var01) {
