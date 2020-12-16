@@ -2,8 +2,6 @@
     require '../class/function/curl_api.php';
     require '../class/function/function.php';
     require '../class/session/session_system.php';
-
-    $var02 = date('Y');
 ?>
 
 <!DOCTYPE html>
@@ -153,11 +151,12 @@
 ?>
 
     <script>
-        const parm01BASE   = '<?php echo trim($usu_03); ?>';
-        const parm02BASE   = '<?php echo date('Y-m-d H:i:s'); ?>';
-        const parm03BASE   = '<?php echo trim($log_03); ?>';
-        const parm04BASE   = 'comprobante';
+        const _parm01BASE   = '<?php echo trim($usu_03); ?>';
+        const _parm02BASE   = '<?php echo date('Y-m-d H:i:s'); ?>';
+        const _parm03BASE   = '<?php echo trim($log_03); ?>';
+        const _parm04BASE   = '../public/comprobante.php?';
     </script>
+
     <script src="../js/api.js?<?php echo date('Ymd');?>"></script>
     <script src="../js/comprobante.js?<?php echo date('Ymd');?>"></script>
 </body>

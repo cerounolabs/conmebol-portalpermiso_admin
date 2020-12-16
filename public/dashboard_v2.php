@@ -265,13 +265,14 @@
 
     <script src="../js/api.js?<?php echo date('Ymd');?>"></script>
     <script src="../js/select.js?<?php echo date('Ymd');?>"></script>
+    <script src="../js/comprobante.js?<?php echo date('Ymd');?>"></script>
     <script src="../js/dashboard_v2.js?<?php echo date('Ymd');?>"></script>
 
     <script>
-        const parm01BASE   = '<?php echo trim($usu_03); ?>';
-        const parm02BASE   = '<?php echo date('Y-m-d H:i:s'); ?>';
-        const parm03BASE   = '<?php echo trim($log_03); ?>';
-        const parm04BASE   = 'dashboard_v2';
+        const _parm01BASE   = '<?php echo trim($usu_03); ?>';
+        const _parm02BASE   = '<?php echo date('Y-m-d H:i:s'); ?>';
+        const _parm03BASE   = '<?php echo trim($log_03); ?>';
+        const _parm04BASE   = '../public/dashboard_v2.php?';
 
         function loadExport(){
             var parm01 = document.getElementById('var01').value;  
