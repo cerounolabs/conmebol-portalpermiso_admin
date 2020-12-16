@@ -1280,11 +1280,33 @@ function getTPersonalDocumento(codDocu){
     return xDATA;
 }
 
-function getTPersonalPrefijo(codElem){
+function getTPersonalPrefijoDocumento(codElem){
     localStorage.removeItem('TarjetaPrefijoJSON');
 
     if (localStorage.getItem('TarjetaPrefijoJSON') === null){
-        getJSON('TarjetaPrefijoJSON', '200/tarjetapersonal/telefonoprefijo/tarjetapersonal/'+ codElem);
+        getJSON('TarjetaPrefijoJSON', '200/tarjetapersonal/telefonoprefijo/documento/'+ codElem);
+    }
+    
+
+    var xJSON = JSON.parse(localStorage.getItem('TarjetaPrefijoJSON'));
+    var xDATA = [];
+
+    if (xJSON['code'] == 200) {
+        xJSON['data'].forEach(element => {
+           
+                xDATA.push(element);
+
+        });
+    }
+    
+    return xDATA;
+}
+
+function getTPersonalPrefijoCodigo(codElem){
+    localStorage.removeItem('TarjetaPrefijoJSON');
+
+    if (localStorage.getItem('TarjetaPrefijoJSON') === null){
+        getJSON('TarjetaPrefijoJSON', '200/tarjetapersonal/telefonoprefijo/codigo/'+ codElem);
     }
     
 

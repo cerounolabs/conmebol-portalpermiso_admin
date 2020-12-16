@@ -9,14 +9,14 @@
 	require '../../class/function/function.php';
 
     $val01          = trim(strtolower($_POST['var01']));
-    $val02          = $_POST['var02'];
+    $val02          = intval($_POST['var02']);
 
 	$work01			= $_POST['workCodigo'];
 	$work02			= $_POST['workModo']; 
 	$work03         = $_POST['workPage'];
 	$work04         = $_POST['workDocumento'];
-	$work05         = $_POST['workEstado'];
-	$work06         = $_POST['workAccion'];
+	$work05         = intval($_POST['workEstado']);
+	$work06         = intval($_POST['workAccion']);
 	$work07         = $_POST['workCTelefono'];
 	$work08         = $_POST['workCRSocial'];
 	
@@ -59,6 +59,7 @@
 		case 'U':
 			$result	= put_curl('200/tarjetapersonal/'.$work01, $dataJSON);
 			$result	= json_decode($result, true);
+			$code	= $result['code'];
 			$msg	= str_replace("\n", ' ', $result['message']);
 			break;
 	}
