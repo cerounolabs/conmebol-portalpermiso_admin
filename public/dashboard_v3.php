@@ -148,7 +148,7 @@
             const _parm01BASE   = '<?php echo trim($usu_03); ?>';
             const _parm02BASE   = '<?php echo date('Y-m-d H:i:s'); ?>';
             const _parm03BASE   = '<?php echo trim($log_03); ?>';
-            const _parm04BASE   = 'dashboard_v3';
+            const _parm04BASE   = 'public/dashboard_v3';
             const _parm05BASE	= '<?php echo trim($usu_05); ?>';
         </script>
 
