@@ -295,15 +295,21 @@ class FontVariables
 				"fontawesome" => [
 					'R' => "fa-solid-900.ttf"
 				],
-				"Latinotype_Branding_Bold" => [
+				"brandingbold" => [
 					'R' => "Latinotype_Branding_Bold.ttf"
 				],
-				"Latinotype_Branding_Medium" => [
+				"brandingmedium" => [
 					'R' => "Latinotype_Branding_Medium.ttf"
 				],
 				"Latinotype_Branding_Semibold" => [
 					'R' => "Latinotype_Branding_Semibold.ttf"
 				],
+			/*	"trebuchetms" =>// [
+					'R' => "trebuc.ttf",
+					'B' => "trebucbd.ttf",
+					'I' => "trebucit.ttf",
+					'BI' => "trebucbi.ttf",
+				],*/
 			],
 
 			// Add fonts to this array if they contain characters in the SIP or SMP Unicode planes
