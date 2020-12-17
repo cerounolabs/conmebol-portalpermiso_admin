@@ -44,7 +44,7 @@ $(document).ready(function() {
                     
     				dataJSON1.forEach(element1 => {
 						if (element1.tarjeta_personal_telefono_visualizar == 'S' && element1.tarjeta_personal_codigo == full.tarjeta_personal_codigo){
-							rowTEFL = rowTEFL + 'TEL;TYPE=WORK;CELL:+' + element1.tarjeta_personal_telefono_completo + "\n";
+							rowTEFL = rowTEFL + 'TEL;TYPE=WORK;CELL:' + element1.tarjeta_personal_telefono_completo + "\n";
 						}
 					});
 
@@ -88,12 +88,20 @@ $(document).ready(function() {
 					rowVIEW = rowVIEW + '</div>';
                     rowVIEW = rowVIEW + '</div>';
                     rowVIEW = rowVIEW + '<div class="col-sm-2">';
-                    rowVIEW = rowVIEW + '<div id="qrcode'+ full.tarjeta_personal_codigo +'" style="float:right;">';
+                    rowVIEW = rowVIEW + '<canvas id="qrcode'+ full.tarjeta_personal_codigo +'" style="float:right;">';
+                    rowVIEW = rowVIEW + '</canvas>';
                     rowVIEW = rowVIEW + '</div>';
                     rowVIEW = rowVIEW + '</div>';
-					rowVIEW = rowVIEW + '</div>';
+                    
+                    (function() {
+                        qr = new QRious({
+                        element: document.getElementById('qrcode'+ full.tarjeta_personal_codigo),
+                        size: 200,
+                        value: rowVCARD
+                    });
+                })();
 
-                    $('#qrcode'+ full.tarjeta_personal_codigo).html('<img src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=' + encodeURIComponent(rowVCARD) + '&choe=UTF-8" alt="QR code" />');
+                   // $('#qrcode'+ full.tarjeta_personal_codigo).html('<img src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=' + encodeURIComponent(rowVCARD) + '&choe=UTF-8" alt="QR code" />');
                     
 					return rowVIEW;	
 				}

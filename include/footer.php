@@ -96,6 +96,7 @@
          <!--This page JavaScript -->
         <script src="../assets/libs/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
         <script src="../assets/libs/magnific-popup/meg.init.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
 
 <?php
     if(isset($_GET['code'])){
