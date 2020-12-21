@@ -127,7 +127,7 @@ function cantFecha(){
             for (var i=0; i < diffDays; i++) {
                 var fecAux = fec1.getFullYear() + '-' + (fec1.getMonth()+1) + '-' + fec1.getDate();
 
-                if (fecAux != '2020-1-1' && fecAux != '2020-3-1' && fecAux != '2020-4-9' && fecAux != '2020-4-10' && fecAux != '2020-5-1' && fecAux != '2020-5-14' && fecAux != '2020-5-15' && fecAux != '2020-6-12' && fecAux != '2020-8-15' && fecAux != '2020-9-29' && fecAux != '2020-12-8' && fecAux != '2020-12-25' && fecAux != '2020-12-31' && fecAux != '2021-1-1') {
+                if (fecAux != '2020-1-1' && fecAux != '2020-3-1' && fecAux != '2020-4-9' && fecAux != '2020-4-10' && fecAux != '2020-5-1' && fecAux != '2020-5-14' && fecAux != '2020-5-15' && fecAux != '2020-6-12' && fecAux != '2020-8-15' && fecAux != '2020-9-29' && fecAux != '2020-12-8' && fecAux != '2020-12-24' && fecAux != '2020-12-25' && fecAux != '2020-12-28' && fecAux != '2020-12-29' && fecAux != '2020-12-30' && fecAux != '2020-12-31' && fecAux != '2021-1-1') {
                     if (fec1.getDay() != 0 && fec1.getDay() != 6) {
                         cantDays++;
                     }
