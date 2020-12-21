@@ -67,7 +67,7 @@
         $style = "font-family: brandingbold; font-size:100pt; font-weight:bold; color:#205aa7;";
 
         $mpdf->WriteHTML('<body style="background:url('.$ima.') no-repeat center center; font-family: brandingmedium;">');
-        $mpdf->WriteFixedPosHTML('<span style="font-family: brandingbold; font-size:10rem; font-weight:bold; color:#205aa7">'.$cabJSON['data'][0]['tarjeta_personal_nombre1'].' '.$cabJSON['data'][0]['tarjeta_personal_apellido1'].'</span>', 113, 70, 200, 30, 'auto');
+        $mpdf->WriteFixedPosHTML('<span style="font-family: brandingbold; font-size:10rem; color:#205aa7">'.$cabJSON['data'][0]['tarjeta_personal_nombre1'].' '.$cabJSON['data'][0]['tarjeta_personal_apellido1'].'</span>', 113, 70, 200, 30, 'auto');
         $mpdf->WriteFixedPosHTML('<span style="font-size:6rem; color:#205aa7; font-weight:bold;">'.$cabJSON['data'][0]['tipo_cargo_nombre'].'</span>', 113, 88, 150, 30, 'auto');
         $mpdf->WriteFixedPosHTML('<span style="font-family: fontawesome; font-size:4rem; color:#74b8e5;">&#xf0e0;</span>', 113, 111, 100, 10, 'auto'); 
         $mpdf->WriteFixedPosHTML('<span style="font-size:7rem; color:#205aa7;">'.$cabJSON['data'][0]['tarjeta_personal_email'].'</span>', 125, 110, 100, 10, 'auto');
@@ -100,10 +100,10 @@
         'N:'.$rowNombre."\n".
         'FN:'.$cabJSON['data'][0]['tarjeta_personal_nombre']."\n".
         'ORG:Confederación Sudamericana de Fútbol - CONMEBOL'."\n".
-        'ADR;TYPE=WORK:Autopista Silvio Pettirossi y Valois Rivarola - Luque - Paraguay '."\n".
-        'ROLE:'.$cabJSON['data'][0]['tipo_cargo_nombre']."\n". 
-        'TITLE:' .$cabJSON['data'][0]['tipo_cargo_nombre']."\n".
-        'TEL;TYPE=WORK;VOICE:+595215172000:'."\n".'';
+//        'ADR;TYPE=WORK:Autopista Silvio Pettirossi y Valois Rivarola - Luque - Paraguay '."\n".
+        'ROLE:'.$cabJSON['data'][0]['tipo_cargo_nombre']."\n"; 
+//        'TITLE:' .$cabJSON['data'][0]['tipo_cargo_nombre']."\n".
+//        'TEL;TYPE=WORK;VOICE:+595215172000:'."\n".'';
 
         foreach($det1JSON['data'] as $sol01KEY => $sol01VALUE){
             if($sol01VALUE['tarjeta_personal_telefono_visualizar']=='S'){ 
