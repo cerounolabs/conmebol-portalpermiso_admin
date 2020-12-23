@@ -8,6 +8,8 @@
 	require '../../class/function/curl_api.php';
 	require '../../class/function/function.php';
 
+	$val00_1		= $_POST['var00_1'];
+	$val00_2		= $_POST['var00_2'];
     $val01          = trim(strtolower($_POST['var01']));
     $val02          = intval($_POST['var02']);
 
@@ -30,21 +32,23 @@
 
 	$dataJSON = json_encode(
 		array(
-			'tipo_accion_codigo'				=> $work06,
-			'tipo_estado_parametro'				=> $work05,
-			'tipo_cantidad_parametro'			=> $val02,
-			'tarjeta_personal_orden'			=> 0,
-			'tarjeta_personal_email'			=> $val01,
-			'tipo_gerencia_codigo'				=> $usu_07,
-			'tipo_departamento_codigo'			=> $usu_09,
-			'tipo_jefatura_codigo'				=> $usu_11,
-			'tipo_cargo_codigo'					=> $usu_13,
-			'tarjeta_personal_documento'		=> $work04,
-			'tarjeta_personal_observacion'		=> '',
+			'tipo_accion_codigo'					=> $work06,
+			'tipo_estado_parametro'					=> $work05,
+			'tipo_cantidad_parametro'				=> $val02,
+			'tarjeta_personal_orden'				=> 999,
+			'tarjeta_personal_email'				=> $val01,
+			'tipo_gerencia_codigo'					=> $usu_07,
+			'tipo_departamento_codigo'				=> $usu_09,
+			'tipo_jefatura_codigo'					=> $usu_11,
+			'tipo_cargo_codigo'						=> $usu_13,
+			'tarjeta_personal_documento'			=> $work04,
+			'tarjeta_personal_nombre_visualizar'	=> $val00_1,
+			'tarjeta_personal_apellido_visualizar'	=> $val00_2,
+			'tarjeta_personal_observacion'			=> '',
 
-			'auditoria_usuario'     			=> $log_01,
-			'auditoria_fecha_hora'  			=> date('Y-m-d H:i:s'),
-			'auditoria_ip'          			=> $log_03
+			'auditoria_usuario'     				=> $log_01,
+			'auditoria_fecha_hora'  				=> date('Y-m-d H:i:s'),
+			'auditoria_ip'          				=> $log_03
 		));
 
 	switch ($work02) {

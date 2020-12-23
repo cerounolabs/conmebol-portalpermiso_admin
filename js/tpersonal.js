@@ -9,6 +9,8 @@ function setTPersonal(codElem, codAcc){
     var html    = '';
     var htmlTelf= '';
     var htmlRedS= '';
+    var htmlNom = '';
+    var htmlApe = '';
     var selTar  = 0;
     var selRSoc = '';
     var selPFijo= 0;
@@ -94,10 +96,27 @@ function setTPersonal(codElem, codAcc){
                 ''+
                 '	    <div class="modal-body">'+
                 '           <div class="row">'+
-                '               <div class="col-sm-12">'+
+                '               <div class="col-sm-12 col-md-4">'+
                 '                   <div class="form-group">'+
-                '                       <label for="var00_1">Cargo</label>'+
-                '                       <input id="var00_1" name="var00_1" value="'+ element.cargo_nombre +'" class="form-control" type="text" style="height:40px;" readonly required>'+
+                '                       <label for="var00_1">Nombre a visualizar</label>'+
+                '                       <select id="var00_1" name="var00_1" class="select2 form-control custom-select" style="height:40px;" required>'+
+                '                           <optgroup label="Visualizar">'+
+                '                               <option value="P">'+ element.nombre_1 +'</option>'+
+                '                               <option value="S">'+ element.nombre_2 +'</option>'+
+                '                           </optgroup>'+
+                '                       </select>'+
+                '                   </div>'+
+                '               </div>'+
+                ''+
+                '               <div class="col-sm-12 col-md-4">'+
+                '                   <div class="form-group">'+
+                '                       <label for="var00_2">Apellido a visualizar</label>'+
+                '                       <select id="var00_2" name="var00_2" class="select2 form-control custom-select" style="height:40px;" required>'+
+                '                           <optgroup label="Visualizar">'+
+                '                               <option value="P">'+ element.apellido_1 +'</option>'+
+                '                               <option value="S">'+ element.apellido_2 +'</option>'+
+                '                           </optgroup>'+
+                '                       </select>'+
                 '                   </div>'+
                 '               </div>'+
                 ''+
@@ -108,6 +127,14 @@ function setTPersonal(codElem, codAcc){
                 '                   </div>'+
                 '               </div>'+
                 ''+
+                '               <div class="col-sm-8">'+
+                '                   <div class="form-group">'+
+                '                       <label for="var00_3">Cargo</label>'+
+                '                       <input id="var00_3" name="var00_3" value="'+ element.cargo_nombre +'" class="form-control" type="text" style="height:40px;" readonly required>'+
+                '                   </div>'+
+                '               </div>'+
+                ''+
+/*
                 '               <div class="col-sm-12 col-md-4">'+
                 '                   <div class="form-group">'+
                 '                       <label for="var00_2">Fecha Nacimiento</label>'+
@@ -115,6 +142,7 @@ function setTPersonal(codElem, codAcc){
                 '                   </div>'+
                 '               </div>'+
                 ''+
+*/
                 '               <div class="col-sm-12 col-md-4">'+
                 '                   <div class="form-group">'+
                 '                       <label for="var02">Tarjetas Requeridas</label>'+
@@ -154,6 +182,7 @@ function setTPersonal(codElem, codAcc){
                 '                   </div>'+
                 '               </div>'+
                 ''+
+/*
                 '               <div class="col-sm-6 col-md-3">'+
                 '                   <div class="form-group">'+
                 '                       <label for="var03_2">Visualizar</label>'+
@@ -183,6 +212,7 @@ function setTPersonal(codElem, codAcc){
                 '                   </div>'+
                 '               </div>'+
                 ''+
+*/
                 '               <div class="col-sm-6 col-md-3">'+
                 '                   <div class="form-group">'+
                 '                       <label for="var06_1">Visualizar</label>'+
@@ -324,7 +354,19 @@ function setTPersonal(codElem, codAcc){
 
                         indRSoc = indRSoc + 1;
                      }  
-                }); 
+                });
+
+                if(element.tarjeta_personal_nombre_visualizar == 'P'){
+                    htmlNom = '                               <option value="P">'+ element.tarjeta_personal_nombre1 +'</option>';
+                } else {
+                    htmlNom = '                               <option value="S">'+ element.tarjeta_personal_nombre2 +'</option>';
+                }
+
+                if(element.tarjeta_personal_apellido_visualizar == 'P'){
+                    htmlApe = '                               <option value="P">'+ element.tarjeta_personal_apellido1 +'</option>';
+                } else {
+                    htmlApe = '                               <option value="S">'+ element.tarjeta_personal_apellido2 +'</option>';
+                }
 
                 html    =
                     '<div class="modal-content">'+
@@ -336,10 +378,23 @@ function setTPersonal(codElem, codAcc){
                     ''+
                     '	    <div class="modal-body">'+
                     '           <div class="row">'+
-                    '               <div class="col-sm-12">'+
+                    '               <div class="col-sm-12 col-md-4">'+
                     '                   <div class="form-group">'+
-                    '                       <label for="var00_1">Cargo</label>'+
-                    '                       <input id="var00_1" name="var00_1" value="'+ element.tipo_cargo_nombre +'" class="form-control" type="text" style="height:40px;" readonly required>'+
+                    '                       <label for="var00_1">Nombre a visualizar</label>'+
+                    '                       <select id="var00_1" name="var00_1" class="select2 form-control custom-select" style="height:40px;" readonly required>'+
+                    '                           <optgroup label="Visualizar">'+ htmlNom +
+                    '                           </optgroup>'+
+                    '                       </select>'+
+                    '                   </div>'+
+                    '               </div>'+
+                    ''+
+                    '               <div class="col-sm-12 col-md-4">'+
+                    '                   <div class="form-group">'+
+                    '                       <label for="var00_2">Apellido a visualizar</label>'+
+                    '                       <select id="var00_2" name="var00_2" class="select2 form-control custom-select" style="height:40px;" readonly required>'+
+                    '                           <optgroup label="Visualizar">'+ htmlApe +
+                    '                           </optgroup>'+
+                    '                       </select>'+
                     '                   </div>'+
                     '               </div>'+
                     ''+
@@ -350,6 +405,15 @@ function setTPersonal(codElem, codAcc){
                     '                   </div>'+
                     '               </div>'+
                     ''+
+                    '               <div class="col-sm-12 col-md-8">'+
+                    '                   <div class="form-group">'+
+                    '                       <label for="var00_3">Cargo</label>'+
+                    '                       <input id="var00_3" name="var00_3" value="'+ element.tipo_cargo_nombre +'" class="form-control" type="text" style="height:40px;" readonly required>'+
+                    '                   </div>'+
+                    '               </div>'+
+                    ''+
+                    
+/*
                     '               <div class="col-sm-12 col-md-4">'+
                     '                   <div class="form-group">'+
                     '                       <label for="var00_2">Fecha Nacimiento</label>'+
@@ -357,6 +421,7 @@ function setTPersonal(codElem, codAcc){
                     '                   </div>'+
                     '               </div>'+
                     ''+
+*/
                     '               <div class="col-sm-12 col-md-4">'+
                     '                   <div class="form-group">'+
                     '                       <label for="var02">Tarjetas Requeridas</label>'+
