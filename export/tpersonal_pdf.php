@@ -15,7 +15,7 @@
         $det1JSON   = get_curl('200/tarjetapersonal/telefonoprefijo/tarjetapersonal/'.$codElem);
         $det2JSON   = get_curl('200/tarjetapersonal/redsocial/tarjetapersonal/'.$codElem);
         
-        $css = file_get_contents('../css/font.css');
+        $css = file_get_contents('../dist/css/font.css');
 
         $defaultConfig = (new Mpdf\Config\ConfigVariables())->getDefaults();
         $fontDirs = $defaultConfig['fontDir'];
@@ -60,14 +60,14 @@
         $mpdf->WriteHTML($css,\Mpdf\HTMLParserMode::HEADER_CSS);
 
         $mpdf->SetTitle('CONMEBOL | PLATAFORMA PERMISO');
-        $ima = '../assets/images/background/fondo3.png';
-        $numero ='+595 215172000';
-        $direccion= 'Autopista Silvio Pettirossi y Valois Rivarola. Luque, Paraguay.';
-        $url = 'www.conmebol.com';
-        $style = "font-family: brandingbold; font-size:100pt; font-weight:bold; color:#205aa7;";
+        $ima        = '../assets/images/background/fondo3.png';
+        $numero     = '+595 215172000';
+        $direccion  = 'Autopista Silvio Pettirossi y Valois Rivarola. Luque, Paraguay.';
+        $url        = 'www.conmebol.com';
+        $style      = "font-family: brandingbold; font-size:100pt; font-weight:bold; color:#205aa7;";
 
         $mpdf->WriteHTML('<body style="background:url('.$ima.') no-repeat center center; font-family: brandingmedium;">');
-        $mpdf->WriteFixedPosHTML('<span style="font-family: brandingbold; font-size:10rem; color:#205aa7">'.$cabJSON['data'][0]['tarjeta_personal_nombre1'].' '.$cabJSON['data'][0]['tarjeta_personal_apellido1'].'</span>', 113, 70, 200, 30, 'auto');
+        $mpdf->WriteFixedPosHTML('<span style="font-family: brandingbold; font-size:10rem; color:#205aa7">'.$cabJSON['data'][0]['tarjeta_personal_nombre'].'</span>', 113, 70, 200, 30, 'auto');
         $mpdf->WriteFixedPosHTML('<span style="font-size:6rem; color:#205aa7; font-weight:bold;">'.$cabJSON['data'][0]['tipo_cargo_nombre'].'</span>', 113, 88, 150, 30, 'auto');
         $mpdf->WriteFixedPosHTML('<span style="font-family: fontawesome; font-size:4rem; color:#74b8e5;">&#xf0e0;</span>', 113, 111, 100, 10, 'auto'); 
         $mpdf->WriteFixedPosHTML('<span style="font-size:7rem; color:#205aa7;">'.$cabJSON['data'][0]['tarjeta_personal_email'].'</span>', 125, 110, 100, 10, 'auto');
@@ -92,31 +92,33 @@
         $mpdf->WriteFixedPosHTML('<span style="font-family: Branding Bold; font-size:7rem; color:#205aa7;">'.$url.'</span>', 170, 210, 100, 10, 'auto');
 
         $rowVCARD   = '';
-
-        $rowNombre  = str_replace(',',';',$cabJSON['data'][0]['tarjeta_personal_nombre']);
-        $rowVCARD = $rowVCARD.
+        $rowVCARD   = $rowVCARD.
         'BEGIN:VCARD'."\n".
         'VERSION:3.0'."\n".
-        'N:'.$rowNombre."\n".
+        'N:'.$cabJSON['data'][0]['tarjeta_personal_nombre']."\n".
         'FN:'.$cabJSON['data'][0]['tarjeta_personal_nombre']."\n".
         'ORG:Confederación Sudamericana de Fútbol - CONMEBOL'."\n".
 //        'ADR;TYPE=WORK:Autopista Silvio Pettirossi y Valois Rivarola - Luque - Paraguay '."\n".
-        'ROLE:'.$cabJSON['data'][0]['tipo_cargo_nombre']."\n"; 
+        'ROLE:'.$cabJSON['data'][0]['tipo_cargo_nombre']."\n".
 //        'TITLE:' .$cabJSON['data'][0]['tipo_cargo_nombre']."\n".
-//        'TEL;TYPE=WORK;VOICE:+595215172000:'."\n".'';
+//        'TEL;TYPE=WORK;VOICE:+595215172000:'."\n".''.
+        'EMAIL;TYPE=WORK:'.$cabJSON['data'][0]['tarjeta_personal_email']."\n";
 
         foreach($det1JSON['data'] as $sol01KEY => $sol01VALUE){
-            if($sol01VALUE['tarjeta_personal_telefono_visualizar']=='S'){ 
+            if($sol01VALUE['tarjeta_personal_telefono_visualizar'] == 'S'){ 
                 $rowVCARD = $rowVCARD.'TEL;TYPE=WORK;CELL:'.$sol01VALUE['tarjeta_personal_telefono_completo']."\n";
             }
         }
 
-        $rowVCARD = $rowVCARD.'EMAIL;TYPE=WORK:'.$cabJSON['data'][0]['tarjeta_personal_email']."\n".
-        'URL:https://www.conmebol.com/'."\n".
-        'END:VCARD';
- 
-        $mpdf->WriteFixedPosHTML('<img src="https://api.qrserver.com/v1/create-qr-code/?data='.urlencode($rowVCARD).'&size=200x200&color=32-90-167"  />', 113, 165, 100, 140, 'auto');
+        foreach($det2JSON['data'] as $sol01KEY => $sol01VALUE){
+            if($sol01VALUE['tarjeta_personal_red_social_visualizar'] == 'S'){ 
+                $rowVCARD = $rowVCARD.'URL:'.$sol01VALUE['tarjeta_personal_red_social_direccion']."\n";
+            }
+        }
 
+        $rowVCARD = $rowVCARD.'END:VCARD';
+ 
+        $mpdf->WriteFixedPosHTML('<img src="https://api.qrserver.com/v1/create-qr-code/?data='.urlencode($rowVCARD).'&size=200x200&color=32-90-167" />', 113, 165, 100, 140, 'auto');
         $mpdf->WriteHTML('</body>');
 
 //        $mpdf -> Output('CARSITOComprobante_'.$fechaHora.'.pdf', 'I');

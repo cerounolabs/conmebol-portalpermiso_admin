@@ -97,6 +97,8 @@
                                 </div>
                                 <a class="dropdown-item" href="javascript:void(0)">
                                     <i class="ti-user m-r-5 m-l-5"></i> Perfil</a>
+                                <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal" data-target="#modaldiv" onclick="getVCARD(<?php echo $usu_05; ?>);">
+                                    <i class="ti-id-badge m-r-5 m-l-5"></i> vCARD</a>
                                 <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal" data-target="#modaldiv" onclick="getQR(<?php echo $usu_05; ?>);">
                                     <i class="ti-target m-r-5 m-l-5"></i> Código QR</a>
                                 <a class="dropdown-item" href="../class/session/session_logout.php">
@@ -150,14 +152,14 @@
                                			<span class="hide-menu"> Dashboard v2 </span>
                                		</a>
                                	</li>
-<!--
+
                                 <li class="sidebar-item">
                                		<a href="../public/dashboard_v3.php" class="sidebar-link">
                                			<i class="mdi mdi-home"></i>
                                			<span class="hide-menu"> Dashboard v3 </span>
                                		</a>
                                 </li>
--->
+
                             </ul>
                         </li>
 
@@ -211,7 +213,7 @@
                                	</li>
                             </ul>
                         </li>
-<!--
+
                         <li class="sidebar-item">
                         	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                            		<i class="icon-ATM"></i>
@@ -226,7 +228,7 @@
                                	</li>
                             </ul>
                         </li>
--->
+
 <!--
                         <li class="sidebar-item">
                         	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">

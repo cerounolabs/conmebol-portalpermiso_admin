@@ -1,5 +1,5 @@
 <?php
-    $api = 'http://api.conmebol.com/sfholox/public/v1';
+    $api = 'http://api.conmebol.com/sfholox/public/v2';
     $aut = 'dXNlcl9zZmhvbG94Om5zM3JfNWZoMCEweA==';
 
     function get_curl($ext){
