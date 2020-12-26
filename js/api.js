@@ -1,4 +1,4 @@
-const urlBASE   = 'http://api.conmebol.com/sfholox/public/v1';
+const urlBASE   = 'http://api.conmebol.com/sfholox/public/v2';
 const autBASE   = 'dXNlcl9zZmhvbG94Om5zM3JfNWZoMCEweA==';
 const xHTTP	    = new XMLHttpRequest();
 
@@ -1284,51 +1284,92 @@ function getTPersonalDocumento(codDocu){
     return xDATA;
 }
 
+function getTPersonalUltimo(codDocu){
+    if (localStorage.getItem('tpersonalUltimoJSON') === null){
+        getJSON('tpersonalUltimoJSON', '200/tarjetapersonal/ultimo/'+ codDocu);
+    }
+
+    var xJSON = JSON.parse(localStorage.getItem('tpersonalUltimoJSON'));
+    var xDATA = [];
+
+    if (xJSON['code'] == 200) {
+        xJSON['data'].forEach(element => {
+            xDATA.push(element);
+        });
+    }
+    
+    return xDATA;
+}
+
+function getTPersonalPrefijoId(codElem){
+    if (localStorage.getItem('tpersonalPrefijoJSON') === null){
+        getJSON('tpersonalPrefijoJSON', '200/tarjetapersonal/telefonoprefijo/codigo/'+ codElem);
+    }
+    
+    var xJSON = JSON.parse(localStorage.getItem('tpersonalPrefijoJSON'));
+    var xDATA = [];
+
+    if (xJSON['code'] == 200) {
+        xJSON['data'].forEach(element => {
+                xDATA.push(element);
+        });
+    }
+    
+    return xDATA;
+}
+
 function getTPersonalPrefijoDocumento(codElem){
-    localStorage.removeItem('TarjetaPrefijoJSON');
-
-    if (localStorage.getItem('TarjetaPrefijoJSON') === null){
-        getJSON('TarjetaPrefijoJSON', '200/tarjetapersonal/telefonoprefijo/documento/'+ codElem);
+    if (localStorage.getItem('tpersonalPrefijoJSON') === null){
+        getJSON('tpersonalPrefijoJSON', '200/tarjetapersonal/telefonoprefijo/documento/'+ codElem);
     }
     
-
-    var xJSON = JSON.parse(localStorage.getItem('TarjetaPrefijoJSON'));
+    var xJSON = JSON.parse(localStorage.getItem('tpersonalPrefijoJSON'));
     var xDATA = [];
 
     if (xJSON['code'] == 200) {
         xJSON['data'].forEach(element => {
-           
-                xDATA.push(element);
-
+            xDATA.push(element);
         });
     }
     
     return xDATA;
 }
 
-function getTPersonalPrefijoCodigo(codElem){
-    localStorage.removeItem('TarjetaPrefijoJSON');
-
-    if (localStorage.getItem('TarjetaPrefijoJSON') === null){
-        getJSON('TarjetaPrefijoJSON', '200/tarjetapersonal/telefonoprefijo/codigo/'+ codElem);
+function getTPersonalPrefijoTPersonal(codElem){
+    if (localStorage.getItem('tpersonalPrefijoJSON') === null){
+        getJSON('tpersonalPrefijoJSON', '200/tarjetapersonal/telefonoprefijo/tarjetapersonal/'+ codElem);
     }
     
-
-    var xJSON = JSON.parse(localStorage.getItem('TarjetaPrefijoJSON'));
+    var xJSON = JSON.parse(localStorage.getItem('tpersonalPrefijoJSON'));
     var xDATA = [];
 
     if (xJSON['code'] == 200) {
         xJSON['data'].forEach(element => {
-           
-                xDATA.push(element);
-
+            xDATA.push(element);
         });
     }
     
     return xDATA;
 }
 
-function getTPersonalRSocial(codElem){
+function getTPersonalRSocialDocumento(codElem){
+    if (localStorage.getItem('tpersonalRSocialJSON') === null){
+        getJSON('tpersonalRSocialJSON', '200/tarjetapersonal/redsocial/documento/'+ codElem);
+    }
+
+    var xJSON = JSON.parse(localStorage.getItem('tpersonalRSocialJSON'));
+    var xDATA = [];
+
+    if (xJSON['code'] == 200) {
+        xJSON['data'].forEach(element => {
+            xDATA.push(element);
+        });
+    }
+
+    return xDATA;
+}
+
+function getTPersonalRSocialTPersonal(codElem){
     if (localStorage.getItem('tpersonalRSocialJSON') === null){
         getJSON('tpersonalRSocialJSON', '200/tarjetapersonal/redsocial/tarjetapersonal/'+ codElem);
     }

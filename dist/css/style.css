@@ -30,6 +30,19 @@ File: scss
 @import url(icons/material-design-iconic-font/css/materialdesignicons.min.css);
 @import url(icons/crypto-icons/cryptocoins.css);
 @import url(icons/iconmind/iconmind.css);
+
+
+@font-face {
+  font-family: 'Branding';
+  src: url(../font/Latinotype_Branding_Medium.otf);
+}
+
+@font-face {
+  font-family: 'Branding';
+  src: url(../font/Latinotype_Branding_Bold.otf);
+  font-weight: bold;
+}
+
 *, *:before, *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -424,7 +437,7 @@ body[data-theme='dark'] {
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1600px;
-  --font-family-sans-serif: "Poppins", sans-serif;
+  --font-family-sans-serif: "Branding", "Poppins", sans-serif;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
 
 *,
@@ -448,7 +461,7 @@ article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, s
 
 body {
   margin: 0;
-  font-family: "Poppins", sans-serif;
+  font-family: "Branding", "Poppins", sans-serif;
   font-size: 0.875rem;
   font-weight: 300;
   line-height: 1.5;
@@ -4822,7 +4835,7 @@ button.close {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "Poppins", sans-serif;
+  font-family: "Branding", "Poppins", sans-serif;
   font-style: normal;
   font-weight: 300;
   line-height: 1.5;
@@ -4907,7 +4920,7 @@ button.close {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "Poppins", sans-serif;
+  font-family: "Branding", "Poppins", sans-serif;
   font-style: normal;
   font-weight: 300;
   line-height: 1.5;
@@ -7921,12 +7934,12 @@ body {
   overflow-x: hidden;
   color: #3e5569;
   background: #fff;
-  font-family: "Poppins", sans-serif; }
+  font-family: "Branding", "Poppins", sans-serif; }
 
 html {
   position: relative;
   min-height: 100%;
-  font-family: "Poppins", sans-serif; }
+  font-family: "Branding", "Poppins", sans-serif; }
 
 a {
   color: #4798e8; }
@@ -11667,7 +11680,7 @@ body .jqstooltip {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-family: "Poppins", sans-serif; }
+  font-family: "Branding", "Poppins", sans-serif; }
   .f-icon:hover,
   .t-icon:hover,
   .w-icon:hover,

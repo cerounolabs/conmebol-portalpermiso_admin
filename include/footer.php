@@ -98,6 +98,8 @@
         <script src="../assets/libs/magnific-popup/meg.init.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
 
+        <script src="../js/perfil.js?<?php echo date('Ymd'); ?>"></script>
+
 <?php
     if(isset($_GET['code'])){
         $codeRest       = $_GET['code'];

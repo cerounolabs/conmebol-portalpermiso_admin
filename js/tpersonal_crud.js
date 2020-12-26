@@ -1,6 +1,7 @@
 $(document).ready(function() {
-    var dataJSON = getTPersonalDocumento(_parm05BASE);
-    var dataJSON1= getTPersonalPrefijoDocumento(_parm05BASE);
+    var dataJSON= getTPersonalDocumento(_parm05BASE);
+    var xJSON2  = getTPersonalPrefijoDocumento(_parm05BASE);
+    var xJSON3  = getTPersonalRSocialDocumento(_parm05BASE);
 
 	$('#tableLoad').DataTable({
 		processing	: true,
@@ -40,30 +41,34 @@ $(document).ready(function() {
 				function (data, type, full, meta) {
                     var rowVCARD    = '';
                     var rowVIEW     = '';
-                    var rowTEFL     = '';
                     
-    				dataJSON1.forEach(element1 => {
-						if (element1.tarjeta_personal_telefono_visualizar == 'S' && element1.tarjeta_personal_codigo == full.tarjeta_personal_codigo){
-							rowTEFL = rowTEFL + 'TEL;TYPE=WORK;CELL:' + element1.tarjeta_personal_telefono_completo + "\n";
-						}
-					});
-
                     rowVCARD = rowVCARD + 
-                    'BEGIN:VCARD' + "\n" + 
-                    'VERSION:3.0' + "\n" + 
-                    'N:' + full.tarjeta_personal_nombre + "\n" + 
-                    'FN:' + full.tarjeta_personal_nombre + "\n" +
-                    'ORG:Confederación Sudamericana de Fútbol - CONMEBOL' + "\n" + 
-                    'ADR;TYPE=WORK:Autopista Silvio Pettirossi y Valois Rivarola - Luque - Paraguay' + "\n" +
-                    'ROLE:' + full.tipo_cargo_nombre + "\n" + 
-                    'TITLE:' + full.tipo_cargo_nombre + "\n" +
-                    'TEL;TYPE=WORK;VOICE:+595215172000' + "\n" + rowTEFL +
-                    'EMAIL;TYPE=WORK:' + full.tarjeta_personal_email + "\n" + 
-                    'URL:https://www.conmebol.com/' + "\n" + 
-                    'END:VCARD';
+                        'BEGIN:VCARD' + "\n" + 
+                        'VERSION:3.0' + "\n" + 
+                        'N:' + full.tarjeta_personal_nombre + "\n" + 
+                        'FN:' + full.tarjeta_personal_nombre + "\n" +
+                        'ORG:Confederación Sudamericana de Fútbol - CONMEBOL' + "\n" +
+                        'ADR;TYPE=WORK:Autopista Silvio Pettirossi y Valois Rivarola - Luque - Paraguay ' + "\n" +
+                        'ROLE:' + full.tipo_cargo_nombre + "\n" + 
+                        'EMAIL;TYPE=WORK:' + full.tarjeta_personal_email + "\n";
+            
+                    xJSON2.forEach(element1 => {
+                        if(element1.tarjeta_personal_codigo == full.tarjeta_personal_codigo && element1.tarjeta_personal_telefono_visualizar == 'S'){
+                            rowVCARD= rowVCARD + 'TEL;TYPE=WORK;CELL:' + element1.tarjeta_personal_telefono_completo + "\n";
+                            rowTef  = '                       <span style="font-size:1.0rem; color:#205aa7;"> <i class="fa fa-mobile-alt" style="color:#74b8e5;"></i>&nbsp;&nbsp;&nbsp;&nbsp;'+ element1.tarjeta_personal_telefono_completo +' </span>';
+                        }  
+                    });
+            
+                    xJSON3.forEach(element1 => {
+                        if(element1.tarjeta_personal_codigo == full.tarjeta_personal_codigo && element1.tarjeta_personal_red_social_visualizar == 'S'){
+                            rowVCARD = rowVCARD + 'URL;' + element1.tarjeta_personal_red_social_direccion + "\n";
+                        }  
+                    });
+            
+                    rowVCARD = rowVCARD + 'END:VCARD';
 
                     rowVIEW = rowVIEW + '<div class="row" style="height:200px;">';
-                    rowVIEW = rowVIEW + '<div class="col-sm-10">';
+                    rowVIEW = rowVIEW + '<div class="col-sm-9">';
                     rowVIEW = rowVIEW + '<span style="font-weight:bold;">Código Solicitud:</span> ' + full.tarjeta_personal_codigo;
                     rowVIEW = rowVIEW + '<br>';
                     rowVIEW = rowVIEW + '<span style="font-weight:bold;">Estado Solicitud:</span> ' + full.tipo_estado_castellano;
@@ -87,21 +92,10 @@ $(document).ready(function() {
 
 					rowVIEW = rowVIEW + '</div>';
                     rowVIEW = rowVIEW + '</div>';
-                    rowVIEW = rowVIEW + '<div class="col-sm-2">';
-                    rowVIEW = rowVIEW + '<canvas id="qrcode'+ full.tarjeta_personal_codigo +'" style="float:right;">';
-                    rowVIEW = rowVIEW + '</canvas>';
+                    rowVIEW = rowVIEW + '<div class="col-sm-3 center">';
+                    rowVIEW = rowVIEW + '<img style="float:right;" src="https://api.qrserver.com/v1/create-qr-code/?data='+ encodeURIComponent(rowVCARD) +'&size=200x200" />';
                     rowVIEW = rowVIEW + '</div>';
                     rowVIEW = rowVIEW + '</div>';
-                    
-                    (function() {
-                        qr = new QRious({
-                        element: document.getElementById('qrcode'+ full.tarjeta_personal_codigo),
-                        size: 200,
-                        value: rowVCARD
-                    });
-                })();
-
-                   // $('#qrcode'+ full.tarjeta_personal_codigo).html('<img src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=' + encodeURIComponent(rowVCARD) + '&choe=UTF-8" alt="QR code" />');
                     
 					return rowVIEW;	
 				}
