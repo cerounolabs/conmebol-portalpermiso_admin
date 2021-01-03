@@ -114,7 +114,7 @@
 		}
 	}
 	
-	header('Location: ../../'.$work03.'?codigo='.$work01.'&code='.$code.'&msg='.$msg);
+	header('Location: ../../'.$work03.'codigo='.$work01.'&code='.$code.'&msg='.$msg);
 
 	ob_end_flush();
 ?>
