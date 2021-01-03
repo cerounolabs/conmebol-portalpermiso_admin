@@ -102,7 +102,7 @@
             const _parm01BASE   = '<?php echo trim($usu_03); ?>';
             const _parm02BASE   = '<?php echo date('Y-m-d H:i:s'); ?>';
             const _parm03BASE   = '<?php echo trim($log_03); ?>';
-            const _parm04BASE   = 'colaborador/tpersonal_crud.php';
+            const _parm04BASE   = 'colaborador/tpersonal_crud.php?';
             const _parm05BASE   = '<?php echo trim($usu_05); ?>';
         </script>
 
