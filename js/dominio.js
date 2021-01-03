@@ -47,7 +47,7 @@ $(document).ready(function() {
 			{ data				: 'tipo_codigo', name : 'tipo_codigo'},
 			{ data				: 'tipo_orden', name : 'tipo_orden'},
 			{ data				: 'tipo_path', name : 'tipo_path'},
-			{ data				: 'tipo_estado_castellano', name : 'tipo_estado_castellano'},
+			{ data				: 'tipo_estado_nombre_castellano', name : 'tipo_estado_nombre_castellano'},
 			{ data				: 'tipo_nombre_ingles', name : 'tipo_nombre_ingles'},
 			{ data				: 'tipo_nombre_castellano', name : 'tipo_nombre_castellano'},
 			{ data				: 'tipo_nombre_portugues', name : 'tipo_nombre_portugues'},

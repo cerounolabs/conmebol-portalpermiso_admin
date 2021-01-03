@@ -32,6 +32,7 @@
                             <h4 class="page-title">Bienvenido <?php echo $usu_01.' '.$usu_04; ?></h4>
                             <div class="d-flex align-items-center"></div>
                         </div>
+
                         <div class="col-7 align-self-center">
                             <div class="d-flex no-block justify-content-end align-items-center">
                                 <nav aria-label="breadcrumb">
@@ -58,6 +59,7 @@
                                             <a onclick="setTPersonal(0, 1);" class="btn text-center text-white" style="background-color:#163562; border-color:#163562;" href="javascript:void(0)" role="button" data-toggle="modal" data-target="#modaldiv" title="Nuevo"><i class="ti-plus"></i></a>
                                         </h4>
                                     </div>
+                                    
                                     <div class="table-responsive">
                                         <table id="tableLoad" class="table v-middle" style="width: 100%;">
                                             <thead id="tableCodigo" class="">

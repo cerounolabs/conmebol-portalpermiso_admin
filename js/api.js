@@ -1,4 +1,4 @@
-const urlBASE   = 'http://api.conmebol.com/sfholox/public/v2';
+const urlBASE   = 'http://api.conmebol.com/sfholox/public/v1';
 const autBASE   = 'dXNlcl9zZmhvbG94Om5zM3JfNWZoMCEweA==';
 const xHTTP	    = new XMLHttpRequest();
 

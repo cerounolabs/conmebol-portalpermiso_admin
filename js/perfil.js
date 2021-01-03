@@ -12,6 +12,22 @@ function getVCARD(codDoc){
     var html    = '';
 
     xJSON1.forEach(element => {
+        var vcardTEL = '';
+        var vcardURL = '';
+
+        xJSON2.forEach(element1 => {
+            if(element1.tarjeta_personal_codigo == element.tarjeta_personal_codigo && element1.tarjeta_personal_telefono_visualizar == 'S'){
+                vcardTEL= element1.tarjeta_personal_telefono_completo;
+                rowTef  = '                       <span style="font-size:1.0rem; color:#205aa7;"> <i class="fa fa-mobile-alt" style="color:#74b8e5;"></i>&nbsp;&nbsp;&nbsp;&nbsp;'+ element1.tarjeta_personal_telefono_completo +' </span>';
+            }  
+        });
+
+        xJSON3.forEach(element1 => {
+            if(element1.tarjeta_personal_codigo == element.tarjeta_personal_codigo && element1.tarjeta_personal_red_social_visualizar == 'S'){
+                vcardURL = element1.tarjeta_personal_red_social_direccion;
+            }  
+        });
+
         rowVCARD = rowVCARD + 
             'BEGIN:VCARD' + "\n" + 
             'VERSION:3.0' + "\n" + 
@@ -20,22 +36,10 @@ function getVCARD(codDoc){
             'ORG:Confederación Sudamericana de Fútbol - CONMEBOL' + "\n" +
             'ADR;TYPE=WORK:Autopista Silvio Pettirossi y Valois Rivarola - Luque - Paraguay ' + "\n" +
             'ROLE:' + element.tipo_cargo_nombre + "\n" + 
-            'EMAIL;TYPE=WORK:' + element.tarjeta_personal_email + "\n";
-
-        xJSON2.forEach(element1 => {
-            if(element1.tarjeta_personal_codigo == element.tarjeta_personal_codigo && element1.tarjeta_personal_telefono_visualizar == 'S'){
-                rowVCARD= rowVCARD + 'TEL;TYPE=WORK;CELL:' + element1.tarjeta_personal_telefono_completo + "\n";
-                rowTef  = '                       <span style="font-size:1.0rem; color:#205aa7;"> <i class="fa fa-mobile-alt" style="color:#74b8e5;"></i>&nbsp;&nbsp;&nbsp;&nbsp;'+ element1.tarjeta_personal_telefono_completo +' </span>';
-            }  
-        });
-
-        xJSON3.forEach(element1 => {
-            if(element1.tarjeta_personal_codigo == element.tarjeta_personal_codigo && element1.tarjeta_personal_red_social_visualizar == 'S'){
-                rowVCARD = rowVCARD + 'URL;' + element1.tarjeta_personal_red_social_direccion + "\n";
-            }  
-        });
-
-        rowVCARD = rowVCARD + 'END:VCARD';
+            'EMAIL;TYPE=WORK:' + element.tarjeta_personal_email + "\n" + 
+            'TEL;TYPE=WORK;CELL:' + vcardTEL + "\n" +
+            'URL:' + vcardURL + "\n" +
+            'END:VCARD';
 
         html    =
             `<div class="modal-content" style="background-image:url('../assets/images/background/tarjeta_personal.png'); background-position:left; background-repeat:no-repeat; background-size:contain; border-radius:20px;">`+

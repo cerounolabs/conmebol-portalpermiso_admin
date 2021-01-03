@@ -98,10 +98,8 @@
         'N:'.$cabJSON['data'][0]['tarjeta_personal_nombre']."\n".
         'FN:'.$cabJSON['data'][0]['tarjeta_personal_nombre']."\n".
         'ORG:Confederación Sudamericana de Fútbol - CONMEBOL'."\n".
-//        'ADR;TYPE=WORK:Autopista Silvio Pettirossi y Valois Rivarola - Luque - Paraguay '."\n".
+        'ADR;TYPE=WORK:Autopista Silvio Pettirossi y Valois Rivarola - Luque - Paraguay '."\n".
         'ROLE:'.$cabJSON['data'][0]['tipo_cargo_nombre']."\n".
-//        'TITLE:' .$cabJSON['data'][0]['tipo_cargo_nombre']."\n".
-//        'TEL;TYPE=WORK;VOICE:+595215172000:'."\n".''.
         'EMAIL;TYPE=WORK:'.$cabJSON['data'][0]['tarjeta_personal_email']."\n";
 
         foreach($det1JSON['data'] as $sol01KEY => $sol01VALUE){
@@ -121,7 +119,6 @@
         $mpdf->WriteFixedPosHTML('<img src="https://api.qrserver.com/v1/create-qr-code/?data='.urlencode($rowVCARD).'&size=200x200&color=32-90-167" />', 113, 165, 100, 140, 'auto');
         $mpdf->WriteHTML('</body>');
 
-//        $mpdf -> Output('CARSITOComprobante_'.$fechaHora.'.pdf', 'I');
         $mpdf->Output();
         exit;
     }
