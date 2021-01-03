@@ -263,7 +263,7 @@ function setTPersonal(codElem, codAcc){
                 
         });
     } else if(codAcc == 2){
-        window.open('../export/tpersonal_pdf.php?&codigo='+ codElem, '_blank'); 
+        window.open('../export/tpersonal_pdf.php?codigo='+ codElem, '_blank'); 
     } else if(codAcc > 2 && codAcc < 5){
         xJSON5.forEach(element => {
             if (element.tarjeta_personal_codigo == codElem){
