@@ -2,7 +2,7 @@ function setTPersonal(codElem, codAcc){
     var xJSON   = getColaboradorId(_parm05BASE);
     var xJSON2  = getDominio('TARJETAPERSONALCANTIDAD')
     var xJSON3  = getDominio('REDSOCIALTIPO');
-    var xJSON4  = getDominio('PREFIJOCELULARTIPO');
+    var xJSON4  = getDominio('TELEFONOPAIS');
     var xJSON5  = getTPersonaId(codElem);
     var xJSON6  = getTPersonalPrefijoTPersonal(codElem);
     var xJSON7  = getTPersonalRSocialTPersonal(codElem);

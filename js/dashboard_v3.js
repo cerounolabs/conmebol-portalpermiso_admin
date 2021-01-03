@@ -42,33 +42,8 @@ $(document).ready(function() {
             { render			: 
 				function (data, type, full, meta) {
                     var rowVCARD    = '';
-                    var rowVIEW     = '';
-/*
-                    rowVCARD = rowVCARD + 
-                        'BEGIN:VCARD' + "\n" + 
-                        'VERSION:3.0' + "\n" + 
-                        'N:' + full.tarjeta_personal_nombre + "\n" + 
-                        'FN:' + full.tarjeta_personal_nombre + "\n" +
-                        'ORG:Confederación Sudamericana de Fútbol - CONMEBOL' + "\n" +
-                        'ADR;TYPE=WORK:Autopista Silvio Pettirossi y Valois Rivarola - Luque - Paraguay ' + "\n" +
-                        'ROLE:' + full.tipo_cargo_nombre + "\n" + 
-                        'EMAIL;TYPE=WORK:' + full.tarjeta_personal_email + "\n";
-            
-                    xJSON2.forEach(element1 => {
-                        if(element1.tarjeta_personal_codigo == full.tarjeta_personal_codigo && element1.tarjeta_personal_telefono_visualizar == 'S'){
-                            rowVCARD= rowVCARD + 'TEL;TYPE=WORK;CELL:' + element1.tarjeta_personal_telefono_completo + "\n";
-                            rowTef  = '                       <span style="font-size:1.0rem; color:#205aa7;"> <i class="fa fa-mobile-alt" style="color:#74b8e5;"></i>&nbsp;&nbsp;&nbsp;&nbsp;'+ element1.tarjeta_personal_telefono_completo +' </span>';
-                        }  
-                    });
-            
-                    xJSON3.forEach(element1 => {
-                        if(element1.tarjeta_personal_codigo == full.tarjeta_personal_codigo && element1.tarjeta_personal_red_social_visualizar == 'S'){
-                            rowVCARD = rowVCARD + 'URL;' + element1.tarjeta_personal_red_social_direccion + "\n";
-                        }  
-                    });
-            
-                    rowVCARD = rowVCARD + 'END:VCARD';
-*/
+					var rowVIEW     = '';
+					
                     rowVIEW = rowVIEW + '<div class="row" style="height:200px;">';
                     rowVIEW = rowVIEW + '<div class="col-sm-9">';
                     rowVIEW = rowVIEW + '<span style="font-weight:bold;">Código Solicitud:</span> ' + full.tarjeta_personal_codigo;
