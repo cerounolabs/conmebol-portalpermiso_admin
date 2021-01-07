@@ -133,12 +133,13 @@
         </script>
 
         <script src="../js/api.js?<?php echo date('Ymd');?>"></script>
-        <script src="../js/comprobante.js?<?php echo date('Ymd');?>"></script>
 
         <script>
-            window.onload = function() {
-                document.getElementById('var001').focus();
-            }
+            $(document).ready(function() {
+                setTimeout(function() {
+                    $("#var001").focus();
+                }, 100);
+            });
         </script>
     </body>
 </html>
