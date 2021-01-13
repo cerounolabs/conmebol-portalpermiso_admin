@@ -154,7 +154,7 @@ function cantFecha(){
 //        fecDesde.value = '';
 //        fecHasta.value = '';
 //        fecDesde.focus();
-    }
+//    }
 }
 
 function cantHora(){
