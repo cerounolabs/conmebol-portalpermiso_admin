@@ -119,7 +119,7 @@ function cantFecha(){
         }
     });
 
-    if (fec1.getDay() != 0 && fec1.getDay() != 6) {
+//    if (fec1.getDay() != 0 && fec1.getDay() != 6) {
         if (fec1 <= fec2) {
             var diffDays    = ((fec2.getTime() - fec1.getTime()) / (1000 * 3600 * 24));
             var cantDays    = 0;
@@ -149,11 +149,11 @@ function cantFecha(){
             alert('La FECHA RETORNO no puede ser menor que ' + fecDesde.value);
             fecHasta.value = fecDesde.value;
         }
-    } else {
-        alert('La FECHA INICIO no puede ser Sábado o Domingo. Verifique!');
-        fecDesde.value = '';
-        fecHasta.value = '';
-        fecDesde.focus();
+//    } else {
+//        alert('La FECHA INICIO no puede ser Sábado o Domingo. Verifique!');
+//        fecDesde.value = '';
+//        fecHasta.value = '';
+//        fecDesde.focus();
     }
 }
 
