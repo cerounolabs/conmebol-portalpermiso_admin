@@ -83,7 +83,8 @@
 
                     <div class="row">
 <?php
-    foreach ($compJSON['data'] as $compKEY => $compVALUE) {
+    if ($compJSON['code'] === 200){
+        foreach ($compJSON['data'] as $compKEY => $compVALUE) {
 ?>
                         <div class="col-lg-3 col-md-6">
                             <div class="card">
@@ -101,6 +102,7 @@
                             </div>
                         </div>
 <?php
+        }
     }
 ?>
                     </div>
@@ -133,6 +135,7 @@
         </script>
 
         <script src="../js/api.js?<?php echo date('Ymd');?>"></script>
+        <script src="../js/comprobante.js?<?php echo date('Ymd');?>"></script>
 
         <script>
             $(document).ready(function() {
