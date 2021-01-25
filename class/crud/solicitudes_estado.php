@@ -9,6 +9,7 @@
 
 	$val01          = strtoupper($_POST['var01']);
 	$val02          = strtoupper($_POST['var02']);
+	$val03          = strtoupper($_POST['var03']);
 
 	$work01         = $_POST['workCodigo'];
 	$work02         = $_POST['workAccion'];
@@ -25,6 +26,7 @@
 				'tipo_estado_codigo'				=> $val01,
 				'tipo_accion_codigo'				=> $work02,
 				'solicitud_codigo'					=> $work01,
+				'solicitud_documento_jefe'			=> $val03,
 				'solicitud_observacion'				=> $val02,
 				'solicitud_usuario'					=> $usu_03,
 				'solicitud_fecha_hora'				=> date('Y-m-d H:i:s'),

@@ -1476,6 +1476,10 @@ function setEstado(rowSel, rowEst, rowAcc, rowFun, rowCar, rowPage){
         case 2:
             rowAcc = 'T';
             break;
+
+        case 3:
+            rowAcc = 'X';
+            break;
     }
 
     if (rowEst == 'V') {
@@ -1566,37 +1570,6 @@ function setEstado(rowSel, rowEst, rowAcc, rowFun, rowCar, rowPage){
         if (codRow.getAttribute('value2') != rowFun) {
             if ((codRow.getAttribute('value') == 'A' || codRow.getAttribute('value') == 'C') && (rowEst == 'I' || rowEst == 'P' || rowEst == 'C') && (rowCar == 21 || rowCar == 87 || rowCar == 109)) {
                 html    =
-                '<div class="modal-content">'+
-                '   <form id="form" data-parsley-validate method="post" action="../class/crud/solicitudes_estado.php">'+
-                '	    <div class="modal-header" style="color:#fff; background:'+colEst+';">'+
-                '		    <h4 class="modal-title" id="vcenter"> '+titEst+' </h4>'+
-                '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
-                '	    </div>'+
-                '	    <div class="modal-body" >'+
-                '           <div class="form-group">'+
-                '               <input id="workCodigo" name="workCodigo" value="'+codRow.id+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-                '               <input id="workAccion" name="workAccion" value="'+rowAcc+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-                '               <input id="workPage" name="workPage" value="'+ rowPage +'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-                '               <input id="var01" name="var01" value="'+rowEst+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-                '           </div>'+
-                '           <div class="row pt-3">'+
-                '                <div class="col-sm-12">'+
-                '                    <div class="form-group">'+
-                '                        <label for="var02">COMENTARIO</label>'+
-                '                        <textarea id="var02" name="var02" class="form-control" rows="3" style="text-transform:uppercase;" required></textarea>'+
-                '                    </div>'+
-                '                </div>'+
-                '           </div>'+
-                '	    </div>'+
-                '	    <div class="modal-footer">'+
-                '           <button type="submit" class="btn '+colBtn+'">'+titEst+'</button>'+
-                '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
-                '	    </div>'+
-                '   </form>'+
-                '</div>';
-            } else {
-                if (codRow.getAttribute('value') == 'I') {
-                    html    =
                     '<div class="modal-content">'+
                     '   <form id="form" data-parsley-validate method="post" action="../class/crud/solicitudes_estado.php">'+
                     '	    <div class="modal-header" style="color:#fff; background:'+colEst+';">'+
@@ -1625,6 +1598,75 @@ function setEstado(rowSel, rowEst, rowAcc, rowFun, rowCar, rowPage){
                     '	    </div>'+
                     '   </form>'+
                     '</div>';
+            } else {
+                if (codRow.getAttribute('value') == 'I') {
+                    if (rowAcc == 'X') {
+                        html    =
+                            '<div class="modal-content">'+
+                            '   <form id="form" data-parsley-validate method="post" action="../class/crud/solicitudes_estado.php">'+
+                            '	    <div class="modal-header" style="color:#fff; background:'+colEst+';">'+
+                            '		    <h4 class="modal-title" id="vcenter"> '+titEst+' </h4>'+
+                            '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+                            '	    </div>'+
+                            '	    <div class="modal-body" >'+
+                            '           <div class="form-group">'+
+                            '               <input id="workCodigo" name="workCodigo" value="'+codRow.id+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                            '               <input id="workAccion" name="workAccion" value="'+rowAcc+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                            '               <input id="workPage" name="workPage" value="'+ rowPage +'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                            '               <input id="var01" name="var01" value="'+rowEst+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                            '           </div>'+
+                            '           <div class="row">'+
+                            '               <div class="col-sm-12">'+
+                            '                   <div class="form-group">'+
+                            '                       <label for="var03">DOCUMENTO COLABORADOR</label>'+
+                            '                       <input id="var03" name="var03" class="form-control" type="text" style="text-transform:uppercase; height:40px;" required>'+
+                            '                    </div>'+
+                            '               </div>'+
+                            '               <div class="col-sm-12">'+
+                            '                   <div class="form-group">'+
+                            '                       <label for="var02">COMENTARIO</label>'+
+                            '                       <textarea id="var02" name="var02" class="form-control" rows="3" style="text-transform:uppercase;" required></textarea>'+
+                            '                   </div>'+
+                            '               </div>'+
+                            '           </div>'+
+                            '	    </div>'+
+                            '	    <div class="modal-footer">'+
+                            '           <button type="submit" class="btn '+colBtn+'">'+titEst+'</button>'+
+                            '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+                            '	    </div>'+
+                            '   </form>'+
+                            '</div>';
+                    } else {
+                        html    =
+                            '<div class="modal-content">'+
+                            '   <form id="form" data-parsley-validate method="post" action="../class/crud/solicitudes_estado.php">'+
+                            '	    <div class="modal-header" style="color:#fff; background:'+colEst+';">'+
+                            '		    <h4 class="modal-title" id="vcenter"> '+titEst+' </h4>'+
+                            '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+                            '	    </div>'+
+                            '	    <div class="modal-body" >'+
+                            '           <div class="form-group">'+
+                            '               <input id="workCodigo" name="workCodigo" value="'+codRow.id+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                            '               <input id="workAccion" name="workAccion" value="'+rowAcc+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                            '               <input id="workPage" name="workPage" value="'+ rowPage +'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                            '               <input id="var01" name="var01" value="'+rowEst+'" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+                            '           </div>'+
+                            '           <div class="row pt-3">'+
+                            '                <div class="col-sm-12">'+
+                            '                    <div class="form-group">'+
+                            '                        <label for="var02">COMENTARIO</label>'+
+                            '                        <textarea id="var02" name="var02" class="form-control" rows="3" style="text-transform:uppercase;" required></textarea>'+
+                            '                    </div>'+
+                            '                </div>'+
+                            '           </div>'+
+                            '	    </div>'+
+                            '	    <div class="modal-footer">'+
+                            '           <button type="submit" class="btn '+colBtn+'">'+titEst+'</button>'+
+                            '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+                            '	    </div>'+
+                            '   </form>'+
+                            '</div>';
+                    }
                 } else {
                     html    =
                     '<div class="modal-content">'+
