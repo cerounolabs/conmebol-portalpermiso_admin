@@ -29,13 +29,13 @@ $(document).ready(function() {
         },
 		data		: xJSON,
 		columnDefs	: [
-			{ targets			: [0],	visible : true,	searchable : true,	orderData : [0, 0] },
+			{ targets			: [0],	visible : false,searchable : false,	orderData : [0, 0] },
 			{ targets			: [1],	visible : true,	searchable : true,	orderData : [1, 0] },
 			{ targets			: [2],	visible : true,	searchable : true,	orderData : [2, 0] },
 			{ targets			: [3],	visible : true,	searchable : true,	orderData : [3, 0] },
 			{ targets			: [4],	visible : true,	searchable : true,	orderData : [4, 0] },
 			{ targets			: [5],	visible : true,	searchable : true,	orderData : [5, 0] },
-			{ targets			: [6],	visible : true,	searchable : true,	orderData : [6, 0] }
+			{ targets			: [6],	visible : false,searchable : false,	orderData : [6, 0] }
 		],
 		columns		: [
 			{ data				: 'marcacion_codigo', name : 'marcacion_codigo'},

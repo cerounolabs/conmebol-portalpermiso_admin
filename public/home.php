@@ -322,6 +322,7 @@
 
         <script src="../js/api.js?<?php echo date('Ymd'); ?>"></script>
         <script src="../js/tpersonal.js?<?php echo date('Ymd'); ?>"></script>
+        <script src="../js/marcacion.js?<?php echo date('Ymd');?>"></script>
 
         <script>
             const docFunc = '<?php echo trim($usu_05); ?>';
@@ -336,7 +337,5 @@
                 localStorage.setItem('solicitudesJSON', JSON.stringify(<?php echo json_encode($solictudesJSON); ?>));
             }
         </script>
-
-        <script src="../js/marcacion.js?<?php echo date('Ymd');?>"></script>
     </body>
 </html>
