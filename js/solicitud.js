@@ -57,7 +57,8 @@ $(document).ready(function() {
 			{ data				: 'auditoria_usuario', name : 'auditoria_usuario'},
 			{ data				: 'auditoria_fecha_hora', name : 'auditoria_fecha_hora'},
 			{ data				: 'auditoria_ip', name : 'auditoria_ip'},
-			{ render			: function (data, type, full, meta) {return '<a href="javascript:void(0)" id="'+ full.tipo_permiso_codigo +'" role="button" class="btn btn-success" data-toggle="modal" data-target="#modaldiv" onclick="getTipoSolicitudId(this.id);"><i class="ti-pencil"></i>&nbsp;</a>&nbsp;';}},
+			{ render			: function (data, type, full, meta) {
+				return '<a href="javascript:void(0)" id="'+ full.tipo_permiso_codigo +'" role="button" class="btn btn-success" data-toggle="modal" data-target="#modaldiv" onclick="getTipoSolicitudId(this.id);"><i class="ti-pencil"></i>&nbsp;</a>&nbsp;';}},
 		]
 	});
 });
