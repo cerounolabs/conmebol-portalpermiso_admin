@@ -159,8 +159,9 @@
                                     <h4 class="col-10 card-title"><?php echo $titSol; ?></h4>
                                     <h4 class="col-2 card-title" style="text-align: right;">
                                         <a class="btn btn-info" style="background-color:#163562; border-color:#163562;"  href="../export/export_solicitudes.php?parm01=<?php echo $work01; ?>&parm02=<?php echo $usu_05; ?>&parm03=<?php echo $work02; ?>" role="button" title="Export XLS"><i class="ti-cloud-down"></i></a>
-                                        <a class="btn btn-info" style="background-color:#163562; border-color:#163562;"  href="javascript:void(0)" role="button" data-toggle="modal" data-target="#modaldiv" title="Nueva Solicitud" onclick="setSolicitud('<?php echo $workPage; ?>');"><i class="ti-plus"></i></a>
-                                	</h4>
+<!--
+                                        <a class="btn btn-info" style="background-color:#163562; border-color:#163562;"  href="javascript:void(0)" role="button" data-toggle="modal" data-target="#modaldiv" title="Nueva Solicitud" onclick="setSolicitud('<?php //echo $workPage; ?>');"><i class="ti-plus"></i></a>
+-->                                	</h4>
 								</div>
                                 <div class="table-responsive">
                                     <table id="tableLoad" class="table v-middle" style="width: 100%;">
