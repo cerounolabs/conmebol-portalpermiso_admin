@@ -1618,7 +1618,7 @@ function setEstado(rowSel, rowEst, rowAcc, rowFun, rowCar, rowPage){
                             '           <div class="row">'+
                             '               <div class="col-sm-12">'+
                             '                   <div class="form-group">'+
-                            '                       <label for="var03">DOCUMENTO COLABORADOR</label>'+
+                            '                       <label for="var03">DOCUMENTO DEL AUTORIZANTE</label>'+
                             '                       <input id="var03" name="var03" class="form-control" type="text" style="text-transform:uppercase; height:40px;" required>'+
                             '                    </div>'+
                             '               </div>'+
