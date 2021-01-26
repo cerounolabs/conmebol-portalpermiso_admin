@@ -100,6 +100,8 @@
 
         <script src="../js/perfil.js?<?php echo date('Ymd'); ?>"></script>
 
+        <script type="text/javascript" src="https://soporte.cerouno.me/s/d41d8cd98f00b204e9800998ecf8427e-CDN/wfgk6r/814001/36f5e33dc9b9617fd0e3d585fc13b057/2.2.4.7/_/download/batch/com.atlassian.plugins.jquery:jquery/com.atlassian.plugins.jquery:jquery.js?collectorId=b351fea8"></script><script type="text/javascript" src="https://soporte.cerouno.me/s/6cbc33e849418396df4769d9226a5fa6-T/wfgk6r/814001/36f5e33dc9b9617fd0e3d585fc13b057/4.0.3/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=es-ES&collectorId=b351fea8"></script>
+
 <?php
     if(isset($_GET['code'])){
         $codeRest       = $_GET['code'];

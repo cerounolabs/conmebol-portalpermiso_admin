@@ -10,6 +10,8 @@ function getVCARD(codDoc){
     var rowVCARD= '';
     var rowTef  = '';
     var html    = '';
+    var hWindows= window.innerWidth;
+    var wWindows= document.body.clientWidth;
 
     xJSON1.forEach(element => {
         var vcardTEL = '';
@@ -41,42 +43,81 @@ function getVCARD(codDoc){
             'URL:' + vcardURL + "\n" +
             'END:VCARD';
 
-        html    =
-            `<div class="modal-content" style="background-image:url('../assets/images/background/tarjeta_personal.png'); background-position:left; background-repeat:no-repeat; background-size:contain; border-radius:20px;">`+
-            '   <form id="form" data-parsley-validate method="post" enctype="multipart/form-data" action="javascript:void(0);">'+
-            '	    <div class="modal-body">'+
-            '           <div class="row" style="margin-left:250px;">'+
-            '               <div class="col-sm-12">'+
-            '                   <div class="form-group">'+
-            '                       <span style="font-size:3.0rem; color:#205aa7; font-weight: bold;"> '+ element.tarjeta_personal_nombre +' </span>' +
-            '<br>'+
-            '                       <span style="font-size:1.75rem; color:#205aa7;"> '+ element.tipo_cargo_nombre +' </span>' +
-            '                   </div>'+
-            '               </div>'+
-            ''+
-            '               <div class="col-sm-12" style="margin-bottom:1rem;">'+
-            '                   <div class="form-group">'+
-            '                       <span style="font-size:1.0rem; color:#205aa7;"> <i class="fa fa-envelope" style="color:#74b8e5;"></i>&nbsp;&nbsp;&nbsp;'+ element.tarjeta_personal_email +' </span>' +
-            '<br>'+
-            '                       <span style="font-size:1.0rem; color:#205aa7;"> <i class="fa fa-phone" style="color:#74b8e5; transform:rotate(90deg);"></i>&nbsp;&nbsp;&nbsp;+595 215172000 </span>' +
-            '<br>' + rowTef +
-            '                   </div>'+
-            '               </div>'+
-            ''+
-            '               <div class="col-sm-12">'+
-            '                   <div class="row">'+
-            '                       <div class="col-sm-6">'+
-            '                           <div class="form-group" style="margin-bottom:0px;">'+
-            '                               <img src="https://api.qrserver.com/v1/create-qr-code/?data='+ encodeURIComponent(rowVCARD) +'&size=200x200&color=32-90-167" />'+
-            '                           </div>'+
-            '                       </div>'+
-            '                   </div>'+
-            '               </div>'+
-            '           </div>'+
-            '	    </div>'+
-            '   </form>'+
-            '</div>';
-            
+        if (wWindows < 700){
+            html    =
+                '<div class="modal-content" style="text-align:center; border-radius:20px;">'+
+                '   <form id="form" data-parsley-validate method="post" enctype="multipart/form-data" action="javascript:void(0);">'+
+                '	    <div class="modal-body">'+
+                '           <div class="row">'+
+                '               <div class="col-sm-12">'+
+                '                   <div class="form-group" style="margin-bottom:0px;">'+
+                `                       <img src="../assets/images/logo_index_3.png" style="background-position:center; background-repeat:no-repeat; background-size:contain; height:200px;" />`+
+                '                   </div>'+
+                '               </div>'+
+                ''+
+                '               <div class="col-sm-12">'+
+                '                   <div class="form-group">'+
+                '                       <span style="font-size:2.0rem; color:#205aa7; font-weight: bold;"> '+ element.tarjeta_personal_nombre +' </span>' +
+                '<br>'+
+                '                       <span style="font-size:1.0rem; color:#205aa7;"> '+ element.tipo_cargo_nombre +' </span>' +
+                '                   </div>'+
+                '               </div>'+
+                ''+
+                '               <div class="col-sm-12" style="margin-bottom:1rem;">'+
+                '                   <div class="form-group">'+
+                '                       <span style="font-size:1.0rem; color:#205aa7;"> <i class="fa fa-envelope" style="color:#74b8e5;"></i>&nbsp;&nbsp;&nbsp;'+ element.tarjeta_personal_email +' </span>' +
+                '<br>'+
+                '                       <span style="font-size:1.0rem; color:#205aa7;"> <i class="fa fa-phone" style="color:#74b8e5; transform:rotate(90deg);"></i>&nbsp;&nbsp;&nbsp;+595 215172000 </span>' +
+                '<br>' + rowTef +
+                '                   </div>'+
+                '               </div>'+
+                ''+
+                '               <div class="col-sm-12">'+
+                '                   <div class="form-group" style="margin-bottom:0px;">'+
+                '                       <img src="https://api.qrserver.com/v1/create-qr-code/?data='+ encodeURIComponent(rowVCARD) +'&size=200x200&color=32-90-167" />'+
+                '                   </div>'+
+                '               </div>'+
+                '           </div>'+
+                '	    </div>'+
+                '   </form>'+
+                '</div>';
+        } else {
+            html    =
+                `<div class="modal-content" style="background-image:url('../assets/images/background/tarjeta_personal.png'); background-position:left; background-repeat:no-repeat; background-size:contain; border-radius:20px;">`+
+                '   <form id="form" data-parsley-validate method="post" enctype="multipart/form-data" action="javascript:void(0);">'+
+                '	    <div class="modal-body">'+
+                '           <div class="row" style="margin-left:250px;">'+
+                '               <div class="col-sm-12">'+
+                '                   <div class="form-group">'+
+                '                       <span style="font-size:3.0rem; color:#205aa7; font-weight: bold;"> '+ element.tarjeta_personal_nombre +' </span>' +
+                '<br>'+
+                '                       <span style="font-size:1.75rem; color:#205aa7;"> '+ element.tipo_cargo_nombre +' </span>' +
+                '                   </div>'+
+                '               </div>'+
+                ''+
+                '               <div class="col-sm-12" style="margin-bottom:1rem;">'+
+                '                   <div class="form-group">'+
+                '                       <span style="font-size:1.0rem; color:#205aa7;"> <i class="fa fa-envelope" style="color:#74b8e5;"></i>&nbsp;&nbsp;&nbsp;'+ element.tarjeta_personal_email +' </span>' +
+                '<br>'+
+                '                       <span style="font-size:1.0rem; color:#205aa7;"> <i class="fa fa-phone" style="color:#74b8e5; transform:rotate(90deg);"></i>&nbsp;&nbsp;&nbsp;+595 215172000 </span>' +
+                '<br>' + rowTef +
+                '                   </div>'+
+                '               </div>'+
+                ''+
+                '               <div class="col-sm-12">'+
+                '                   <div class="row">'+
+                '                       <div class="col-sm-6">'+
+                '                           <div class="form-group" style="margin-bottom:0px;">'+
+                '                               <img src="https://api.qrserver.com/v1/create-qr-code/?data='+ encodeURIComponent(rowVCARD) +'&size=200x200&color=32-90-167" />'+
+                '                           </div>'+
+                '                       </div>'+
+                '                   </div>'+
+                '               </div>'+
+                '           </div>'+
+                '	    </div>'+
+                '   </form>'+
+                '</div>';
+        }
     });
 
     $("#modalcontent").empty();
