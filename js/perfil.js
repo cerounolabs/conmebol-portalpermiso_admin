@@ -64,7 +64,7 @@ function getVCARD(codDoc){
                 '               </div>'+
                 ''+
                 '               <div class="col-sm-12" style="margin-bottom:0px;">'+
-                '                   <div class="form-group" style="font-size:0.75rem !important;">'+
+                '                   <div class="form-group" style="font-size:0.75rem !important; padding:0px 100px; display:flow-root; text-align:left;">'+
                 '                       <span style="color:#205aa7;"> <i class="fa fa-envelope" style="color:#74b8e5;"></i>&nbsp;&nbsp;&nbsp;'+ element.tarjeta_personal_email +' </span>' +
                 '<br>'+
                 '                       <span style="color:#205aa7;"> <i class="fa fa-phone" style="color:#74b8e5; transform:rotate(90deg);"></i>&nbsp;&nbsp;&nbsp;+595 215172000 </span>' +
@@ -81,7 +81,6 @@ function getVCARD(codDoc){
                 '               <div class="col-sm-12">'+
                 '                   <div class="form-group">'+
                 '                       <span style="font-size:0.75rem; color:#205aa7; text-align:center; padding:0px 90px; display:block;"> Autopista Silvio Pettirossi y Valois Rivarola. Luque, Paraguay. </span>' +
-                '<br>'+
                 '                       <span style="font-size:1rem; color:#205aa7; font-weight:bold;"> www.conmebol.com </span>' +
                 '                   </div>'+
                 '               </div>'+
