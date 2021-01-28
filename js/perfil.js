@@ -85,6 +85,10 @@ function getVCARD(codDoc){
                 '                       <span style="font-size:1rem; color:#205aa7; font-weight:bold;"> www.conmebol.com </span>' +
                 '                   </div>'+
                 '               </div>'+
+                ''+
+                '               <div class="col-sm-12" style="position:absolute; left:-16px; right:0; bottom:0; width:110%; overflow:hidden;">'+
+                '                       <img style="height:100%; width:100%;" src="../assets/images/background/tarjeta_personal_movil.png" />'+
+                '               </div>'+
                 '           </div>'+
                 '	    </div>'+
                 '   </form>'+
