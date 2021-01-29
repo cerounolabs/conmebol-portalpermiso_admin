@@ -56,7 +56,7 @@
             break;
 
         case 'T':
-            $col07 = 'true';
+            $col07 = 'false';
             $col08 = 'true';
             $col09 = 'true';
             $titSol= 'Todas las Solicitudes';
@@ -170,17 +170,17 @@
                                                 <th class="border-top-0" colspan="11">SOLICITUD</th>
                                             </tr>
                                             <tr class="bg-conmebol" style="text-align:center;">
-                                                <th class="border-top-0">C&Oacute;DIGO</th>
-                                                <th class="border-top-0">ESTADO</th>
-                                                <th class="border-top-0">FECHA</th>
-                                                <th class="border-top-0">ADJUNTO</th>
+                                                <th class="border-top-0" style= "width: 30px;">COD</th>
+                                                <th class="border-top-0" style= "width: 40px;" >ESTADO</th>
+                                                <th class="border-top-0"style= "width: 40px;" >FECHA</th>
+                                                <th class="border-top-0" style= "width: 140px;">ADJUNTO</th>
                                                 <th class="border-top-0">DOCUMENTO</th>
                                                 <th class="border-top-0">COLABORADOR</th>
                                                 <th class="border-top-0">TIPO</th>
                                                 <th class="border-top-0">SOLICITANTE / ANULADO POR</th>
                                                 <th class="border-top-0">AUTORIZADO / ANULADO POR</th>
                                                 <th class="border-top-0">APROBADO / ANULADO POR</th>
-                                                <th class="border-top-0"></th>
+                                                <th class="border-top-0" style= "width: 160px">OPCIONES</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -296,8 +296,17 @@
                     { render			: function (data, type, full, meta) {
                         var btn = '';
 
-                        if (full.solicitud_adjunto) {
-                            btn = '<a href="../uploads/solicitud/'+full.solicitud_adjunto+'" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';
+                        if (full.solicitud_adjunto1) {
+                            btn = '<a href="../uploads/solicitud/'+full.solicitud_adjunto1+'" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';
+                        }
+                        if (full.solicitud_adjunto2) {
+                            btn = btn +'&nbsp;<a href="../uploads/solicitud/'+full.solicitud_adjunto2+'" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';
+                        }
+                        if (full.solicitud_adjunto3) {
+                            btn = btn +'&nbsp;<a href="../uploads/solicitud/'+full.solicitud_adjunto3+'" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';
+                        }
+                        if (full.solicitud_adjunto4) {
+                            btn = btn +'&nbsp;<a href="../uploads/solicitud/'+full.solicitud_adjunto4+'" target="_blank" role="button" class="btn btn-primary"><i class="ti-import"></i></a>';
                         }
                             
                         return btn;
