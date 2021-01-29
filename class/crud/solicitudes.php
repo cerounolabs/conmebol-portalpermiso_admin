@@ -48,7 +48,7 @@
 		$target_file	= $target_nam.'.'.$imageFileType;
 
         if(isset($_POST['submit'])) {
-			if ($_FILES['var08_1']['type'] == 'application/pdf') {
+			if ($_FILES['var08_1']['type'] == 'application/pdf'||$_FILES['var08_1']['type'] =='application/vnd.openxmlformats-officedocument.presentationml.presentation'||$_FILES['var08_1']['type'] =='application/vnd.openxmlformats-officedocument.wordprocessingml.document'||$_FILES['var08_1']['type'] =='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'||$_FILES['var08_1']['type'] =='application/msword'||$_FILES['var08_1']['type'] =='application/vnd.ms-excel'||$_FILES['var08_1']['type'] =='application/vnd.ms-powerpoint'||$_FILES['var08_1']['type'] =='application/octet-stream')  {
 				$check = $_FILES['var08_1']['size'];
 			} else {
 				$check = getimagesize($_FILES['var08_1']['tmp_name']);
@@ -72,8 +72,8 @@
             $target_ban = false;
         }
         
-        if($imageFileType != 'jpg' && $imageFileType != 'png' && $imageFileType != 'jpeg' && $imageFileType != 'pdf' && $target_ban == true) {
-            $target_msn = 'ERROR: El formato del archivo no corresponde, solo permitido .jpg, .png, .jpeg, .pdf. Verifique!';
+        if($imageFileType != 'jpg' && $imageFileType != 'png' && $imageFileType != 'jpeg' && $imageFileType != 'pdf' && $imageFileType != 'msg' && $imageFileType != 'xls' && $imageFileType != 'xlsx' && $imageFileType != 'doc' && $imageFileType != 'docx' && $imageFileType != 'ppt' && $imageFileType != 'pptx' && $target_ban == true) {
+            $target_msn = 'ERROR: El formato del archivo no corresponde, solo permitido .jpg, .png, .jpeg, .pdf, .msg, .xls, .xlsx, .doc, .docx, .ppt, pptx. Verifique!';
             $target_ban = false;
         }
 
@@ -102,7 +102,7 @@
 		$target_file	= $target_nam.'.'.$imageFileType;
 
         if(isset($_POST['submit'])) {
-			if ($_FILES['var08_2']['type'] == 'application/pdf') {
+			if ($_FILES['var08_2']['type'] == 'application/pdf'||$_FILES['var08_1']['type'] =='application/vnd.openxmlformats-officedocument.presentationml.presentation'||$_FILES['var08_1']['type'] =='application/vnd.openxmlformats-officedocument.wordprocessingml.document'||$_FILES['var08_1']['type'] =='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'||$_FILES['var08_1']['type'] =='application/msword'||$_FILES['var08_1']['type'] =='application/vnd.ms-excel'||$_FILES['var08_1']['type'] =='application/vnd.ms-powerpoint'||$_FILES['var08_1']['type'] =='application/octet-stream') {
 				$check = $_FILES['var08_2']['size'];
 			} else {
 				$check = getimagesize($_FILES['var08_2']['tmp_name']);
@@ -126,8 +126,8 @@
             $target_ban = false;
         }
         
-        if($imageFileType != 'jpg' && $imageFileType != 'png' && $imageFileType != 'jpeg' && $imageFileType != 'pdf' && $target_ban == true) {
-            $target_msn = 'ERROR: El formato del archivo no corresponde, solo permitido .jpg, .png, .jpeg, .pdf. Verifique!';
+        if($imageFileType != 'jpg' && $imageFileType != 'png' && $imageFileType != 'jpeg' && $imageFileType != 'pdf' && $imageFileType != 'msg' && $imageFileType != 'xls' && $imageFileType != 'xlsx' && $imageFileType != 'doc' && $imageFileType != 'docx' && $imageFileType != 'ppt' && $imageFileType != 'pptx' && $target_ban == true) {
+            $target_msn = 'ERROR: El formato del archivo no corresponde, solo permitido .jpg, .png, .jpeg, .pdf, .msg, .xls, .xlsx, .doc, .docx, .ppt, pptx. Verifique!';
             $target_ban = false;
         }
 
@@ -156,7 +156,7 @@
 		$target_file	= $target_nam.'.'.$imageFileType;
 
         if(isset($_POST['submit'])) {
-			if ($_FILES['var08_3']['type'] == 'application/pdf') {
+			if ($_FILES['var08_3']['type'] == 'application/pdf'||$_FILES['var08_1']['type'] =='application/vnd.openxmlformats-officedocument.presentationml.presentation'||$_FILES['var08_1']['type'] =='application/vnd.openxmlformats-officedocument.wordprocessingml.document'||$_FILES['var08_1']['type'] =='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'||$_FILES['var08_1']['type'] =='application/msword'||$_FILES['var08_1']['type'] =='application/vnd.ms-excel'||$_FILES['var08_1']['type'] =='application/vnd.ms-powerpoint'||$_FILES['var08_1']['type'] =='application/octet-stream') {
 				$check = $_FILES['var08_3']['size'];
 			} else {
 				$check = getimagesize($_FILES['var08_3']['tmp_name']);
@@ -180,8 +180,8 @@
             $target_ban = false;
         }
         
-        if($imageFileType != 'jpg' && $imageFileType != 'png' && $imageFileType != 'jpeg' && $imageFileType != 'pdf' && $target_ban == true) {
-            $target_msn = 'ERROR: El formato del archivo no corresponde, solo permitido .jpg, .png, .jpeg, .pdf. Verifique!';
+        if($imageFileType != 'jpg' && $imageFileType != 'png' && $imageFileType != 'jpeg' && $imageFileType != 'pdf' && $imageFileType != 'msg' && $imageFileType != 'xls' && $imageFileType != 'xlsx' && $imageFileType != 'doc' && $imageFileType != 'docx' && $imageFileType != 'ppt' && $imageFileType != 'pptx' && $target_ban == true) {
+            $target_msn = 'ERROR: El formato del archivo no corresponde, solo permitido .jpg, .png, .jpeg, .pdf, .msg, .xls, .xlsx, .doc, .docx, .ppt, pptx. Verifique!';
             $target_ban = false;
         }
 
@@ -247,6 +247,6 @@
 	} else {
 		header('Location: ../../public/'.$work03.'code='.$code.'&msg='.$message);
 	}
-
+	
 	ob_end_flush();
 ?>
