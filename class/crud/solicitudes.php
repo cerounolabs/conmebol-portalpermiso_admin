@@ -102,7 +102,7 @@
 		$target_file	= $target_nam.'.'.$imageFileType;
 
         if(isset($_POST['submit'])) {
-			if ($_FILES['var08_2']['type'] == 'application/pdf'||$_FILES['var08_1']['type'] =='application/vnd.openxmlformats-officedocument.presentationml.presentation'||$_FILES['var08_1']['type'] =='application/vnd.openxmlformats-officedocument.wordprocessingml.document'||$_FILES['var08_1']['type'] =='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'||$_FILES['var08_1']['type'] =='application/msword'||$_FILES['var08_1']['type'] =='application/vnd.ms-excel'||$_FILES['var08_1']['type'] =='application/vnd.ms-powerpoint'||$_FILES['var08_1']['type'] =='application/octet-stream') {
+			if ($_FILES['var08_2']['type'] == 'application/pdf'||$_FILES['var08_2']['type'] =='application/vnd.openxmlformats-officedocument.presentationml.presentation'||$_FILES['var08_2']['type'] =='application/vnd.openxmlformats-officedocument.wordprocessingml.document'||$_FILES['var08_2']['type'] =='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'||$_FILES['var08_2']['type'] =='application/msword'||$_FILES['var08_2']['type'] =='application/vnd.ms-excel'||$_FILES['var08_2']['type'] =='application/vnd.ms-powerpoint'||$_FILES['var08_2']['type'] =='application/octet-stream') {
 				$check = $_FILES['var08_2']['size'];
 			} else {
 				$check = getimagesize($_FILES['var08_2']['tmp_name']);
@@ -156,7 +156,7 @@
 		$target_file	= $target_nam.'.'.$imageFileType;
 
         if(isset($_POST['submit'])) {
-			if ($_FILES['var08_3']['type'] == 'application/pdf'||$_FILES['var08_1']['type'] =='application/vnd.openxmlformats-officedocument.presentationml.presentation'||$_FILES['var08_1']['type'] =='application/vnd.openxmlformats-officedocument.wordprocessingml.document'||$_FILES['var08_1']['type'] =='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'||$_FILES['var08_1']['type'] =='application/msword'||$_FILES['var08_1']['type'] =='application/vnd.ms-excel'||$_FILES['var08_1']['type'] =='application/vnd.ms-powerpoint'||$_FILES['var08_1']['type'] =='application/octet-stream') {
+			if ($_FILES['var08_3']['type'] == 'application/pdf'||$_FILES['var08_3']['type'] =='application/vnd.openxmlformats-officedocument.presentationml.presentation'||$_FILES['var08_3']['type'] =='application/vnd.openxmlformats-officedocument.wordprocessingml.document'||$_FILES['var08_3']['type'] =='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'||$_FILES['var08_3']['type'] =='application/msword'||$_FILES['var08_3']['type'] =='application/vnd.ms-excel'||$_FILES['var08_3']['type'] =='application/vnd.ms-powerpoint'||$_FILES['var08_3']['type'] =='application/octet-stream') {
 				$check = $_FILES['var08_3']['size'];
 			} else {
 				$check = getimagesize($_FILES['var08_3']['tmp_name']);
