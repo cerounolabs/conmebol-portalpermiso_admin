@@ -41,7 +41,7 @@
 	if (!empty($_FILES['var08_1']['tmp_name'])) {
 		$target_ban     = false;
         $target_msn     = '';
-		$target_nam     = getFechaHora();
+		$target_nam     = getFechaHora().'_1';
 		$target_dir     = '../../uploads/solicitud/';
         $target_file    = $target_dir.basename($_FILES['var08_1']['name']);
 		$imageFileType  = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -95,7 +95,7 @@
 	if (!empty($_FILES['var08_2']['tmp_name'])) {
 		$target_ban     = false;
         $target_msn     = '';
-		$target_nam     = getFechaHora();
+		$target_nam     = getFechaHora().'_2';
 		$target_dir     = '../../uploads/solicitud/';
         $target_file    = $target_dir.basename($_FILES['var08_2']['name']);
 		$imageFileType  = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -149,7 +149,7 @@
 	if (!empty($_FILES['var08_3']['tmp_name'])) {
 		$target_ban     = false;
         $target_msn     = '';
-		$target_nam     = getFechaHora();
+		$target_nam     = getFechaHora().'_3';
 		$target_dir     = '../../uploads/solicitud/';
         $target_file    = $target_dir.basename($_FILES['var08_3']['name']);
 		$imageFileType  = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
