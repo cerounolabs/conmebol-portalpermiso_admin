@@ -46,7 +46,7 @@
         $target_file    = $target_dir.basename($_FILES['var08_1']['name']);
 		$imageFileType  = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 		$target_file	= $target_nam.'.'.$imageFileType;
-
+		
         if(isset($_POST['submit'])) {
 			if ($_FILES['var08_1']['type'] == 'application/pdf'||$_FILES['var08_1']['type'] =='application/vnd.openxmlformats-officedocument.presentationml.presentation'||$_FILES['var08_1']['type'] =='application/vnd.openxmlformats-officedocument.wordprocessingml.document'||$_FILES['var08_1']['type'] =='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'||$_FILES['var08_1']['type'] =='application/msword'||$_FILES['var08_1']['type'] =='application/vnd.ms-excel'||$_FILES['var08_1']['type'] =='application/vnd.ms-powerpoint'||$_FILES['var08_1']['type'] =='application/octet-stream')  {
 				$check = $_FILES['var08_1']['size'];
@@ -67,7 +67,7 @@
             $target_ban = false;
         }
         
-        if ($_FILES['var08_1']['size'] > 20000001 && $target_ban == true) {
+        if ($_FILES['var08_1']['size'] > 200000001 && $target_ban == true) {
             $target_msn = 'ERROR: El archivo es muy pesado, sobrepasa lo permitido de 20MB. Verifique!';
             $target_ban = false;
         }
@@ -121,7 +121,7 @@
             $target_ban = false;
         }
         
-        if ($_FILES['var08_2']['size'] > 20000001 && $target_ban == true) {
+        if ($_FILES['var08_2']['size'] > 200000001 && $target_ban == true) {
             $target_msn = 'ERROR: El archivo es muy pesado, sobrepasa lo permitido de 20MB. Verifique!';
             $target_ban = false;
         }
@@ -175,7 +175,7 @@
             $target_ban = false;
         }
         
-        if ($_FILES['var08_3']['size'] > 20000001 && $target_ban == true) {
+        if ($_FILES['var08_3']['size'] > 200000001 && $target_ban == true) {
             $target_msn = 'ERROR: El archivo es muy pesado, sobrepasa lo permitido de 20MB. Verifique!';
             $target_ban = false;
         }
