@@ -97,7 +97,7 @@
                                 </div>
                                 <a class="dropdown-item" href="javascript:void(0)">
                                     <i class="ti-user m-r-5 m-l-5"></i> Perfil</a>
-                                <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal" data-target="#modaldiv" onclick="getVCARD(<?php echo $usu_05; ?>);">
+                                <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal" data-target="#modaldiv" onclick="getVCARD('<?php echo $usu_05; ?>');">
                                     <i class="ti-id-badge m-r-5 m-l-5"></i> vCARD</a>
                                 <a class="dropdown-item" href="javascript:void(0)" data-toggle="modal" data-target="#modaldiv" onclick="getQR(<?php echo $usu_05; ?>);">
                                     <i class="ti-target m-r-5 m-l-5"></i> Código QR</a>
