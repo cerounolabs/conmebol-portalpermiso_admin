@@ -87,7 +87,8 @@
         ->setCellValue('M1', 'comprobante_documento')
         ->setCellValue('N1', 'comprobante_colaborador')
         ->setCellValue('O1', 'comprobante_observacion')
-        ->setCellValue('P1', 'comprobante_adjunto ');
+        ->setCellValue('P1', 'comprobante_adjunto ')
+        ->setCellValue('Q1','comprobante_email');
 
     if ($dataJSON['code'] === 200) {
         $indexRow = 2;
@@ -114,7 +115,8 @@
                                     ->setCellValue('M'.$indexRow, $valueJSON['comprobante_documento'])
                                     ->setCellValue('N'.$indexRow, $valueJSON['comprobante_colaborador'])
                                     ->setCellValue('O'.$indexRow, $valueJSON['comprobante_observacion'])
-                                    ->setCellValue('P'.$indexRow,'http://permisos.conmebol.com/uploads/comprobante/'. $valueJSON['comprobante_adjunto']);
+                                    ->setCellValue('P'.$indexRow,'http://permisos.conmebol.com/uploads/comprobante/'. $valueJSON['comprobante_adjunto'])
+                                    ->setCellValue('Q'.$indexRow, $valueJSON['comprobante_email']);
 
                                 $indexRow = $indexRow + 1;
                             } elseif ($valueJSON['tipo_estado_codigo'] == $parm08) {
@@ -134,7 +136,8 @@
                                     ->setCellValue('M'.$indexRow, $valueJSON['comprobante_documento'])
                                     ->setCellValue('N'.$indexRow, $valueJSON['comprobante_colaborador'])
                                     ->setCellValue('O'.$indexRow, $valueJSON['comprobante_observacion'])
-                                    ->setCellValue('P'.$indexRow,'http://permisos.conmebol.com/uploads/comprobante/'. $valueJSON['comprobante_adjunto']);
+                                    ->setCellValue('P'.$indexRow,'http://permisos.conmebol.com/uploads/comprobante/'. $valueJSON['comprobante_adjunto'])
+                                    ->setCellValue('Q'.$indexRow, $valueJSON['comprobante_email']);
 
                                 $indexRow = $indexRow + 1;
                             }
@@ -156,7 +159,8 @@
                                     ->setCellValue('M'.$indexRow, $valueJSON['comprobante_documento'])
                                     ->setCellValue('N'.$indexRow, $valueJSON['comprobante_colaborador'])
                                     ->setCellValue('O'.$indexRow, $valueJSON['comprobante_observacion'])
-                                    ->setCellValue('P'.$indexRow,'http://permisos.conmebol.com/uploads/comprobante/'. $valueJSON['comprobante_adjunto']);
+                                    ->setCellValue('P'.$indexRow,'http://permisos.conmebol.com/uploads/comprobante/'. $valueJSON['comprobante_adjunto'])
+                                    ->setCellValue('Q'.$indexRow, $valueJSON['comprobante_email']);
 
                                 $indexRow = $indexRow + 1;
                             } elseif ($valueJSON['tipo_estado_codigo'] == $parm08) {
@@ -176,7 +180,8 @@
                                     ->setCellValue('M'.$indexRow, $valueJSON['comprobante_documento'])
                                     ->setCellValue('N'.$indexRow, $valueJSON['comprobante_colaborador'])
                                     ->setCellValue('O'.$indexRow, $valueJSON['comprobante_observacion'])
-                                    ->setCellValue('P'.$indexRow,'http://permisos.conmebol.com/uploads/comprobante/'. $valueJSON['comprobante_adjunto']);
+                                    ->setCellValue('P'.$indexRow,'http://permisos.conmebol.com/uploads/comprobante/'. $valueJSON['comprobante_adjunto'])
+                                    ->setCellValue('Q'.$indexRow, $valueJSON['comprobante_email']);
 
                                 $indexRow = $indexRow + 1;
                             }
@@ -200,7 +205,8 @@
                                     ->setCellValue('M'.$indexRow, $valueJSON['comprobante_documento'])
                                     ->setCellValue('N'.$indexRow, $valueJSON['comprobante_colaborador'])
                                     ->setCellValue('O'.$indexRow, $valueJSON['comprobante_observacion'])
-                                    ->setCellValue('P'.$indexRow,'http://permisos.conmebol.com/uploads/comprobante/'. $valueJSON['comprobante_adjunto']);
+                                    ->setCellValue('P'.$indexRow,'http://permisos.conmebol.com/uploads/comprobante/'. $valueJSON['comprobante_adjunto'])
+                                    ->setCellValue('Q'.$indexRow, $valueJSON['comprobante_email']);
 
                                 $indexRow = $indexRow + 1;
                             } elseif ($valueJSON['tipo_estado_codigo'] == $parm08) {
@@ -220,7 +226,8 @@
                                     ->setCellValue('M'.$indexRow, $valueJSON['comprobante_documento'])
                                     ->setCellValue('N'.$indexRow, $valueJSON['comprobante_colaborador'])
                                     ->setCellValue('O'.$indexRow, $valueJSON['comprobante_observacion'])
-                                    ->setCellValue('P'.$indexRow,'http://permisos.conmebol.com/uploads/comprobante/'. $valueJSON['comprobante_adjunto']);
+                                    ->setCellValue('P'.$indexRow,'http://permisos.conmebol.com/uploads/comprobante/'. $valueJSON['comprobante_adjunto'])
+                                    ->setCellValue('Q'.$indexRow, $valueJSON['comprobante_email']);
 
                                 $indexRow = $indexRow + 1;
                             }
@@ -288,7 +295,8 @@
                                     ->setCellValue('M'.$indexRow, $valueJSON['comprobante_documento'])
                                     ->setCellValue('N'.$indexRow, $valueJSON['comprobante_colaborador'])
                                     ->setCellValue('O'.$indexRow, $valueJSON['comprobante_observacion'])
-                                    ->setCellValue('P'.$indexRow,'http://permisos.conmebol.com/uploads/comprobante/'. $valueJSON['comprobante_adjunto']);
+                                    ->setCellValue('P'.$indexRow,'http://permisos.conmebol.com/uploads/comprobante/'. $valueJSON['comprobante_adjunto'])
+                                    ->setCellValue('Q'.$indexRow, $valueJSON['comprobante_email']);
 
                                 $indexRow = $indexRow + 1;
                             } elseif ($valueJSON['tipo_estado_codigo'] == $parm08) {
@@ -308,7 +316,8 @@
                                     ->setCellValue('M'.$indexRow, $valueJSON['comprobante_documento'])
                                     ->setCellValue('N'.$indexRow, $valueJSON['comprobante_colaborador'])
                                     ->setCellValue('O'.$indexRow, $valueJSON['comprobante_observacion'])
-                                    ->setCellValue('P'.$indexRow,'http://permisos.conmebol.com/uploads/comprobante/'. $valueJSON['comprobante_adjunto']);
+                                    ->setCellValue('P'.$indexRow,'http://permisos.conmebol.com/uploads/comprobante/'. $valueJSON['comprobante_adjunto'])
+                                    ->setCellValue('Q'.$indexRow, $valueJSON['comprobante_email']);
 
                                 $indexRow = $indexRow + 1;
                             }
@@ -330,7 +339,8 @@
                                     ->setCellValue('M'.$indexRow, $valueJSON['comprobante_documento'])
                                     ->setCellValue('N'.$indexRow, $valueJSON['comprobante_colaborador'])
                                     ->setCellValue('O'.$indexRow, $valueJSON['comprobante_observacion'])
-                                    ->setCellValue('P'.$indexRow,'http://permisos.conmebol.com/uploads/comprobante/'. $valueJSON['comprobante_adjunto']);
+                                    ->setCellValue('P'.$indexRow,'http://permisos.conmebol.com/uploads/comprobante/'. $valueJSON['comprobante_adjunto'])
+                                    ->setCellValue('Q'.$indexRow, $valueJSON['comprobante_email']);
 
                                 $indexRow = $indexRow + 1;
                             } elseif ($valueJSON['tipo_estado_codigo'] == $parm08) {
@@ -350,7 +360,8 @@
                                     ->setCellValue('M'.$indexRow, $valueJSON['comprobante_documento'])
                                     ->setCellValue('N'.$indexRow, $valueJSON['comprobante_colaborador'])
                                     ->setCellValue('O'.$indexRow, $valueJSON['comprobante_observacion'])
-                                    ->setCellValue('P'.$indexRow,'http://permisos.conmebol.com/uploads/comprobante/'. $valueJSON['comprobante_adjunto']);
+                                    ->setCellValue('P'.$indexRow,'http://permisos.conmebol.com/uploads/comprobante/'. $valueJSON['comprobante_adjunto'])
+                                    ->setCellValue('Q'.$indexRow, $valueJSON['comprobante_email']);
 
                                 $indexRow = $indexRow + 1;
                             }
@@ -374,7 +385,8 @@
                                     ->setCellValue('M'.$indexRow, $valueJSON['comprobante_documento'])
                                     ->setCellValue('N'.$indexRow, $valueJSON['comprobante_colaborador'])
                                     ->setCellValue('O'.$indexRow, $valueJSON['comprobante_observacion'])
-                                    ->setCellValue('P'.$indexRow,'http://permisos.conmebol.com/uploads/comprobante/'. $valueJSON['comprobante_adjunto']);
+                                    ->setCellValue('P'.$indexRow,'http://permisos.conmebol.com/uploads/comprobante/'. $valueJSON['comprobante_adjunto'])
+                                    ->setCellValue('Q'.$indexRow, $valueJSON['comprobante_email']);
 
                                 $indexRow = $indexRow + 1;
                             } elseif ($valueJSON['tipo_estado_codigo'] == $parm08) {
@@ -394,7 +406,8 @@
                                     ->setCellValue('M'.$indexRow, $valueJSON['comprobante_documento'])
                                     ->setCellValue('N'.$indexRow, $valueJSON['comprobante_colaborador'])
                                     ->setCellValue('O'.$indexRow, $valueJSON['comprobante_observacion'])
-                                    ->setCellValue('P'.$indexRow,'http://permisos.conmebol.com/uploads/comprobante/'. $valueJSON['comprobante_adjunto']);
+                                    ->setCellValue('P'.$indexRow,'http://permisos.conmebol.com/uploads/comprobante/'. $valueJSON['comprobante_adjunto'])
+                                    ->setCellValue('Q'.$indexRow, $valueJSON['comprobante_email']);
 
                                 $indexRow = $indexRow + 1;
                             }
@@ -416,7 +429,8 @@
                                     ->setCellValue('M'.$indexRow, $valueJSON['comprobante_documento'])
                                     ->setCellValue('N'.$indexRow, $valueJSON['comprobante_colaborador'])
                                     ->setCellValue('O'.$indexRow, $valueJSON['comprobante_observacion'])
-                                    ->setCellValue('P'.$indexRow,'http://permisos.conmebol.com/uploads/comprobante/'. $valueJSON['comprobante_adjunto']);
+                                    ->setCellValue('P'.$indexRow,'http://permisos.conmebol.com/uploads/comprobante/'. $valueJSON['comprobante_adjunto'])
+                                    ->setCellValue('Q'.$indexRow, $valueJSON['comprobante_email']);
 
                                 $indexRow = $indexRow + 1;
                             } elseif ($valueJSON['tipo_estado_codigo'] == $parm08) {
@@ -436,7 +450,8 @@
                                     ->setCellValue('M'.$indexRow, $valueJSON['comprobante_documento'])
                                     ->setCellValue('N'.$indexRow, $valueJSON['comprobante_colaborador'])
                                     ->setCellValue('O'.$indexRow, $valueJSON['comprobante_observacion'])
-                                    ->setCellValue('P'.$indexRow,'http://permisos.conmebol.com/uploads/comprobante/'. $valueJSON['comprobante_adjunto']);
+                                    ->setCellValue('P'.$indexRow,'http://permisos.conmebol.com/uploads/comprobante/'. $valueJSON['comprobante_adjunto'])
+                                    ->setCellValue('Q'.$indexRow, $valueJSON['comprobante_email']);
 
                                 $indexRow = $indexRow + 1;
                             }
