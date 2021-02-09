@@ -87,8 +87,8 @@
         ->setCellValue('M1', 'comprobante_documento')
         ->setCellValue('N1', 'comprobante_colaborador')
         ->setCellValue('O1', 'comprobante_observacion')
-        ->setCellValue('P1', 'comprobante_adjunto ')
-        ->setCellValue('Q1','comprobante_email');
+        ->setCellValue('P1', 'comprobante_adjunto')
+        ->setCellValue('Q1', 'comprobante_email');
 
     if ($dataJSON['code'] === 200) {
         $indexRow = 2;
